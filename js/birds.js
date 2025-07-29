@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
     const birds = [
-        "Sparrow", "Eagle", "Penguin", "Owl", "Parrot",
+        "Sparrow", "Eagle", "Hen", "Owl", "Parrot",
         "Duck", "Flamingo", "Peacock", "Hummingbird", "Pigeon"
     ];
     let currentIndex = 0;
