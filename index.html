@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Learning App - Interactive Fun for Ages 3-10</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, colors, and more in a fun way.">
+    <meta name="keywords" content="kids learning app, educational games, children's app, preschool learning, kindergarten learning, interactive education, fun learning, primary school, early learning">
+    <meta name="author" content="Goose AI">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Teachings.AI - Fun & Interactive Learning for Kids">
+    <meta property="og:description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, colors, and more in a fun way.">
+    <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png"> <!-- Ensure this image exists on your domain -->
+    <meta property="og:url" content="https://teachings.ai/">
+    <meta property="og:type" content="website">
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XVYMNTZLQJ');
+    </script>
+    <!-- End Google Analytics -->
+
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Kids Learning App!</h1>
+        <div class="modules-grid">
+            <button class="module-button" id="numbers"><span>&#128175;</span>Numbers</button> 
+            <button class="module-button" id="alphabets"><span>&#127344;</span>Alphabets</button> 
+            <button class="module-button" id="animals"><span>&#128022;</span>Animals</button> 
+            <button class="module-button" id="colors"><span>&#127752;</span>Colors</button> 
+            <button class="module-button" id="birds"><span>&#128038;</span>Birds</button> 
+            <button class="module-button" id="math"><span>&#10133;</span>Simple Math</button> 
+            <button class="module-button" id="fruits"><span>&#127822;</span>Fruits</button> 
+            <button class="module-button" id="vegetables"><span>&#129366;</span>Vegetables</button> 
+            <button class="module-button" id="vehicles"><span>&#128663;</span>Vehicles</button> 
+            <button class="module-button" id="bodyparts"><span>&#128170;</span>Body Parts</button> 
+            <button class="module-button" id="publicservice"><span>&#127976;</span>Public Services</button> 
+        </div>
+    </div>
+    
+    <!-- Music Audio Element -->
+    <audio id="background-music" loop muted>
+        <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button (positioned absolutely by CSS) -->
+    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button> 
+
+    <script src="js/script.js"></script>
+    <script src="js/musicControl.js"></script> 
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Vegetables - Teachings.AI</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/vegetables.css"> 
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Teachings.AI: Interactive module for kids to learn about different vegetables. Scratch to reveal vegetable images and hear their names.">
+    <meta name="keywords" content="learn vegetables, vegetables for kids, healthy eating for kids, vegetable names, preschool vegetables, kindergarten foods, teachings.ai vegetables">
+    <meta name="author" content="Goose AI">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Learn Vegetables with Teachings.AI">
+    <meta property="og:description" content="Teachings.AI: Interactive module for kids to learn about different vegetables. Scratch to reveal vegetable images and hear their names.">
+    <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
+    <meta property="og:url" content="https://teachings.ai/vegetables.html">
+    <meta property="og:type" content="website">
+
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XVYMNTZLQJ');
+    </script>
+    <!-- End Google Analytics -->
+
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+        <h1>Learn Vegetables</h1>
+        <div class="vegetable-display">
+            <p id="current-vegetable-name"></p>
+            <div id="vegetable-image-container">
+                <canvas id="drawing-canvas"></canvas>
+                <!-- The image will be dynamically added here by JavaScript -->
+            </div>
+        </div>
+        <div class="navigation-buttons">
+            <button id="prev-vegetable">Previous</button>
+            <button id="next-vegetable">Next</button>
+        </div>
+    </div>
+    
+    <!-- Music Audio Element -->
+    <audio id="background-music" loop muted>
+        <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button (positioned absolutely by CSS) -->
+    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+
+    <script src="js/vegetables.js"></script>
+    <script src="js/musicControl.js"></script> 
+</body>
+</html>

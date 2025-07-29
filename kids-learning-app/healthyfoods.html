@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Foods - Kids Learning App</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Keep main styles -->
+    <link rel="stylesheet" href="css/healthyfoods.css"> <!-- Specific styles for healthyfoods module -->
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+        <h1>Learn Healthy Foods</h1>
+        <div class="healthyfood-display">
+            <p id="current-healthyfood-name"></p>
+            <div id="healthyfood-image-container">
+                <canvas id="drawing-canvas"></canvas>
+                <!-- The image will be dynamically added here by JavaScript -->
+            </div>
+        </div>
+        <div class="navigation-buttons">
+            <button id="prev-healthyfood">Previous</button>
+            <button id="next-healthyfood">Next</button>
+        </div>
+    </div>
+    
+    <!-- Music Audio Element -->
+    <audio id="background-music" loop muted>
+        <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Toggle Button (positioned absolutely by CSS) -->
+    <button id="music-toggle-button" class="music-toggle-absolute">??</button>
+
+    <script src="js/healthyfoods.js"></script>
+    <script src="js/musicControl.js"></script> <!-- New script for music control -->
+</body>
+</html>
