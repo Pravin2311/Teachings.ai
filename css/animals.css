@@ -28,8 +28,8 @@ h1 {
 }
 
 #animal-image-container {
-    width: clamp(150px, 40vw, 250px); 
-    height: clamp(150px, 40vw, 250px); 
+    width: clamp(300px, 40vw, 250px); 
+    height: clamp(300px, 40vw, 250px); 
     background-color: var(--bg-light); 
     border-radius: 15px; 
     display: flex;
