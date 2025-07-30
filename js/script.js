@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     moduleButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const moduleId = event.target.id;
+            const moduleId = event.currentTarget.id;
             // Navigate to the corresponding HTML page for the module
             window.location.href = moduleId + '.html'; 
         });
