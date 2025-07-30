@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update the button symbol and actual music state
     function updateMusicState() {
+        const isMusicOn = localStorage.getItem('kidsAppMusicOn') === 'true';
         if (isMusicOn) {
             backgroundMusic.muted = false;
             backgroundMusic.play().catch(e => {
