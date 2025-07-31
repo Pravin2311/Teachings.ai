@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kids Learning App - Interactive Fun for Ages 3-10</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1B2A5B" />
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, colors, and more in a fun way." />
@@ -23,36 +25,33 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
-
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#1B2A5B" />
 </head>
 <body>
   <div class="container">
+
     <!-- Download Button on Top Left -->
     <div class="download-button-container top-left">
       <button id="download-button">Download</button>
     </div>
 
-    <h1>Teachings.ai <br>Fun Learning Modules</br></h1>
+    <h1>Teachings.ai <br>Fun Learning Modules</h1>
+
     <div class="modules-grid">
-      <button class="module-button" id="numbers"><span>&#128175;</span>Numbers</button>
-      <button class="module-button" id="alphabets"><span>&#127344;</span>Alphabets</button>
-      <button class="module-button" id="animals"><span>&#128022;</span>Animals</button>
-      <button class="module-button" id="colors"><span>&#127752;</span>Colors</button>
-      <button class="module-button" id="birds"><span>&#128038;</span>Birds</button>
-      <button class="module-button" id="math"><span>&#10133;</span>Simple Math</button>
-      <button class="module-button" id="fruits"><span>&#127822;</span>Fruits</button>
-      <button class="module-button" id="vegetables"><span>&#129366;</span>Vegetables</button>
-      <button class="module-button" id="vehicles"><span>&#128663;</span>Vehicles</button>
-      <button class="module-button" id="bodyparts"><span>&#128170;</span>Body Parts</button>
-      <button class="module-button" id="publicservice"><span>&#127976;</span>Public Services</button>
+      <button class="module-button" id="numbers">🔢 Numbers</button>
+      <button class="module-button" id="alphabets">🔠 Alphabets</button>
+      <button class="module-button" id="animals">🐶 Animals</button>
+      <button class="module-button" id="colors">🌈 Colors</button>
+      <button class="module-button" id="birds">🕊️ Birds</button>
+      <button class="module-button" id="math">➕ Simple Math</button>
+      <button class="module-button" id="fruits">🍎 Fruits</button>
+      <button class="module-button" id="vegetables">🥦 Vegetables</button>
+      <button class="module-button" id="vehicles">🚗 Vehicles</button>
+      <button class="module-button" id="bodyparts">💪 Body Parts</button>
+      <button class="module-button" id="publicservice">🏛️ Public Services</button>
     </div>
   </div>
 
@@ -63,33 +62,40 @@
   </audio>
 
   <!-- Music Toggle Button -->
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute">🔈</button>
+
+  <!-- iOS Banner -->
+  <div id="ios-install-banner" class="ios-banner" style="display:none;">
+    <p>To install this app: Tap <span class="share-icon">🔗</span> then <strong>"Add to Home Screen"</strong></p>
+  </div>
 
   <!-- Scripts -->
   <script src="js/script.js"></script>
   <script src="js/musicControl.js"></script>
 
-  <!-- Service Worker -->
+  <!-- Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker
-          .register('/service-worker.js')
+          .register('service-worker.js')
           .then(reg => console.log('Service Worker Registered', reg))
           .catch(err => console.error('Service Worker Failed:', err));
       });
     }
   </script>
 
-  <!-- Download Button Logic -->
+  <!-- Install Prompt -->
   <script>
     let deferredPrompt;
     const downloadBtn = document.getElementById('download-button');
 
+    // Always show download button on index
+    downloadBtn.style.display = 'block';
+
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      downloadBtn.style.display = 'block';
     });
 
     downloadBtn.addEventListener('click', () => {
@@ -104,25 +110,12 @@
       }
     });
 
-    window.addEventListener('appinstalled', () => {
-      console.log('App was installed');
-      downloadBtn.style.display = 'none';
-    });
-
-    // Always show the button on index.html
-    downloadBtn.style.display = 'block';
-    <div id="ios-install-banner" class="ios-banner">
-     <p>To install this app: Tap <span class="share-icon">🔗</span> and then <strong>"Add to Home Screen"</strong></p>
-    </div>
+    // iOS support
+    const isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+    const isInStandaloneMode = ('standalone' in window.navigator) && window.navigator.standalone;
+    if (isIOS && !isInStandaloneMode) {
+      document.getElementById('ios-install-banner').style.display = 'block';
+    }
   </script>
-  <!-- iOS Manual Install Prompt -->
-<script>
-  const isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-  const isInStandaloneMode = ('standalone' in window.navigator) && window.navigator.standalone;
-
-  if (isIOS && !isInStandaloneMode) {
-    document.getElementById('ios-install-banner').style.display = 'block';
-  }
-</script>
 </body>
 </html>
