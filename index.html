@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kids Learning App - Interactive Fun for Ages 3-10</title>
+
   <link rel="stylesheet" href="css/style.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#1B2A5B" />
@@ -14,9 +15,9 @@
   <meta name="author" content="Goose AI" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph Meta Tags -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Teachings.AI - Fun & Interactive Learning for Kids" />
-  <meta property="og:description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, colors, and more in a fun way." />
+  <meta property="og:description" content="Teachings.AI: Interactive learning web app for kids aged 3-10." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/" />
   <meta property="og:type" content="website" />
@@ -30,10 +31,10 @@
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
 </head>
+
 <body>
   <div class="container">
-
-    <!-- Download Button on Top Left -->
+    <!-- Download Button (Top Left in Container) -->
     <div class="download-button-container top-left">
       <button id="download-button">Download</button>
     </div>
@@ -64,11 +65,6 @@
   <!-- Music Toggle Button -->
   <button id="music-toggle-button" class="music-toggle-absolute">🔈</button>
 
-  <!-- iOS Banner -->
-  <div id="ios-install-banner" class="ios-banner" style="display:none;">
-    <p>To install this app: Tap <span class="share-icon">🔗</span> then <strong>"Add to Home Screen"</strong></p>
-  </div>
-
   <!-- Scripts -->
   <script src="js/script.js"></script>
   <script src="js/musicControl.js"></script>
@@ -90,32 +86,24 @@
     let deferredPrompt;
     const downloadBtn = document.getElementById('download-button');
 
-    // Always show download button on index
-    downloadBtn.style.display = 'block';
-
+    // Show download button only when event is triggered
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-    });
+      downloadBtn.style.display = 'block'; // show button on Android
 
-    downloadBtn.addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('App installed');
-          }
-          deferredPrompt = null;
-        });
-      }
+      downloadBtn.addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(choiceResult => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('App installed');
+            }
+            deferredPrompt = null;
+          });
+        }
+      });
     });
-
-    // iOS support
-    const isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-    const isInStandaloneMode = ('standalone' in window.navigator) && window.navigator.standalone;
-    if (isIOS && !isInStandaloneMode) {
-      document.getElementById('ios-install-banner').style.display = 'block';
-    }
   </script>
 </body>
 </html>

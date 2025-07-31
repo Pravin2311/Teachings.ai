@@ -5,7 +5,6 @@
   "display": "standalone",
   "background_color": "#121E42",
   "theme_color": "#1B2A5B",
-  "description": "Fun Learning Web App for Kids",
   "icons": [
     {
       "src": "/assets/images/app_icon_192.png",
