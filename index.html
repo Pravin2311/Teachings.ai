@@ -111,6 +111,18 @@
 
     // Always show the button on index.html
     downloadBtn.style.display = 'block';
+    <div id="ios-install-banner" class="ios-banner">
+     <p>To install this app: Tap <span class="share-icon">🔗</span> and then <strong>"Add to Home Screen"</strong></p>
+    </div>
   </script>
+  <!-- iOS Manual Install Prompt -->
+<script>
+  const isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+  const isInStandaloneMode = ('standalone' in window.navigator) && window.navigator.standalone;
+
+  if (isIOS && !isInStandaloneMode) {
+    document.getElementById('ios-install-banner').style.display = 'block';
+  }
+</script>
 </body>
 </html>

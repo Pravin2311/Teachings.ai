@@ -11,3 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+<script>
+  const isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+  const isInStandaloneMode = ('standalone' in window.navigator) && window.navigator.standalone;
+
+  if (isIOS && !isInStandaloneMode) {
+    document.getElementById('ios-install-banner').style.display = 'block';
+  }
+</script>
