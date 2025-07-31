@@ -29,6 +29,8 @@
       gtag('config', 'G-XVYMNTZLQJ');
     </script>
     <!-- End Google Analytics -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1B2A5B">
 
 </head>
 <body>
@@ -60,5 +62,15 @@
 
     <script src="js/script.js"></script>
     <script src="js/musicControl.js"></script> 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('Service Worker Registered', reg))
+                    .catch(err => console.error('Service Worker Failed:', err));
+        });
+    }
+    </script>
+
 </body>
 </html>

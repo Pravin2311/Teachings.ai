@@ -1,0 +1,21 @@
+{
+  "name": "Teachings.ai",
+  "short_name": "Teachings",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121E42",
+  "theme_color": "#1B2A5B",
+  "description": "Fun Learning Web App for Kids",
+  "icons": [
+    {
+      "src": "assets/images/app_icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/app_icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
