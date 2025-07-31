@@ -98,47 +98,23 @@ h1 {
     font-size: 1.8em; 
     margin-bottom: 5px; 
 }
-.download-button-wrapper {
-  text-align: center;
-  margin: 1rem 0;
-}
 
-.download-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #1B2A5B;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.download-button:hover {
-  background-color: #2c3e70;
-}
-.download-button-container.top-right {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
+.download-button-container.top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
 }
 
 #download-button {
-    padding: 8px 14px;
-    font-size: 14px;
-    background-color: #1B2A5B;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease;
+  background-color: #1B2A5B;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 10px;
+  cursor: pointer;
 }
-
-#download-button:hover {
-    background-color: #32468c;
-}
-
 
 /* Specific colors for modules (matching the new palette) */
 #numbers { background-color: var(--accent-orange); }

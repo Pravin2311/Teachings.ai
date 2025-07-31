@@ -35,12 +35,12 @@
 </head>
 <body>
   <div class="container">
-    <!-- Download Button -->
-    <div class="download-button-container top-right">
+    <!-- Download Button on Top Left -->
+    <div class="download-button-container top-left">
       <button id="download-button">Download</button>
     </div>
 
-    <h1>Teachings.ai - Fun Learning Modules</h1>
+    <h1>Teachings.ai <br>Fun Learning Modules</br></h1>
     <div class="modules-grid">
       <button class="module-button" id="numbers"><span>&#128175;</span>Numbers</button>
       <button class="module-button" id="alphabets"><span>&#127344;</span>Alphabets</button>
@@ -109,8 +109,8 @@
       downloadBtn.style.display = 'none';
     });
 
-    // Hide by default
-    downloadBtn.style.display = 'none';
+    // Always show the button on index.html
+    downloadBtn.style.display = 'block';
   </script>
 </body>
 </html>
