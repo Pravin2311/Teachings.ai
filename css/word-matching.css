@@ -1,0 +1,119 @@
+.matching-image {
+    width: 150px;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  .image-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .option-image {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s;
+  }
+  
+  .option-image:hover {
+    transform: scale(1.1);
+  }
+  
+  .word-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .word-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    background-color: #eef;
+    border: 2px solid #88a;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .word-button:hover {
+    background-color: #cce;
+  }
+  
+  .correct, .wrong {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .next-button {
+    margin: 20px auto;
+    display: block;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .back-button {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: var(--primary-blue); 
+    color: var(--text-light);
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 10px; 
+    font-size: 1em; 
+    font-weight: 600; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 3px 6px var(--shadow-light);
+}
+
+.back-button:hover {
+    background-color: #5c8ae6; 
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px var(--shadow-medium);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px var(--shadow-light);
+}
+
+/* Mobile-specific adjustments for very small screens */
+@media (max-width: 480px) {
+    .math-controls button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .back-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        top: 15px; 
+        left: 15px; 
+        border-radius: 8px;
+    }
+    #math-problem-text {
+        font-size: clamp(2em, 6vw, 4em); 
+    }
+    #answer-input {
+        font-size: 1.2em;
+        padding: 12px 15px;
+    }
+    #feedback-message {
+        font-size: 1.4em;
+    }
+    .container {
+        padding: 40px 20px 20px 20px; 
+    }
+}
+   

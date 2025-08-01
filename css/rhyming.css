@@ -1,0 +1,105 @@
+.word-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .word-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #1B2A5B;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .word-button:hover {
+    background-color: #324074;
+  }
+  
+  .prompt {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .correct {
+    font-size: 1.4rem;
+    color: #28a745;
+  }
+  
+  .wrong {
+    font-size: 1.4rem;
+    color: #dc3545;
+  }
+  
+  .next-button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .back-button {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: var(--primary-blue); 
+    color: var(--text-light);
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 10px; 
+    font-size: 1em; 
+    font-weight: 600; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 3px 6px var(--shadow-light);
+}
+
+.back-button:hover {
+    background-color: #5c8ae6; 
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px var(--shadow-medium);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px var(--shadow-light);
+}
+
+/* Mobile-specific adjustments for very small screens */
+@media (max-width: 480px) {
+    .math-controls button {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .back-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        top: 15px; 
+        left: 15px; 
+        border-radius: 8px;
+    }
+    #math-problem-text {
+        font-size: clamp(2em, 6vw, 4em); 
+    }
+    #answer-input {
+        font-size: 1.2em;
+        padding: 12px 15px;
+    }
+    #feedback-message {
+        font-size: 1.4em;
+    }
+    .container {
+        padding: 40px 20px 20px 20px; 
+    }
+}
+  

@@ -21,6 +21,7 @@ const urlsToCache = [
   '/publicservice.html',
   '/vegetables.html',
   '/vehicles.html',
+  '/rhyming.html',
 
   // Assets
   '/assets/audio/background_music.mp3',

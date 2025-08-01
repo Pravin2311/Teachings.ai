@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rhyming Words - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/rhyming.css" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Teachings.AI: Fun rhyming word game for kids. Boost vocabulary with interactive matching.">
+  <meta name="keywords" content="rhyming words, kids games, vocabulary building, early learning, phonics, teachings.ai rhymes">
+  <meta name="author" content="Teachings.AI">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Rhyming Words Game - Teachings.AI">
+  <meta property="og:description" content="Fun rhyming word game to help kids learn and recognize similar sounding words.">
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
+  <meta property="og:url" content="https://teachings.ai/rhyming.html">
+  <meta property="og:type" content="website">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Rhyming Words</h1>
+    <p id="instruction">Match the word with another that rhymes. Tap to begin!</p>
+    <div id="game-container">
+      <p class="loading">Loading rhyming game...</p>
+    </div>
+  </div>
+
+  <!-- Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+  <script src="js/rhyming.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>
