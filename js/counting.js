@@ -1,7 +1,7 @@
 const images = [
-    { word: "Lion", img: "assets/images/animals/lion.png" },
-    { word: "Elephant", img: "assets/images/animals/elephant.png" },
-    { word: "Peacock", img: "assets/images/birds/peacock.png" },
+    { word: "Cicle", img: "assets/images/shapes/circle.png" },
+    { word: "Triangle", img: "assets/images/shapes/triangle.png" },
+    { word: "Square", img: "assets/images/shapes/square.png" },
     { word: "Parrot", img: "assets/images/birds/parrot.png" },
     { word: "Apple", img: "assets/images/fruits/apple.png" },
     { word: "Orange", img: "assets/images/fruits/orange.png" },
@@ -15,8 +15,8 @@ const images = [
     { word: "Dog", img: "assets/images/animals/dog.png" },
     { word: "Horse", img: "assets/images/animals/horse.png" },
     { word: "Monkey", img: "assets/images/animals/Monkey.png" },
-    { word: "Tiger", img: "assets/images/animals/tiger.png" },
-    { word: "Bear", img: "assets/images/animals/bear.png" }
+    { word: "Heart", img: "assets/images/shapes/heart.png" },
+    { word: "Star", img: "assets/images/shapes/star.png" }
   ];
   
   const gameContainer = document.getElementById("game-container");
