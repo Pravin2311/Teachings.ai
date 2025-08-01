@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kids Learning App - Interactive Fun for Ages 3-10</title>
 
@@ -15,12 +16,32 @@
   <meta name="author" content="Goose AI" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Teachings.AI - Fun & Interactive Learning for Kids" />
   <meta property="og:description" content="Teachings.AI: Interactive learning web app for kids aged 3-10." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/" />
   <meta property="og:type" content="website" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalApplication",
+    "name": "Teachings.AI",
+    "operatingSystem": "All",
+    "applicationCategory": "Educational",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Goose AI"
+    }
+  }
+  </script>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
@@ -34,17 +55,19 @@
 
 <body>
   <div class="container">
-    <!-- Download Button (Top Left in Container) -->
+    <!-- Download Button -->
     <div class="download-button-container top-left">
-      <button id="download-button">Download</button>
+      <button id="download-button" style="display: none;" aria-label="Add app to home screen">Download</button>
     </div>
 
     <h1>Teachings.ai <br>Fun Learning Modules</h1>
-    <div class="scroll-instruction">
-      <span class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen | For music on tap 🔈</span>
-    </div>
+    <main>
+      <div class="scroll-instruction">
+        <div class="scroll-text">
+          To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen | For music on tap 🔈
+        </div>
+      </div>
     
-
     <div class="modules-grid">
       <button class="module-button" id="numbers">🔢 Numbers</button>
       <button class="module-button" id="alphabets">🔠 Alphabets</button>
@@ -55,8 +78,15 @@
       <button class="module-button" id="vegetables">🥦 Vegetables</button>
       <button class="module-button" id="vehicles">🚗 Vehicles</button>
       <button class="module-button" id="bodyparts">💪 Body Parts</button>
-      <button class="module-button next-button" onclick="window.location.href='page2.html'">➡️ Next</button>
-
+      <button class="module-button" id="math">➕ Simple Math</button>
+      <button class="module-button" id="rhyming">🧠 Rhyming</button>
+      <button class="module-button" onclick="location.href='sight.html'">👀 Sight Words</button>
+      <button class="module-button" onclick="location.href='word-matching.html'">🧩 Word Matching</button>
+      <button class="module-button" onclick="location.href='counting.html'">🔢 Counting Obj</button>
+      <button class="module-button" onclick="location.href='odd-even.html'">🧮 Odd & Even</button>
+      <button class="module-button" onclick="location.href='shapes.html'">🟦 Basic Shapes</button>
+      <button class="module-button" onclick="location.href='patterns.html'">🪄 Patterns & Seq</button>
+      <button class="module-button" id="publicservice">🏛️ Public Services</button>
     </div>
   </div>
 
@@ -66,38 +96,36 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Music Toggle Button -->
-  <button id="music-toggle-button" class="music-toggle-absolute">🔈</button>
+  <!-- Music Toggle -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
 
-  <!-- Scripts -->
-  <script src="js/script.js"></script>
-  <script src="js/musicControl.js"></script>
+  <!-- JS Scripts -->
+  <script src="js/script.js" defer></script>
+  <script src="js/musicControl.js" defer></script>
 
-  <!-- Service Worker Registration -->
+  <!-- Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('service-worker.js')
+        navigator.serviceWorker.register('service-worker.js')
           .then(reg => console.log('Service Worker Registered', reg))
           .catch(err => console.error('Service Worker Failed:', err));
       });
     }
   </script>
 
-  <!-- Install Prompt -->
+  <!-- PWA Install Prompt -->
   <script>
     let deferredPrompt;
-    const downloadBtn = document.getElementById('download-button');
+    document.addEventListener('DOMContentLoaded', () => {
+      const downloadBtn = document.getElementById('download-button');
 
-    // Show download button only when event is triggered
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      downloadBtn.style.display = 'block'; // show button on Android
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        downloadBtn.style.display = 'inline-block';
 
-      downloadBtn.addEventListener('click', () => {
-        if (deferredPrompt) {
+        downloadBtn.addEventListener('click', () => {
           deferredPrompt.prompt();
           deferredPrompt.userChoice.then(choiceResult => {
             if (choiceResult.outcome === 'accepted') {
@@ -105,7 +133,7 @@
             }
             deferredPrompt = null;
           });
-        }
+        });
       });
     });
   </script>

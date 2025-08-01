@@ -22,6 +22,12 @@ const urlsToCache = [
   '/vegetables.html',
   '/vehicles.html',
   '/rhyming.html',
+  '/sight.html',
+  '/word-matching.html',
+  '/counting.html',
+  '/odd-even.html',
+  '/shapes.html',
+  '/patterns.html',
 
   // Assets
   '/assets/audio/background_music.mp3',
