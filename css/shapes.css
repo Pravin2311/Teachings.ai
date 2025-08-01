@@ -1,0 +1,98 @@
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 20px 0;
+  }
+  
+  .shape-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+  
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .option-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    background-color: #e0e0ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .option-button:hover {
+    background-color: #d0d0ff;
+  }
+  
+  #feedback {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .explanation {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .back-button {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: var(--primary-blue); 
+    color: var(--text-light);
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 10px; 
+    font-size: 1em; 
+    font-weight: 600; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 3px 6px var(--shadow-light);
+}
+
+.back-button:hover {
+    background-color: #5c8ae6; 
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px var(--shadow-medium);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px var(--shadow-light);
+}
+
+/* Mobile-specific adjustments for very small screens */
+@media (max-width: 480px) {
+    .navigation-buttons button {
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+    .back-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        top: 15px; 
+        left: 15px; 
+        border-radius: 8px;
+    }
+    #current-fruit-name {
+        font-size: clamp(2em, 6vw, 4em); 
+    }
+    .container {
+        padding: 40px 20px 20px 20px; 
+    }
+}
+   

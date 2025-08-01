@@ -1,0 +1,80 @@
+const images = [
+    { word: "Lion", img: "assets/images/animals/lion.png" },
+    { word: "Elephant", img: "assets/images/animals/elephant.png" },
+    { word: "Peacock", img: "assets/images/birds/peacock.png" },
+    { word: "Parrot", img: "assets/images/birds/parrot.png" },
+    { word: "Apple", img: "assets/images/fruits/apple.png" },
+    { word: "Orange", img: "assets/images/fruits/orange.png" },
+    { word: "Cherry", img: "assets/images/fruits/cherry.png" },
+    { word: "Strawberry", img: "assets/images/fruits/strawberry.png" },
+    { word: "Watermelon", img: "assets/images/fruits/watermelon.png" },
+    { word: "Owl", img: "assets/images/birds/owl.png" },
+    { word: "Hen", img: "assets/images/birds/hen.png" },
+    { word: "Eagle", img: "assets/images/birds/eagle.png" },
+    { word: "Cat", img: "assets/images/animals/cat.png" },
+    { word: "Dog", img: "assets/images/animals/dog.png" },
+    { word: "Horse", img: "assets/images/animals/horse.png" },
+    { word: "Monkey", img: "assets/images/animals/Monkey.png" },
+    { word: "Tiger", img: "assets/images/animals/tiger.png" },
+    { word: "Bear", img: "assets/images/animals/bear.png" }
+  ];
+  
+  const gameContainer = document.getElementById("game-container");
+  const correctAudio = document.getElementById("audio-correct");
+  const wrongAudio = document.getElementById("audio-wrong");
+  
+  function getRandomSet() {
+    const count = Math.floor(Math.random() * 5) + 2;
+    const item = images[Math.floor(Math.random() * images.length)];
+    return Array(count).fill(item);
+  }
+  
+  function loadGame() {
+    const objectSet = getRandomSet();
+    const correctCount = objectSet.length;
+    const choices = shuffle([
+      correctCount,
+      correctCount + 1,
+      correctCount - 1,
+      correctCount + 2,
+    ].filter(n => n > 0)).slice(0, 3);
+    choices.push(correctCount);
+    const uniqueChoices = shuffle([...new Set(choices)]);
+  
+    gameContainer.innerHTML = "";
+  
+    const imagesDiv = document.createElement("div");
+    imagesDiv.className = "counting-images";
+    objectSet.forEach(obj => {
+      const img = document.createElement("img");
+      img.src = obj.img;
+      img.alt = obj.word;
+      imagesDiv.appendChild(img);
+    });
+  
+    const answerDiv = document.createElement("div");
+    answerDiv.className = "answer-buttons";
+    uniqueChoices.forEach(choice => {
+      const btn = document.createElement("button");
+      btn.textContent = choice;
+      btn.onclick = () => {
+        if (choice === correctCount) {
+          correctAudio.play();
+          setTimeout(loadGame, 1000);
+        } else {
+          wrongAudio.play();
+        }
+      };
+      answerDiv.appendChild(btn);
+    });
+  
+    gameContainer.appendChild(imagesDiv);
+    gameContainer.appendChild(answerDiv);
+  }
+  
+  function shuffle(arr) {
+    return arr.sort(() => Math.random() - 0.5);
+  }
+  
+  window.onload = loadGame;
+  

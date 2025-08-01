@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odd & Even Numbers - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/oddEven.css" />
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='page2.html'">Back to Home</button>
+    <h1>Odd & Even Numbers</h1>
+    <p id="instruction">Identify whether the number is Odd or Even.</p>
+
+    <div id="game-container">
+      <div id="number-display">0</div>
+      <div id="buttons">
+        <button class="game-button" onclick="checkAnswer('even')">Even</button>
+        <button class="game-button" onclick="checkAnswer('odd')">Odd</button>
+      </div>
+      <div id="feedback-message"></div>
+    </div>
+
+    <div class="explanation">
+      <h3>What are Odd and Even Numbers?</h3>
+      <p>
+        🔵 <strong>Even numbers</strong> end with 0, 2, 4, 6, or 8 (like 2, 10, 34).<br/>
+        🔴 <strong>Odd numbers</strong> end with 1, 3, 5, 7, or 9 (like 1, 9, 27).<br/>
+        ✨ Tip: Even numbers can be split into two equal parts.
+      </p>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+
+  <!-- Feedback Audio -->
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <script src="js/oddEven.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>

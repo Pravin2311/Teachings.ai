@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basic Shapes - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/shapes.css" />
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='page2.html'">Back to Home</button>
+    <h1>Basic Shapes</h1>
+    <p id="instruction">Look at the shape and click the correct name!</p>
+
+    <div id="game-container">
+      <p class="loading">Loading Shape Game...</p>
+    </div>
+
+    <div id="feedback"></div>
+
+    <div class="explanation">
+      <h3>Learn About Shapes</h3>
+      <p>Shapes are all around us. Circles, squares, and triangles are basic shapes you see every day. Learn them by matching images to names.</p>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+
+  <!-- Feedback Audio -->
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <script src="js/shapes.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>

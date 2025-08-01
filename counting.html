@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Counting with Objects - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/counting.css" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Teachings.AI: Count objects like animals, birds, and fruits. Fun way for kids to learn numbers.">
+  <meta name="keywords" content="counting objects, math games, kids learning, numbers, teachings.ai, preschool">
+  <meta name="author" content="Teachings.AI">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Counting with Objects - Teachings.AI">
+  <meta property="og:description" content="Fun counting game using real-world images of animals, birds, and fruits.">
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
+  <meta property="og:url" content="https://teachings.ai/counting.html">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='page2.html'">Back to Home</button>
+    <h1>Counting with Objects</h1>
+    <p id="instruction">How many objects do you see? Tap the correct number!</p>
+    <div id="game-container">
+      <p class="loading">Loading counting game...</p>
+    </div>
+  </div>
+
+  <!-- Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <script src="js/counting.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>
