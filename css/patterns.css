@@ -1,0 +1,172 @@
+.container {
+    position: relative;
+    padding-top: 60px;
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+h1 {
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.pattern-area {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+#pattern-question {
+    font-size: clamp(2.5em, 7vw, 4.5em);
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.pattern-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+#pattern-options button {
+    background-color: var(--accent-orange);
+    color: var(--text-light);
+    padding: 10px 20px; /* Bigger buttons */
+    border: none;
+    border-radius: 14px;
+    font-size: 1.5rem; /* Larger text */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 10px var(--shadow-light);
+    min-width: 200px;
+    margin: 12px;
+}
+@media (max-width: 480px) {
+    #pattern-options button {
+        font-size: 1.0 rem;
+        padding: 15px 20px;
+        min-width: 50px;
+    }
+}
+
+
+
+.pattern-options button:hover {
+    background-color: #e6a760;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+.pattern-options button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+/* Style for the Next Pattern Button */
+#next-pattern-btn {
+    margin-top: 30px;
+    padding: 16px 32px;
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--shadow-light);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#next-pattern-btn:hover {
+    background-color: #5c8ae6;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+#next-pattern-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+#feedback-message {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-top: 20px;
+    min-height: 1.5em;
+}
+
+#feedback-message.correct { color: var(--secondary-green); }
+#feedback-message.incorrect { color: var(--accent-pink); }
+
+.back-button {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 3px 6px var(--shadow-light);
+}
+
+.back-button:hover {
+    background-color: #5c8ae6;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px var(--shadow-medium);
+}
+
+.back-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px var(--shadow-light);
+}
+
+/* Mobile-Friendly Adjustments */
+@media (max-width: 480px) {
+    .pattern-options button {
+        font-size: 2.2rem;
+        padding: 16px 28px;
+        min-width: 100px;
+    }
+
+    #next-pattern-btn {
+        font-size: 1.2em;
+        padding: 12px 24px;
+        width: 90%;
+    }
+
+    .back-button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        top: 15px;
+        left: 15px;
+        border-radius: 8px;
+    }
+
+    #pattern-question {
+        font-size: clamp(2em, 6vw, 4em);
+    }
+
+    #feedback-message {
+        font-size: 1.4em;
+    }
+
+    .container {
+        padding: 40px 20px 20px 20px;
+    }
+}
