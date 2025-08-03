@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Sentences Builder - Teachings.AI</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/sentences.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1B2A5B" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Teachings.AI: Build simple 3- and 4-word English sentences through fun interactive learning. Perfect for preschool and early learners." />
+  <meta name="keywords" content="sentence builder, simple sentences, kids english learning, preschool grammar, word order game, teachings.ai, early language development" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Simple Sentences Builder - Teachings.AI" />
+  <meta property="og:description" content="Interactive sentence building game for children to learn simple 3- and 4-word English sentences." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/simple-sentences.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "name": "Simple Sentences Builder",
+    "description": "Interactive module to help children build 3- and 4-word English sentences through fun drag-and-drop learning.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai"
+    },
+    "educationalLevel": "Preschool",
+    "url": "https://teachings.ai/simple-sentences.html"
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Simple Sentences Builder</h1>
+    
+    <div id="sentence-container" class="game-box">
+      <p id="instruction">Arrange the words in the correct order:</p>
+      <div id="word-options" class="word-options"></div>
+      <button id="submit-btn">Submit</button>
+      <p id="feedback"></p>
+    </div>
+
+    <div class="navigation-buttons">
+      <button id="prev-btn">Previous</button>
+      <button id="next-btn">Next</button>
+    </div>
+  </div>
+
+  <!-- Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+  <!-- Sentence Audio -->
+  <audio id="sentence-audio" preload="auto"></audio>
+
+  <script src="js/sentences.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>

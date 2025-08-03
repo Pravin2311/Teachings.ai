@@ -82,6 +82,7 @@
       <button class="module-button" id="rhyming">🧠 Rhyming</button>
       <button class="module-button" onclick="location.href='sight.html'">👀 Sight Words</button>
       <button class="module-button" onclick="location.href='word-matching.html'">🧩 Word Matching</button>
+      <button class="module-button" onclick="location.href='sentences.html'">📝 Sentences</button>
       <button class="module-button" onclick="location.href='counting.html'">🔢 Counting Obj</button>
       <button class="module-button" onclick="location.href='odd-even.html'">🧮 Odd & Even</button>
       <button class="module-button" onclick="location.href='shapes.html'">🟦 Basic Shapes</button>
@@ -126,14 +127,21 @@
         downloadBtn.style.display = 'inline-block';
 
         downloadBtn.addEventListener('click', () => {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(choiceResult => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('App installed');
-            }
-            deferredPrompt = null;
-          });
-        });
+        // Google Analytics event tracking
+        gtag('event', 'download_button_click', {
+        event_category: 'PWA',
+        event_label: 'Add to Home Screen'
+      });
+
+      // Show install prompt
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(choiceResult => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('App installed');
+      }
+      deferredPrompt = null;
+    });
+});
       });
     });
   </script>
