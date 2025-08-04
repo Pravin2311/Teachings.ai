@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Allow: /assets/images/
+Allow: /assets/audio/
+Allow: /css/
+Allow: /js/
+
+Sitemap: https://teachings.ai/sitemap.xml
