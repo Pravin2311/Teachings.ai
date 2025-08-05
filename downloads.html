@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Worksheet Download Center - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.6em;
+      padding: 0 10px;
+    }
+
+    .download-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .download-card {
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 220px;
+      box-sizing: border-box;
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .download-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .download-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .download-card h3 {
+      font-size: 1em;
+      margin: 10px 0;
+    }
+
+    .download-card a {
+      display: inline-block;
+      padding: 8px 12px;
+      background-color: orange;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    .download-card a:hover {
+      background-color: darkorange;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #6a9cff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #4a7cd1;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      .download-grid {
+        padding: 0 10px;
+      }
+
+      .download-card {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-button">← Back to Home</a>
+
+  <h1>📚 Worksheet Download Center</h1>
+
+  <div class="download-grid">
+    <div class="download-card">
+      <img src="assets/images/pre-shool-thumb.png" alt="pre-school Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/pre-school.pdf" download title="Download pre-school Worksheet">Download PDF</a>
+    </div>
+    <div class="download-card">
+      <img src="assets/images/fruits-thumb.png" alt="Fruits Worksheet Thumbnail">
+      <h3>Fruits Colouring</h3>
+      <a href="assets/worksheets/fruits.pdf" download title="Download Fruits Colouring Worksheet">Download PDF</a>
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/colours-thumb.png" alt="Colours Worksheet Thumbnail">
+      <h3>Colouring Sheets</h3>
+      <a href="assets/worksheets/colours.pdf" download title="Download Colouring Sheets">Download PDF</a>
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/alphabets-thumb.png" alt="Alphabets Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/alphabets.pdf" download title="Download Alphabets Worksheet">Download PDF</a>
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/numbers-thumb.png" alt="Numbers Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/numbers.pdf" download title="Download numbers Worksheet">Download PDF</a>
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/alphabets-thumb2.png" alt="Alphabets Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/alphabets2.pdf" download title="Download Alphabets Worksheet">Download PDF</a>
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/alphabets-flashcards-thumb.png" alt="Alphabets flashcards Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/alphabets-flashcards.pdf" download title="Download ABC flashcards Worksheet">Download PDF</a>   
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/symmetry.png" alt="symmetry Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/symmetry.pdf" download title="Download symmetry Worksheet">Download PDF</a>   
+    </div>
+
+    <div class="download-card">
+      <img src="assets/images/math-thumb.png" alt="symmetry Worksheet Thumbnail">
+      <h3>Alphabets</h3>
+      <a href="assets/worksheets/math.pdf" download title="Download symmetry Worksheet">Download PDF</a>   
+    </div>
+  </div>
+</body>
+</html>

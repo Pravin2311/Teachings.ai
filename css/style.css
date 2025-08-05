@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
+  
   --primary-blue: #6a9cff;
   --secondary-green: #7fd1b9;
   --accent-orange: #ffb86c;
@@ -121,6 +122,9 @@ h1 {
 }
 
 /* Color overrides for modules */
+#downloads { background-color: green }
+#downloads:hover { background-color: #1386f1; }
+
 #numbers { background-color: var(--accent-orange); }
 #numbers:hover { background-color: #e6a760; }
 
