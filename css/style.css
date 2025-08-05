@@ -308,3 +308,29 @@ h1 {
     max-width: 100%;
   }
 }
+.follow-me-icons {
+  text-align: center;
+  margin: 15px 0 25px;
+  font-size: 15px;
+}
+
+.follow-me-icons span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.follow-me-icons a {
+  display: inline-block;
+  margin: 0 8px;
+  transition: transform 0.3s;
+}
+
+.follow-me-icons a img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.follow-me-icons a:hover {
+  transform: scale(1.2);
+}
