@@ -28,6 +28,7 @@ const urlsToCache = [
   '/odd-even.html',
   '/shapes.html',
   '/patterns.html',
+  '/grammar.html',
 
   // Assets
   '/assets/audio/background_music.mp3',
