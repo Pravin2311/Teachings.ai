@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Fun: Nouns & Verbs - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/grammar.css" />
+
+  <meta name="description" content="Fun interactive grammar game to learn nouns and verbs. Part of Teachings.AI learning modules for kids.">
+  <meta name="keywords" content="grammar game, nouns for kids, verbs for kids, parts of speech, teachings.ai grammar">
+  <meta name="author" content="Teachings AI">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Grammar Fun: Nouns & Verbs - Teachings.AI" />
+  <meta property="og:description" content="Fun drag-and-drop grammar activity for early learners to practice nouns and verbs. From Teachings.AI." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/grammar.html" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalAudience",
+    "educationalRole": "student",
+    "name": "Grammar Fun: Nouns & Verbs - Teachings.AI",
+    "description": "Interactive grammar activity to sort nouns and verbs for preschool and grade 1 students.",
+    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+    "inLanguage": "en",
+    "url": "https://teachings.ai/grammar.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
+    }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Grammar Fun: Nouns & Verbs</h1>
+    <div class="game-area">
+      <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Noun or Verb!</p>
+      <div class="word-bank" id="word-container"></div>
+      <div class="drop-zones">
+        <div class="drop-zone" id="noun-zone" data-type="noun"><h2>Nouns</h2></div>
+        <div class="drop-zone" id="verb-zone" data-type="verb"><h2>Verbs</h2></div>
+      </div>
+      <p id="feedback-message"></p>
+      <button id="submit-btn">Submit</button>
+    </div>
+    <div class="rhyming-image">
+      <img src="assets/images/gammar.png" alt="Grammar Fun Illustration" />
+    </div>
+  </div>
+
+  <!-- Music and Feedback Audio -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <!-- Scripts -->
+  <script src="js/grammar.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>
