@@ -29,6 +29,8 @@ const urlsToCache = [
   '/shapes.html',
   '/patterns.html',
   '/Grammar.html',
+  '/downloads.html',
+
 
   // Assets
   '/assets/audio/background_music.mp3',

@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="Fun worksheets for preschool and LKG kids. Download for free!" />
   <meta name="twitter:image" content="https://teachings.ai/assets/images/worksheet-cover.png" />
 
-  <!-- Favicon (Optional) -->
+  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 
   <!-- JSON-LD Schema -->
@@ -39,6 +39,8 @@
     }
   }
   </script>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -46,7 +48,7 @@
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
-  <link rel="stylesheet" href="css/style.css">
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -54,12 +56,26 @@
       background-color: #f9f9f9;
       padding: 20px;
       margin: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #111;
+      color: #f0f0f0;
     }
 
     h1 {
       margin-bottom: 20px;
       font-size: 1.6em;
       padding: 0 10px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .download-grid {
@@ -79,10 +95,15 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       width: 220px;
       box-sizing: border-box;
-      transition: transform 0.2s;
+      transition: transform 0.2s, background-color 0.3s;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    body.dark-mode .download-card {
+      background: #222;
+      box-shadow: 0 2px 6px rgba(255,255,255,0.1);
     }
 
     .download-card:hover {
@@ -115,9 +136,8 @@
       background-color: darkorange;
     }
 
-    .back-button {
+    .back-button, .theme-toggle {
       display: inline-block;
-      margin-bottom: 20px;
       padding: 10px 20px;
       background-color: #6a9cff;
       color: white;
@@ -125,10 +145,20 @@
       border-radius: 8px;
       font-weight: bold;
       transition: background-color 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      background-color: #444;
     }
 
     .back-button:hover {
       background-color: #4a7cd1;
+    }
+
+    .theme-toggle:hover {
+      background-color: #222;
     }
 
     @media (max-width: 600px) {
@@ -145,89 +175,89 @@
 </head>
 <body>
 
-  <a href="index.html" class="back-button">← Back to Home</a>
+  <div class="controls">
+    <a href="index.html" class="back-button">← Back to Home</a>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Dark Mode</button>
+  </div>
 
-  <h1>📚 Worksheet Download Center</h1>
+  <h1>📚 Free Printable Worksheets for Preschool, LKG & Kindergarten</h1>
+  <p>Download fun, printable worksheets for early learners: alphabets, numbers, coloring, math, fruits, shapes, and more. Ideal for home or school use.</p>
+
 
   <div class="download-grid">
-
+    <!-- REPEAT BLOCK START -->
     <div class="download-card">
       <img src="assets/images/pre-shool-thumb.png" alt="Pre-school Worksheet Thumbnail">
       <h3>Alphabets</h3>
       <a href="assets/worksheets/pre-school.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/fruits-thumb.png" alt="Fruits Worksheet Thumbnail">
       <h3>Fruits Colouring</h3>
       <a href="assets/worksheets/fruits.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/colours-thumb.png" alt="Colours Worksheet Thumbnail">
       <h3>Colouring Sheets</h3>
       <a href="assets/worksheets/colours.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/alphabets-thumb.png" alt="Alphabets Worksheet Thumbnail">
       <h3>Alphabets</h3>
       <a href="assets/worksheets/alphabets.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/numbers-thumb.png" alt="Numbers Worksheet Thumbnail">
       <h3>Numbers Activity</h3>
       <a href="assets/worksheets/numbers.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/alphabets-thumb2.png" alt="Alphabets Worksheet 2 Thumbnail">
       <h3>Alphabets</h3>
       <a href="assets/worksheets/alphabets2.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/alphabets-flashcards-thumb.png" alt="ABC Flashcards Thumbnail">
       <h3>ABC Flash cards</h3>
       <a href="assets/worksheets/alphabets-flashcards.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/symmetry.png" alt="Symmetry Worksheet Thumbnail">
       <h3>Symmetry</h3>
       <a href="assets/worksheets/symmetry.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/math-thumb.png" alt="Math Worksheet Thumbnail">
       <h3>Math</h3>
       <a href="assets/worksheets/math.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/abc-activity-thumb.png" alt="ABC Activity Thumbnail">
       <h3>ABC Activity</h3>
       <a href="assets/worksheets/ABC Activity.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/shapes-thumb.png" alt="Shapes Activity Thumbnail">
       <h3>Shapes Activity</h3>
       <a href="assets/worksheets/shapes activity.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/numbers-writing-thumb.png" alt="Numbers writing Activity Thumbnail">
       <h3>Numbers writing</h3>
       <a href="assets/worksheets/numbers writing.pdf" download>Download PDF</a>
     </div>
-
     <div class="download-card">
       <img src="assets/images/learn drawing.png" alt="Learn Drawing Activity Thumbnail">
       <h3>Learn Drawing</h3>
       <a href="assets/worksheets/learn drawing.pdf" download>Download PDF</a>
     </div>
+    <!-- REPEAT BLOCK END -->
   </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
