@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn About Plants - Teachings.AI</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/plants.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1B5E20" />
+
+  <meta name="description" content="Teachings.AI: Learn about plants with visuals and audio narration for kids." />
+  <meta name="keywords" content="plants for kids, learn plants, preschool science, kindergarten nature, plant images, educational module, teachings.ai plants" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>🌱 Learn About Plants</h1>
+    <div class="plant-display">
+      <p id="current-plant-name"></p>
+      <img id="plant-image" src="" alt="Plant Image" />
+    </div>
+    <div class="navigation-buttons">
+      <button id="prev-plant">Previous</button>
+      <button id="next-plant">Next</button>
+    </div>
+  </div>
+
+  <audio id="plant-audio" preload="auto"></audio>
+  <script src="js/plants.js"></script>
+</body>
+</html>
