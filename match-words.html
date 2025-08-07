@@ -228,20 +228,21 @@
   }
 
   function startTouchDrag(e) {
-    const original = e.target;
-    draggedElement = original.cloneNode(true);
-    draggedElement.classList.add("dragging");
-    draggedElement.style.position = "absolute";
-    draggedElement.style.zIndex = 1000;
-    document.body.appendChild(draggedElement);
-    moveAt(e.touches[0]);
-    e.preventDefault();
+  const original = e.target;
+  draggedElement = original.cloneNode(true);
+  draggedElement.id = original.id; // ✅ Preserve ID
+  draggedElement.classList.add("dragging");
+  draggedElement.style.position = "absolute";
+  draggedElement.style.zIndex = 1000;
+  document.body.appendChild(draggedElement);
+  moveAt(e.touches[0]);
+  e.preventDefault();
 
-    original.style.opacity = 0.5;
+  original.style.opacity = 0.5;
 
-    document.addEventListener("touchmove", onTouchMove);
-    document.addEventListener("touchend", onTouchEnd);
-  }
+  document.addEventListener("touchmove", onTouchMove);
+  document.addEventListener("touchend", onTouchEnd);
+}
 
   function onTouchMove(e) {
     if (draggedElement) moveAt(e.touches[0]);

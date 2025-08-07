@@ -9,28 +9,14 @@
   <meta name="author" content="Teachings.AI" />
   <meta name="robots" content="index, follow" />
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOccupationalProgram",
-    "name": "Animal Emoji Match - Teachings.AI",
-    "description": "Interactive drag-and-drop game for preschoolers to match shapes to names.",
-    "educationalLevel": "Preschool",
-    "educationalUse": "Game",
-    "provider": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai"
-    }
-  }
-  </script>
-
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       background-color: #f2fbf4;
       padding: 20px;
+      touch-action: manipulation;
+      user-select: none;
     }
     h1 {
       margin-bottom: 30px;
@@ -118,21 +104,15 @@
 
   <div class="game-area">
     <div class="word-boxes" id="wordBoxes">
-      <div class="word" data-word="square" ondrop="drop(event)" ondragover="allowDrop(event)">Square</div>
-      <div class="word" data-word="circle" ondrop="drop(event)" ondragover="allowDrop(event)">Circle</div>
-      <div class="word" data-word="star" ondrop="drop(event)" ondragover="allowDrop(event)">Star</div>
-      <div class="word" data-word="heart" ondrop="drop(event)" ondragover="allowDrop(event)">Heart</div>
-      <div class="word" data-word="hexagon" ondrop="drop(event)" ondragover="allowDrop(event)">Hexagon</div>
-      <div class="word" data-word="triangle" ondrop="drop(event)" ondragover="allowDrop(event)">Triangle</div>
+      <div class="word" data-word="square">Square</div>
+      <div class="word" data-word="circle">Circle</div>
+      <div class="word" data-word="star">Star</div>
+      <div class="word" data-word="heart">Heart</div>
+      <div class="word" data-word="hexagon">Hexagon</div>
+      <div class="word" data-word="triangle">Triangle</div>
     </div>
 
     <div class="emoji-draggers" id="emojiDraggers">
-    <img src="assets/images/shapes/square.png" class="emoji" draggable="true" ondragstart="drag(event)" id="square" alt="Square">
-    <img src="assets/images/shapes/circle.png" class="emoji" draggable="true" ondragstart="drag(event)" id="circle" alt="Circle">
-    <img src="assets/images/shapes/star.png" class="emoji" draggable="true" ondragstart="drag(event)" id="star" alt="Star">
-    <img src="assets/images/shapes/heart.png" class="emoji" draggable="true" ondragstart="drag(event)" id="heart" alt="Heart">
-    <img src="assets/images/shapes/hexagon.png" class="emoji" draggable="true" ondragstart="drag(event)" id="hexagon" alt="Hexagon">
-    <img src="assets/images/shapes/triangle.png" class="emoji" draggable="true" ondragstart="drag(event)" id="triangle" alt="Triangle">
     </div>
   </div>
 
@@ -160,8 +140,102 @@
       }
     });
 
-    function allowDrop(ev) {
-      ev.preventDefault();
+    function resetGame() {
+      const wordBoxes = document.querySelectorAll(".word");
+      wordBoxes.forEach(box => {
+        const word = box.getAttribute("data-word");
+        box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
+        box.classList.remove("matched");
+        box.addEventListener("drop", drop);
+        box.addEventListener("dragover", e => e.preventDefault());
+      });
+
+      const emojis = [
+        { id: "square", image: "assets/images/shapes/square.png" },
+        { id: "circle", image: "assets/images/shapes/circle.png" },
+        { id: "star", image: "assets/images/shapes/star.png" },
+        { id: "heart", image: "assets/images/shapes/heart.png" },
+        { id: "hexagon", image: "assets/images/shapes/hexagon.png" },
+        { id: "triangle", image: "assets/images/shapes/triangle.png" }
+      ];
+
+      shuffleArray(emojis);
+
+      const emojiContainer = document.getElementById("emojiDraggers");
+      emojiContainer.innerHTML = "";
+
+      emojis.forEach(item => {
+        const img = document.createElement("img");
+        img.className = "emoji";
+        img.draggable = true;
+        img.id = item.id;
+        img.src = item.image;
+        img.alt = item.id;
+        img.addEventListener("dragstart", drag);
+
+        // ✅ Touch events
+        img.addEventListener("touchstart", startTouchDrag, { passive: false });
+
+        emojiContainer.appendChild(img);
+      });
+
+      document.getElementById("result").innerText = "";
+    }
+
+    let draggedElement = null;
+
+    function startTouchDrag(e) {
+      const original = e.target;
+      draggedElement = original.cloneNode(true);
+      draggedElement.id = original.id; // ✅ preserve ID
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = 1000;
+      draggedElement.classList.add("emoji");
+      document.body.appendChild(draggedElement);
+
+      moveAt(e.touches[0]);
+
+      function moveAt(touch) {
+        draggedElement.style.left = touch.pageX - 30 + "px";
+        draggedElement.style.top = touch.pageY - 30 + "px";
+      }
+
+      function onTouchMove(e) {
+        moveAt(e.touches[0]);
+      }
+
+      function onTouchEnd(e) {
+        const touch = e.changedTouches[0];
+        const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (elemBelow && elemBelow.classList.contains("word")) {
+          const targetWord = elemBelow.getAttribute("data-word");
+          const draggedId = draggedElement.id;
+
+          if (draggedId === targetWord && !elemBelow.classList.contains("matched")) {
+            elemBelow.innerHTML += " ✅";
+            elemBelow.classList.add("matched");
+            document.getElementById(draggedId).style.display = "none";
+            document.getElementById("result").innerText = "Correct! 🎉";
+            document.getElementById("audio-correct").play();
+
+            if (document.querySelectorAll('.matched').length === 6) {
+              document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+            }
+          } else {
+            document.getElementById("result").innerText = "Try Again ❌";
+            document.getElementById("audio-wrong").play();
+          }
+        }
+
+        draggedElement.remove();
+        document.removeEventListener("touchmove", onTouchMove);
+        document.removeEventListener("touchend", onTouchEnd);
+      }
+
+      document.addEventListener("touchmove", onTouchMove);
+      document.addEventListener("touchend", onTouchEnd);
+
+      e.preventDefault();
     }
 
     function drag(ev) {
@@ -190,51 +264,6 @@
       }
     }
 
-    function resetGame() {
-      const wordBoxes = document.querySelectorAll(".word");
-      wordBoxes.forEach(box => {
-        const word = box.getAttribute("data-word");
-        box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
-        box.classList.remove("matched");
-      });
-
-      const emojis = [
-        { id: "square", image: "assets/images/shapes/square.png" },
-        { id: "circle", image: "assets/images/shapes/circle.png" },
-        { id: "star", image: "assets/images/shapes/star.png" },
-        { id: "heart", image: "assets/images/shapes/heart.png" },
-        { id: "hexagon", image: "assets/images/shapes/hexagon.png" },
-        { id: "triangle", image: "assets/images/shapes/triangle.png" }
-      ];
-
-      shuffleArray(emojis);
-
-      const emojiContainer = document.getElementById("emojiDraggers");
-      emojiContainer.innerHTML = "";
-
-      emojis.forEach(item => {
-        const img = document.createElement("img");
-        img.className = "emoji";
-        img.draggable = true;
-        img.id = item.id;
-        img.src = item.image;
-        img.alt = item.id;
-        img.setAttribute("ondragstart", "drag(event)");
-        emojiContainer.appendChild(img);
-      });
-
-      // Touch fix: prevent accidental scrolling on touch start
-      setTimeout(() => {
-        document.querySelectorAll('.emoji').forEach(el => {
-          el.addEventListener('touchstart', e => {
-            e.preventDefault();
-          }, { passive: false });
-        });
-      }, 100);
-
-      document.getElementById("result").innerText = "";
-    }
-
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -242,7 +271,6 @@
       }
     }
 
-    // Start game
     window.onload = resetGame;
   </script>
 </body>

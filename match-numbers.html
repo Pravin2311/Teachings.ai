@@ -56,6 +56,7 @@
       width: 60px;
       height: 60px;
       line-height: 40px;
+      touch-action: none;
     }
 
     .matched {
@@ -121,29 +122,29 @@
 
   <div class="game-area">
     <div class="number-boxes" id="numberBoxes">
-      <div class="number" data-word="0" ondrop="drop(event)" ondragover="allowDrop(event)">Zero</div>
-      <div class="number" data-word="1" ondrop="drop(event)" ondragover="allowDrop(event)">One</div>
-      <div class="number" data-word="2" ondrop="drop(event)" ondragover="allowDrop(event)">Two</div>
-      <div class="number" data-word="3" ondrop="drop(event)" ondragover="allowDrop(event)">Three</div>
-      <div class="number" data-word="4" ondrop="drop(event)" ondragover="allowDrop(event)">Four</div>
-      <div class="number" data-word="5" ondrop="drop(event)" ondragover="allowDrop(event)">Five</div>
-      <div class="number" data-word="6" ondrop="drop(event)" ondragover="allowDrop(event)">Six</div>
-      <div class="number" data-word="7" ondrop="drop(event)" ondragover="allowDrop(event)">Seven</div>
-      <div class="number" data-word="8" ondrop="drop(event)" ondragover="allowDrop(event)">Eight</div>
-      <div class="number" data-word="9" ondrop="drop(event)" ondragover="allowDrop(event)">Nine</div>
+      <div class="number" data-word="0">Zero</div>
+      <div class="number" data-word="1">One</div>
+      <div class="number" data-word="2">Two</div>
+      <div class="number" data-word="3">Three</div>
+      <div class="number" data-word="4">Four</div>
+      <div class="number" data-word="5">Five</div>
+      <div class="number" data-word="6">Six</div>
+      <div class="number" data-word="7">Seven</div>
+      <div class="number" data-word="8">Eight</div>
+      <div class="number" data-word="9">Nine</div>
     </div>
 
     <div class="emoji-draggers" id="emojiDraggers">
-      <img src="assets/images/numbers/0.png" class="emoji" draggable="true" ondragstart="drag(event)" id="0" alt="0">
-      <img src="assets/images/numbers/1.png" class="emoji" draggable="true" ondragstart="drag(event)" id="1" alt="1">
-      <img src="assets/images/numbers/2.png" class="emoji" draggable="true" ondragstart="drag(event)" id="2" alt="2">
-      <img src="assets/images/numbers/3.png" class="emoji" draggable="true" ondragstart="drag(event)" id="3" alt="3">
-      <img src="assets/images/numbers/4.png" class="emoji" draggable="true" ondragstart="drag(event)" id="4" alt="4">
-      <img src="assets/images/numbers/5.png" class="emoji" draggable="true" ondragstart="drag(event)" id="5" alt="5">
-      <img src="assets/images/numbers/6.png" class="emoji" draggable="true" ondragstart="drag(event)" id="6" alt="6">
-      <img src="assets/images/numbers/7.png" class="emoji" draggable="true" ondragstart="drag(event)" id="7" alt="7">
-      <img src="assets/images/numbers/8.png" class="emoji" draggable="true" ondragstart="drag(event)" id="8" alt="8">
-      <img src="assets/images/numbers/9.png" class="emoji" draggable="true" ondragstart="drag(event)" id="9" alt="9">
+      <img src="assets/images/numbers/0.png" class="emoji" id="0" alt="Zero">
+      <img src="assets/images/numbers/1.png" class="emoji" id="1" alt="One">
+      <img src="assets/images/numbers/2.png" class="emoji" id="2" alt="Two">
+      <img src="assets/images/numbers/3.png" class="emoji" id="3" alt="Three">
+      <img src="assets/images/numbers/4.png" class="emoji" id="4" alt="Four">
+      <img src="assets/images/numbers/5.png" class="emoji" id="5" alt="Five">
+      <img src="assets/images/numbers/6.png" class="emoji" id="6" alt="Six">
+      <img src="assets/images/numbers/7.png" class="emoji" id="7" alt="Seven">
+      <img src="assets/images/numbers/8.png" class="emoji" id="8" alt="Eight">
+      <img src="assets/images/numbers/9.png" class="emoji" id="9" alt="Nine">
     </div>
 
     <div id="result"></div>
@@ -157,94 +158,115 @@
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <script>
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
+  function resetGame() {
+    document.querySelectorAll('.number').forEach(box => {
+      box.classList.remove('matched');
+      const word = box.getAttribute('data-word');
+      box.innerHTML = toWord(word);
+    });
 
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
+    document.querySelectorAll('.emoji').forEach(emoji => {
+      emoji.style.display = 'inline-block';
+    });
 
-    function drop(ev) {
-      ev.preventDefault();
-      const draggedId = ev.dataTransfer.getData("text") || ev.target.getAttribute("data-drag-id");
-      const target = ev.target;
-      const targetWord = target.getAttribute("data-word");
+    document.getElementById("result").innerText = "";
+    document.getElementById("try-again-button").style.display = "none";
 
-      const correctSound = document.getElementById("audio-correct");
-      const wrongSound = document.getElementById("audio-wrong");
+    shuffleElements("#numberBoxes");
+    shuffleElements("#emojiDraggers");
+  }
 
-      if (draggedId === targetWord && !target.classList.contains("matched")) {
-        target.innerHTML += " ✅";
-        target.classList.add("matched");
-        document.getElementById(draggedId).style.display = "none";
-        document.getElementById("result").innerText = "Correct! 🎉";
-        correctSound.play();
+  function toWord(num) {
+    const words = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+    const n = parseInt(num);
+    return isNaN(n) ? "" : words[n];
+  }
 
-        if (document.querySelectorAll('.matched').length === 10) {
-          document.getElementById("result").innerText = "🎉 All Matched! Great Job!";
-          document.getElementById("try-again-button").style.display = "inline-block";
-        }
-      } else {
-        document.getElementById("result").innerText = "Try Again ❌";
-        wrongSound.play();
-      }
-    }
+  function shuffleElements(selector) {
+    const container = document.querySelector(selector);
+    const elements = Array.from(container.children);
+    elements.sort(() => Math.random() - 0.5);
+    elements.forEach(el => container.appendChild(el));
+  }
 
-    function resetGame() {
-      document.querySelectorAll('.number').forEach(box => {
-        box.classList.remove('matched');
-        const word = box.getAttribute('data-word');
-        box.innerHTML = toWord(word);
+  window.onload = () => {
+    shuffleElements("#numberBoxes");
+    shuffleElements("#emojiDraggers");
+
+    // Desktop drag-and-drop
+    document.querySelectorAll('.emoji').forEach(el => {
+      el.setAttribute('draggable', true);
+
+      el.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', el.id);
       });
+    });
 
-      document.querySelectorAll('.emoji').forEach(emoji => {
-        emoji.style.display = 'inline-block';
-      });
+    document.querySelectorAll('.number').forEach(box => {
+      box.addEventListener('dragover', e => e.preventDefault());
 
-      document.getElementById("result").innerText = "";
-      document.getElementById("try-again-button").style.display = "none";
-
-      shuffleElements("#numberBoxes");
-      shuffleElements("#emojiDraggers");
-    }
-
-    function toWord(num) {
-      const words = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
-      return words[parseInt(num)];
-    }
-
-    function shuffleElements(selector) {
-      const container = document.querySelector(selector);
-      const elements = Array.from(container.children);
-      elements.sort(() => Math.random() - 0.5);
-      elements.forEach(el => container.appendChild(el));
-    }
-
-    window.onload = () => {
-      shuffleElements("#numberBoxes");
-      shuffleElements("#emojiDraggers");
-
-      document.querySelectorAll('.emoji').forEach(el => {
-        el.addEventListener("touchstart", e => {
-          el.classList.add("dragging");
-        });
-
-        el.addEventListener("touchend", e => {
-          el.classList.remove("dragging");
-        });
-
-        el.addEventListener("touchmove", e => {
-          const touch = e.touches[0];
-          const target = document.elementFromPoint(touch.clientX, touch.clientY);
-          if (target && target.classList.contains("number")) {
-            target.setAttribute("data-drag-id", el.id);
-            drop({ preventDefault: () => {}, target });
+      box.addEventListener('drop', e => {
+        e.preventDefault();
+        const draggedId = e.dataTransfer.getData('text/plain');
+        const emojiEl = document.getElementById(draggedId);
+        if (!box.classList.contains('matched') && emojiEl.style.display !== 'none') {
+          const targetWord = box.getAttribute("data-word");
+          if (draggedId === targetWord) {
+            box.innerHTML += " ✅";
+            box.classList.add("matched");
+            emojiEl.style.display = "none";
+            document.getElementById("result").innerText = "Correct! 🎉";
+            document.getElementById("audio-correct").play();
+            if (document.querySelectorAll('.matched').length === 10) {
+              document.getElementById("result").innerText = "🎉 All Matched! Great Job!";
+              document.getElementById("try-again-button").style.display = "inline-block";
+            }
+          } else {
+            document.getElementById("result").innerText = "Try Again ❌";
+            document.getElementById("audio-wrong").play();
           }
-        });
+        }
       });
-    };
+    });
 
+    // Touch support for mobile
+    document.querySelectorAll('.emoji').forEach(el => {
+      let touchId = null;
+
+      el.addEventListener("touchstart", e => {
+        touchId = e.changedTouches[0].identifier;
+        el.classList.add("dragging");
+        e.preventDefault();
+      });
+
+      el.addEventListener("touchend", e => {
+        el.classList.remove("dragging");
+        const touch = [...e.changedTouches].find(t => t.identifier === touchId);
+        if (!touch) return;
+        const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (dropTarget && dropTarget.classList.contains("number") && !dropTarget.classList.contains("matched")) {
+          const draggedId = el.id;
+          const targetWord = dropTarget.getAttribute("data-word");
+          if (draggedId === targetWord) {
+            dropTarget.innerHTML += " ✅";
+            dropTarget.classList.add("matched");
+            el.style.display = "none";
+            document.getElementById("result").innerText = "Correct! 🎉";
+            document.getElementById("audio-correct").play();
+            if (document.querySelectorAll('.matched').length === 10) {
+              document.getElementById("result").innerText = "🎉 All Matched! Great Job!";
+              document.getElementById("try-again-button").style.display = "inline-block";
+            }
+          } else {
+            document.getElementById("result").innerText = "Try Again ❌";
+            document.getElementById("audio-wrong").play();
+          }
+        }
+        e.preventDefault();
+      });
+    });
+
+    // Music toggle
     const musicBtn = document.getElementById("music-toggle-button");
     const bgMusic = document.getElementById("background-music");
 
@@ -257,6 +279,8 @@
         musicBtn.innerHTML = "🔇";
       }
     });
-  </script>
+  };
+</script>
+
 </body>
 </html>
