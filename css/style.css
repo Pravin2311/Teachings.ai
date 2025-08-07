@@ -158,6 +158,24 @@ h1 {
 #publicservice { background-color: #4682b4; }
 #publicservice:hover { background-color: #3e739e; }
 
+#games { background-color: #000305; }
+#games:hover { background-color: #3e739e; }
+
+#odd-even-sorting { background-color: #05253a; }
+#odd-even-sorting:hover { background-color: #3e739e; }
+
+#numbers-alphabets-sorting { background-color: #05253a; }
+#numbers-alphabets-sorting:hover { background-color: #3e739e; }
+
+#furits-vegetables-sorting { background-color: #05253a; }
+#furits-vegetables-sorting:hover { background-color: #3e739e; }
+
+#colours-sorting { background-color: #05253a; }
+#colours-sorting:hover { background-color: #3e739e; }
+
+#animals-birds-sorting { background-color: #05253a; }
+#animals-birds-sorting:hover { background-color: #3e739e; }
+
 /* Music Toggle */
 .music-toggle-absolute {
   position: absolute;

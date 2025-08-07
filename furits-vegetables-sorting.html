@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fruits-Veggies: Fruits & Vegetable - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/grammar.css" />
+
+  <meta name="description" content="Fun interactive shorting game to learn Fruits and Vegetable. Part of Teachings.AI learning modules for kids.">
+  <meta name="keywords" content="Shorting game, Furits for kids, Vegetable for kids, healthy food, teachings.ai Sorting">
+  <meta name="author" content="Teachings AI">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Sorting Fun: Numbers & Alphabets - Teachings.AI" />
+  <meta property="og:description" content="Fun drag-and-drop Sorting activity for early learners to practice Fruits and Vegetable. From Teachings.AI." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/furits-vegetables-sorting.html" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalAudience",
+    "educationalRole": "student",
+    "name": "Fruits-Veggies: Fruits & Vegetable - Teachings.AI",
+    "description": "Interactive Sorting activity to sort Fruits and Vegetable for preschool and grade 1 students.",
+    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+    "inLanguage": "en",
+    "url": "https://teachings.ai/furits-vegetables-sorting.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
+    }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Sorting: <br> Fruits & Vegetable</h1>
+    <div class="game-area">
+      <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Fruits or Vegetable!</p>
+      <div class="word-bank" id="word-container"></div>
+      <div class="drop-zones">
+        <div class="drop-zone" id="noun-zone" data-type="Fruit"><h2>Fruit</h2></div>
+        <div class="drop-zone" id="verb-zone" data-type="Vegetable"><h2>Vegetable</h2></div>
+      </div>
+      <p id="feedback-message"></p>
+      <button id="submit-btn">Submit</button>
+    </div>
+    
+  </div>
+
+  <!-- Music and Feedback Audio -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <!-- Scripts -->
+  
+  <script src="js/musicControl.js"></script>
+  <Script>
+  const words = [ 
+  { word: "🍎 Apple", type: "Fruit" },
+  { word: "🥕 Carrot", type: "Vegetable" },
+  { word: "🍌 Banana", type: "Fruit" },
+  { word: "🍇 Grapes", type: "Fruit" },
+  { word: "🥬 Lettuce", type: "Vegetable" },
+  { word: "🍍 Pineapple", type: "Fruit" },
+  { word: "🥔 Potato", type: "Vegetable" },
+  { word: "🌽 Corn", type: "Vegetable" },
+];
+
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+window.onload = function () {
+  const shuffled = shuffle([...words]);
+  const wordContainer = document.getElementById("word-container");
+
+  shuffled.forEach(({ word }, index) => {
+    const span = document.createElement("span");
+    span.innerText = word;
+    span.className = "word";
+    span.setAttribute("draggable", true);
+    span.setAttribute("data-word", word);
+    span.setAttribute("data-index", index);
+    wordContainer.appendChild(span);
+  });
+
+  document.querySelectorAll(".word").forEach(el => {
+    el.addEventListener("dragstart", e => {
+      e.dataTransfer.setData("text/plain", e.target.dataset.index);
+    });
+  });
+
+  document.querySelectorAll(".drop-zone").forEach(zone => {
+    zone.addEventListener("dragover", e => e.preventDefault());
+    zone.addEventListener("drop", e => {
+      e.preventDefault();
+      const index = e.dataTransfer.getData("text/plain");
+      const item = document.querySelector(`[data-index='${index}']`);
+      if (item && !zone.contains(item)) {
+        zone.appendChild(item);
+      }
+    });
+  });
+
+  document.getElementById("submit-btn").addEventListener("click", () => {
+    let score = 0;
+
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      const zoneType = zone.getAttribute("data-type");
+      zone.querySelectorAll(".word").forEach(wordEl => {
+        const wordText = wordEl.innerText;
+        const correct = words.find(w => w.word === wordText);
+        if (correct && correct.type === zoneType) {
+          wordEl.classList.remove("incorrect");
+          wordEl.classList.add("correct");
+          score++;
+          document.getElementById("audio-correct").play();
+        } else {
+          wordEl.classList.remove("correct");
+          wordEl.classList.add("incorrect");
+          document.getElementById("audio-wrong").play();
+        }
+      });
+    });
+
+    document.getElementById("feedback-message").innerText =
+      `✅ You got ${score} out of ${words.length} correct!`;
+  });
+};
+
+  </Script>
+</body>
+</html>
