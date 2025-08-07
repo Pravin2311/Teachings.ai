@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Word Match - Teachings.AI</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Fun and interactive Emoji to Word matching game for kids on Teachings.AI. Helps children improve vocabulary and word recognition." />
+  <meta name="keywords" content="emoji word match, kids learning game, vocabulary game, match emoji to word, Teachings.AI, preschool learning" />
+  <meta name="author" content="Teachings.AI" />
+  <link rel="canonical" href="https://teachings.ai/word-match.html" />
+
+  <!-- Open Graph Meta (Facebook & LinkedIn) -->
+  <meta property="og:title" content="Emoji to Word Match - Teachings.AI" />
+  <meta property="og:description" content="Help kids learn words with this fun emoji-to-word matching game!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teachings.ai/word-match.html" />
+  <meta property="og:image" content="https://teachings.ai/assets/images/emoji-match-cover.png" />
+
+  <!-- Twitter Card Meta -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Emoji to Word Match - Teachings.AI" />
+  <meta name="twitter:description" content="Fun and educational emoji word match game for kids. Play now on Teachings.AI!" />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/emoji-match-cover.png" />
+  <meta name="twitter:site" content="@teachings_ai" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalGame",
+    "name": "Emoji to Word Match",
+    "description": "A fun educational drag-and-drop emoji to word matching game for kids on Teachings.AI.",
+    "url": "https://teachings.ai/word-match.html",
+    "image": "https://teachings.ai/assets/images/emoji-match-cover.png",
+    "author": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai"
+    },
+    "educationalLevel": ["preschool", "kindergarten"],
+    "inLanguage": "en"
+  }
+  </script>
+  
+  <style>
+    :root {
+      --primary-blue: #007bff;
+      --text-light: #ffffff;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --shadow-medium: rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 20px;
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .game-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .word-boxes {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .word {
+      width: 120px;
+      height: 100px;
+      border: 2px dashed var(--primary-blue);
+      border-radius: 10px;
+      line-height: 100px;
+      font-size: 20px;
+      background-color: #ffffff;
+      transition: background-color 0.3s ease;
+    }
+
+    .emoji-draggers {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .emoji {
+      font-size: 40px;
+      cursor: grab;
+      padding: 10px;
+      background-color: #fff8dc;
+      border: 2px solid #ffc107;
+      border-radius: 10px;
+      width: 60px;
+      height: 60px;
+      line-height: 40px;
+    }
+
+    #result {
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .matched {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      background-color: var(--primary-blue); 
+      color: var(--text-light);
+      padding: 10px 20px; 
+      border: none;
+      border-radius: 10px; 
+      font-size: 1em; 
+      font-weight: 600; 
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 3px 6px var(--shadow-light);
+    }
+
+    .back-button:hover {
+      background-color: #5c8ae6; 
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px var(--shadow-medium);
+    }
+
+    .back-button:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px var(--shadow-light);
+    }
+
+    #music-toggle-button {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: #eeeeee;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #try-again-button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+    
+    #try-again-button:hover {
+      background-color: #f57c00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button id="music-toggle-button" title="Toggle Music">&#128263;</button>
+
+    <h1>🎯 Match <br>Correct Word</h1>
+
+  <div class="game-area">
+  <div class="word-boxes">
+    <div class="word" data-word="apple" ondrop="drop(event)" ondragover="allowDrop(event)">Apple</div>
+    <div class="word" data-word="dog" ondrop="drop(event)" ondragover="allowDrop(event)">Dog</div>
+    <div class="word" data-word="banana" ondrop="drop(event)" ondragover="allowDrop(event)">Banana</div>
+    <div class="word" data-word="carrot" ondrop="drop(event)" ondragover="allowDrop(event)">Carrot</div>
+    <div class="word" data-word="cat" ondrop="drop(event)" ondragover="allowDrop(event)">Cat</div>
+    <div class="word" data-word="sunflower" ondrop="drop(event)" ondragover="allowDrop(event)">Sunflower</div>
+  </div>
+
+  <div class="emoji-draggers">
+    <img src="assets/images/fruits/apple.png" class="emoji" draggable="true" ondragstart="drag(event)" id="apple" alt="Apple">
+    <img src="assets/images/animals/dog.png" class="emoji" draggable="true" ondragstart="drag(event)" id="dog" alt="Dog">
+    <img src="assets/images/fruits/banana.png" class="emoji" draggable="true" ondragstart="drag(event)" id="banana" alt="Banana">
+    <img src="assets/images/vegetables/carrot.png" class="emoji" draggable="true" ondragstart="drag(event)" id="carrot" alt="Carrot">
+    <img src="assets/images/animals/cat.png" class="emoji" draggable="true" ondragstart="drag(event)" id="cat" alt="Cat">
+    <img src="assets/images/plants/sunflower.png" class="emoji" draggable="true" ondragstart="drag(event)" id="sunflower" alt="Sunflower">
+  </div>
+</div>
+
+
+    <div id="result"></div>
+    <button id="try-again-button" onclick="resetGame()">🔁 Try Again</button>
+  </div>
+
+  <audio id="background-music" loop>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+  </audio>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const draggedId = ev.dataTransfer.getData("text");
+      const target = ev.target;
+      const targetWord = target.getAttribute("data-word");
+
+      const correctSound = document.getElementById("audio-correct");
+      const wrongSound = document.getElementById("audio-wrong");
+
+      if (draggedId === targetWord && !target.classList.contains("matched")) {
+        target.innerHTML += " ✅";
+        target.classList.add("matched");
+        document.getElementById(draggedId).style.display = "none";
+        document.getElementById("result").innerText = "Correct! 🎉";
+        correctSound.play();
+
+        // Check if all matched
+        if (document.querySelectorAll('.matched').length === 6) {
+          document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+          document.getElementById("try-again-button").style.display = "inline-block";
+        }
+
+      } else {
+        document.getElementById("result").innerText = "Try Again ❌";
+        wrongSound.play();
+      }
+    }
+
+    function resetGame() {
+  // Reset word boxes
+  document.querySelectorAll('.word').forEach(box => {
+    box.classList.remove('matched');
+    const word = box.getAttribute('data-word');
+    box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
+  });
+
+  // Reset emojis
+  document.querySelectorAll('.emoji').forEach(emoji => {
+    emoji.style.display = 'inline-block';
+  });
+
+  // Clear result and hide try again
+  document.getElementById("result").innerText = "";
+  document.getElementById("try-again-button").style.display = "none";
+
+  // Shuffle words and emojis
+  shuffleElements(".word-boxes");
+  shuffleElements(".emoji-draggers");
+}
+
+// Shuffle on initial load
+window.onload = () => {
+  shuffleElements(".word-boxes");
+  shuffleElements(".emoji-draggers");
+};
+
+    // Music toggle
+    const musicBtn = document.getElementById("music-toggle-button");
+    const bgMusic = document.getElementById("background-music");
+
+    musicBtn.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerHTML = "🔊";
+      } else {
+        bgMusic.pause();
+        musicBtn.innerHTML = "🔇";
+      }
+    });
+
+  // Add this function below your other functions
+  function shuffleElements(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    const elements = Array.from(container.children);
+
+    for (let i = elements.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [elements[i], elements[j]] = [elements[j], elements[i]];
+    }
+
+    // Re-append in shuffled order
+    elements.forEach(el => container.appendChild(el));
+  }
+
+  </script>
+</body>
+</html>

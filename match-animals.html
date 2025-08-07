@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Match the Animals 🐾 | Teachings.AI</title>
+  <meta name="description" content="Fun animal emoji matching game for kids. Match 🐶 🐷 🦁 to their names like Dog, Pig, Lion." />
+  <meta name="keywords" content="animal matching, emoji game, kids learning, teachings.ai, preschool game" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- JSON-LD SEO Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "name": "Animal Emoji Match - Teachings.AI",
+    "description": "Interactive drag-and-drop game for preschoolers to match animals to names.",
+    "educationalLevel": "Preschool",
+    "educationalUse": "Game",
+    "provider": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai"
+    }
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #f2fbf4;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .word-boxes, .emoji-draggers {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .word {
+      width: 120px;
+      height: 100px;
+      border: 2px dashed #4caf50;
+      border-radius: 10px;
+      line-height: 100px;
+      font-size: 20px;
+      background-color: #ffffff;
+      transition: background-color 0.3s ease;
+    }
+    .emoji {
+      font-size: 40px;
+      cursor: grab;
+      padding: 10px;
+      background-color: #fffbea;
+      border: 2px solid #ff9800;
+      border-radius: 10px;
+      width: 60px;
+      height: 60px;
+      line-height: 40px;
+    }
+    #result {
+      font-size: 24px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .matched {
+      background-color: #d4edda;
+      border-color: #4caf50;
+      color: #155724;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .back-button {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #music-toggle-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #eeeeee;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <button class="back-button" onclick="window.location.href='index.html'">Home</button>
+  <button id="music-toggle-button" title="Toggle Music">🔇</button>
+
+  <h1>🐾 Match the Animals</h1>
+
+  <div class="game-area">
+  <div class="word-boxes" id="wordBoxes">
+    <div class="word" data-word="lion" ondrop="drop(event)" ondragover="allowDrop(event)">Lion</div>
+    <div class="word" data-word="dog" ondrop="drop(event)" ondragover="allowDrop(event)">Dog</div>
+    <div class="word" data-word="monkey" ondrop="drop(event)" ondragover="allowDrop(event)">Monkey</div>
+    <div class="word" data-word="cat" ondrop="drop(event)" ondragover="allowDrop(event)">Cat</div>
+    <div class="word" data-word="horse" ondrop="drop(event)" ondragover="allowDrop(event)">Horse</div>
+    <div class="word" data-word="donkey" ondrop="drop(event)" ondragover="allowDrop(event)">Donkey</div>
+  </div>
+
+  <div class="emoji-draggers" id="emojiDraggers">
+    <img src="assets/images/animals/lion.png" class="emoji" draggable="true" ondragstart="drag(event)" id="lion" alt="Lion">
+    <img src="assets/images/animals/dog.png" class="emoji" draggable="true" ondragstart="drag(event)" id="dog" alt="Dog">
+    <img src="assets/images/animals/monkey.png" class="emoji" draggable="true" ondragstart="drag(event)" id="monkey" alt="Monkey">
+    <img src="assets/images/animals/cat.png" class="emoji" draggable="true" ondragstart="drag(event)" id="cat" alt="Cat">
+    <img src="assets/images/animals/horse.png" class="emoji" draggable="true" ondragstart="drag(event)" id="horse" alt="Horse">
+    <img src="assets/images/animals/donkey.png" class="emoji" draggable="true" ondragstart="drag(event)" id="donkey" alt="Donkey">
+  </div>
+</div>
+
+
+  <div id="result"></div>
+  <button onclick="resetGame()">🔄 Try Again</button>
+
+  <!-- Audio Elements -->
+  <audio id="background-music" loop>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <!-- Game Script -->
+  <script>
+    const backgroundMusic = document.getElementById("background-music");
+    const musicToggleBtn = document.getElementById("music-toggle-button");
+
+    musicToggleBtn.addEventListener("click", () => {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicToggleBtn.innerText = "🔊";
+      } else {
+        backgroundMusic.pause();
+        musicToggleBtn.innerText = "🔇";
+      }
+    });
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const draggedId = ev.dataTransfer.getData("text");
+      const target = ev.target;
+      const targetWord = target.getAttribute("data-word");
+
+      if (draggedId === targetWord && !target.classList.contains("matched")) {
+        target.innerHTML += " ✅";
+        target.classList.add("matched");
+        document.getElementById(draggedId).style.display = "none";
+        document.getElementById("result").innerText = "Correct! 🎉";
+        document.getElementById("audio-correct").play();
+
+        if (document.querySelectorAll('.matched').length === 6) {
+          document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+        }
+      } else {
+        document.getElementById("result").innerText = "Try Again ❌";
+        document.getElementById("audio-wrong").play();
+      }
+    }
+
+    function resetGame() {
+      const wordBoxes = document.querySelectorAll(".word");
+      wordBoxes.forEach(box => {
+        box.innerHTML = box.getAttribute("data-word").charAt(0).toUpperCase() + box.getAttribute("data-word").slice(1);
+        box.classList.remove("matched");
+      });
+
+      const emojis = [
+        { id: "lion", image: "assets/images/animals/lion.png" },
+        { id: "dog", image: "assets/images/animals/dog.png" },
+        { id: "monkey", image: "assets/images/animals/monkey.png" },
+        { id: "cat", image: "assets/images/animals/cat.png" },
+        { id: "horse", image: "assets/images/animals/horse.png" },
+        { id: "donkey", image: "assets/images/animals/donkey.png" }
+    ];
+
+      const emojiContainer = document.getElementById("emojiDraggers");
+      emojiContainer.innerHTML = "";
+
+      shuffleArray(emojis);
+
+emojis.forEach(item => {
+  const img = document.createElement("img");
+  img.className = "emoji";
+  img.draggable = true;
+  img.id = item.id;
+  img.src = item.image;
+  img.alt = item.id;
+  img.setAttribute("ondragstart", "drag(event)");
+  emojiContainer.appendChild(img);
+});
+
+document.getElementById("result").innerText = "";
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+  </script>
+</body>
+</html>
