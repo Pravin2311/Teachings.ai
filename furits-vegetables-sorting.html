@@ -63,7 +63,6 @@
       <p id="feedback-message"></p>
       <button id="submit-btn">Submit</button>
     </div>
-    
   </div>
 
   <!-- Music and Feedback Audio -->
@@ -75,10 +74,11 @@
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <!-- Scripts -->
-  
   <script src="js/musicControl.js"></script>
-  <Script>
-  const words = [ 
+  
+<!-- Replace the full script block at bottom with this updated one -->
+<script>
+const words = [
   { word: "🍎 Apple", type: "Fruit" },
   { word: "🥕 Carrot", type: "Vegetable" },
   { word: "🍌 Banana", type: "Fruit" },
@@ -89,11 +89,13 @@
   { word: "🌽 Corn", type: "Vegetable" },
 ];
 
+let currentDrag = null;
+
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-window.onload = function () {
+window.onload = () => {
   const shuffled = shuffle([...words]);
   const wordContainer = document.getElementById("word-container");
 
@@ -107,14 +109,24 @@ window.onload = function () {
     wordContainer.appendChild(span);
   });
 
+  // Drag (desktop)
   document.querySelectorAll(".word").forEach(el => {
     el.addEventListener("dragstart", e => {
+      currentDrag = e.target;
       e.dataTransfer.setData("text/plain", e.target.dataset.index);
+    });
+
+    // Touch support
+    el.addEventListener("touchstart", e => {
+      currentDrag = e.target;
+      e.target.classList.add("dragging");
     });
   });
 
   document.querySelectorAll(".drop-zone").forEach(zone => {
+    // Drag (desktop)
     zone.addEventListener("dragover", e => e.preventDefault());
+
     zone.addEventListener("drop", e => {
       e.preventDefault();
       const index = e.dataTransfer.getData("text/plain");
@@ -123,25 +135,52 @@ window.onload = function () {
         zone.appendChild(item);
       }
     });
+
+    // Touch support (mobile)
+    zone.addEventListener("touchmove", e => {
+      const touch = e.touches[0];
+      currentDrag.style.position = "absolute";
+      currentDrag.style.left = `${touch.clientX - 50}px`;
+      currentDrag.style.top = `${touch.clientY - 30}px`;
+    });
+
+    zone.addEventListener("touchend", e => {
+      const touch = e.changedTouches[0];
+      const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (
+        dropTarget &&
+        dropTarget.classList.contains("drop-zone") &&
+        currentDrag &&
+        !dropTarget.contains(currentDrag)
+      ) {
+        dropTarget.appendChild(currentDrag);
+        currentDrag.style.position = "";
+        currentDrag.classList.remove("dragging");
+        currentDrag = null;
+      }
+    });
   });
 
+  // Submit logic
   document.getElementById("submit-btn").addEventListener("click", () => {
     let score = 0;
+    const correctSound = document.getElementById("audio-correct");
+    const wrongSound = document.getElementById("audio-wrong");
 
     document.querySelectorAll(".drop-zone").forEach(zone => {
       const zoneType = zone.getAttribute("data-type");
       zone.querySelectorAll(".word").forEach(wordEl => {
-        const wordText = wordEl.innerText;
+        const wordText = wordEl.innerText.trim();
         const correct = words.find(w => w.word === wordText);
         if (correct && correct.type === zoneType) {
           wordEl.classList.remove("incorrect");
           wordEl.classList.add("correct");
+          correctSound.play();
           score++;
-          document.getElementById("audio-correct").play();
         } else {
           wordEl.classList.remove("correct");
           wordEl.classList.add("incorrect");
-          document.getElementById("audio-wrong").play();
+          wrongSound.play();
         }
       });
     });
@@ -149,8 +188,27 @@ window.onload = function () {
     document.getElementById("feedback-message").innerText =
       `✅ You got ${score} out of ${words.length} correct!`;
   });
-};
 
-  </Script>
+  // Background music toggle
+  const bgMusic = document.getElementById("background-music");
+  const musicBtn = document.getElementById("music-toggle-button");
+
+  musicBtn.addEventListener("click", () => {
+    if (bgMusic.muted) {
+      bgMusic.muted = false;
+      musicBtn.innerHTML = "🔊";
+    } else {
+      bgMusic.muted = true;
+      musicBtn.innerHTML = "🔇";
+    }
+  });
+
+  bgMusic.play().catch(() => {
+    // Autoplay restrictions
+    console.log("Music will play after user interaction.");
+  });
+};
+</script>
+
 </body>
 </html>

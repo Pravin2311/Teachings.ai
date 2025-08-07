@@ -216,98 +216,168 @@
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <script>
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
+  let draggedElement = null;
 
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
+  // Init for touch and mouse draggable emojis
+  function enableEmojiDrags() {
+    const emojis = document.querySelectorAll(".emoji");
+    emojis.forEach(emoji => {
+      emoji.addEventListener("touchstart", startTouchDrag);
+      emoji.addEventListener("dragstart", startMouseDrag); // fallback for desktop
+    });
+  }
 
-    function drop(ev) {
-      ev.preventDefault();
-      const draggedId = ev.dataTransfer.getData("text");
-      const target = ev.target;
-      const targetWord = target.getAttribute("data-word");
+  function startTouchDrag(e) {
+    const original = e.target;
+    draggedElement = original.cloneNode(true);
+    draggedElement.classList.add("dragging");
+    draggedElement.style.position = "absolute";
+    draggedElement.style.zIndex = 1000;
+    document.body.appendChild(draggedElement);
+    moveAt(e.touches[0]);
+    e.preventDefault();
 
-      const correctSound = document.getElementById("audio-correct");
-      const wrongSound = document.getElementById("audio-wrong");
+    original.style.opacity = 0.5;
 
-      if (draggedId === targetWord && !target.classList.contains("matched")) {
-        target.innerHTML += " ✅";
-        target.classList.add("matched");
-        document.getElementById(draggedId).style.display = "none";
-        document.getElementById("result").innerText = "Correct! 🎉";
-        correctSound.play();
+    document.addEventListener("touchmove", onTouchMove);
+    document.addEventListener("touchend", onTouchEnd);
+  }
 
-        // Check if all matched
-        if (document.querySelectorAll('.matched').length === 6) {
-          document.getElementById("result").innerText = "🎉 You matched all! Great job!";
-          document.getElementById("try-again-button").style.display = "inline-block";
-        }
+  function onTouchMove(e) {
+    if (draggedElement) moveAt(e.touches[0]);
+  }
 
-      } else {
-        document.getElementById("result").innerText = "Try Again ❌";
-        wrongSound.play();
+  function onTouchEnd(e) {
+    const dropTarget = document.elementFromPoint(
+      e.changedTouches[0].clientX,
+      e.changedTouches[0].clientY
+    );
+    const correctSound = document.getElementById("audio-correct");
+    const wrongSound = document.getElementById("audio-wrong");
+
+    const draggedId = draggedElement.id;
+
+    if (
+      dropTarget &&
+      dropTarget.classList.contains("word") &&
+      dropTarget.dataset.word === draggedId &&
+      !dropTarget.classList.contains("matched")
+    ) {
+      dropTarget.innerHTML += " ✅";
+      dropTarget.classList.add("matched");
+      document.getElementById(draggedId).style.display = "none";
+      correctSound.play();
+      document.getElementById("result").innerText = "Correct! 🎉";
+
+      if (document.querySelectorAll(".matched").length === 6) {
+        document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+        document.getElementById("try-again-button").style.display = "inline-block";
       }
+    } else {
+      document.getElementById("result").innerText = "Try Again ❌";
+      wrongSound.play();
     }
 
-    function resetGame() {
-  // Reset word boxes
-  document.querySelectorAll('.word').forEach(box => {
-    box.classList.remove('matched');
-    const word = box.getAttribute('data-word');
-    box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
-  });
+    document.body.removeChild(draggedElement);
+    draggedElement = null;
 
-  // Reset emojis
-  document.querySelectorAll('.emoji').forEach(emoji => {
-    emoji.style.display = 'inline-block';
-  });
+    document.querySelectorAll(".emoji").forEach(e => (e.style.opacity = 1));
+    document.removeEventListener("touchmove", onTouchMove);
+    document.removeEventListener("touchend", onTouchEnd);
+  }
 
-  // Clear result and hide try again
-  document.getElementById("result").innerText = "";
-  document.getElementById("try-again-button").style.display = "none";
+  function moveAt(touch) {
+    draggedElement.style.left = touch.pageX - 25 + "px";
+    draggedElement.style.top = touch.pageY - 25 + "px";
+  }
 
-  // Shuffle words and emojis
-  shuffleElements(".word-boxes");
-  shuffleElements(".emoji-draggers");
-}
+  // Mouse drag fallback for desktop
+  function startMouseDrag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
 
-// Shuffle on initial load
-window.onload = () => {
-  shuffleElements(".word-boxes");
-  shuffleElements(".emoji-draggers");
-};
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
 
-    // Music toggle
-    const musicBtn = document.getElementById("music-toggle-button");
-    const bgMusic = document.getElementById("background-music");
+  function drop(ev) {
+    ev.preventDefault();
+    const draggedId = ev.dataTransfer.getData("text");
+    const target = ev.target;
+    const targetWord = target.getAttribute("data-word");
 
-    musicBtn.addEventListener("click", () => {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        musicBtn.innerHTML = "🔊";
-      } else {
-        bgMusic.pause();
-        musicBtn.innerHTML = "🔇";
+    const correctSound = document.getElementById("audio-correct");
+    const wrongSound = document.getElementById("audio-wrong");
+
+    if (draggedId === targetWord && !target.classList.contains("matched")) {
+      target.innerHTML += " ✅";
+      target.classList.add("matched");
+      document.getElementById(draggedId).style.display = "none";
+      document.getElementById("result").innerText = "Correct! 🎉";
+      correctSound.play();
+
+      if (document.querySelectorAll(".matched").length === 6) {
+        document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+        document.getElementById("try-again-button").style.display = "inline-block";
       }
+    } else {
+      document.getElementById("result").innerText = "Try Again ❌";
+      wrongSound.play();
+    }
+  }
+
+  function resetGame() {
+    document.querySelectorAll(".word").forEach(box => {
+      box.classList.remove("matched");
+      const word = box.getAttribute("data-word");
+      box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
     });
 
-  // Add this function below your other functions
+    document.querySelectorAll(".emoji").forEach(emoji => {
+      emoji.style.display = "inline-block";
+      emoji.style.opacity = 1;
+    });
+
+    document.getElementById("result").innerText = "";
+    document.getElementById("try-again-button").style.display = "none";
+
+    shuffleElements(".word-boxes");
+    shuffleElements(".emoji-draggers");
+
+    enableEmojiDrags(); // rebind after shuffle
+  }
+
   function shuffleElements(containerSelector) {
     const container = document.querySelector(containerSelector);
     const elements = Array.from(container.children);
-
     for (let i = elements.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [elements[i], elements[j]] = [elements[j], elements[i]];
     }
-
-    // Re-append in shuffled order
     elements.forEach(el => container.appendChild(el));
   }
 
-  </script>
+  // Music toggle
+  const musicBtn = document.getElementById("music-toggle-button");
+  const bgMusic = document.getElementById("background-music");
+
+  musicBtn.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicBtn.innerHTML = "🔊";
+    } else {
+      bgMusic.pause();
+      musicBtn.innerHTML = "🔇";
+    }
+  });
+
+  // Initialize on load
+  window.onload = () => {
+    shuffleElements(".word-boxes");
+    shuffleElements(".emoji-draggers");
+    enableEmojiDrags();
+  };
+</script>
+
 </body>
 </html>

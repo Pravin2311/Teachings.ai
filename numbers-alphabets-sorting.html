@@ -63,98 +63,148 @@
       <p id="feedback-message"></p>
       <button id="submit-btn">Submit</button>
     </div>
-    
   </div>
 
   <!-- Music and Feedback Audio -->
   <audio id="background-music" loop muted>
-  <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
   <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <!-- Scripts -->
-  
   <script src="js/musicControl.js"></script>
-  <Script>
+  <script>
     const words = [
-  { word: "A", type: "Alphabets" },
-  { word: "7", type: "Numbers" },
-  { word: "B", type: "Alphabets" },
-  { word: "8", type: "Numbers" },
-  { word: "C", type: "Alphabets" },
-  { word: "3", type: "Numbers" },
-  { word: "D", type: "Alphabets" },
-  { word: "5", type: "Numbers" },
-  { word: "E", type: "Alphabets" },
-  { word: "9", type: "Numbers" },
-  { word: "F", type: "Alphabets" },
-  { word: "2", type: "Numbers" },
-];
+      { word: "A", type: "Alphabets" },
+      { word: "7", type: "Numbers" },
+      { word: "B", type: "Alphabets" },
+      { word: "8", type: "Numbers" },
+      { word: "C", type: "Alphabets" },
+      { word: "3", type: "Numbers" },
+      { word: "D", type: "Alphabets" },
+      { word: "5", type: "Numbers" },
+      { word: "E", type: "Alphabets" },
+      { word: "9", type: "Numbers" },
+      { word: "F", type: "Alphabets" },
+      { word: "2", type: "Numbers" },
+    ];
 
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
 
-window.onload = function () {
-  const shuffled = shuffle([...words]);
-  const wordContainer = document.getElementById("word-container");
+    window.onload = function () {
+      const shuffled = shuffle([...words]);
+      const wordContainer = document.getElementById("word-container");
 
-  shuffled.forEach(({ word }, index) => {
-    const span = document.createElement("span");
-    span.innerText = word;
-    span.className = "word";
-    span.setAttribute("draggable", true);
-    span.setAttribute("data-word", word);
-    span.setAttribute("data-index", index);
-    wordContainer.appendChild(span);
-  });
+      shuffled.forEach(({ word }, index) => {
+        const span = document.createElement("span");
+        span.innerText = word;
+        span.className = "word";
+        span.setAttribute("draggable", true);
+        span.setAttribute("data-word", word);
+        span.setAttribute("data-index", index);
 
-  document.querySelectorAll(".word").forEach(el => {
-    el.addEventListener("dragstart", e => {
-      e.dataTransfer.setData("text/plain", e.target.dataset.index);
-    });
-  });
+        // Touch support
+        span.addEventListener("touchstart", touchStartHandler);
+        span.addEventListener("touchmove", touchMoveHandler);
+        span.addEventListener("touchend", touchEndHandler);
 
-  document.querySelectorAll(".drop-zone").forEach(zone => {
-    zone.addEventListener("dragover", e => e.preventDefault());
-    zone.addEventListener("drop", e => {
-      e.preventDefault();
-      const index = e.dataTransfer.getData("text/plain");
-      const item = document.querySelector(`[data-index='${index}']`);
-      if (item && !zone.contains(item)) {
-        zone.appendChild(item);
-      }
-    });
-  });
-
-  document.getElementById("submit-btn").addEventListener("click", () => {
-    let score = 0;
-
-    document.querySelectorAll(".drop-zone").forEach(zone => {
-      const zoneType = zone.getAttribute("data-type");
-      zone.querySelectorAll(".word").forEach(wordEl => {
-        const wordText = wordEl.innerText;
-        const correct = words.find(w => w.word === wordText);
-        if (correct && correct.type === zoneType) {
-          wordEl.classList.remove("incorrect");
-          wordEl.classList.add("correct");
-          score++;
-          document.getElementById("audio-correct").play();
-        } else {
-          wordEl.classList.remove("correct");
-          wordEl.classList.add("incorrect");
-          document.getElementById("audio-wrong").play();
-        }
+        wordContainer.appendChild(span);
       });
-    });
 
-    document.getElementById("feedback-message").innerText =
-      `✅ You got ${score} out of ${words.length} correct!`;
-  });
-};
+      document.querySelectorAll(".word").forEach(el => {
+        el.addEventListener("dragstart", e => {
+          e.dataTransfer.setData("text/plain", e.target.dataset.index);
+        });
+      });
 
-  </Script>
+      document.querySelectorAll(".drop-zone").forEach(zone => {
+        zone.addEventListener("dragover", e => e.preventDefault());
+        zone.addEventListener("drop", e => {
+          e.preventDefault();
+          const index = e.dataTransfer.getData("text/plain");
+          const item = document.querySelector(`[data-index='${index}']`);
+          if (item && !zone.contains(item)) {
+            zone.appendChild(item);
+          }
+        });
+      });
+
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        let score = 0;
+
+        document.querySelectorAll(".drop-zone").forEach(zone => {
+          const zoneType = zone.getAttribute("data-type");
+          zone.querySelectorAll(".word").forEach(wordEl => {
+            const wordText = wordEl.innerText;
+            const correct = words.find(w => w.word === wordText);
+            if (correct && correct.type === zoneType) {
+              wordEl.classList.remove("incorrect");
+              wordEl.classList.add("correct");
+              score++;
+              document.getElementById("audio-correct").play();
+            } else {
+              wordEl.classList.remove("correct");
+              wordEl.classList.add("incorrect");
+              document.getElementById("audio-wrong").play();
+            }
+          });
+        });
+
+        document.getElementById("feedback-message").innerText =
+          `✅ You got ${score} out of ${words.length} correct!`;
+      });
+
+      // Touch logic handlers
+      let touchedEl = null;
+      function touchStartHandler(e) {
+        touchedEl = e.target;
+        touchedEl.style.position = "absolute";
+        touchedEl.style.zIndex = 1000;
+      }
+
+      function touchMoveHandler(e) {
+        if (!touchedEl) return;
+        const touch = e.touches[0];
+        touchedEl.style.left = `${touch.pageX - 25}px`;
+        touchedEl.style.top = `${touch.pageY - 25}px`;
+      }
+
+      function touchEndHandler(e) {
+        if (!touchedEl) return;
+        const dropZones = document.querySelectorAll(".drop-zone");
+        let dropped = false;
+        dropZones.forEach(zone => {
+          const rect = zone.getBoundingClientRect();
+          const touch = e.changedTouches[0];
+          if (
+            touch.clientX >= rect.left &&
+            touch.clientX <= rect.right &&
+            touch.clientY >= rect.top &&
+            touch.clientY <= rect.bottom
+          ) {
+            zone.appendChild(touchedEl);
+            touchedEl.style.position = "";
+            touchedEl.style.zIndex = "";
+            touchedEl.style.left = "";
+            touchedEl.style.top = "";
+            dropped = true;
+          }
+        });
+
+        if (!dropped) {
+          touchedEl.style.position = "";
+          touchedEl.style.zIndex = "";
+          touchedEl.style.left = "";
+          touchedEl.style.top = "";
+        }
+
+        touchedEl = null;
+      }
+    };
+  </script>
 </body>
 </html>

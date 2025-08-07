@@ -136,7 +136,6 @@
   </div>
 </div>
 
-
   <div id="result"></div>
   <button onclick="resetGame()">🔄 Try Again</button>
 
@@ -206,25 +205,65 @@
         { id: "cat", image: "assets/images/animals/cat.png" },
         { id: "horse", image: "assets/images/animals/horse.png" },
         { id: "donkey", image: "assets/images/animals/donkey.png" }
-    ];
+      ];
 
       const emojiContainer = document.getElementById("emojiDraggers");
       emojiContainer.innerHTML = "";
-
       shuffleArray(emojis);
 
-emojis.forEach(item => {
-  const img = document.createElement("img");
-  img.className = "emoji";
-  img.draggable = true;
-  img.id = item.id;
-  img.src = item.image;
-  img.alt = item.id;
-  img.setAttribute("ondragstart", "drag(event)");
-  emojiContainer.appendChild(img);
-});
+      emojis.forEach(item => {
+        const img = document.createElement("img");
+        img.className = "emoji";
+        img.draggable = true;
+        img.id = item.id;
+        img.src = item.image;
+        img.alt = item.id;
+        img.setAttribute("ondragstart", "drag(event)");
 
-document.getElementById("result").innerText = "";
+        // Touch support
+        img.addEventListener("touchstart", function(e) {
+          e.target.dataset.touching = true;
+        });
+
+        img.addEventListener("touchmove", function(e) {
+          const touch = e.touches[0];
+          const target = document.elementFromPoint(touch.clientX, touch.clientY);
+          const dropZone = target.closest('.word');
+          if (dropZone) {
+            dropZone.style.backgroundColor = "#f0fff0";
+          }
+        });
+
+        img.addEventListener("touchend", function(e) {
+          const touch = e.changedTouches[0];
+          const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+          const wordBox = dropTarget.closest('.word');
+
+          if (wordBox) {
+            const draggedId = e.target.id;
+            const targetWord = wordBox.getAttribute("data-word");
+
+            if (draggedId === targetWord && !wordBox.classList.contains("matched")) {
+              wordBox.innerHTML += " ✅";
+              wordBox.classList.add("matched");
+              document.getElementById(draggedId).style.display = "none";
+              document.getElementById("result").innerText = "Correct! 🎉";
+              document.getElementById("audio-correct").play();
+
+              if (document.querySelectorAll('.matched').length === 6) {
+                document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+              }
+            } else {
+              document.getElementById("result").innerText = "Try Again ❌";
+              document.getElementById("audio-wrong").play();
+            }
+          }
+        });
+
+        emojiContainer.appendChild(img);
+      });
+
+      document.getElementById("result").innerText = "";
     }
 
     function shuffleArray(array) {

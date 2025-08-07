@@ -69,7 +69,7 @@
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute">🔊</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
@@ -81,12 +81,10 @@
     { word: "🐱 Cat", type: "Animal" },      
     { word: "🦁 Lion", type: "Animal" },
     { word: "🐯 Tiger", type: "Animal" },
-    
     { word: "🦉 Owl", type: "Bird" },
     { word: "🦆 Duck", type: "Bird" },
     { word: "🕊️ Dove", type: "Bird" },
     { word: "🐔 Hen", type: "Bird" },
-    
   ];
 
   function shuffle(array) {
@@ -101,15 +99,69 @@
       const span = document.createElement("span");
       span.innerText = word;
       span.className = "word";
-      span.setAttribute("draggable", true);
       span.setAttribute("data-word", word);
       span.setAttribute("data-index", index);
       wordContainer.appendChild(span);
     });
 
+    const dragStart = (e) => {
+      e.dataTransfer?.setData("text/plain", e.target.dataset.index);
+      e.target.classList.add("dragging");
+    };
+
+    const dragEnd = (e) => {
+      e.target.classList.remove("dragging");
+    };
+
     document.querySelectorAll(".word").forEach(el => {
-      el.addEventListener("dragstart", e => {
-        e.dataTransfer.setData("text/plain", e.target.dataset.index);
+      el.setAttribute("draggable", true);
+      el.addEventListener("dragstart", dragStart);
+      el.addEventListener("dragend", dragEnd);
+
+      // Touch events
+      el.addEventListener("touchstart", (e) => {
+        const touch = e.touches[0];
+        el.classList.add("dragging");
+        el.style.position = "absolute";
+        el.style.zIndex = 1000;
+        moveAt(touch.pageX, touch.pageY);
+
+        function moveAt(x, y) {
+          el.style.left = x - el.offsetWidth / 2 + "px";
+          el.style.top = y - el.offsetHeight / 2 + "px";
+        }
+
+        function onTouchMove(e) {
+          const touch = e.touches[0];
+          moveAt(touch.pageX, touch.pageY);
+        }
+
+        document.addEventListener("touchmove", onTouchMove);
+
+        el.addEventListener("touchend", function onTouchEnd(e) {
+          document.removeEventListener("touchmove", onTouchMove);
+          el.classList.remove("dragging");
+          el.style.position = "";
+          el.style.zIndex = "";
+          el.style.left = "";
+          el.style.top = "";
+
+          const dropZones = document.querySelectorAll(".drop-zone");
+          for (const zone of dropZones) {
+            const rect = zone.getBoundingClientRect();
+            const touch = e.changedTouches[0];
+            const x = touch.clientX;
+            const y = touch.clientY;
+
+            if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+              if (!zone.contains(el)) {
+                zone.appendChild(el);
+              }
+              break;
+            }
+          }
+          el.removeEventListener("touchend", onTouchEnd);
+        });
       });
     });
 
@@ -136,8 +188,8 @@
           if (correct && correct.type === zoneType) {
             wordEl.classList.remove("incorrect");
             wordEl.classList.add("correct");
-            score++;
             document.getElementById("audio-correct").play();
+            score++;
           } else {
             wordEl.classList.remove("correct");
             wordEl.classList.add("incorrect");

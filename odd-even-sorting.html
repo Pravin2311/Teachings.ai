@@ -63,97 +63,128 @@
       <p id="feedback-message"></p>
       <button id="submit-btn">Submit</button>
     </div>
-    
   </div>
 
   <!-- Music and Feedback Audio -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute">🔇</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <!-- Scripts -->
-  
   <script src="js/musicControl.js"></script>
-  <Script>
+  <script>
     const words = [
-  { word: "1", type: "ODD" },
-  { word: "2", type: "EVEN" },
-  { word: "3", type: "ODD" },
-  { word: "4", type: "EVEN" },
-  { word: "5", type: "ODD" },
-  { word: "6", type: "EVEN" },
-  { word: "7", type: "ODD" },
-  { word: "8", type: "EVEN" },
-  { word: "9", type: "ODD" },
-  { word: "10", type: "EVEN" },
-  
-];
+      { word: "1", type: "ODD" },
+      { word: "2", type: "EVEN" },
+      { word: "3", type: "ODD" },
+      { word: "4", type: "EVEN" },
+      { word: "5", type: "ODD" },
+      { word: "6", type: "EVEN" },
+      { word: "7", type: "ODD" },
+      { word: "8", type: "EVEN" },
+      { word: "9", type: "ODD" },
+      { word: "10", type: "EVEN" },
+    ];
 
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
 
-window.onload = function () {
-  const shuffled = shuffle([...words]);
-  const wordContainer = document.getElementById("word-container");
+    window.onload = function () {
+      const shuffled = shuffle([...words]);
+      const wordContainer = document.getElementById("word-container");
 
-  shuffled.forEach(({ word }, index) => {
-    const span = document.createElement("span");
-    span.innerText = word;
-    span.className = "word";
-    span.setAttribute("draggable", true);
-    span.setAttribute("data-word", word);
-    span.setAttribute("data-index", index);
-    wordContainer.appendChild(span);
-  });
+      shuffled.forEach(({ word }, index) => {
+        const span = document.createElement("span");
+        span.innerText = word;
+        span.className = "word";
+        span.setAttribute("draggable", true);
+        span.setAttribute("data-word", word);
+        span.setAttribute("data-index", index);
+        wordContainer.appendChild(span);
 
-  document.querySelectorAll(".word").forEach(el => {
-    el.addEventListener("dragstart", e => {
-      e.dataTransfer.setData("text/plain", e.target.dataset.index);
-    });
-  });
+        // Touch support
+        span.addEventListener("touchstart", e => {
+          span.classList.add("dragging");
+        });
 
-  document.querySelectorAll(".drop-zone").forEach(zone => {
-    zone.addEventListener("dragover", e => e.preventDefault());
-    zone.addEventListener("drop", e => {
-      e.preventDefault();
-      const index = e.dataTransfer.getData("text/plain");
-      const item = document.querySelector(`[data-index='${index}']`);
-      if (item && !zone.contains(item)) {
-        zone.appendChild(item);
-      }
-    });
-  });
+        span.addEventListener("touchmove", e => {
+          const touch = e.touches[0];
+          span.style.position = "absolute";
+          span.style.left = `${touch.clientX - 30}px`;
+          span.style.top = `${touch.clientY - 30}px`;
+        });
 
-  document.getElementById("submit-btn").addEventListener("click", () => {
-    let score = 0;
+        span.addEventListener("touchend", e => {
+          span.classList.remove("dragging");
+          span.style.position = "";
+          span.style.left = "";
+          span.style.top = "";
 
-    document.querySelectorAll(".drop-zone").forEach(zone => {
-      const zoneType = zone.getAttribute("data-type");
-      zone.querySelectorAll(".word").forEach(wordEl => {
-        const wordText = wordEl.innerText;
-        const correct = words.find(w => w.word === wordText);
-        if (correct && correct.type === zoneType) {
-          wordEl.classList.remove("incorrect");
-          wordEl.classList.add("correct");
-          score++;
-          document.getElementById("audio-correct").play();
-        } else {
-          wordEl.classList.remove("correct");
-          wordEl.classList.add("incorrect");
-          document.getElementById("audio-wrong").play();
-        }
+          const dropZones = document.querySelectorAll(".drop-zone");
+          dropZones.forEach(zone => {
+            const rect = zone.getBoundingClientRect();
+            const touch = e.changedTouches[0];
+            if (
+              touch.clientX >= rect.left &&
+              touch.clientX <= rect.right &&
+              touch.clientY >= rect.top &&
+              touch.clientY <= rect.bottom
+            ) {
+              if (!zone.contains(span)) {
+                zone.appendChild(span);
+              }
+            }
+          });
+        });
       });
-    });
 
-    document.getElementById("feedback-message").innerText =
-      `✅ You got ${score} out of ${words.length} correct!`;
-  });
-};
+      document.querySelectorAll(".word").forEach(el => {
+        el.addEventListener("dragstart", e => {
+          e.dataTransfer.setData("text/plain", e.target.dataset.index);
+        });
+      });
 
-  </Script>
+      document.querySelectorAll(".drop-zone").forEach(zone => {
+        zone.addEventListener("dragover", e => e.preventDefault());
+        zone.addEventListener("drop", e => {
+          e.preventDefault();
+          const index = e.dataTransfer.getData("text/plain");
+          const item = document.querySelector(`[data-index='${index}']`);
+          if (item && !zone.contains(item)) {
+            zone.appendChild(item);
+          }
+        });
+      });
+
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        let score = 0;
+
+        document.querySelectorAll(".drop-zone").forEach(zone => {
+          const zoneType = zone.getAttribute("data-type");
+          zone.querySelectorAll(".word").forEach(wordEl => {
+            const wordText = wordEl.innerText;
+            const correct = words.find(w => w.word === wordText);
+            if (correct && correct.type === zoneType) {
+              wordEl.classList.remove("incorrect");
+              wordEl.classList.add("correct");
+              score++;
+              document.getElementById("audio-correct").play();
+            } else {
+              wordEl.classList.remove("correct");
+              wordEl.classList.add("incorrect");
+              document.getElementById("audio-wrong").play();
+            }
+          });
+        });
+
+        document.getElementById("feedback-message").innerText =
+          `✅ You got ${score} out of ${words.length} correct!`;
+      });
+    };
+  </script>
 </body>
 </html>

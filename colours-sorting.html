@@ -4,33 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Color Sorting Game - Teachings.AI</title>
-  
-  <!-- Favicon -->
   <link rel="icon" href="assets/favicon.png" type="image/png" />
-
-  <!-- SEO Meta Tags -->
   <meta name="description" content="Interactive color sorting game for kids - match colorful shapes to their respective zones. A fun activity by Teachings.AI." />
   <meta name="keywords" content="color sorting game, kids learning game, color recognition, preschool activity, teachings.ai" />
   <meta name="author" content="Teachings.AI" />
-
-  <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:title" content="Color Sorting Game - Teachings.AI" />
   <meta property="og:description" content="Drag and drop colorful shapes into matching color zones. A fun and educational game for preschoolers!" />
   <meta property="og:image" content="https://teachings.ai/assets/cover-color-sorting.png" />
   <meta property="og:url" content="https://teachings.ai/color-sorting.html" />
   <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Color Sorting Game - Teachings.AI" />
   <meta name="twitter:description" content="Fun color sorting activity for preschoolers. Drag shapes to matching zones!" />
   <meta name="twitter:image" content="https://teachings.ai/assets/colours-sorting.png" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/grammar.css" />
-
-  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,21 +43,18 @@
     "url": "https://teachings.ai/colours-sorting.html"
   }
   </script>
-
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
     }
-
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 20px;
       text-align: center;
     }
-
     .drop-zones {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -77,7 +62,6 @@
       margin: 30px auto;
       max-width: 600px;
     }
-
     .drop-zone {
       min-height: 120px;
       border: 2px dashed #ccc;
@@ -86,7 +70,6 @@
       background-color: #f5f5f5;
       font-size: 36px;
     }
-
     .word-bank {
       display: flex;
       flex-wrap: wrap;
@@ -94,23 +77,20 @@
       gap: 12px;
       margin: 20px 0;
     }
-
     .word {
       font-size: 48px;
       cursor: grab;
       display: inline-block;
+      touch-action: none;
     }
-
     .correct {
       outline: 3px solid green;
       border-radius: 6px;
     }
-
     .incorrect {
       outline: 3px solid red;
       border-radius: 6px;
     }
-
     #submit-btn {
       margin-top: 20px;
       font-size: 20px;
@@ -121,12 +101,10 @@
       border-radius: 10px;
       cursor: pointer;
     }
-
     @media (max-width: 600px) {
       .word {
         font-size: 40px;
       }
-
       .drop-zone {
         font-size: 28px;
         min-height: 100px;
@@ -146,49 +124,35 @@
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
     <h1>🎨 Color Sorting Game</h1>
     <p class="tip"><span>Tip:</span> Drag shapes to the matching color zone.</p>
-
     <div class="word-bank" id="word-container"></div>
-
     <div class="drop-zones">
       <div class="drop-zone" id="red-zone" data-type="Red">🔴</div>
       <div class="drop-zone" id="blue-zone" data-type="Blue">🔵</div>
       <div class="drop-zone" id="green-zone" data-type="Green">🟢</div>
       <div class="drop-zone" id="orange-zone" data-type="Orange">🟠</div>
     </div>
-
     <p id="feedback-message"></p>
     <button id="submit-btn">Submit</button>
   </div>
-
-  <!-- Audio -->
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
-
-  <!-- JS -->
   <script>
     const words = [
       { word: "🟥", type: "Red" },
       { word: "🔴", type: "Red" },
-      
       { word: "🟦", type: "Blue" },
       { word: "🔵", type: "Blue" },
-      
       { word: "🟩", type: "Green" },
       { word: "🟢", type: "Green" },
-      
       { word: "🟧", type: "Orange" },
       { word: "🟠", type: "Orange" },
-      
     ];
-
     function shuffle(array) {
       return array.sort(() => Math.random() - 0.5);
     }
-
     window.onload = function () {
       const shuffled = shuffle([...words]);
       const wordContainer = document.getElementById("word-container");
-
       shuffled.forEach(({ word }, index) => {
         const span = document.createElement("span");
         span.innerText = word;
@@ -198,10 +162,46 @@
         span.setAttribute("data-index", index);
         wordContainer.appendChild(span);
       });
-
       document.querySelectorAll(".word").forEach(el => {
         el.addEventListener("dragstart", e => {
           e.dataTransfer.setData("text/plain", e.target.dataset.index);
+        });
+
+        // Touch support
+        el.addEventListener("touchstart", (e) => {
+          e.target.classList.add("dragging");
+        });
+
+        el.addEventListener("touchmove", (e) => {
+          const touch = e.touches[0];
+          const dragging = document.querySelector(".dragging");
+          if (dragging) {
+            dragging.style.position = "absolute";
+            dragging.style.left = touch.pageX - 30 + "px";
+            dragging.style.top = touch.pageY - 30 + "px";
+          }
+        });
+
+        el.addEventListener("touchend", (e) => {
+          const dragging = document.querySelector(".dragging");
+          dragging.style.position = "";
+          dragging.style.left = "";
+          dragging.style.top = "";
+          dragging.classList.remove("dragging");
+
+          const dropZones = document.querySelectorAll(".drop-zone");
+          dropZones.forEach(zone => {
+            const rect = zone.getBoundingClientRect();
+            const touch = e.changedTouches[0];
+            if (
+              touch.clientX >= rect.left &&
+              touch.clientX <= rect.right &&
+              touch.clientY >= rect.top &&
+              touch.clientY <= rect.bottom
+            ) {
+              zone.appendChild(dragging);
+            }
+          });
         });
       });
 
@@ -236,7 +236,6 @@
             }
           });
         });
-
         document.getElementById("feedback-message").innerText =
           `✅ You got ${score} out of ${words.length} correct!`;
       });
