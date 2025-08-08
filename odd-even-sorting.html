@@ -3,33 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Numbers Fun: Odd & Even - Teachings.AI</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/grammar.css" />
-  <style>
-    body.dragging {
-  touch-action: none;
-  overflow: hidden;
-  }
- </style>
+  <title>Odd & Even Number Sorting Game - Teachings.AI</title>
 
-  <meta name="description" content="Fun interactive shorting game to learn Odd and Even Numbers. Part of Teachings.AI learning modules for kids.">
-  <meta name="keywords" content="Shorting game, Odd Numbers for kids, Even numbers for kids, counting, teachings.ai Sorting">
+  <meta name="description" content="Fun interactive sorting game to learn Odd and Even Numbers. Part of Teachings.AI learning modules for kids.">
+  <meta name="keywords" content="Sorting game, Odd Numbers for kids, Even numbers for kids, counting, teachings.ai Sorting">
   <meta name="author" content="Teachings AI">
   <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="Sorting Fun: Numbers & Alphabets - Teachings.AI" />
-  <meta property="og:description" content="Fun drag-and-drop Sorting activity for early learners to practice Odd and Even Numbers. From Teachings.AI." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sorting Fun: Numbers - Teachings.AI" />
+  <meta property="og:description" content="Drag-and-drop sorting activity for early learners to practice Odd and Even Numbers. From Teachings.AI." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/odd-even-sorting.html" />
   <meta property="og:type" content="website" />
 
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "EducationalAudience",
     "educationalRole": "student",
-    "name": "Odd-Even sorting: odd & even - Teachings.AI",
+    "name": "Odd-Even Sorting Game - Teachings.AI",
     "description": "Interactive Sorting activity to sort Odd and Even Numbers for preschool and grade 1 students.",
     "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
     "inLanguage": "en",
@@ -46,6 +40,24 @@
   }
   </script>
 
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/grammar.css" />
+  <style>
+    body.dragging {
+      touch-action: none;
+      overflow: hidden;
+    }
+    .correct { color: green; font-weight: bold; }
+    .incorrect { color: red; font-weight: bold; }
+ .word {
+  user-select: none;
+  touch-action: none;
+}
+
+  </style>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -56,47 +68,45 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" role="main">
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
     <h1>Numbers Fun: <br> Odd & Even</h1>
+
     <div class="game-area">
-      <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – ODD numbers or EVEN numbers!</p>
+      <p class="tip"><span>📚 Tip:</span> Drag each number to the correct category – ODD or EVEN!</p>
       <div class="word-bank" id="word-container"></div>
+
       <div class="drop-zones">
-        <div class="drop-zone" id="noun-zone" data-type="ODD"><h2>ODD</h2></div>
-        <div class="drop-zone" id="verb-zone" data-type="EVEN"><h2>EVEN</h2></div>
+        <div class="drop-zone" id="odd-zone" data-type="ODD"><h2>ODD</h2></div>
+        <div class="drop-zone" id="even-zone" data-type="EVEN"><h2>EVEN</h2></div>
       </div>
+
       <p id="feedback-message"></p>
       <button id="submit-btn">Submit</button>
     </div>
   </div>
 
-  <!-- Music and Feedback Audio -->
+  <!-- Audio -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">🔇</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">🔇</button>
 
   <!-- Scripts -->
   <script src="js/musicControl.js"></script>
   <script>
     const words = [
-      { word: "1", type: "ODD" },
-      { word: "2", type: "EVEN" },
-      { word: "3", type: "ODD" },
-      { word: "4", type: "EVEN" },
-      { word: "5", type: "ODD" },
-      { word: "6", type: "EVEN" },
-      { word: "7", type: "ODD" },
-      { word: "8", type: "EVEN" },
-      { word: "9", type: "ODD" },
-      { word: "10", type: "EVEN" },
+      { word: "1", type: "ODD" }, { word: "2", type: "EVEN" },
+      { word: "3", type: "ODD" }, { word: "4", type: "EVEN" },
+      { word: "5", type: "ODD" }, { word: "6", type: "EVEN" },
+      { word: "7", type: "ODD" }, { word: "8", type: "EVEN" },
+      { word: "9", type: "ODD" }, { word: "10", type: "EVEN" },
     ];
 
-    function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5);
+    function shuffle(arr) {
+      return arr.sort(() => Math.random() - 0.5);
     }
 
     window.onload = function () {
@@ -113,8 +123,9 @@
         wordContainer.appendChild(span);
 
         // Touch support
-        span.addEventListener("touchstart", e => {
+        span.addEventListener("touchstart", () => {
           span.classList.add("dragging");
+          span.style.zIndex = "999";
         });
 
         span.addEventListener("touchmove", e => {
@@ -122,6 +133,7 @@
           span.style.position = "absolute";
           span.style.left = `${touch.clientX - 30}px`;
           span.style.top = `${touch.clientY - 30}px`;
+          span.style.zIndex = "";
         });
 
         span.addEventListener("touchend", e => {
@@ -131,9 +143,10 @@
           span.style.top = "";
 
           const dropZones = document.querySelectorAll(".drop-zone");
+          const touch = e.changedTouches[0];
+
           dropZones.forEach(zone => {
             const rect = zone.getBoundingClientRect();
-            const touch = e.changedTouches[0];
             if (
               touch.clientX >= rect.left &&
               touch.clientX <= rect.right &&
@@ -141,6 +154,7 @@
               touch.clientY <= rect.bottom
             ) {
               if (!zone.contains(span)) {
+                span.parentNode.removeChild(span);
                 zone.appendChild(span);
               }
             }
@@ -148,6 +162,7 @@
         });
       });
 
+      // Drag and drop (desktop)
       document.querySelectorAll(".word").forEach(el => {
         el.addEventListener("dragstart", e => {
           e.dataTransfer.setData("text/plain", e.target.dataset.index);
@@ -166,23 +181,27 @@
         });
       });
 
+      // Submit
       document.getElementById("submit-btn").addEventListener("click", () => {
         let score = 0;
+        const correctAudio = document.getElementById("audio-correct");
+        const wrongAudio = document.getElementById("audio-wrong");
 
         document.querySelectorAll(".drop-zone").forEach(zone => {
           const zoneType = zone.getAttribute("data-type");
           zone.querySelectorAll(".word").forEach(wordEl => {
             const wordText = wordEl.innerText;
             const correct = words.find(w => w.word === wordText);
+
             if (correct && correct.type === zoneType) {
               wordEl.classList.remove("incorrect");
               wordEl.classList.add("correct");
               score++;
-              document.getElementById("audio-correct").play();
+              correctAudio.play();
             } else {
               wordEl.classList.remove("correct");
               wordEl.classList.add("incorrect");
-              document.getElementById("audio-wrong").play();
+              wrongAudio.play();
             }
           });
         });

@@ -3,12 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Match the shapes ⭕ | Teachings.AI</title>
-  <meta name="description" content="Fun animal emoji matching game for kids. Match 🐶 🐷 🦁 to their names like Dog, Pig, Lion." />
-  <meta name="keywords" content="animal matching, emoji game, kids learning, teachings.ai, preschool game" />
-  <meta name="author" content="Teachings.AI" />
-  <meta name="robots" content="index, follow" />
-
+  <title>Match the Shapes ⭕ | Teachings.AI</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -18,9 +13,6 @@
       touch-action: manipulation;
       user-select: none;
     }
-    h1 {
-      margin-bottom: 30px;
-    }
     .word-boxes, .emoji-draggers {
       display: flex;
       gap: 20px;
@@ -29,36 +21,43 @@
       margin-bottom: 20px;
     }
     .word {
-      width: 120px;
-      height: 100px;
+      width: 130px;
+      height: 120px;
       border: 2px dashed #4caf50;
       border-radius: 10px;
-      line-height: 100px;
-      font-size: 20px;
+      font-size: 18px;
       background-color: #ffffff;
       transition: background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      overflow: hidden;
+    }
+    .word img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
     }
     .emoji {
-      font-size: 40px;
+      width: 70px;
+      height: 70px;
       cursor: grab;
-      padding: 10px;
+      padding: 5px;
       background-color: #fffbea;
       border: 2px solid #ff9800;
       border-radius: 10px;
-      width: 60px;
-      height: 60px;
-      line-height: 40px;
-      touch-action: none;
-    }
-    #result {
-      font-size: 24px;
-      margin-top: 10px;
-      font-weight: bold;
     }
     .matched {
       background-color: #d4edda;
       border-color: #4caf50;
       color: #155724;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 15px 0;
     }
     button {
       padding: 10px 20px;
@@ -68,39 +67,11 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 10px;
-    }
-    .back-button {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    #music-toggle-button {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #eeeeee;
-      border: none;
-      border-radius: 50%;
-      font-size: 20px;
-      padding: 10px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <button class="back-button" onclick="window.location.href='index.html'">Home</button>
-  <button id="music-toggle-button" title="Toggle Music">🔇</button>
-
-  <h1>⭕ Match the shapes </h1>
+  <h1>⭕ Match the Shapes</h1>
 
   <div class="game-area">
     <div class="word-boxes" id="wordBoxes">
@@ -112,33 +83,18 @@
       <div class="word" data-word="triangle">Triangle</div>
     </div>
 
-    <div class="emoji-draggers" id="emojiDraggers">
-    </div>
+    <div class="emoji-draggers" id="emojiDraggers"></div>
   </div>
 
   <div id="result"></div>
   <button onclick="resetGame()">🔄 Try Again</button>
 
-  <!-- Audio Elements -->
-  <audio id="background-music" loop>
-    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Audio -->
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <script>
-    const backgroundMusic = document.getElementById("background-music");
-    const musicToggleBtn = document.getElementById("music-toggle-button");
-
-    musicToggleBtn.addEventListener("click", () => {
-      if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        musicToggleBtn.innerText = "🔊";
-      } else {
-        backgroundMusic.pause();
-        musicToggleBtn.innerText = "🔇";
-      }
-    });
+    let draggedElement = null;
 
     function resetGame() {
       const wordBoxes = document.querySelectorAll(".word");
@@ -150,7 +106,7 @@
         box.addEventListener("dragover", e => e.preventDefault());
       });
 
-      const emojis = [
+      const shapes = [
         { id: "square", image: "assets/images/shapes/square.png" },
         { id: "circle", image: "assets/images/shapes/circle.png" },
         { id: "star", image: "assets/images/shapes/star.png" },
@@ -159,12 +115,12 @@
         { id: "triangle", image: "assets/images/shapes/triangle.png" }
       ];
 
-      shuffleArray(emojis);
+      shuffleArray(shapes);
 
       const emojiContainer = document.getElementById("emojiDraggers");
       emojiContainer.innerHTML = "";
 
-      emojis.forEach(item => {
+      shapes.forEach(item => {
         const img = document.createElement("img");
         img.className = "emoji";
         img.draggable = true;
@@ -172,25 +128,45 @@
         img.src = item.image;
         img.alt = item.id;
         img.addEventListener("dragstart", drag);
-
-        // ✅ Touch events
         img.addEventListener("touchstart", startTouchDrag, { passive: false });
-
         emojiContainer.appendChild(img);
       });
 
       document.getElementById("result").innerText = "";
     }
 
-    let draggedElement = null;
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const draggedId = ev.dataTransfer.getData("text");
+      const target = ev.target.closest('.word');
+      if (!target) return;
+
+      const targetWord = target.getAttribute("data-word");
+
+      if (draggedId === targetWord && !target.classList.contains("matched")) {
+        const img = document.getElementById(draggedId);
+        target.innerHTML = `<img src="${img.src}" alt="${draggedId}">`;
+        target.classList.add("matched");
+        img.style.display = "none";
+
+        document.getElementById("audio-correct").play();
+        checkWin();
+      } else {
+        document.getElementById("result").innerText = "Try Again ❌";
+        document.getElementById("audio-wrong").play();
+      }
+    }
 
     function startTouchDrag(e) {
       const original = e.target;
       draggedElement = original.cloneNode(true);
-      draggedElement.id = original.id; // ✅ preserve ID
+      draggedElement.id = original.id;
       draggedElement.style.position = "absolute";
       draggedElement.style.zIndex = 1000;
-      draggedElement.classList.add("emoji");
       document.body.appendChild(draggedElement);
 
       moveAt(e.touches[0]);
@@ -207,20 +183,19 @@
       function onTouchEnd(e) {
         const touch = e.changedTouches[0];
         const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
-        if (elemBelow && elemBelow.classList.contains("word")) {
-          const targetWord = elemBelow.getAttribute("data-word");
+        const target = elemBelow?.closest('.word');
+
+        if (target && !target.classList.contains("matched")) {
           const draggedId = draggedElement.id;
+          const targetWord = target.getAttribute("data-word");
 
-          if (draggedId === targetWord && !elemBelow.classList.contains("matched")) {
-            elemBelow.innerHTML += " ✅";
-            elemBelow.classList.add("matched");
-            document.getElementById(draggedId).style.display = "none";
-            document.getElementById("result").innerText = "Correct! 🎉";
+          if (draggedId === targetWord) {
+            target.innerHTML = `<img src="${original.src}" alt="${draggedId}">`;
+            target.classList.add("matched");
+            original.style.display = "none";
+
             document.getElementById("audio-correct").play();
-
-            if (document.querySelectorAll('.matched').length === 6) {
-              document.getElementById("result").innerText = "🎉 You matched all! Great job!";
-            }
+            checkWin();
           } else {
             document.getElementById("result").innerText = "Try Again ❌";
             document.getElementById("audio-wrong").play();
@@ -234,40 +209,21 @@
 
       document.addEventListener("touchmove", onTouchMove);
       document.addEventListener("touchend", onTouchEnd);
-
       e.preventDefault();
-    }
-
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-
-    function drop(ev) {
-      ev.preventDefault();
-      const draggedId = ev.dataTransfer.getData("text");
-      const target = ev.target;
-      const targetWord = target.getAttribute("data-word");
-
-      if (draggedId === targetWord && !target.classList.contains("matched")) {
-        target.innerHTML += " ✅";
-        target.classList.add("matched");
-        document.getElementById(draggedId).style.display = "none";
-        document.getElementById("result").innerText = "Correct! 🎉";
-        document.getElementById("audio-correct").play();
-
-        if (document.querySelectorAll('.matched').length === 6) {
-          document.getElementById("result").innerText = "🎉 You matched all! Great job!";
-        }
-      } else {
-        document.getElementById("result").innerText = "Try Again ❌";
-        document.getElementById("audio-wrong").play();
-      }
     }
 
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function checkWin() {
+      if (document.querySelectorAll('.matched').length === 6) {
+        document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      } else {
+        document.getElementById("result").innerText = "Correct! 🎉";
       }
     }
 

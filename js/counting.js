@@ -30,47 +30,61 @@ const images = [
   }
   
   function loadGame() {
-    const objectSet = getRandomSet();
-    const correctCount = objectSet.length;
-    const choices = shuffle([
-      correctCount,
-      correctCount + 1,
-      correctCount - 1,
-      correctCount + 2,
-    ].filter(n => n > 0)).slice(0, 3);
-    choices.push(correctCount);
-    const uniqueChoices = shuffle([...new Set(choices)]);
-  
-    gameContainer.innerHTML = "";
-  
-    const imagesDiv = document.createElement("div");
-    imagesDiv.className = "counting-images";
-    objectSet.forEach(obj => {
-      const img = document.createElement("img");
-      img.src = obj.img;
-      img.alt = obj.word;
-      imagesDiv.appendChild(img);
-    });
-  
-    const answerDiv = document.createElement("div");
-    answerDiv.className = "answer-buttons";
-    uniqueChoices.forEach(choice => {
-      const btn = document.createElement("button");
-      btn.textContent = choice;
-      btn.onclick = () => {
-        if (choice === correctCount) {
-          correctAudio.play();
-          setTimeout(loadGame, 1000);
-        } else {
-          wrongAudio.play();
-        }
-      };
-      answerDiv.appendChild(btn);
-    });
-  
-    gameContainer.appendChild(imagesDiv);
-    gameContainer.appendChild(answerDiv);
-  }
+  const objectSet = getRandomSet();
+  const correctCount = objectSet.length;
+  const choices = shuffle([
+    correctCount,
+    correctCount + 1,
+    correctCount - 1,
+    correctCount + 2,
+  ].filter(n => n > 0)).slice(0, 3);
+  choices.push(correctCount);
+  const uniqueChoices = shuffle([...new Set(choices)]);
+
+  gameContainer.innerHTML = "";
+
+  const imagesDiv = document.createElement("div");
+  imagesDiv.className = "counting-images";
+  objectSet.forEach(obj => {
+    const img = document.createElement("img");
+    img.src = obj.img;
+    img.alt = obj.word;
+    imagesDiv.appendChild(img);
+  });
+
+  const answerDiv = document.createElement("div");
+  answerDiv.className = "answer-buttons";
+
+  // ✅ Feedback message element
+  const message = document.createElement("div");
+  message.id = "feedback-message";
+  message.style.fontSize = "24px";
+  message.style.fontWeight = "bold";
+  message.style.margin = "15px 0";
+
+  uniqueChoices.forEach(choice => {
+    const btn = document.createElement("button");
+    btn.textContent = choice;
+    btn.onclick = () => {
+      if (choice === correctCount) {
+        correctAudio.play();
+        message.textContent = "✅ Correct!";
+        message.style.color = "green";
+        setTimeout(loadGame, 1000);
+      } else {
+        wrongAudio.play();
+        message.textContent = "❌ Try Again!";
+        message.style.color = "red";
+      }
+    };
+    answerDiv.appendChild(btn);
+  });
+
+  gameContainer.appendChild(imagesDiv);
+  gameContainer.appendChild(answerDiv);
+  gameContainer.appendChild(message); // ✅ Append feedback message
+}
+
   
   function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);

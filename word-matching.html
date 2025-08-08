@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Word Matching Game - Teachings.AI</title>
+  <title>Word Matching Game for Kids | Animals, Birds, Fruits - Teachings.AI</title>
 
   <!-- Basic SEO -->
   <meta name="description" content="Play the Teachings.AI word matching game! Kids can match animals, birds, and fruits to the right word or image with fun visuals and sounds." />
@@ -17,7 +17,7 @@
   <meta property="og:description" content="Match words with animals, birds, and fruits. Fun and educational game for kids to build vocabulary and recognition skills!" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://teachings.ai/word-matching.html" />
-  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:image" content="https://teachings.ai/assets/images/word-matching-thumbnail.png" />
   <meta property="og:site_name" content="Teachings.AI" />
 
   <!-- Twitter Card -->
@@ -34,6 +34,7 @@
     "@type": "EducationalGame",
     "name": "Word Matching Game - Teachings.AI",
     "description": "An educational word matching game where kids learn to associate words with images of animals, birds, and fruits.",
+    "inLanguage": "en",
     "url": "https://teachings.ai/word-matching.html",
     "image": "https://teachings.ai/assets/images/app_logo.png",
     "publisher": {
@@ -58,21 +59,24 @@
   </script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" role="main">
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
     <h1>Word Matching Game</h1>
     <p id="instruction">Match the correct word to the image or image to the word.</p>
     <div id="game-container"><p class="loading">Loading game...</p></div>
+    
     <div class="rhyming-image">
-      <img src="assets/images/words-matching.png" alt="word-matching Illustration" />
+      <img src="assets/images/words-matching.png" alt="Illustration of kids matching words to pictures of animals, birds, and fruits" />
     </div>
   </div>
 
   <audio id="correct-sound" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="wrong-sound" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+  
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
+  
   <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
 
   <script src="js/word-matching.js"></script>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fruits-Veggies: Fruits & Vegetable - Teachings.AI</title>
+  <title>Fruits-Veggies: Sort Fruits & Vegetables - Teachings.AI</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/grammar.css" />
   <style>
@@ -13,38 +13,38 @@
   }
  </style>
 
-  <meta name="description" content="Fun interactive shorting game to learn Fruits and Vegetable. Part of Teachings.AI learning modules for kids.">
-  <meta name="keywords" content="Shorting game, Furits for kids, Vegetable for kids, healthy food, teachings.ai Sorting">
+  <meta name="description" content="Fun interactive sorting game to learn Fruits and Vegetables. Part of Teachings.AI learning modules for kids." />
+  <meta name="keywords" content="sorting game, fruits for kids, vegetables for kids, healthy food, teachings.ai sorting" />
   <meta name="author" content="Teachings AI">
   <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="Sorting Fun: Numbers & Alphabets - Teachings.AI" />
-  <meta property="og:description" content="Fun drag-and-drop Sorting activity for early learners to practice Fruits and Vegetable. From Teachings.AI." />
+  <meta property="og:title" content="Sorting Fun: Fruits & Vegetables - Teachings.AI" />
+  <meta property="og:description" content="Fun drag-and-drop sorting activity for early learners to practice Fruits and Vegetables. From Teachings.AI." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
-  <meta property="og:url" content="https://teachings.ai/furits-vegetables-sorting.html" />
+  <meta property="og:url" content="https://teachings.ai/fruits-vegetables-sorting.html" />
   <meta property="og:type" content="website" />
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalAudience",
-    "educationalRole": "student",
-    "name": "Fruits-Veggies: Fruits & Vegetable - Teachings.AI",
-    "description": "Interactive Sorting activity to sort Fruits and Vegetable for preschool and grade 1 students.",
-    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-    "inLanguage": "en",
-    "url": "https://teachings.ai/furits-vegetables-sorting.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://teachings.ai/assets/images/app_logo.png"
-      }
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalAudience",
+  "educationalRole": "student",
+  "name": "Fruits-Veggies: Sort Fruits & Vegetables - Teachings.AI",
+  "description": "Interactive sorting activity to sort Fruits and Vegetables for preschool and grade 1 students.",
+  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+  "inLanguage": "en",
+  "url": "https://teachings.ai/fruits-vegetables-sorting.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Teachings.AI",
+    "url": "https://teachings.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://teachings.ai/assets/images/app_logo.png"
     }
   }
-  </script>
+}
+</script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
@@ -58,13 +58,13 @@
 <body>
   <div class="container">
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-    <h1>Sorting: <br> Fruits & Vegetable</h1>
+    <h1>Sorting: <br> Fruits & Vegetables</h1>
     <div class="game-area">
       <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Fruits or Vegetable!</p>
       <div class="word-bank" id="word-container"></div>
       <div class="drop-zones">
-        <div class="drop-zone" id="noun-zone" data-type="Fruit"><h2>Fruit</h2></div>
-        <div class="drop-zone" id="verb-zone" data-type="Vegetable"><h2>Vegetable</h2></div>
+        <div class="drop-zone" id="fruit-zone" data-type="Fruit"><h2>Fruit</h2></div>
+        <div class="drop-zone" id="vegetable-zone" data-type="Vegetable"><h2>Vegetable</h2></div>
       </div>
       <p id="feedback-message"></p>
       <button id="submit-btn">Submit</button>

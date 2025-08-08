@@ -4,30 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rhyming Words - Teachings.AI</title>
-  
+
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Play the Rhyming Words Game on Teachings.AI. A fun and educational tool to help kids learn rhyming, phonics, and word matching. Ideal for preschool to grade 2.">
-  <meta name="keywords" content="rhyming words game, phonics game, kids educational game, vocabulary learning, preschool rhymes, early literacy, Teachings.AI">
-  <meta name="author" content="Teachings.AI">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Play the Rhyming Words Game on Teachings.AI. A fun and educational tool to help kids learn rhyming, phonics, and word matching. Ideal for preschool to grade 2." />
+  <meta name="keywords" content="rhyming words game, phonics game, kids educational game, vocabulary learning, preschool rhymes, early literacy, Teachings.AI" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://teachings.ai/rhyming.html" />
 
   <!-- Open Graph Meta -->
-  <meta property="og:title" content="Rhyming Words Game for Kids - Teachings.AI">
-  <meta property="og:description" content="Interactive rhyming game that helps children recognize similar-sounding words and improve vocabulary.">
-  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
-  <meta property="og:url" content="https://teachings.ai/rhyming.html">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rhyming Words Game for Kids - Teachings.AI" />
+  <meta property="og:description" content="Interactive rhyming game that helps children recognize similar-sounding words and improve vocabulary." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/rhyming.html" />
+  <meta property="og:type" content="website" />
 
   <!-- Twitter Card Meta -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rhyming Words Game for Kids - Teachings.AI">
-  <meta name="twitter:description" content="A fun phonics game designed to teach children rhyming and vocabulary. Perfect for early learners.">
-  <meta name="twitter:image" content="https://teachings.ai/assets/images/app_logo.png">
-  <meta name="twitter:site" content="@teachings_ai">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rhyming Words Game for Kids - Teachings.AI" />
+  <meta name="twitter:description" content="A fun phonics game designed to teach children rhyming and vocabulary. Perfect for early learners." />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta name="twitter:site" content="@teachings_ai" />
 
   <!-- Favicon -->
-  <link rel="icon" href="https://teachings.ai/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://teachings.ai/assets/images/favicon.ico" type="image/x-icon" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
@@ -37,8 +37,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationalAudience",
-    "educationalRole": "student",
+    "@type": "EducationalGame",
     "name": "Rhyming Words Game - Teachings.AI",
     "description": "Interactive rhyming words game for kids. Helps children learn phonics and vocabulary with matching and audio feedback.",
     "educationalLevel": ["Preschool", "Kindergarten", "Grade 1", "Grade 2"],
@@ -65,27 +64,33 @@
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
 </head>
+
 <body>
-  <div class="container">
+  <div class="container" role="main">
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
     <h1>Rhyming Words</h1>
     <p id="instruction">Match the word with another that rhymes. Tap to begin!</p>
+
     <div id="game-container">
       <p class="loading">Loading rhyming game...</p>
     </div>
+
     <div class="rhyming-image">
       <img src="assets/images/rhymings.png" alt="Rhyming Illustration" />
     </div>
   </div>
 
-  <!-- Music -->
+  <!-- Audio Assets -->
   <audio id="background-music" loop muted>
-    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Music">&#128263;</button>
+
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <!-- JS Scripts -->
   <script src="js/rhyming.js"></script>
   <script src="js/musicControl.js"></script>
 </body>

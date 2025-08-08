@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     function renderWord(word) {
-      gameContainer.innerHTML = `<p class="prompt">Tap the word: <strong>${word}</strong></p>`;
+      const targetEl = document.getElementById("target-word");
+     targetEl.innerHTML = `Tap the word: <span class="target">${word}</span>`;
+    gameContainer.innerHTML = ""; // Clear previous content
       const options = shuffle([word, ...getWrongOptions(word)]);
   
       const buttonContainer = document.createElement("div");

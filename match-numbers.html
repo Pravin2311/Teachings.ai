@@ -4,88 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Number Match Game 1-10 - Teachings.AI</title>
-  <meta name="description" content="Fun drag-and-drop number to emoji matching game for kids aged 3-6. Match numbers 1 to 10 with emojis. Play now at Teachings.AI!">
-  <meta name="keywords" content="number matching, emoji numbers, kids learning game, preschool numbers, teachings.ai, learn 1 to 10">
-  <meta name="author" content="Teachings.AI">
-  <link rel="canonical" href="https://teachings.ai/number-match.html" />
+  <meta name="description" content="Fun drag-and-drop number to image matching game for kids aged 3-6." />
+  <meta name="keywords" content="number matching, drag and drop, educational game, teachings.ai, preschool" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
 
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f8ff;
       text-align: center;
+      background-color: #fffef5;
       padding: 20px;
+      touch-action: manipulation;
     }
-
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
-
-    .game-area {
+    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 30px;
     }
-
-    .number-boxes, .emoji-draggers {
+    .word-boxes, .image-draggers {
       display: flex;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 15px;
       justify-content: center;
+      margin-bottom: 20px;
     }
-
-    .number {
-      width: 100px;
-      height: 80px;
-      border: 2px dashed #2196f3;
+    .word-box {
+      width: 80px;
+      height: 60px;
+      border: 3px dashed #2196f3;
       border-radius: 10px;
-      line-height: 80px;
-      font-size: 20px;
-      background-color: #ffffff;
-      transition: background-color 0.3s;
-    }
-
-    .emoji {
-      font-size: 36px;
-      cursor: grab;
+      font-size: 22px;
+      background-color: #f0faff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
       padding: 10px;
-      background-color: #fff8dc;
-      border: 2px solid #ffa726;
-      border-radius: 10px;
+    }
+    .drag-img {
       width: 60px;
       height: 60px;
-      line-height: 40px;
-      touch-action: none;
+      cursor: grab;
+      border-radius: 8px;
+      border: 2px solid #ffc107;
+      background: white;
     }
-
-    .matched {
-      background-color: #c8e6c9;
-      border-color: #2e7d32;
-      color: #1b5e20;
+    .matched-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
     }
-
     #result {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
+      margin-top: 15px;
     }
-
-    #try-again-button {
-      margin-top: 20px;
+    button {
       padding: 10px 20px;
       font-size: 16px;
-      background-color: #ff9800;
+      background-color: #4caf50;
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 6px;
       cursor: pointer;
-      display: none;
+      margin-top: 10px;
     }
-
-    #try-again-button:hover {
-      background-color: #f57c00;
+    .back-button {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: #2196f3;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
-
     #music-toggle-button {
       position: absolute;
       top: 15px;
@@ -98,59 +97,48 @@
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
-    .back-button {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
-
   <button class="back-button" onclick="window.location.href='index.html'">Home</button>
   <button id="music-toggle-button" title="Toggle Music">🔇</button>
 
-  <h1>🎯 Match Numbers 1 - 10</h1>
+  <h1>Match the Numbers 1–10 🔢</h1>
 
-  <div class="game-area">
-    <div class="number-boxes" id="numberBoxes">
-      <div class="number" data-word="0">Zero</div>
-      <div class="number" data-word="1">One</div>
-      <div class="number" data-word="2">Two</div>
-      <div class="number" data-word="3">Three</div>
-      <div class="number" data-word="4">Four</div>
-      <div class="number" data-word="5">Five</div>
-      <div class="number" data-word="6">Six</div>
-      <div class="number" data-word="7">Seven</div>
-      <div class="number" data-word="8">Eight</div>
-      <div class="number" data-word="9">Nine</div>
-    </div>
-
-    <div class="emoji-draggers" id="emojiDraggers">
-      <img src="assets/images/numbers/0.png" class="emoji" id="0" alt="Zero">
-      <img src="assets/images/numbers/1.png" class="emoji" id="1" alt="One">
-      <img src="assets/images/numbers/2.png" class="emoji" id="2" alt="Two">
-      <img src="assets/images/numbers/3.png" class="emoji" id="3" alt="Three">
-      <img src="assets/images/numbers/4.png" class="emoji" id="4" alt="Four">
-      <img src="assets/images/numbers/5.png" class="emoji" id="5" alt="Five">
-      <img src="assets/images/numbers/6.png" class="emoji" id="6" alt="Six">
-      <img src="assets/images/numbers/7.png" class="emoji" id="7" alt="Seven">
-      <img src="assets/images/numbers/8.png" class="emoji" id="8" alt="Eight">
-      <img src="assets/images/numbers/9.png" class="emoji" id="9" alt="Nine">
-    </div>
-
-    <div id="result"></div>
-    <button id="try-again-button" onclick="resetGame()">🔁 Try Again</button>
+  <div class="container">
+  <div class="word-boxes" id="wordBoxes">
+    <div class="word" data-word="0">Zero</div>
+    <div class="word" data-word="1">One</div>
+    <div class="word" data-word="2">Two</div>
+    <div class="word" data-word="3">Three</div>
+    <div class="word" data-word="4">Four</div>
+    <div class="word" data-word="5">Five</div>
+    <div class="word" data-word="6">Six</div>
+    <div class="word" data-word="7">Seven</div>
+    <div class="word" data-word="8">Eight</div>
+    <div class="word" data-word="9">Nine</div>
   </div>
 
+  <div class="image-draggers" id="imageDraggers">
+    <img src="assets/images/numbers/0.png" class="draggable-img" id="0" alt="Zero" draggable="true">
+    <img src="assets/images/numbers/1.png" class="draggable-img" id="1" alt="One" draggable="true">
+    <img src="assets/images/numbers/2.png" class="draggable-img" id="2" alt="Two" draggable="true">
+    <img src="assets/images/numbers/3.png" class="draggable-img" id="3" alt="Three" draggable="true">
+    <img src="assets/images/numbers/4.png" class="draggable-img" id="4" alt="Four" draggable="true">
+    <img src="assets/images/numbers/5.png" class="draggable-img" id="5" alt="Five" draggable="true">
+    <img src="assets/images/numbers/6.png" class="draggable-img" id="6" alt="Six" draggable="true">
+    <img src="assets/images/numbers/7.png" class="draggable-img" id="7" alt="Seven" draggable="true">
+    <img src="assets/images/numbers/8.png" class="draggable-img" id="8" alt="Eight" draggable="true">
+    <img src="assets/images/numbers/9.png" class="draggable-img" id="9" alt="Nine" draggable="true">
+  </div>
+</div>
+
+  </div>
+
+  <div id="result"></div>
+  <button id="try-again-button" onclick="resetGame()">🔄 Try Again</button>
+
+  <!-- Audio -->
   <audio id="background-music" loop>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg">
   </audio>
@@ -158,129 +146,157 @@
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <script>
-  function resetGame() {
-    document.querySelectorAll('.number').forEach(box => {
-      box.classList.remove('matched');
-      const word = box.getAttribute('data-word');
-      box.innerHTML = toWord(word);
-    });
+    const wordBoxes = document.getElementById("wordBoxes");
+    const imageDraggers = document.getElementById("imageDraggers");
+    const resultEl = document.getElementById("result");
+    const backgroundMusic = document.getElementById("background-music");
+    const musicToggleBtn = document.getElementById("music-toggle-button");
 
-    document.querySelectorAll('.emoji').forEach(emoji => {
-      emoji.style.display = 'inline-block';
-    });
+    const numbers = [
+      { word: "one", image: "assets/images/numbers/1.png" },
+      { word: "two", image: "assets/images/numbers/2.png" },
+      { word: "three", image: "assets/images/numbers/3.png" },
+      { word: "four", image: "assets/images/numbers/4.png" },
+      { word: "five", image: "assets/images/numbers/5.png" },
+      { word: "six", image: "assets/images/numbers/6.png" },
+      { word: "seven", image: "assets/images/numbers/7.png" },
+      { word: "eight", image: "assets/images/numbers/8.png" },
+      { word: "nine", image: "assets/images/numbers/9.png" },
+      { word: "ten", image: "assets/images/numbers/10.png" }
+    ];
 
-    document.getElementById("result").innerText = "";
-    document.getElementById("try-again-button").style.display = "none";
-
-    shuffleElements("#numberBoxes");
-    shuffleElements("#emojiDraggers");
-  }
-
-  function toWord(num) {
-    const words = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
-    const n = parseInt(num);
-    return isNaN(n) ? "" : words[n];
-  }
-
-  function shuffleElements(selector) {
-    const container = document.querySelector(selector);
-    const elements = Array.from(container.children);
-    elements.sort(() => Math.random() - 0.5);
-    elements.forEach(el => container.appendChild(el));
-  }
-
-  window.onload = () => {
-    shuffleElements("#numberBoxes");
-    shuffleElements("#emojiDraggers");
-
-    // Desktop drag-and-drop
-    document.querySelectorAll('.emoji').forEach(el => {
-      el.setAttribute('draggable', true);
-
-      el.addEventListener('dragstart', e => {
-        e.dataTransfer.setData('text/plain', el.id);
-      });
-    });
-
-    document.querySelectorAll('.number').forEach(box => {
-      box.addEventListener('dragover', e => e.preventDefault());
-
-      box.addEventListener('drop', e => {
-        e.preventDefault();
-        const draggedId = e.dataTransfer.getData('text/plain');
-        const emojiEl = document.getElementById(draggedId);
-        if (!box.classList.contains('matched') && emojiEl.style.display !== 'none') {
-          const targetWord = box.getAttribute("data-word");
-          if (draggedId === targetWord) {
-            box.innerHTML += " ✅";
-            box.classList.add("matched");
-            emojiEl.style.display = "none";
-            document.getElementById("result").innerText = "Correct! 🎉";
-            document.getElementById("audio-correct").play();
-            if (document.querySelectorAll('.matched').length === 10) {
-              document.getElementById("result").innerText = "🎉 All Matched! Great Job!";
-              document.getElementById("try-again-button").style.display = "inline-block";
-            }
-          } else {
-            document.getElementById("result").innerText = "Try Again ❌";
-            document.getElementById("audio-wrong").play();
-          }
-        }
-      });
-    });
-
-    // Touch support for mobile
-    document.querySelectorAll('.emoji').forEach(el => {
-      let touchId = null;
-
-      el.addEventListener("touchstart", e => {
-        touchId = e.changedTouches[0].identifier;
-        el.classList.add("dragging");
-        e.preventDefault();
-      });
-
-      el.addEventListener("touchend", e => {
-        el.classList.remove("dragging");
-        const touch = [...e.changedTouches].find(t => t.identifier === touchId);
-        if (!touch) return;
-        const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
-        if (dropTarget && dropTarget.classList.contains("number") && !dropTarget.classList.contains("matched")) {
-          const draggedId = el.id;
-          const targetWord = dropTarget.getAttribute("data-word");
-          if (draggedId === targetWord) {
-            dropTarget.innerHTML += " ✅";
-            dropTarget.classList.add("matched");
-            el.style.display = "none";
-            document.getElementById("result").innerText = "Correct! 🎉";
-            document.getElementById("audio-correct").play();
-            if (document.querySelectorAll('.matched').length === 10) {
-              document.getElementById("result").innerText = "🎉 All Matched! Great Job!";
-              document.getElementById("try-again-button").style.display = "inline-block";
-            }
-          } else {
-            document.getElementById("result").innerText = "Try Again ❌";
-            document.getElementById("audio-wrong").play();
-          }
-        }
-        e.preventDefault();
-      });
-    });
-
-    // Music toggle
-    const musicBtn = document.getElementById("music-toggle-button");
-    const bgMusic = document.getElementById("background-music");
-
-    musicBtn.addEventListener("click", () => {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        musicBtn.innerHTML = "🔊";
+    musicToggleBtn.addEventListener("click", () => {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicToggleBtn.innerText = "🔊";
       } else {
-        bgMusic.pause();
-        musicBtn.innerHTML = "🔇";
+        backgroundMusic.pause();
+        musicToggleBtn.innerText = "🔇";
       }
     });
-  };
-</script>
 
+    function toWord(w) {
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }
+
+    function resetGame() {
+      wordBoxes.innerHTML = "";
+      imageDraggers.innerHTML = "";
+      resultEl.innerText = "";
+      document.getElementById("try-again-button").style.display = "none";
+
+      shuffleArray(numbers);
+
+      numbers.forEach(num => {
+        const box = document.createElement("div");
+        box.className = "word-box";
+        box.setAttribute("data-word", num.word);
+        box.innerHTML = toWord(num.word);
+        box.addEventListener("drop", drop);
+        box.addEventListener("dragover", e => e.preventDefault());
+        wordBoxes.appendChild(box);
+      });
+
+      shuffleArray(numbers);
+      numbers.forEach(num => {
+        const img = document.createElement("img");
+        img.className = "drag-img";
+        img.src = num.image;
+        img.id = num.word;
+        img.draggable = true;
+        img.alt = num.word;
+        img.addEventListener("dragstart", drag);
+        img.addEventListener("touchstart", touchStart, { passive: false });
+        imageDraggers.appendChild(img);
+      });
+    }
+
+    function drag(e) {
+      e.dataTransfer.setData("text", e.target.id);
+    }
+
+    function drop(e) {
+      e.preventDefault();
+      const draggedId = e.dataTransfer.getData("text");
+      const box = e.target.closest(".word-box");
+      const targetWord = box.getAttribute("data-word");
+      const emojiEl = document.getElementById(draggedId);
+
+      if (draggedId === targetWord && !box.classList.contains("matched")) {
+        box.innerHTML = `<img src="${emojiEl.src}" alt="${emojiEl.alt}" class="matched-img">`;
+        box.classList.add("matched");
+        emojiEl.style.display = "none";
+        document.getElementById("audio-correct").play();
+        resultEl.innerText = "Correct! 🎉";
+        if (document.querySelectorAll(".matched").length === 10) {
+          resultEl.innerText = "🎉 All Matched! Great Job!";
+          document.getElementById("try-again-button").style.display = "inline-block";
+        }
+      } else {
+        resultEl.innerText = "Try Again ❌";
+        document.getElementById("audio-wrong").play();
+      }
+    }
+
+    // Touch events for mobile
+    let draggedElement = null;
+    function touchStart(e) {
+      const el = e.target;
+      draggedElement = el.cloneNode(true);
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = "1000";
+      draggedElement.style.pointerEvents = "none";
+      document.body.appendChild(draggedElement);
+
+      function moveAt(touch) {
+        draggedElement.style.left = touch.pageX - 30 + "px";
+        draggedElement.style.top = touch.pageY - 30 + "px";
+      }
+
+      function onTouchMove(e) {
+        moveAt(e.touches[0]);
+      }
+
+      function onTouchEnd(e) {
+        const touch = e.changedTouches[0];
+        const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (dropTarget && dropTarget.classList.contains("word-box")) {
+          const targetWord = dropTarget.getAttribute("data-word");
+          const draggedId = el.id;
+          if (draggedId === targetWord && !dropTarget.classList.contains("matched")) {
+            dropTarget.innerHTML = `<img src="${el.src}" alt="${el.alt}" class="matched-img">`;
+            dropTarget.classList.add("matched");
+            el.style.display = "none";
+            document.getElementById("audio-correct").play();
+            resultEl.innerText = "Correct! 🎉";
+            if (document.querySelectorAll(".matched").length === 10) {
+              resultEl.innerText = "🎉 All Matched! Great Job!";
+              document.getElementById("try-again-button").style.display = "inline-block";
+            }
+          } else {
+            resultEl.innerText = "Try Again ❌";
+            document.getElementById("audio-wrong").play();
+          }
+        }
+        draggedElement.remove();
+        document.removeEventListener("touchmove", onTouchMove);
+        document.removeEventListener("touchend", onTouchEnd);
+      }
+
+      moveAt(e.touches[0]);
+      document.addEventListener("touchmove", onTouchMove);
+      document.addEventListener("touchend", onTouchEnd);
+      e.preventDefault();
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    window.onload = resetGame;
+  </script>
 </body>
 </html>

@@ -3,382 +3,376 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> Word Match - Teachings.AI</title>
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Fun and interactive Emoji to Word matching game for kids on Teachings.AI. Helps children improve vocabulary and word recognition." />
-  <meta name="keywords" content="emoji word match, kids learning game, vocabulary game, match emoji to word, Teachings.AI, preschool learning" />
-  <meta name="author" content="Teachings.AI" />
-  <link rel="canonical" href="https://teachings.ai/word-match.html" />
+  <title>Word Match Game - Teachings.AI</title>
+  <meta name="description" content="Fun drag-and-drop word match game using images for kids aged 3-6">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/grammar.css" />
 
-  <!-- Open Graph Meta (Facebook & LinkedIn) -->
-  <meta property="og:title" content="Emoji to Word Match - Teachings.AI" />
-  <meta property="og:description" content="Help kids learn words with this fun emoji-to-word matching game!" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://teachings.ai/word-match.html" />
-  <meta property="og:image" content="https://teachings.ai/assets/images/emoji-match-cover.png" />
-
-  <!-- Twitter Card Meta -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Emoji to Word Match - Teachings.AI" />
-  <meta name="twitter:description" content="Fun and educational emoji word match game for kids. Play now on Teachings.AI!" />
-  <meta name="twitter:image" content="https://teachings.ai/assets/images/emoji-match-cover.png" />
-  <meta name="twitter:site" content="@teachings_ai" />
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalGame",
-    "name": "Emoji to Word Match",
-    "description": "A fun educational drag-and-drop emoji to word matching game for kids on Teachings.AI.",
-    "url": "https://teachings.ai/word-match.html",
-    "image": "https://teachings.ai/assets/images/emoji-match-cover.png",
-    "author": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai"
-    },
-    "educationalLevel": ["preschool", "kindergarten"],
-    "inLanguage": "en"
+<style>
+  :root {
+    --primary-blue: #007bff; /* Declare the CSS variable you're using */
   }
-  </script>
-  
-  <style>
-    :root {
-      --primary-blue: #007bff;
-      --text-light: #ffffff;
-      --shadow-light: rgba(0, 0, 0, 0.1);
-      --shadow-medium: rgba(0, 0, 0, 0.2);
-    }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background-color: #f9f9f9;
-      padding: 20px;
-      position: relative;
-    }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f9ff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
 
-    h1 {
-      margin-bottom: 30px;
-    }
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
 
-    .game-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
+  .game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+  }
 
-    .word-boxes {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
+  .word-boxes, .image-draggers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .word {
+    width: 140px;
+    height: 100px;
+    border: 2px dashed var(--primary-blue);
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    text-align: center;
+    gap: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .word.matched {
+    background: #d4edda;
+    border-color: #28a745;
+  }
+
+  .word span {
+    font-size: 16px;
+    z-index: 1;
+  }
+
+  .word img.inserted-img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-top: 4px;
+    z-index: 1;
+  }
+
+  .draggable-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    cursor: grab;
+  }
+
+  #result {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  #try-again-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .draggable-img {
+      width: 60px;
+      height: 60px;
     }
 
     .word {
-      width: 120px;
-      height: 100px;
-      border: 2px dashed var(--primary-blue);
-      border-radius: 10px;
-      line-height: 100px;
-      font-size: 20px;
-      background-color: #ffffff;
-      transition: background-color 0.3s ease;
-    }
-
-    .emoji-draggers {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .emoji {
-      font-size: 40px;
-      cursor: grab;
-      padding: 10px;
-      background-color: #fff8dc;
-      border: 2px solid #ffc107;
-      border-radius: 10px;
-      width: 60px;
-      height: 60px;
-      line-height: 40px;
-    }
-
-    #result {
-      font-size: 24px;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
-    .matched {
-      background-color: #d4edda;
-      border-color: #28a745;
-      color: #155724;
-    }
-
-    .back-button {
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      background-color: var(--primary-blue); 
-      color: var(--text-light);
-      padding: 10px 20px; 
-      border: none;
-      border-radius: 10px; 
-      font-size: 1em; 
-      font-weight: 600; 
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-      z-index: 10;
-      box-shadow: 0 3px 6px var(--shadow-light);
-    }
-
-    .back-button:hover {
-      background-color: #5c8ae6; 
-      transform: translateY(-3px);
-      box-shadow: 0 5px 10px var(--shadow-medium);
-    }
-
-    .back-button:active {
-      transform: translateY(0);
-      box-shadow: 0 1px 3px var(--shadow-light);
-    }
-
-    #music-toggle-button {
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      background: #eeeeee;
-      border: none;
-      border-radius: 50%;
-      font-size: 20px;
-      padding: 10px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    #try-again-button {
-      margin-top: 20px;
-      padding: 12px 25px;
       font-size: 18px;
-      background-color: #ff9800;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      display: none;
+      width: 120px;
+      height: 90px;
+      padding: 10px;
     }
-    
-    #try-again-button:hover {
-      background-color: #f57c00;
+
+    .word img.inserted-img {
+      width: 30px;
+      height: 30px;
     }
-  </style>
+  }
+</style>
+
 </head>
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-    <button id="music-toggle-button" title="Toggle Music">&#128263;</button>
+    <h1>🧠 Word Match Game</h1>
+    <p>Tap and drag the correct image to the matching word!</p>
+  <button class="back-button" onclick="window.location.href='index.html'"> Home</button>
+    <div class="game-area">
+      <div class="word-boxes">
+        <div class="word" data-word="apple" ondrop="drop(event)" ondragover="allowDrop(event)">Apple</div>
+        <div class="word" data-word="dog" ondrop="drop(event)" ondragover="allowDrop(event)">Dog</div>
+        <div class="word" data-word="banana" ondrop="drop(event)" ondragover="allowDrop(event)">Banana</div>
+        <div class="word" data-word="carrot" ondrop="drop(event)" ondragover="allowDrop(event)">Carrot</div>
+        <div class="word" data-word="cat" ondrop="drop(event)" ondragover="allowDrop(event)">Cat</div>
+        <div class="word" data-word="sunflower" ondrop="drop(event)" ondragover="allowDrop(event)">Sunflower</div>
+      </div>
 
-    <h1>🎯 Match <br>Correct Word</h1>
+      <div class="image-draggers">
+        <img src="assets/images/fruits/apple.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="apple" alt="Apple">
+        <img src="assets/images/animals/dog.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="dog" alt="Dog">
+        <img src="assets/images/fruits/banana.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="banana" alt="Banana">
+        <img src="assets/images/vegetables/carrot.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="carrot" alt="Carrot">
+        <img src="assets/images/animals/cat.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="cat" alt="Cat">
+        <img src="assets/images/plants/sunflower.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="sunflower" alt="Sunflower">
+      </div>
 
-  <div class="game-area">
-  <div class="word-boxes">
-    <div class="word" data-word="apple" ondrop="drop(event)" ondragover="allowDrop(event)">Apple</div>
-    <div class="word" data-word="dog" ondrop="drop(event)" ondragover="allowDrop(event)">Dog</div>
-    <div class="word" data-word="banana" ondrop="drop(event)" ondragover="allowDrop(event)">Banana</div>
-    <div class="word" data-word="carrot" ondrop="drop(event)" ondragover="allowDrop(event)">Carrot</div>
-    <div class="word" data-word="cat" ondrop="drop(event)" ondragover="allowDrop(event)">Cat</div>
-    <div class="word" data-word="sunflower" ondrop="drop(event)" ondragover="allowDrop(event)">Sunflower</div>
-  </div>
+      <div id="result"></div>
+      <button id="try-again-button" onclick="resetGame()">🔁 Try Again</button>
+      
+    </div>
 
-  <div class="emoji-draggers">
-    <img src="assets/images/fruits/apple.png" class="emoji" draggable="true" ondragstart="drag(event)" id="apple" alt="Apple">
-    <img src="assets/images/animals/dog.png" class="emoji" draggable="true" ondragstart="drag(event)" id="dog" alt="Dog">
-    <img src="assets/images/fruits/banana.png" class="emoji" draggable="true" ondragstart="drag(event)" id="banana" alt="Banana">
-    <img src="assets/images/vegetables/carrot.png" class="emoji" draggable="true" ondragstart="drag(event)" id="carrot" alt="Carrot">
-    <img src="assets/images/animals/cat.png" class="emoji" draggable="true" ondragstart="drag(event)" id="cat" alt="Cat">
-    <img src="assets/images/plants/sunflower.png" class="emoji" draggable="true" ondragstart="drag(event)" id="sunflower" alt="Sunflower">
-  </div>
-</div>
-
-
-    <div id="result"></div>
-    <button id="try-again-button" onclick="resetGame()">🔁 Try Again</button>
-  </div>
-
-  <audio id="background-music" loop>
+    <!-- Music and Feedback Audio -->
+  <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
-
+  </div>
+<!-- Music Toggle Button (positioned absolutely by CSS) -->
+    
+    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+    <script src="js/musicControl.js"></script>
   <script>
-  let draggedElement = null;
+    
+    let draggedElement = null;
 
-  // Init for touch and mouse draggable emojis
-  function enableEmojiDrags() {
-    const emojis = document.querySelectorAll(".emoji");
-    emojis.forEach(emoji => {
-      emoji.addEventListener("touchstart", startTouchDrag);
-      emoji.addEventListener("dragstart", startMouseDrag); // fallback for desktop
-    });
+    function enableEmojiDrags() {
+      const emojis = document.querySelectorAll(".draggable-img");
+      emojis.forEach(emoji => {
+        emoji.addEventListener("touchstart", startTouchDrag, { passive: false });
+        emoji.addEventListener("dragstart", startMouseDrag);
+      });
+    }
+
+    function startTouchDrag(e) {
+      const original = e.target;
+      draggedElement = original.cloneNode(true);
+      draggedElement.id = original.id;
+      draggedElement.classList.add("dragging");
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = 1000;
+      draggedElement.style.width = original.offsetWidth + "px";
+      draggedElement.style.height = original.offsetHeight + "px";
+
+      document.body.appendChild(draggedElement);
+      moveAt(e.touches[0]);
+
+      original.style.opacity = 0.5;
+      document.body.style.overflow = "hidden";
+      e.preventDefault();
+
+      document.addEventListener("touchmove", onTouchMove, { passive: false });
+      document.addEventListener("touchend", onTouchEnd);
+    }
+
+    function moveAt(touch) {
+      const scrollX = window.scrollX || document.documentElement.scrollLeft;
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      draggedElement.style.left = touch.clientX + scrollX - 30 + "px";
+      draggedElement.style.top = touch.clientY + scrollY - 30 + "px";
+    }
+
+    function onTouchMove(e) {
+      e.preventDefault();
+      moveAt(e.touches[0]);
+    }
+function onTouchEnd(e) {
+  draggedElement.style.display = "none";
+  const touch = e.changedTouches[0];
+  let dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  while (dropTarget && !dropTarget.classList.contains("word")) {
+    dropTarget = dropTarget.parentElement;
   }
 
-  function startTouchDrag(e) {
-  const original = e.target;
-  draggedElement = original.cloneNode(true);
-  draggedElement.id = original.id; // ✅ Preserve ID
-  draggedElement.classList.add("dragging");
-  draggedElement.style.position = "absolute";
-  draggedElement.style.zIndex = 1000;
-  document.body.appendChild(draggedElement);
-  moveAt(e.touches[0]);
-  e.preventDefault();
+  draggedElement.style.display = "";
 
-  original.style.opacity = 0.5;
+  const draggedId = draggedElement.id;
+  const correctSound = document.getElementById("audio-correct");
+  const wrongSound = document.getElementById("audio-wrong");
 
-  document.addEventListener("touchmove", onTouchMove);
-  document.addEventListener("touchend", onTouchEnd);
+  if (
+    dropTarget &&
+    dropTarget.classList.contains("word") &&
+    dropTarget.dataset.word === draggedId &&
+    !dropTarget.classList.contains("matched")
+  ) {
+    dropTarget.classList.add("matched");
+
+    // Clear word content
+    dropTarget.innerHTML = "";
+
+    // Create new Image element manually
+    const img = new Image();
+    img.src = document.getElementById(draggedId).src;
+    img.alt = draggedId;
+    img.classList.add("inserted-img");
+    img.style.width = "50px";
+    img.style.height = "50px";
+
+    dropTarget.appendChild(img);
+
+    // Hide the original dragged image
+    const original = document.getElementById(draggedId);
+    original.style.display = "none";
+
+    document.getElementById("result").innerText = "Correct! 🎉";
+    correctSound.play();
+
+    if (document.querySelectorAll(".word.matched").length === 6) {
+      document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      document.getElementById("try-again-button").style.display = "inline-block";
+    }
+  } else {
+    document.getElementById("result").innerText = "Try Again ❌";
+    wrongSound.play();
+  }
+
+  // Cleanup
+  document.body.removeChild(draggedElement);
+  draggedElement = null;
+  document.querySelectorAll(".draggable-img").forEach(e => (e.style.opacity = 1));
+  document.body.style.overflow = "";
+  document.removeEventListener("touchmove", onTouchMove);
+  document.removeEventListener("touchend", onTouchEnd);
 }
 
-  function onTouchMove(e) {
-    if (draggedElement) moveAt(e.touches[0]);
-  }
 
-  function onTouchEnd(e) {
-    const dropTarget = document.elementFromPoint(
-      e.changedTouches[0].clientX,
-      e.changedTouches[0].clientY
-    );
-    const correctSound = document.getElementById("audio-correct");
-    const wrongSound = document.getElementById("audio-wrong");
-
-    const draggedId = draggedElement.id;
-
-    if (
-      dropTarget &&
-      dropTarget.classList.contains("word") &&
-      dropTarget.dataset.word === draggedId &&
-      !dropTarget.classList.contains("matched")
-    ) {
-      dropTarget.innerHTML += " ✅";
-      dropTarget.classList.add("matched");
-      document.getElementById(draggedId).style.display = "none";
-      correctSound.play();
-      document.getElementById("result").innerText = "Correct! 🎉";
-
-      if (document.querySelectorAll(".matched").length === 6) {
-        document.getElementById("result").innerText = "🎉 You matched all! Great job!";
-        document.getElementById("try-again-button").style.display = "inline-block";
-      }
-    } else {
-      document.getElementById("result").innerText = "Try Again ❌";
-      wrongSound.play();
+    function startMouseDrag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
     }
 
-    document.body.removeChild(draggedElement);
-    draggedElement = null;
-
-    document.querySelectorAll(".emoji").forEach(e => (e.style.opacity = 1));
-    document.removeEventListener("touchmove", onTouchMove);
-    document.removeEventListener("touchend", onTouchEnd);
-  }
-
-  function moveAt(touch) {
-    draggedElement.style.left = touch.pageX - 25 + "px";
-    draggedElement.style.top = touch.pageY - 25 + "px";
-  }
-
-  // Mouse drag fallback for desktop
-  function startMouseDrag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-  }
-
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-
-  function drop(ev) {
-    ev.preventDefault();
-    const draggedId = ev.dataTransfer.getData("text");
-    const target = ev.target;
-    const targetWord = target.getAttribute("data-word");
-
-    const correctSound = document.getElementById("audio-correct");
-    const wrongSound = document.getElementById("audio-wrong");
-
-    if (draggedId === targetWord && !target.classList.contains("matched")) {
-      target.innerHTML += " ✅";
-      target.classList.add("matched");
-      document.getElementById(draggedId).style.display = "none";
-      document.getElementById("result").innerText = "Correct! 🎉";
-      correctSound.play();
-
-      if (document.querySelectorAll(".matched").length === 6) {
-        document.getElementById("result").innerText = "🎉 You matched all! Great job!";
-        document.getElementById("try-again-button").style.display = "inline-block";
-      }
-    } else {
-      document.getElementById("result").innerText = "Try Again ❌";
-      wrongSound.play();
+    function allowDrop(ev) {
+      ev.preventDefault();
     }
-  }
 
-  function resetGame() {
-    document.querySelectorAll(".word").forEach(box => {
-      box.classList.remove("matched");
-      const word = box.getAttribute("data-word");
-      box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
+    function drop(ev) {
+  ev.preventDefault();
+  const draggedId = ev.dataTransfer.getData("text");
+  const target = ev.currentTarget;
+  const correctSound = document.getElementById("audio-correct");
+  const wrongSound = document.getElementById("audio-wrong");
+
+  if (
+    draggedId === target.dataset.word &&
+    !target.classList.contains("matched")
+  ) {
+    target.classList.add("matched");
+
+    const img = document.getElementById(draggedId).cloneNode(true);
+    img.classList.add("inserted-img");
+    img.style.width = "40px";
+    img.style.height = "40px";
+    img.style.marginLeft = "10px";
+
+    target.innerHTML = ""; // Clear old content safely
+
+    const label = document.createElement("span");
+    label.textContent = target.dataset.word.charAt(0).toUpperCase() + target.dataset.word.slice(1);
+
+    target.appendChild(label);
+    target.appendChild(img);
+
+    document.getElementById(draggedId).style.display = "none";
+    document.getElementById("result").innerText = "Correct! 🎉";
+    correctSound.play();
+
+    if (document.querySelectorAll(".matched").length === 6) {
+      document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      document.getElementById("try-again-button").style.display = "inline-block";
+    }
+  } else {
+    document.getElementById("result").innerText = "Try Again ❌";
+    wrongSound.play();
+  }
+}
+
+
+    function resetGame() {
+      document.querySelectorAll(".word").forEach(box => {
+        box.classList.remove("matched");
+        const word = box.getAttribute("data-word");
+        box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
+      });
+
+      document.querySelectorAll(".draggable-img").forEach(img => {
+        img.style.display = "";
+        img.style.opacity = 1;
+      });
+
+      document.getElementById("result").innerText = "";
+      document.getElementById("try-again-button").style.display = "none";
+
+      shuffleElements(".word-boxes");
+      shuffleElements(".image-draggers");
+
+      enableEmojiDrags();
+      const cloned = document.querySelector(".dragging");
+      if (cloned) cloned.remove();
+    }
+
+    function shuffleElements(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      const elements = Array.from(container.children);
+      for (let i = elements.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [elements[i], elements[j]] = [elements[j], elements[i]];
+      }
+      elements.forEach(el => container.appendChild(el));
+    }
+
+    // Music toggle
+    const musicBtn = document.getElementById("music-toggle-button");
+    const bgMusic = document.getElementById("background-music");
+
+    musicBtn.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerHTML = "🔊";
+      } else {
+        bgMusic.pause();
+        musicBtn.innerHTML = "🔇";
+      }
     });
 
-    document.querySelectorAll(".emoji").forEach(emoji => {
-      emoji.style.display = "inline-block";
-      emoji.style.opacity = 1;
-    });
-
-    document.getElementById("result").innerText = "";
-    document.getElementById("try-again-button").style.display = "none";
-
-    shuffleElements(".word-boxes");
-    shuffleElements(".emoji-draggers");
-
-    enableEmojiDrags(); // rebind after shuffle
-  }
-
-  function shuffleElements(containerSelector) {
-    const container = document.querySelector(containerSelector);
-    const elements = Array.from(container.children);
-    for (let i = elements.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [elements[i], elements[j]] = [elements[j], elements[i]];
-    }
-    elements.forEach(el => container.appendChild(el));
-  }
-
-  // Music toggle
-  const musicBtn = document.getElementById("music-toggle-button");
-  const bgMusic = document.getElementById("background-music");
-
-  musicBtn.addEventListener("click", () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      musicBtn.innerHTML = "🔊";
-    } else {
-      bgMusic.pause();
-      musicBtn.innerHTML = "🔇";
-    }
-  });
-
-  // Initialize on load
-  window.onload = () => {
-    shuffleElements(".word-boxes");
-    shuffleElements(".emoji-draggers");
-    enableEmojiDrags();
-  };
-</script>
-
+    window.onload = () => {
+      shuffleElements(".word-boxes");
+      shuffleElements(".image-draggers");
+      enableEmojiDrags();
+    };
+  </script>
 </body>
 </html>

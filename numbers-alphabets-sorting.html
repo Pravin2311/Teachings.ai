@@ -11,10 +11,45 @@
   touch-action: none;
   overflow: hidden;
   }
+  @media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .word {
+    font-size: 1.2rem;
+    margin: 8px;
+    padding: 8px 12px;
+  }
+
+  .drop-zones {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .drop-zone {
+    min-height: 150px;
+    font-size: 1.3rem;
+  }
+
+  .tip {
+    font-size: 1rem;
+  }
+
+  #submit-btn {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+}
+
  </style>
 
-  <meta name="description" content="Fun interactive shorting game to learn Alphabets and Numbers. Part of Teachings.AI learning modules for kids.">
-  <meta name="keywords" content="Shorting game, Numbers for kids, Alphabets for kids, parts of speech, teachings.ai Sorting">
+  <meta name="description" content="Fun interactive sorting game to learn Alphabets and Numbers.">
+  <meta name="keywords" content="Sorting game, Numbers for kids, Alphabets for kids, parts of speech, teachings.ai Sorting">
   <meta name="author" content="Teachings AI">
   <meta name="robots" content="index, follow">
 
@@ -56,9 +91,9 @@
 </head>
 
 <body>
-  <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-    <h1>Sorting Fun: Numbers & Alphabets</h1>
+  <div class="container" role="main">
+    <button class="back-button" onclick="window.location.href='index.html'"> Home</button>
+    <h1>Sorting Fun: <br> Numbers & Alphabets</h1>
     <div class="game-area">
       <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Numbers or Alphabets!</p>
       <div class="word-bank" id="word-container"></div>
@@ -170,6 +205,7 @@
         touchedEl = e.target;
         touchedEl.style.position = "absolute";
         touchedEl.style.zIndex = 1000;
+        document.body.classList.add("dragging");
       }
 
       function touchMoveHandler(e) {
@@ -181,6 +217,7 @@
 
       function touchEndHandler(e) {
         if (!touchedEl) return;
+        document.body.classList.remove("dragging")
         const dropZones = document.querySelectorAll(".drop-zone");
         let dropped = false;
         dropZones.forEach(zone => {

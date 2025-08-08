@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Service Institutions - Kids Learning App</title>
-    <link rel="stylesheet" href="css/style.css"> 
-    <link rel="stylesheet" href="css/publicservice.css"> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Service Institutions - Kids Learning App</title>
 
-    <!-- SEO Meta Tags -->
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css"> 
+  <link rel="stylesheet" href="css/publicservice.css"> 
+
+  <!-- SEO Meta Tags -->
   <meta name="description" content="Teachings.AI: Interactive learning about public service institutions like police, fire station, and hospital for kids.">
   <meta name="keywords" content="public service institutions, kids learning, education app, fire station, police, hospital, Teachings.AI">
   <meta name="author" content="Teachings.AI">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://teachings.ai/publicservice.html" />
 
   <!-- Open Graph Meta -->
   <meta property="og:title" content="Public Service Institutions - Teachings.AI">
@@ -30,52 +33,57 @@
     "description": "Interactive and visual learning experience for children to understand public service institutions like police, fire department, and hospitals.",
     "applicationCategory": "Education",
     "operatingSystem": "All",
-    "creator": {
+    "publisher": {
       "@type": "Organization",
       "name": "Teachings.AI",
-      "url": "https://teachings.ai"
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
     }
   }
   </script>
 
-    <!-- Google Analytics 4 (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XVYMNTZLQJ');
-    </script>
-    <!-- End Google Analytics -->
-
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
 </head>
 <body>
-    <div class="container">
-        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-        <h1>Learn Public Services</h1>
-        <div class="publicservice-display">
-            <p id="current-publicservice-name"></p>
-            <div id="publicservice-image-container">
-                <canvas id="drawing-canvas"></canvas>
-                <!-- The image will be dynamically added here by JavaScript -->
-            </div>
-        </div>
-        <div class="navigation-buttons">
-            <button id="prev-publicservice">Previous</button>
-            <button id="next-publicservice">Next</button>
-        </div>
+  <div class="container" role="main">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Learn Public Services</h1>
+
+    <div class="publicservice-display">
+      <p id="current-publicservice-name" aria-live="polite"></p>
+      <div id="publicservice-image-container">
+        <canvas id="drawing-canvas" aria-label="Drawing area for public service image"></canvas>
+        <!-- Image will be dynamically added via JS -->
+      </div>
     </div>
-    
-    <!-- Music Audio Element -->
-    <audio id="background-music" loop muted>
-        <source src="assets/audio/background_music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
-    <!-- Music Toggle Button (positioned absolutely by CSS) -->
-    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+    <div class="navigation-buttons">
+      <button id="prev-publicservice" aria-label="Previous public service">Previous</button>
+      <button id="next-publicservice" aria-label="Next public service">Next</button>
+    </div>
+  </div>
 
-    <script src="js/publicservice.js"></script>
-    <script src="js/musicControl.js"></script> 
+  <!-- Background Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">&#128263;</button>
+
+  <!-- Scripts -->
+  <script src="js/publicservice.js"></script>
+  <script src="js/musicControl.js"></script>
 </body>
 </html>

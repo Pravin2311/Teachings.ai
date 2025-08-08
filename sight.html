@@ -3,31 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sight Words - Teachings.AI</title>
+  <title>Sight Words Game - Teachings.AI</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://teachings.ai/sight.html" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/sight.css" />
 
-    <!-- Basic SEO -->
+  <!-- Basic SEO -->
   <meta name="description" content="Teachings.AI: Fun Sight Words game for kids to improve early reading skills." />
   <meta name="keywords" content="sight words, kids learning, reading games, early literacy, teachings.ai, kindergarten, preschool, fun learning games" />
   <meta name="author" content="Teachings.AI" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Sight Words Game - Teachings.AI" />
   <meta property="og:description" content="Interactive sight word game to help children recognize and read common words." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/sight.html" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sight Words Game - Teachings.AI" />
   <meta name="twitter:description" content="Interactive sight word game to help children recognize and read common words." />
   <meta name="twitter:image" content="https://teachings.ai/assets/images/app_logo.png" />
-  <meta name="twitter:site" content="@teachings_ai" />
+  <meta name="twitter:site" content="@TeachingsAI" />
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,16 +60,20 @@
   </script>
 </head>
 <body>
-  <div class="container">
+  <div class="container" role="main">
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
     <h1>Sight Words</h1>
     <p id="instruction">Tap the correct word to match what you see!</p>
+    <p id="target-word"></p>
+    
     <div id="game-container">
       <p class="loading">Loading sight words game...</p>
     </div>
+
     <div class="rhyming-image">
-      <img src="assets/images/sightwords.png" alt="Sight words Illustration" />
+      <img src="assets/images/sightwords.png" alt="Sight words illustration for kids" />
     </div>
+
     <div class="explanation">
       <h3>Why Sight Words?</h3>
       <p>These words often appear in early readers and may not follow typical phonics rules. Recognizing them builds reading confidence and speed!</p>
@@ -76,11 +85,13 @@
     <source src="assets/audio/background_music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
   <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+
   <audio id="correct-sound" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="wrong-sound" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
-  <!-- Scripts -->
+  <!-- JS -->
   <script src="js/sight.js"></script>
   <script src="js/musicControl.js"></script>
 </body>

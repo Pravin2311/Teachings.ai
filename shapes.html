@@ -15,23 +15,32 @@
   <meta property="og:description" content="Interactive learning game to teach kids about basic shapes like circle, square, and triangle." />
   <meta property="og:image" content="https://teachings.ai/assets/cover/shapes-cover.png" />
   <meta property="og:url" content="https://teachings.ai/shapes.html" />
+  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Basic Shapes - Teachings.AI" />
+  <meta name="twitter:description" content="Fun shape matching games for kids to learn basic shapes interactively." />
+  <meta name="twitter:image" content="https://teachings.ai/assets/cover/shapes-cover.png" />
 
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/shapes.css" />
+
+  <!-- Favicon (optional but recommended) -->
+  <link rel="icon" href="https://teachings.ai/favicon.ico" type="image/x-icon" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
 </head>
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Go back to home">Back to Home</button>
+    
     <h1>Basic Shapes</h1>
     <p id="instruction">Look at the shape and click the correct name!</p>
 
@@ -39,25 +48,27 @@
       <p class="loading">Loading Shape Game...</p>
     </div>
 
-    <div id="feedback"></div>
+    <div id="feedback" aria-live="polite"></div>
 
-    <div class="explanation">
+    <section class="explanation">
       <h3>Learn About Shapes</h3>
       <p>Shapes are all around us. Circles, squares, and triangles are basic shapes you see every day. Learn them by matching images to names.</p>
-    </div>
+    </section>
   </div>
 
   <!-- Background Music -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">&#128263;</button>
 
   <!-- Feedback Audio -->
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
-  <script src="js/shapes.js"></script>
-  <script src="js/musicControl.js"></script>
+  <!-- Scripts -->
+  <script src="js/shapes.js" defer></script>
+  <script src="js/musicControl.js" defer></script>
 </body>
 </html>

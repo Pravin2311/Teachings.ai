@@ -55,20 +55,20 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" role="main">
         <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
         <h1>Simple Math</h1>
         <div class="math-problem-area">
             <p id="math-problem-text"></p>
             <input type="number" id="answer-input" placeholder="Your Answer">
             <div class="math-controls">
-                <button id="check-answer-button">Check</button>
-                <button id="new-problem-button">New Problem</button>
+                <button id="check-answer-button" aria-label="Check your answer">Check</button>
+                <button id="new-problem-button" aria-label="Generate new problem">New Problem</button>
             </div>
             <p id="feedback-message"></p>
         </div>
       <div class="rhyming-image">
-      <img src="assets/images/simple-math.png" alt="Simple math Illustration" />
+      <img src="assets/images/simple-math.png" alt="Simple math illustration showing numbers and symbols for kids" />
     </div>
     </div>
     
