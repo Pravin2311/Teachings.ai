@@ -279,8 +279,13 @@ function setupDragAndDrop() {
       e.dataTransfer.setData("text/plain", e.target.dataset.index);
     });
 
-    el.addEventListener("touchstart", e => el.classList.add("dragging"));
+    el.addEventListener("touchstart", e => {
+    e.preventDefault();
+    el.classList.add("dragging");
+    }, { passive: false });
+    
     el.addEventListener("touchmove", e => {
+      e.preventDefault();
       const touch = e.touches[0];
       const dragging = document.querySelector(".dragging");
       if (dragging) {
@@ -288,7 +293,8 @@ function setupDragAndDrop() {
         dragging.style.left = `${touch.pageX - 30}px`;
         dragging.style.top = `${touch.pageY - 30}px`;
       }
-    });
+      }, { passive: false });
+    
     el.addEventListener("touchend", e => {
       const dragging = document.querySelector(".dragging");
       dragging.classList.remove("dragging");
