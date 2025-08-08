@@ -167,38 +167,42 @@
   }
 
   function attachDragListeners() {
-    document.querySelectorAll(".word").forEach(el => {
-      el.setAttribute("draggable", true);
-      el.addEventListener("dragstart", dragStart);
-      el.addEventListener("dragend", dragEnd);
+  document.querySelectorAll(".word").forEach(el => {
+    el.setAttribute("draggable", true);
+    el.addEventListener("dragstart", dragStart);
+    el.addEventListener("dragend", dragEnd);
 
-      // Touch support
-      el.addEventListener("touchstart", (e) => {
-        const touch = e.touches[0];
-        el.classList.add("dragging");
-        el.style.position = "absolute";
-        el.style.zIndex = 1000;
-        moveAt(touch.pageX, touch.pageY);
+    // Touch support with scroll prevention
+    el.addEventListener("touchstart", function (e) {
+      e.preventDefault(); // prevent scroll
+      const touch = e.touches[0];
+      el.classList.add("dragging");
+      el.style.position = "absolute";
+      el.style.zIndex = 1000;
+      el.style.touchAction = "none";
+
+      moveAt(touch.pageX, touch.pageY);
 
         function moveAt(x, y) {
-          el.style.left = x - el.offsetWidth / 2 + "px";
-          el.style.top = y - el.offsetHeight / 2 + "px";
-        }
+        el.style.left = x - el.offsetWidth / 2 + "px";
+        el.style.top = y - el.offsetHeight / 2 + "px";
+      }
 
         function onTouchMove(e) {
-          const touch = e.touches[0];
-          moveAt(touch.pageX, touch.pageY);
-        }
+        e.preventDefault(); // prevent scroll
+        const touch = e.touches[0];
+        moveAt(touch.pageX, touch.pageY);
+      }
 
-        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
 
         el.addEventListener("touchend", function onTouchEnd(e) {
-          document.removeEventListener("touchmove", onTouchMove);
-          el.classList.remove("dragging");
-          el.style.position = "";
-          el.style.zIndex = "";
-          el.style.left = "";
-          el.style.top = "";
+        document.removeEventListener("touchmove", onTouchMove);
+        el.classList.remove("dragging");
+        el.style.position = "";
+        el.style.zIndex = "";
+        el.style.left = "";
+        el.style.top = "";
 
           // Detect the element user dropped on
           const touch = e.changedTouches[0];
@@ -210,8 +214,8 @@
             }
           }
 
-          el.removeEventListener("touchend", onTouchEnd);
-        });
+          el.removeEventListener("touchend", onTouchEnd, { once: true, passive: false });
+        }); 
       });
     });
   }
