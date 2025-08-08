@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sorting: Numbers and Alphabets - Teachings.AI</title>
+  <title>Number and Alphabet Sorting - Teachings.AI</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/grammar.css" />
   <style>
@@ -11,75 +11,78 @@
   touch-action: none;
   overflow: hidden;
   }
-  @media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
   .word {
-    font-size: 1.2rem;
-    margin: 8px;
-    padding: 8px 12px;
-  }
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 10px;
+  background-color: #f0f0f0;
+  border: 2px solid #444;
+  border-radius: 10px;
+  cursor: grab;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
 
-  .drop-zones {
-    flex-direction: column;
-    gap: 20px;
-  }
+.word.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
 
-  .drop-zone {
-    min-height: 150px;
-    font-size: 1.3rem;
-  }
+.word.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
 
-  .tip {
-    font-size: 1rem;
-  }
+#submit-btn, #try-again-btn {
+  margin: 20px 10px;
+  padding: 10px 25px;
+  font-size: 18px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-  #submit-btn {
-    width: 100%;
-    font-size: 1.2rem;
-  }
+.drop-zone {
+  border: 2px dashed #aaa;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 100px;
+  margin: 10px;
+  background-color: #f9f9f9;
 }
 
  </style>
 
-  <meta name="description" content="Fun interactive sorting game to learn Alphabets and Numbers.">
-  <meta name="keywords" content="Sorting game, Numbers for kids, Alphabets for kids, parts of speech, teachings.ai Sorting">
-  <meta name="author" content="Teachings AI">
-  <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Sorting Fun: Numbers & Alphabets - Teachings.AI" />
-  <meta property="og:description" content="Fun drag-and-drop Sorting activity for early learners to practice Numbers and Alphabets. From Teachings.AI." />
-  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
-  <meta property="og:url" content="https://teachings.ai/numbers-alphabets-sorting.html" />
-  <meta property="og:type" content="website" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalAudience",
-    "educationalRole": "student",
-    "name": "Sorting: Numbers and Alphabets - Teachings.AI",
-    "description": "Interactive Sorting activity to sort Numbers and Alphabets for preschool and grade 1 students.",
-    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-    "inLanguage": "en",
-    "url": "https://teachings.ai/numbers-alphabets-sorting.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://teachings.ai/assets/images/app_logo.png"
-      }
+<meta name="description" content="Fun drag-and-drop game to sort Fruits and Vegetables. Part of Teachings.AI interactive modules for kids.">
+<meta name="keywords" content="Sorting game, Fruits for kids, Vegetables for kids, teachings.ai Sorting, fun learning">
+<meta property="og:title" content="Fruits & Vegetables Sorting - Teachings.AI" />
+<meta property="og:description" content="Drag and drop game for sorting Fruits and Vegetables. Great for early learners. From Teachings.AI." />
+<meta property="og:url" content="https://teachings.ai/fruits-vegetables-sorting.html" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalAudience",
+  "educationalRole": "student",
+  "name": "Fruits & Vegetables Sorting - Teachings.AI",
+  "description": "Drag and drop sorting activity to separate Fruits and Vegetables for preschool and grade 1 students.",
+  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+  "inLanguage": "en",
+  "url": "https://teachings.ai/fruits-vegetables-sorting.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Teachings.AI",
+    "url": "https://teachings.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://teachings.ai/assets/images/app_logo.png"
     }
   }
-  </script>
+}
+</script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
@@ -92,32 +95,35 @@
 
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='index.html'"> Home</button>
-    <h1>Sorting Fun: <br> Numbers & Alphabets</h1>
-    <div class="game-area">
-      <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Numbers or Alphabets!</p>
-      <div class="word-bank" id="word-container"></div>
-      <div class="drop-zones">
-        <div class="drop-zone" id="noun-zone" data-type="Numbers"><h2>Numbers</h2></div>
-        <div class="drop-zone" id="verb-zone" data-type="Alphabets"><h2>Alphabets</h2></div>
-      </div>
-      <p id="feedback-message"></p>
-      <button id="submit-btn">Submit</button>
+  <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+  <h2>Sorting: <br> Number & Alphabet</h2>
+  <div class="game-area">
+    <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Number or Alphabet!</p>
+    <div class="word-bank" id="word-container"></div>
+    <div class="drop-zones">
+      <div class="drop-zone" id="Numbers-zone" data-type="Numbers"><h2>Numbers</h2></div>
+      <div class="drop-zone" id="Alphabets-zone" data-type="Alphabets"><h2>Alphabets</h2></div>
     </div>
+    <p id="feedback-message"></p>
+    <button id="submit-btn">Submit</button>
+    <button id="try-again-btn" style="display:none;">🔄 Try Again</button>
   </div>
+</div>
+
 
   <!-- Music and Feedback Audio -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute">🔊</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
   <!-- Scripts -->
   <script src="js/musicControl.js"></script>
   <script>
-    const words = [
+  const wordSets = [
+    [
       { word: "A", type: "Alphabets" },
       { word: "7", type: "Numbers" },
       { word: "B", type: "Alphabets" },
@@ -130,124 +136,165 @@
       { word: "9", type: "Numbers" },
       { word: "F", type: "Alphabets" },
       { word: "2", type: "Numbers" },
-    ];
+    ],
+    [
+      { word: "G", type: "Alphabets" },
+      { word: "1", type: "Numbers" },
+      { word: "H", type: "Alphabets" },
+      { word: "4", type: "Numbers" },
+      { word: "I", type: "Alphabets" },
+      { word: "6", type: "Numbers" },
+      { word: "J", type: "Alphabets" },
+      { word: "0", type: "Numbers" },
+      { word: "K", type: "Alphabets" },
+      { word: "10", type: "Numbers" },
+      { word: "L", type: "Alphabets" },
+      { word: "11", type: "Numbers" }
+    ]
+  ];
 
-    function shuffle(array) {
-      return array.sort(() => Math.random() - 0.5);
-    }
+  let currentSetIndex = 0;
 
-    window.onload = function () {
-      const shuffled = shuffle([...words]);
-      const wordContainer = document.getElementById("word-container");
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
 
-      shuffled.forEach(({ word }, index) => {
-        const span = document.createElement("span");
-        span.innerText = word;
-        span.className = "word";
-        span.setAttribute("draggable", true);
-        span.setAttribute("data-word", word);
-        span.setAttribute("data-index", index);
+  function renderWords() {
+    const wordContainer = document.getElementById("word-container");
+    wordContainer.innerHTML = '';
+    const shuffled = shuffle([...wordSets[currentSetIndex]]);
+    shuffled.forEach(({ word }, index) => {
+      const span = document.createElement("span");
+      span.innerText = word;
+      span.className = "word";
+      span.setAttribute("data-word", word);
+      span.setAttribute("data-index", index);
+      wordContainer.appendChild(span);
+    });
 
-        // Touch support
-        span.addEventListener("touchstart", touchStartHandler);
-        span.addEventListener("touchmove", touchMoveHandler);
-        span.addEventListener("touchend", touchEndHandler);
+    attachDragListeners();
+  }
 
-        wordContainer.appendChild(span);
-      });
+  function attachDragListeners() {
+    document.querySelectorAll(".word").forEach(el => {
+      el.setAttribute("draggable", true);
+      el.addEventListener("dragstart", dragStart);
+      el.addEventListener("dragend", dragEnd);
 
-      document.querySelectorAll(".word").forEach(el => {
-        el.addEventListener("dragstart", e => {
-          e.dataTransfer.setData("text/plain", e.target.dataset.index);
-        });
-      });
-
-      document.querySelectorAll(".drop-zone").forEach(zone => {
-        zone.addEventListener("dragover", e => e.preventDefault());
-        zone.addEventListener("drop", e => {
-          e.preventDefault();
-          const index = e.dataTransfer.getData("text/plain");
-          const item = document.querySelector(`[data-index='${index}']`);
-          if (item && !zone.contains(item)) {
-            zone.appendChild(item);
-          }
-        });
-      });
-
-      document.getElementById("submit-btn").addEventListener("click", () => {
-        let score = 0;
-
-        document.querySelectorAll(".drop-zone").forEach(zone => {
-          const zoneType = zone.getAttribute("data-type");
-          zone.querySelectorAll(".word").forEach(wordEl => {
-            const wordText = wordEl.innerText;
-            const correct = words.find(w => w.word === wordText);
-            if (correct && correct.type === zoneType) {
-              wordEl.classList.remove("incorrect");
-              wordEl.classList.add("correct");
-              score++;
-              document.getElementById("audio-correct").play();
-            } else {
-              wordEl.classList.remove("correct");
-              wordEl.classList.add("incorrect");
-              document.getElementById("audio-wrong").play();
-            }
-          });
-        });
-
-        document.getElementById("feedback-message").innerText =
-          `✅ You got ${score} out of ${words.length} correct!`;
-      });
-
-      // Touch logic handlers
-      let touchedEl = null;
-      function touchStartHandler(e) {
-        touchedEl = e.target;
-        touchedEl.style.position = "absolute";
-        touchedEl.style.zIndex = 1000;
-        document.body.classList.add("dragging");
-      }
-
-      function touchMoveHandler(e) {
-        if (!touchedEl) return;
+      // Touch support
+      el.addEventListener("touchstart", (e) => {
         const touch = e.touches[0];
-        touchedEl.style.left = `${touch.pageX - 25}px`;
-        touchedEl.style.top = `${touch.pageY - 25}px`;
-      }
+        el.classList.add("dragging");
+        el.style.position = "absolute";
+        el.style.zIndex = 1000;
+        moveAt(touch.pageX, touch.pageY);
 
-      function touchEndHandler(e) {
-        if (!touchedEl) return;
-        document.body.classList.remove("dragging")
-        const dropZones = document.querySelectorAll(".drop-zone");
-        let dropped = false;
-        dropZones.forEach(zone => {
-          const rect = zone.getBoundingClientRect();
-          const touch = e.changedTouches[0];
-          if (
-            touch.clientX >= rect.left &&
-            touch.clientX <= rect.right &&
-            touch.clientY >= rect.top &&
-            touch.clientY <= rect.bottom
-          ) {
-            zone.appendChild(touchedEl);
-            touchedEl.style.position = "";
-            touchedEl.style.zIndex = "";
-            touchedEl.style.left = "";
-            touchedEl.style.top = "";
-            dropped = true;
-          }
-        });
-
-        if (!dropped) {
-          touchedEl.style.position = "";
-          touchedEl.style.zIndex = "";
-          touchedEl.style.left = "";
-          touchedEl.style.top = "";
+        function moveAt(x, y) {
+          el.style.left = x - el.offsetWidth / 2 + "px";
+          el.style.top = y - el.offsetHeight / 2 + "px";
         }
 
-        touchedEl = null;
-      }
-    };
-  </script>
+        function onTouchMove(e) {
+          const touch = e.touches[0];
+          moveAt(touch.pageX, touch.pageY);
+        }
+
+        document.addEventListener("touchmove", onTouchMove);
+
+        el.addEventListener("touchend", function onTouchEnd(e) {
+          document.removeEventListener("touchmove", onTouchMove);
+          el.classList.remove("dragging");
+          el.style.position = "";
+          el.style.zIndex = "";
+          el.style.left = "";
+          el.style.top = "";
+
+          // Detect the element user dropped on
+          const touch = e.changedTouches[0];
+          const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+          if (dropTarget) {
+            const dropZone = dropTarget.closest(".drop-zone");
+            if (dropZone && !dropZone.contains(el)) {
+              dropZone.appendChild(el);
+            }
+          }
+
+          el.removeEventListener("touchend", onTouchEnd);
+        });
+      });
+    });
+  }
+
+  function dragStart(e) {
+    e.dataTransfer?.setData("text/plain", e.target.dataset.index);
+    e.target.classList.add("dragging");
+  }
+
+  function dragEnd(e) {
+    e.target.classList.remove("dragging");
+  }
+
+  function checkAnswers() {
+    let score = 0;
+    const currentWords = wordSets[currentSetIndex];
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      const zoneType = zone.getAttribute("data-type");
+      zone.querySelectorAll(".word").forEach(wordEl => {
+        const wordText = wordEl.innerText;
+        const correct = currentWords.find(w => w.word === wordText);
+        if (correct && correct.type === zoneType) {
+          wordEl.classList.remove("incorrect");
+          wordEl.classList.add("correct");
+          document.getElementById("audio-correct").play();
+          score++;
+        } else {
+          wordEl.classList.remove("correct");
+          wordEl.classList.add("incorrect");
+          document.getElementById("audio-wrong").play();
+        }
+      });
+    });
+
+    document.getElementById("feedback-message").innerText =
+      `✅ You got ${score} out of 8 correct!`;
+
+    document.getElementById("submit-btn").style.display = "none";
+    document.getElementById("try-again-btn").style.display = "inline-block";
+  }
+
+  function resetGame() {
+    document.getElementById("feedback-message").innerText = "";
+    document.getElementById("submit-btn").style.display = "inline-block";
+    document.getElementById("try-again-btn").style.display = "none";
+
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      zone.innerHTML = `<h2>${zone.getAttribute("data-type")}</h2>`;
+    });
+
+    currentSetIndex = (currentSetIndex + 1) % wordSets.length;
+    renderWords();
+  }
+
+  window.onload = function () {
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      zone.addEventListener("dragover", e => e.preventDefault());
+      zone.addEventListener("drop", e => {
+        e.preventDefault();
+        const index = e.dataTransfer.getData("text/plain");
+        const item = document.querySelector(`[data-index='${index}']`);
+        if (item && !zone.contains(item)) {
+          zone.appendChild(item);
+        }
+      });
+    });
+
+    document.getElementById("submit-btn").addEventListener("click", checkAnswers);
+    document.getElementById("try-again-btn").addEventListener("click", resetGame);
+
+    renderWords();
+  };
+</script>
+
+
 </body>
 </html>

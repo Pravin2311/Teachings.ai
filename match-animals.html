@@ -3,236 +3,376 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Match the Animals 🐾 | Teachings.AI</title>
-  <meta name="description" content="Fun animal emoji matching game for kids. Match 🐶 🐷 🦁 to their names like Dog, Pig, Lion." />
-  <meta name="keywords" content="animal matching, emoji game, kids learning, teachings.ai, preschool game" />
-  <meta name="author" content="Teachings.AI" />
-  <meta name="robots" content="index, follow" />
+  <title>Animals Match Game - Teachings.AI</title>
+  <meta name="description" content="Fun drag-and-drop word match game using images for kids aged 3-6">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/grammar.css" />
 
-  <!-- JSON-LD SEO Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOccupationalProgram",
-    "name": "Animal Emoji Match - Teachings.AI",
-    "description": "Interactive drag-and-drop game for preschoolers to match animals to names.",
-    "educationalLevel": "Preschool",
-    "educationalUse": "Game",
-    "provider": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai"
+<style>
+  :root {
+    --primary-blue: #007bff; /* Declare the CSS variable you're using */
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f9ff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .word-boxes, .image-draggers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .word {
+    width: 140px;
+    height: 100px;
+    border: 2px dashed var(--primary-blue);
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    text-align: center;
+    gap: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .word.matched {
+    background: #d4edda;
+    border-color: #28a745;
+  }
+
+  .word span {
+    font-size: 16px;
+    z-index: 1;
+  }
+
+  .word img.inserted-img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-top: 4px;
+    z-index: 1;
+  }
+
+  .draggable-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    cursor: grab;
+  }
+
+  #result {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  #try-again-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .draggable-img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .word {
+      font-size: 18px;
+      width: 120px;
+      height: 90px;
+      padding: 10px;
+    }
+
+    .word img.inserted-img {
+      width: 30px;
+      height: 30px;
     }
   }
-  </script>
+</style>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background-color: #f2fbf4;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 30px;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      align-items: center;
-    }
-    .word-boxes, .image-draggers {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .word {
-      width: 120px;
-      height: 100px;
-      border: 2px dashed #4caf50;
-      border-radius: 10px;
-      font-size: 18px;
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .image {
-      cursor: grab;
-      background-color: #fffbea;
-      border: 2px solid #ff9800;
-      border-radius: 10px;
-      width: 80px;
-      height: 80px;
-    }
-    .matched {
-      background-color: #d4edda;
-      border-color: #4caf50;
-    }
-    #result {
-      font-size: 24px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .back-button {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    #music-toggle-button {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #eeeeee;
-      border: none;
-      border-radius: 50%;
-      font-size: 20px;
-      padding: 10px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-  </style>
 </head>
 <body>
-  <button class="back-button" onclick="window.location.href='index.html'">Home</button>
-  <button id="music-toggle-button" title="Toggle Music">🔇</button>
-
-  <h1>🐾 Match the Animals</h1>
-
   <div class="container">
-    <div class="word-boxes" id="wordBoxes">
+    <h1>Animals Match Game</h1>
+    <p>Tap and drag the correct Animal to the matching word!</p>
+  <button class="back-button" onclick="window.location.href='index.html'"> Home</button>
+    <div class="game-area">
+      <div class="word-boxes">
       <div class="word" data-word="lion" ondrop="drop(event)" ondragover="allowDrop(event)">Lion</div>
       <div class="word" data-word="dog" ondrop="drop(event)" ondragover="allowDrop(event)">Dog</div>
       <div class="word" data-word="monkey" ondrop="drop(event)" ondragover="allowDrop(event)">Monkey</div>
       <div class="word" data-word="cat" ondrop="drop(event)" ondragover="allowDrop(event)">Cat</div>
       <div class="word" data-word="horse" ondrop="drop(event)" ondragover="allowDrop(event)">Horse</div>
       <div class="word" data-word="donkey" ondrop="drop(event)" ondragover="allowDrop(event)">Donkey</div>
+      </div>
+
+      <div class="image-draggers">
+      <img src="assets/images/animals/lion.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="lion" alt="Lion">
+      <img src="assets/images/animals/dog.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="dog" alt="Dog">
+      <img src="assets/images/animals/monkey.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="monkey" alt="Monkey">
+      <img src="assets/images/animals/cat.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="cat" alt="Cat">
+      <img src="assets/images/animals/horse.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="horse" alt="Horse">
+      <img src="assets/images/animals/donkey.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="donkey" alt="Donkey">
+      </div>
+
+      <div id="result"></div>
+      <button id="try-again-button" onclick="resetGame()">🔁 Try Again</button>
+      
     </div>
 
-    <div class="image-draggers" id="imageDraggers">
-      <img src="assets/images/animals/lion.png" class="image" draggable="true" ondragstart="drag(event)" id="lion" alt="Lion">
-      <img src="assets/images/animals/dog.png" class="image" draggable="true" ondragstart="drag(event)" id="dog" alt="Dog">
-      <img src="assets/images/animals/monkey.png" class="image" draggable="true" ondragstart="drag(event)" id="monkey" alt="Monkey">
-      <img src="assets/images/animals/cat.png" class="image" draggable="true" ondragstart="drag(event)" id="cat" alt="Cat">
-      <img src="assets/images/animals/horse.png" class="image" draggable="true" ondragstart="drag(event)" id="horse" alt="Horse">
-      <img src="assets/images/animals/donkey.png" class="image" draggable="true" ondragstart="drag(event)" id="donkey" alt="Donkey">
-    </div>
-  </div>
-
-  <div id="result"></div>
-  <button onclick="resetGame()">🔄 Try Again</button>
-
-  <!-- Audio Elements -->
-  <audio id="background-music" loop>
-    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+    <!-- Music and Feedback Audio -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
   </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
-
+  </div>
+<!-- Music Toggle Button (positioned absolutely by CSS) -->
+    
+    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+    <script src="js/musicControl.js"></script>
   <script>
-    const backgroundMusic = document.getElementById("background-music");
-    const musicToggleBtn = document.getElementById("music-toggle-button");
+    
+    let draggedElement = null;
 
-    musicToggleBtn.addEventListener("click", () => {
-      if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        musicToggleBtn.innerText = "🔊";
-      } else {
-        backgroundMusic.pause();
-        musicToggleBtn.innerText = "🔇";
-      }
-    });
+    function enableEmojiDrags() {
+      const emojis = document.querySelectorAll(".draggable-img");
+      emojis.forEach(emoji => {
+        emoji.addEventListener("touchstart", startTouchDrag, { passive: false });
+        emoji.addEventListener("dragstart", startMouseDrag);
+      });
+    }
+
+    function startTouchDrag(e) {
+      const original = e.target;
+      draggedElement = original.cloneNode(true);
+      draggedElement.id = original.id;
+      draggedElement.classList.add("dragging");
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = 1000;
+      draggedElement.style.width = original.offsetWidth + "px";
+      draggedElement.style.height = original.offsetHeight + "px";
+
+      document.body.appendChild(draggedElement);
+      moveAt(e.touches[0]);
+
+      original.style.opacity = 0.5;
+      document.body.style.overflow = "hidden";
+      e.preventDefault();
+
+      document.addEventListener("touchmove", onTouchMove, { passive: false });
+      document.addEventListener("touchend", onTouchEnd);
+    }
+
+    function moveAt(touch) {
+      const scrollX = window.scrollX || document.documentElement.scrollLeft;
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      draggedElement.style.left = touch.clientX + scrollX - 30 + "px";
+      draggedElement.style.top = touch.clientY + scrollY - 30 + "px";
+    }
+
+    function onTouchMove(e) {
+      e.preventDefault();
+      moveAt(e.touches[0]);
+    }
+function onTouchEnd(e) {
+  draggedElement.style.display = "none";
+  const touch = e.changedTouches[0];
+  let dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  while (dropTarget && !dropTarget.classList.contains("word")) {
+    dropTarget = dropTarget.parentElement;
+  }
+
+  draggedElement.style.display = "";
+
+  const draggedId = draggedElement.id;
+  const correctSound = document.getElementById("audio-correct");
+  const wrongSound = document.getElementById("audio-wrong");
+
+  if (
+    dropTarget &&
+    dropTarget.classList.contains("word") &&
+    dropTarget.dataset.word === draggedId &&
+    !dropTarget.classList.contains("matched")
+  ) {
+    dropTarget.classList.add("matched");
+
+    // Clear word content
+    dropTarget.innerHTML = "";
+
+    // Create new Image element manually
+    const img = new Image();
+    img.src = document.getElementById(draggedId).src;
+    img.alt = draggedId;
+    img.classList.add("inserted-img");
+    img.style.width = "50px";
+    img.style.height = "50px";
+
+    dropTarget.appendChild(img);
+
+    // Hide the original dragged image
+    const original = document.getElementById(draggedId);
+    original.style.display = "none";
+
+    document.getElementById("result").innerText = "Correct! 🎉";
+    correctSound.play();
+
+    if (document.querySelectorAll(".word.matched").length === 6) {
+      document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      document.getElementById("try-again-button").style.display = "inline-block";
+    }
+  } else {
+    document.getElementById("result").innerText = "Try Again ❌";
+    wrongSound.play();
+  }
+
+  // Cleanup
+  document.body.removeChild(draggedElement);
+  draggedElement = null;
+  document.querySelectorAll(".draggable-img").forEach(e => (e.style.opacity = 1));
+  document.body.style.overflow = "";
+  document.removeEventListener("touchmove", onTouchMove);
+  document.removeEventListener("touchend", onTouchEnd);
+}
+
+
+    function startMouseDrag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
 
     function allowDrop(ev) {
       ev.preventDefault();
     }
 
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-
     function drop(ev) {
-      ev.preventDefault();
-      const draggedId = ev.dataTransfer.getData("text");
-      const target = ev.target.closest(".word");
-      const targetWord = target.getAttribute("data-word");
+  ev.preventDefault();
+  const draggedId = ev.dataTransfer.getData("text");
+  const target = ev.currentTarget;
+  const correctSound = document.getElementById("audio-correct");
+  const wrongSound = document.getElementById("audio-wrong");
 
-      if (draggedId === targetWord && !target.classList.contains("matched")) {
-        const draggedImage = document.getElementById(draggedId);
-        const img = document.createElement("img");
-        img.src = draggedImage.src;
-        img.alt = draggedImage.alt;
-        img.className = "image";
-        target.innerHTML = "";
-        target.appendChild(img);
-        target.classList.add("matched");
-        draggedImage.style.display = "none";
+  if (
+    draggedId === target.dataset.word &&
+    !target.classList.contains("matched")
+  ) {
+    target.classList.add("matched");
 
-        document.getElementById("result").innerText = "Correct! 🎉";
-        document.getElementById("audio-correct").play();
+    const img = document.getElementById(draggedId).cloneNode(true);
+    img.classList.add("inserted-img");
+    img.style.width = "40px";
+    img.style.height = "40px";
+    img.style.marginLeft = "10px";
 
-        if (document.querySelectorAll('.matched').length === 6) {
-          document.getElementById("result").innerText = "🎉 You matched all! Great job!";
-        }
-      } else {
-        document.getElementById("result").innerText = "Try Again ❌";
-        document.getElementById("audio-wrong").play();
-      }
+    target.innerHTML = ""; // Clear old content safely
+
+    const label = document.createElement("span");
+    label.textContent = target.dataset.word.charAt(0).toUpperCase() + target.dataset.word.slice(1);
+
+    target.appendChild(label);
+    target.appendChild(img);
+
+    document.getElementById(draggedId).style.display = "none";
+    document.getElementById("result").innerText = "Correct! 🎉";
+    correctSound.play();
+
+    if (document.querySelectorAll(".matched").length === 6) {
+      document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      document.getElementById("try-again-button").style.display = "inline-block";
     }
+  } else {
+    document.getElementById("result").innerText = "Try Again ❌";
+    wrongSound.play();
+  }
+}
+
 
     function resetGame() {
-      const wordBoxes = document.querySelectorAll(".word");
-      wordBoxes.forEach(box => {
+      document.querySelectorAll(".word").forEach(box => {
+        box.classList.remove("matched");
         const word = box.getAttribute("data-word");
         box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
-        box.classList.remove("matched");
       });
 
-      const animals = [
-        "lion", "dog", "monkey", "cat", "horse", "donkey"
-      ];
-
-      const container = document.getElementById("imageDraggers");
-      container.innerHTML = "";
-      shuffleArray(animals);
-      animals.forEach(animal => {
-        const img = document.createElement("img");
-        img.src = `assets/images/animals/${animal}.png`;
-        img.alt = animal;
-        img.id = animal;
-        img.className = "image";
-        img.draggable = true;
-        img.ondragstart = drag;
-        container.appendChild(img);
+      document.querySelectorAll(".draggable-img").forEach(img => {
+        img.style.display = "";
+        img.style.opacity = 1;
       });
 
       document.getElementById("result").innerText = "";
+      document.getElementById("try-again-button").style.display = "none";
+
+      shuffleElements(".word-boxes");
+      shuffleElements(".image-draggers");
+
+      enableEmojiDrags();
+      const cloned = document.querySelector(".dragging");
+      if (cloned) cloned.remove();
     }
 
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
+    function shuffleElements(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      const elements = Array.from(container.children);
+      for (let i = elements.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [elements[i], elements[j]] = [elements[j], elements[i]];
       }
+      elements.forEach(el => container.appendChild(el));
     }
+
+    // Music toggle
+    const musicBtn = document.getElementById("music-toggle-button");
+    const bgMusic = document.getElementById("background-music");
+
+    musicBtn.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerHTML = "🔊";
+      } else {
+        bgMusic.pause();
+        musicBtn.innerHTML = "🔇";
+      }
+    });
+
+    window.onload = () => {
+      shuffleElements(".word-boxes");
+      shuffleElements(".image-draggers");
+      enableEmojiDrags();
+    };
   </script>
 </body>
 </html>
