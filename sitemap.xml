@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
+<urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-                      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- Main Pages -->
   <url>
     <loc>https://teachings.ai/</loc>
-    <lastmod>2025-08-02</lastmod>
-    <priority>1.00</priority>
+    <lastmod>2025-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://teachings.ai/index.html</loc>
+    <lastmod>2025-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 
-  <url><loc>https://teachings.ai/numbers.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/alphabets.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/animals.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/colors.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/birds.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/fruits.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/vegetables.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/vehicles.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/bodyparts.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/math.html</loc><lastmod>2025-08-02</lastmod><priority>0.90</priority></url>
-  <url><loc>https://teachings.ai/rhyming.html</loc><lastmod>2025-08-02</lastmod><priority>0.85</priority></url>
-  <url><loc>https://teachings.ai/sight.html</loc><lastmod>2025-08-02</lastmod><priority>0.85</priority></url>
-  <url><loc>https://teachings.ai/word-matching.html</loc><lastmod>2025-08-02</lastmod><priority>0.85</priority></url>
-  <url><loc>https://teachings.ai/counting.html</loc><lastmod>2025-08-02</lastmod><priority>0.85</priority></url>
-  <url><loc>https://teachings.ai/odd-even.html</loc><lastmod>2025-08-02</lastmod><priority>0.80</priority></url>
-  <url><loc>https://teachings.ai/shapes.html</loc><lastmod>2025-08-02</lastmod><priority>0.80</priority></url>
-  <url><loc>https://teachings.ai/patterns.html</loc><lastmod>2025-08-02</lastmod><priority>0.80</priority></url>
-  <url><loc>https://teachings.ai/publicservice.html</loc><lastmod>2025-08-02</lastmod><priority>0.80</priority></url>
+  <!-- Core Modules -->
+  <url><loc>https://teachings.ai/games.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/Grammar.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/alphabets.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/animals.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/birds.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/bodyparts.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/colors.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/vegetables.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/fruits.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/plants.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://teachings.ai/numbers.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Sorting & Matching Modules -->
+  <url><loc>https://teachings.ai/numbers-alphabets-sorting.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/colours-sorting.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/odd-even-sorting.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/animals-birds-sorting.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/furits-vegetables-sorting.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/match-animals.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/match-numbers.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/match-shapes.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/match-words.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Other Modules -->
+  <url><loc>https://teachings.ai/math.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/patterns.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/publicservice.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://teachings.ai/rhyming.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/sentences.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/shapes.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/sight.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/word-matching.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/counting.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/vehicles.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://teachings.ai/bodyparts.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Utility & Misc -->
+  <url><loc>https://teachings.ai/downloads.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://teachings.ai/feedback.html</loc><lastmod>2025-08-09</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Blog Section -->
+  <url><loc>https://teachings.ai/Blog/index.html</loc><lastmod>2025-08-09</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teachings.ai/Blog/educational-games-and-worksheets-launch.html</loc><lastmod>2025-08-09</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
 </urlset>
