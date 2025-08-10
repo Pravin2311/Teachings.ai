@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teachings.AI Official Launch – Free Preschool Learning Games & Activities for Kids</title>
+  <meta name="description" content="Teachings.AI launches free preschool learning games! Fun online activities for kids aged 3–6 — alphabet games, number sorting, grammar fun, and worksheets for home or school learning.">
+  <meta name="keywords" content="preschool learning games, free educational games for kids, online learning for preschoolers, kindergarten activities, alphabet games, number games, grammar games, drag and drop learning, early childhood education, free worksheets for kids, interactive learning for children">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #002b5c;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    article {
+      flex: 3;
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      min-width: 0;
+    }
+
+    aside {
+      flex: 1;
+      background-color: #002b5c;
+      color: #fff;
+      padding: 1rem;
+      margin-left: 1rem;
+      border-radius: 8px;
+      min-width: 200px;
+    }
+
+    aside h3 {
+      margin-top: 0;
+    }
+
+    .quick-link-btn {
+      display: block;
+      background: #ffcc00;
+      color: #002b5c;
+      padding: 0.6rem;
+      margin: 0.4rem 0;
+      text-align: center;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .quick-link-btn:hover {
+      background: #ffdd33;
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .screenshot-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      display: block;
+    }
+
+    footer {
+      background-color: #002b5c;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    .follow-btn {
+      display: inline-block;
+      background: #ffcc00;
+      color: #002b5c;
+      padding: 0.6rem 1rem;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .follow-btn:hover {
+      background: #ffdd33;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+      aside {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .screenshot-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .how-to-card {
+      background: #fff8e1;
+      border: 2px solid #ffcc80;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .how-to-card h2 {
+      margin-top: 0;
+      color: #e65100;
+    }
+
+    .how-to-card ol {
+      padding-left: 20px;
+      color: #333;
+    }
+
+    .how-to-card ol li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #ff9800;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #e68900;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ffcc00;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+      border-color: #ffdd33;
+    }
+
+    .module-box {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 20px 0;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .screenshot {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 8px;
+      margin: 15px 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Teachings.AI",
+    "url": "https://teachings.ai",
+    "description": "Interactive preschool learning games and activities for kids aged 3–6, including alphabet games, number games, grammar fun, and more.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>🎉 Learn Numbers for Kids: Interactive Games for Counting, Matching & Odd/Even</h1>
+    <p>Engaging preschool learning games, free worksheets, and interactive activities for children aged 3–6.</p>
+  </header>
+
+  <main>
+    <article>
+      <h2>Free, fun, and educational number activities – perfect for toddlers, preschoolers, and kindergarteners. No login, no ads, just learning!</h2>
+      <p>Is your child ready to fall in love with numbers? At <strong>Teachings.Ai</strong>, we make early math <strong>fun, interactive, and completely free</strong>! Our engaging online modules help young learners <strong>recognize numbers, match digits, identify odd and even numbers</strong>, and build confidence—all through play-based learning.</p>
+
+      <p>👉 <strong>Explore All Free Number Activities:</strong><br>
+        🔗 <a href="https://teachings.ai/numbers.html" target="_blank">Learn & Scratch Numbers with Audio</a><br>
+        🔗 <a href="https://teachings.ai/match-numbers.html" target="_blank">Match the Numbers Game</a><br>
+        🔗 <a href="https://teachings.ai/odd-even.html" target="_blank">Odd & Even Number Practice</a>
+      </p>
+      <p>Let’s explore the <strong>three powerful number learning modules</strong> we offer—and how they make math magical!</p>
+
+      <!-- Module 1 -->
+      <section class="module-box">
+        <h2>🎮 1. Learn Numbers with Scratch Cards & Audio</h2>
+        <p><a href="https://teachings.ai/numbers.html" target="_blank">👉 https://teachings.ai/numbers.html</a></p>
+        <p>Say goodbye to boring flashcards! Our <strong>interactive number learning module</strong> turns number recognition into a sensory-rich experience.</p>
+
+        <h3>How It Works:</h3>
+        <ul>
+          <li>Click or tap to <strong>"scratch" off</strong> a card and reveal a hidden number (1–10).</li>
+          <li>Press the <strong>audio button</strong> to hear the number pronounced clearly—perfect for auditory learners.</li>
+          <li>Reinforces <strong>number recognition, counting, and pronunciation</strong> in a fun, game-like format.</li>
+        </ul>
+
+        <h3>🧠 Why It’s Effective:</h3>
+        <p>Combines <strong>visual, tactile, and auditory learning</strong>—ideal for different learning styles. Builds curiosity with surprise reveal mechanics.</p>
+
+        <img src="images/number-scratch-card-game.jpeg" alt="Scratch card revealing number 5 with audio button" class="screenshot" />
+        <p><em>Screenshot #1: Scratch to reveal the number and listen to its pronunciation!</em></p>
+      </section>
+
+      <!-- Module 2 -->
+      <section class="module-box">
+        <h2>🧩 2. Match the Numbers – Drag & Drop Game</h2>
+        <p><a href="https://teachings.ai/match-numbers.html" target="_blank">👉 https://teachings.ai/match-numbers.html</a></p>
+        <p>Ready for a number puzzle challenge? This <strong>drag-and-drop matching game</strong> helps kids connect numerals with their names and improve hand-eye coordination.</p>
+
+        <h3>How It Works:</h3>
+        <ul>
+          <li>Drag the numbered tile (e.g., "3") to the correct drop zone (e.g., "Three").</li>
+          <li>Instant feedback: the tile snaps into place when correct.</li>
+          <li>Covers numbers <strong>Zero to Nine</strong>—great for mastering number words.</li>
+        </ul>
+
+        <h3>🎯 Learning Benefits:</h3>
+        <p>Strengthens <strong>number-word association</strong>, enhances <strong>fine motor and cognitive skills</strong>, and encourages problem-solving.</p>
+
+        <img src="images/match-numbers-with-letters-game.jpeg" alt="Dragging number 8 to the 'Eight' drop zone" class="screenshot" />
+        <p><em>Screenshot #2: Drag and drop number tiles to the correct word zone.</em></p>
+      </section>
+
+      <!-- Module 3 -->
+      <section class="module-box">
+        <h2>🔢 3. Odd & Even Number Identifier</h2>
+        <p><a href="https://teachings.ai/odd-even.html" target="_blank">👉 https://teachings.ai/odd-even.html</a></p>
+        <p>Take math skills to the next level with our <strong>Odd & Even Numbers</strong> module—ideal for kindergarten and first-grade learners.</p>
+
+        <h3>How It Works:</h3>
+        <ul>
+          <li>A number appears on screen (e.g., 24).</li>
+          <li>Choose: <strong>Odd</strong> or <strong>Even</strong>.</li>
+          <li>Learn the rule:  
+            <ul>
+              <li>👉 <strong>Even numbers</strong> end in 0, 2, 4, 6, or 8.</li>
+              <li>👉 <strong>Odd numbers</strong> end in 1, 3, 5, 7, or 9.</li>
+            </ul>
+          </li>
+          <li>✨ <strong>Tip:</strong> Even numbers can be split into two equal groups!</li>
+        </ul>
+
+        <h3>📘 Why It Matters:</h3>
+        <p>Builds foundational <strong>number sense</strong> and prepares kids for division and patterns.</p>
+
+        <img src="images/even-odd-numbers-identification.jpeg" alt="Odd or Even quiz with number 7" class="screenshot" />
+        <p><em>Screenshot #3: Identify if the number is odd or even with helpful visual cues.</em></p>
+      </section>
+
+      
+
+      <!-- Teaching Tips -->
+      <section>
+        <h2>🏆 Bonus: Teaching Tips & Offline Ideas</h2>
+        <p>Want to extend the learning beyond the screen? Try these fun ideas:</p>
+        <ul>
+          <li><strong>Daily 5-Minute Math Play</strong> – Use one module per day to build consistency.</li>
+          <li><strong>Pair with Real Objects</strong> – After matching "4" to "Four", count 4 blocks or crayons.</li>
+          <li><strong>Create an Odd/Even Hunt</strong> – Find house items with odd/even numbers (door numbers, clocks).</li>
+          <li><strong>Print & Display</strong> – Use screenshots to create a “Math Master” progress chart.</li>
+        </ul>
+      </section>
+
+      <!-- CTA Buttons -->
+      <section style="text-align: center; margin: 30px 0;">
+        <h2>Ready to Start Learning?</h2>
+        <p>No downloads. No ads. No stress. Just <strong>pure learning fun</strong>.</p>
+        <p><a href="https://teachings.ai/numbers.html" class="cta-button" target="_blank">🔤 Learn Numbers with Scratch & Audio</a></p>
+        <p><a href="https://teachings.ai/match-numbers.html" class="cta-button" target="_blank">🧩 Play Match the Numbers Game</a></p>
+        <p><a href="https://teachings.ai/odd-even.html" class="cta-button" target="_blank">🔢 Practice Odd & Even Numbers</a></p>
+      </section>
+    </article>
+
+    <aside>
+      <h3>Quick Game Links</h3>
+      <a href="https://teachings.ai/numbers.html" class="quick-link-btn">🔤 Learn Numbers</a>
+      <a href="https://teachings.ai/match-numbers.html" class="quick-link-btn">🧩 Match the Numbers</a>
+      <a href="https://teachings.ai/odd-even-sorting.html" class="quick-link-btn">🔢 Odd & Even Practice</a>
+      <a href="https://teachings.ai/match-words.html" class="quick-link-btn">🖼️ Word Matching Game</a>
+      <a href="https://teachings.ai/patterns.html" class="quick-link-btn">🔁 Patterns & Sequences</a>
+      <a href="https://teachings.ai/games.html" class="quick-link-btn">🎮 All Learning Games</a>
+      <a href="https://teachings.ai/downloads.html" class="quick-link-btn">📥 Free Worksheets</a>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Follow Teachings.AI for updates and new learning games!</p>
+    <div class="social-links">
+      <a href="https://instagram.com/teachingsai" target="_blank">
+        <img src="/assets/images/instagram.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://facebook.com/teachingsai" target="_blank">
+        <img src="/assets/images/facebook.png" alt="Facebook" class="social-icon">
+      </a>
+      <a href="https://youtube.com/@teachingsai" target="_blank">
+        <img src="/assets/images/youtube.png" alt="YouTube" class="social-icon">
+      </a>
+      <a href="https://twitter.com/teachingsai" target="_blank">
+        <img src="/assets/images/twitter.png" alt="Twitter" class="social-icon">
+      </a>
+    </div>
+    <p class="keyword">Keywords: learn numbers for kids, interactive number games, number recognition, counting activities, odd and even numbers, match numbers game, free math games for kindergarten, preschool math activities, audio number pronunciation, drag and drop learning</p>
+  </footer>
+</body>
+</html>
