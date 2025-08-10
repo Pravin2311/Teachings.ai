@@ -8,198 +8,181 @@
   <meta name="keywords" content="free numbers worksheets, number tracing worksheets, coloring numbers 1-10, matching numbers to words, preschool math printables, kindergarten number activities, printable number games, learn numbers for kids, Teachings.ai">
 
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      max-width: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  -webkit-text-size-adjust: 100%;
+}
 
-    header {
-      background-color: #002b5c;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
+/* Header */
+header {
+  background-color: #002b5c;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+header h1 {
+  font-size: clamp(1.3rem, 5vw, 2rem);
+}
 
-    main {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem;
-    }
+/* Main Layout */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+  gap: 1rem;
+}
+article {
+  flex: 3;
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  min-width: 0;
+}
+aside {
+  flex: 1;
+  background-color: #002b5c;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 200px;
+}
 
-    article {
-      flex: 3;
-      background: #fff;
-      padding: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      min-width: 0;
-    }
+/* Quick Links */
+.quick-link-btn {
+  display: block;
+  background: #ffcc00;
+  color: #002b5c;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.quick-link-btn:hover {
+  background: #ffdd33;
+}
 
-    aside {
-      flex: 1;
-      background-color: #002b5c;
-      color: #fff;
-      padding: 1rem;
-      margin-left: 1rem;
-      border-radius: 8px;
-      min-width: 200px;
-    }
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
 
-    aside h3 {
-      margin-top: 0;
-    }
+/* Sections */
+.how-to-card {
+  background: #fff8e1;
+  border: 2px solid #ffcc80;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.how-to-card h2 {
+  margin-top: 0;
+  color: #e65100;
+}
 
-    .quick-link-btn {
-      display: block;
-      background: #ffcc00;
-      color: #002b5c;
-      padding: 0.6rem;
-      margin: 0.4rem 0;
-      text-align: center;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.activity-section {
+  margin: 25px 0;
+  padding: 15px;
+  border-left: 4px solid #ffcc00;
+  background-color: #f9f9f9;
+}
+.activity-section h3 {
+  color: #002b5c;
+}
 
-    .quick-link-btn:hover {
-      background: #ffdd33;
-    }
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  background: #ff9800;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+.cta-button:hover {
+  background: #e68900;
+}
 
-    .screenshot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+/* Social Links */
+.social-links {
+  margin-top: 10px;
+  text-align: center;
+}
+.social-links a {
+  display: inline-block;
+  margin: 0 8px;
+}
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffcc00;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.social-icon:hover {
+  transform: scale(1.1);
+  border-color: #ffdd33;
+}
 
-    .screenshot-grid img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      display: block;
-    }
+/* Footer */
+footer {
+  background-color: #002b5c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
 
-    footer {
-      background-color: #002b5c;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    .follow-btn {
-      display: inline-block;
-      background: #ffcc00;
-      color: #002b5c;
-      padding: 0.6rem 1rem;
-      margin-top: 0.5rem;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .follow-btn:hover {
-      background: #ffdd33;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-      }
-      aside {
-        margin-left: 0;
-        margin-top: 1rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .screenshot-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .how-to-card {
-      background: #fff8e1;
-      border: 2px solid #ffcc80;
-      border-radius: 10px;
-      padding: 20px;
-      margin-top: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .how-to-card h2 {
-      margin-top: 0;
-      color: #e65100;
-    }
-
-    .how-to-card ol {
-      padding-left: 20px;
-      color: #333;
-    }
-
-    .how-to-card ol li {
-      margin-bottom: 8px;
-      line-height: 1.6;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: #ff9800;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px;
-      transition: background 0.2s;
-    }
-
-    .cta-button:hover {
-      background: #e68900;
-    }
-
-    .social-links {
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 0 8px;
-    }
-
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid #ffcc00;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .social-icon:hover {
-      transform: scale(1.1);
-      border-color: #ffdd33;
-    }
-
-    .activity-section {
-      margin: 25px 0;
-      padding: 15px;
-      border-left: 4px solid #ffcc00;
-      background-color: #f9f9f9;
-    }
-
-    .activity-section h3 {
-      color: #002b5c;
-    }
-  </style>
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+  }
+  aside {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  article, aside {
+    padding: 1rem;
+  }
+  .quick-link-btn {
+    padding: 1rem;
+    font-size: 1.05rem;
+  }
+  .cta-button {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+}
+</style>
 
   <script type="application/ld+json">
   {
