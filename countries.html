@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Countries: Fun Scratch Game for Kids | Teachings.AI</title> <!-- ✅ Better SEO & CTR -->
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Interactive game to teach kids about countries. Scratch to reveal and hear names of healthy countries in this fun module by Teachings.AI." />
+  <meta name="keywords" content="learn countries, countries for kids, explore world, country names, preschool learning, kindergarten food, teachings.ai, kids country game" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://teachings.ai/countries.html" />
+  <meta name="theme-color" content="#ffffff" /> <!-- ✅ Mobile theme color -->
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:title" content="Learn Vegetables - Teachings.AI" />
+  <meta property="og:description" content="A fun scratch-and-learn countries game for kids! Reveal, hear, and explore world." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teachings.ai/countries.html" />
+  <meta property="og:image" content="https://teachings.ai/assets/images/vegetables-preview.jpg" />
+  <meta property="og:site_name" content="Teachings.AI" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Learn Vegetables - Teachings.AI" />
+  <meta name="twitter:description" content="Scratch to reveal and hear the names of countries. A fun and interactive way for kids to learn worlds top countries!" />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/vegetables-preview.jpg" />
+  <meta name="twitter:site" content="@TeachingsAI" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalGame",
+    "name": "Learn Countries - Teachings.AI",
+    "description": "A fun and interactive scratch-to-reveal game for kids to learn country names and sounds.",
+    "url": "https://teachings.ai/countries.html",
+    "image": "https://teachings.ai/assets/images/vegetables-preview.jpg",
+    "inLanguage": "en", <!-- ✅ Language added -->
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/vegetables.css" />
+
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+
+<body>
+  <div class="container" role="main">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Learn Country Names</h1>
+    <div class="vegetable-display">
+      <p id="current-vegetable-name" aria-live="polite"></p> <!-- ✅ Live region for screen readers -->
+      <div id="vegetable-image-container">
+        <canvas id="drawing-canvas" aria-label="Scratch to reveal the vegetable image"></canvas> <!-- ✅ Accessibility -->
+        <!-- JS will dynamically add images -->
+      </div>
+    </div>
+    <div class="navigation-buttons">
+      <button id="prev-vegetable">Previous</button>
+      <button id="next-vegetable">Next</button>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Music Toggle -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Background Music">🔇</button>
+
+  <!-- Scripts -->
+  <script src="js/countries.js"></script>
+  <script src="js/musicControl.js"></script>
+</body>
+</html>
