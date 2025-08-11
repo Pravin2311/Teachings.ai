@@ -12,7 +12,7 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://teachings.ai/odd-even.html" />
 
-  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Odd & Even Numbers - Fun Math Game for Kids | Teachings.AI" />
   <meta property="og:description" content="A playful and educational way for kids to learn about odd and even numbers through interactive games, music, and voice feedback." />
   <meta property="og:type" content="website" />
@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://teachings.ai/assets/images/odd-even-preview.jpg" />
   <meta name="twitter:site" content="@TeachingsAI" />
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,19 +43,21 @@
     }
   }
   </script>
-  
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/oddEven.css" />
 
-  <!-- Google Analytics -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
 </head>
+
 <body>
   <div class="container">
     <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
@@ -63,16 +65,18 @@
     <p id="instruction">Identify whether the number is Odd or Even.</p>
 
     <div id="game-container">
-      <div id="number-display">0</div>
+      <div id="number-display" aria-live="polite">0</div>
       <div id="buttons">
         <button class="game-button" onclick="checkAnswer('even')">Even</button>
         <button class="game-button" onclick="checkAnswer('odd')">Odd</button>
       </div>
-      <div id="feedback-message"></div>
+      <div id="feedback-message" aria-live="polite"></div>
     </div>
+
     <div class="rhyming-image">
-      <img src="assets/images/odd-even.png" alt="odd even numbers Illustration" />
+      <img src="assets/images/odd-even.png" alt="Illustration of odd and even numbers with objects" />
     </div>
+
     <div class="explanation">
       <h3>What are Odd and Even Numbers?</h3>
       <p>
@@ -86,13 +90,15 @@
   <!-- Background Music -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Music">&#128263;</button>
 
   <!-- Feedback Audio -->
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 
+  <!-- JS -->
   <script src="js/oddEven.js"></script>
   <script src="js/musicControl.js"></script>
 </body>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shapes Match Game - Teachings.AI</title>
+  <meta name="description" content="Fun drag-and-drop word match game using images for kids aged 3-6">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/grammar.css" />
+
+<style>
+  :root {
+    --primary-blue: #007bff; /* Declare the CSS variable you're using */
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f9ff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .word-boxes, .image-draggers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .word {
+    width: 140px;
+    height: 100px;
+    border: 2px dashed var(--primary-blue);
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    text-align: center;
+    gap: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .word.matched {
+    background: #d4edda;
+    border-color: #28a745;
+  }
+
+  .word span {
+    font-size: 16px;
+    z-index: 1;
+  }
+
+  .word img.inserted-img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-top: 4px;
+    z-index: 1;
+  }
+
+  .draggable-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    cursor: grab;
+  }
+
+  #result {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  #try-again-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .draggable-img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .word {
+      font-size: 18px;
+      width: 120px;
+      height: 90px;
+      padding: 10px;
+    }
+
+    .word img.inserted-img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Shapes Match Game</h1>
+    <p>Tap and drag the correct shape to matching word!</p>
+  <button class="back-button" onclick="window.location.href='index.html'"> Home</button>
+    <div class="game-area">
+      <div class="word-boxes">
+        <div class="word" data-word="square" ondrop="drop(event)" ondragover="allowDrop(event)">Square</div>
+        <div class="word" data-word="circle" ondrop="drop(event)" ondragover="allowDrop(event)">Circle</div>
+        <div class="word" data-word="star" ondrop="drop(event)" ondragover="allowDrop(event)">Star</div>
+        <div class="word" data-word="heart" ondrop="drop(event)" ondragover="allowDrop(event)">Heart</div>
+        <div class="word" data-word="hexagon" ondrop="drop(event)" ondragover="allowDrop(event)">Hexagon</div>
+        <div class="word" data-word="triangle" ondrop="drop(event)" ondragover="allowDrop(event)">Triangle</div>
+      </div>
+
+      <div class="image-draggers">
+        <img src="assets/images/shapes/square.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="square" alt="Square">
+        <img src="assets/images/shapes/circle.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="circle" alt="Circle">
+        <img src="assets/images/shapes/star.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="star" alt="Star">
+        <img src="assets/images/shapes/heart.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="heart" alt="Heart">
+        <img src="assets/images/shapes/hexagon.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="hexagon" alt="Hexagon">
+        <img src="assets/images/shapes/triangle.png" class="draggable-img" draggable="true" ondragstart="drag(event)" id="triangle" alt="Triangle">
+      </div>
+
+      <div id="result"></div>
+      <button id="try-again-button" onclick="resetGame()">🔁 Try Again</button>
+      
+    </div>
+
+    <!-- Music and Feedback Audio -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+  </div>
+<!-- Music Toggle Button (positioned absolutely by CSS) -->
+    
+    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+    <script src="js/musicControl.js"></script>
+  <script>
+    
+    let draggedElement = null;
+
+    function enableEmojiDrags() {
+      const emojis = document.querySelectorAll(".draggable-img");
+      emojis.forEach(emoji => {
+        emoji.addEventListener("touchstart", startTouchDrag, { passive: false });
+        emoji.addEventListener("dragstart", startMouseDrag);
+      });
+    }
+
+    function startTouchDrag(e) {
+      const original = e.target;
+      draggedElement = original.cloneNode(true);
+      draggedElement.id = original.id;
+      draggedElement.classList.add("dragging");
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = 1000;
+      draggedElement.style.width = original.offsetWidth + "px";
+      draggedElement.style.height = original.offsetHeight + "px";
+
+      document.body.appendChild(draggedElement);
+      moveAt(e.touches[0]);
+
+      original.style.opacity = 0.5;
+      document.body.style.overflow = "hidden";
+      e.preventDefault();
+
+      document.addEventListener("touchmove", onTouchMove, { passive: false });
+      document.addEventListener("touchend", onTouchEnd);
+    }
+
+    function moveAt(touch) {
+      const scrollX = window.scrollX || document.documentElement.scrollLeft;
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      draggedElement.style.left = touch.clientX + scrollX - 30 + "px";
+      draggedElement.style.top = touch.clientY + scrollY - 30 + "px";
+    }
+
+    function onTouchMove(e) {
+      e.preventDefault();
+      moveAt(e.touches[0]);
+    }
+function onTouchEnd(e) {
+  draggedElement.style.display = "none";
+  const touch = e.changedTouches[0];
+  let dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+
+  while (dropTarget && !dropTarget.classList.contains("word")) {
+    dropTarget = dropTarget.parentElement;
+  }
+
+  draggedElement.style.display = "";
+
+  const draggedId = draggedElement.id;
+  const correctSound = document.getElementById("audio-correct");
+  const wrongSound = document.getElementById("audio-wrong");
+
+  if (
+    dropTarget &&
+    dropTarget.classList.contains("word") &&
+    dropTarget.dataset.word === draggedId &&
+    !dropTarget.classList.contains("matched")
+  ) {
+    dropTarget.classList.add("matched");
+
+    // Clear word content
+    dropTarget.innerHTML = "";
+
+    // Create new Image element manually
+    const img = new Image();
+    img.src = document.getElementById(draggedId).src;
+    img.alt = draggedId;
+    img.classList.add("inserted-img");
+    img.style.width = "50px";
+    img.style.height = "50px";
+
+    dropTarget.appendChild(img);
+
+    // Hide the original dragged image
+    const original = document.getElementById(draggedId);
+    original.style.display = "none";
+
+    document.getElementById("result").innerText = "Correct! 🎉";
+    correctSound.play();
+
+    if (document.querySelectorAll(".word.matched").length === 6) {
+      document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      document.getElementById("try-again-button").style.display = "inline-block";
+    }
+  } else {
+    document.getElementById("result").innerText = "Try Again ❌";
+    wrongSound.play();
+  }
+
+  // Cleanup
+  document.body.removeChild(draggedElement);
+  draggedElement = null;
+  document.querySelectorAll(".draggable-img").forEach(e => (e.style.opacity = 1));
+  document.body.style.overflow = "";
+  document.removeEventListener("touchmove", onTouchMove);
+  document.removeEventListener("touchend", onTouchEnd);
+}
+
+
+    function startMouseDrag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drop(ev) {
+  ev.preventDefault();
+  const draggedId = ev.dataTransfer.getData("text");
+  const target = ev.currentTarget;
+  const correctSound = document.getElementById("audio-correct");
+  const wrongSound = document.getElementById("audio-wrong");
+
+  if (
+    draggedId === target.dataset.word &&
+    !target.classList.contains("matched")
+  ) {
+    target.classList.add("matched");
+
+    const img = document.getElementById(draggedId).cloneNode(true);
+    img.classList.add("inserted-img");
+    img.style.width = "40px";
+    img.style.height = "40px";
+    img.style.marginLeft = "10px";
+
+    target.innerHTML = ""; // Clear old content safely
+
+    const label = document.createElement("span");
+    label.textContent = target.dataset.word.charAt(0).toUpperCase() + target.dataset.word.slice(1);
+
+    target.appendChild(label);
+    target.appendChild(img);
+
+    document.getElementById(draggedId).style.display = "none";
+    document.getElementById("result").innerText = "Correct! 🎉";
+    correctSound.play();
+
+    if (document.querySelectorAll(".matched").length === 6) {
+      document.getElementById("result").innerText = "🎉 You matched all! Great job!";
+      document.getElementById("try-again-button").style.display = "inline-block";
+    }
+  } else {
+    document.getElementById("result").innerText = "Try Again ❌";
+    wrongSound.play();
+  }
+}
+
+
+    function resetGame() {
+      document.querySelectorAll(".word").forEach(box => {
+        box.classList.remove("matched");
+        const word = box.getAttribute("data-word");
+        box.innerHTML = word.charAt(0).toUpperCase() + word.slice(1);
+      });
+
+      document.querySelectorAll(".draggable-img").forEach(img => {
+        img.style.display = "";
+        img.style.opacity = 1;
+      });
+
+      document.getElementById("result").innerText = "";
+      document.getElementById("try-again-button").style.display = "none";
+
+      shuffleElements(".word-boxes");
+      shuffleElements(".image-draggers");
+
+      enableEmojiDrags();
+      const cloned = document.querySelector(".dragging");
+      if (cloned) cloned.remove();
+    }
+
+    function shuffleElements(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      const elements = Array.from(container.children);
+      for (let i = elements.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [elements[i], elements[j]] = [elements[j], elements[i]];
+      }
+      elements.forEach(el => container.appendChild(el));
+    }
+
+    // Music toggle
+    const musicBtn = document.getElementById("music-toggle-button");
+    const bgMusic = document.getElementById("background-music");
+
+    musicBtn.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.innerHTML = "🔊";
+      } else {
+        bgMusic.pause();
+        musicBtn.innerHTML = "🔇";
+      }
+    });
+
+    window.onload = () => {
+      shuffleElements(".word-boxes");
+      shuffleElements(".image-draggers");
+      enableEmojiDrags();
+    };
+  </script>
+</body>
+</html>

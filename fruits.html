@@ -1,85 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Fruits - Teachings.AI</title>
-    <link rel="stylesheet" href="css/style.css"> 
-    <link rel="stylesheet" href="css/fruits.css"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Fruits - Teachings.AI</title>
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names.">
-    <meta name="keywords" content="learn fruits, fruits for kids, healthy eating for kids, fruit names, preschool fruits, kindergarten foods, teachings.ai fruits">
-    <meta name="author" content="Teachings AI">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Learn Fruits with Teachings.AI">
-    <meta property="og:description" content="Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names.">
-    <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
-    <meta property="og:url" content="https://teachings.ai/fruits.html">
-    <meta property="og:type" content="website">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fruits.css" />
 
-    <!-- Google Analytics 4 (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XVYMNTZLQJ');
-    </script>
-    <!-- End Google Analytics -->
-     <!-- Structured Data (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalAudience",
-  "educationalRole": "student",
-  "name": "Learn Fruits - Teachings.AI",
-  "description": "Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names.",
-  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-  "inLanguage": "en",
-  "url": "https://teachings.ai/fruits.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Teachings.AI",
-    "url": "https://teachings.ai",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://teachings.ai/assets/images/app_logo.png"
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names." />
+  <meta name="keywords" content="learn fruits, fruits for kids, healthy eating for kids, fruit names, preschool fruits, kindergarten foods, teachings.ai fruits" />
+  <meta name="author" content="Teachings AI" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Learn Fruits with Teachings.AI" />
+  <meta property="og:description" content="Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/fruits.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalAudience",
+    "educationalRole": "student",
+    "name": "Learn Fruits - Teachings.AI",
+    "description": "Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names.",
+    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+    "inLanguage": "en",
+    "url": "https://teachings.ai/fruits.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
     }
   }
-}
-</script>
-
+  </script>
 </head>
+
 <body>
-    <div class="container">
-        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-        <h1>Learn Fruits</h1>
-        <div class="fruit-display">
-            <p id="current-fruit-name"></p>
-            <div id="fruit-image-container">
-                <canvas id="drawing-canvas"></canvas>
-                <!-- The image will be dynamically added here by JavaScript -->
-            </div>
-        </div>
-        <div class="navigation-buttons">
-            <button id="prev-fruit">Previous</button>
-            <button id="next-fruit">Next</button>
-        </div>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Back to Home">⬅️ Back to Home</button>
+    <h1>Learn Fruits</h1>
+
+    <div class="fruit-display">
+      <p id="current-fruit-name" aria-live="polite"></p>
+      <div id="fruit-image-container">
+        <canvas id="drawing-canvas" aria-label="Scratchable fruit image" role="img"></canvas>
+      </div>
     </div>
-    
-    <!-- Music Audio Element -->
-    <audio id="background-music" loop muted>
-        <source src="assets/audio/background_music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
-    <!-- Music Toggle Button (positioned absolutely by CSS) -->
-    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+    <div class="navigation-buttons">
+      <button id="prev-fruit" aria-label="Previous Fruit">Previous</button>
+      <button id="next-fruit" aria-label="Next Fruit">Next</button>
+    </div>
+  </div>
 
-    <script src="js/fruits.js"></script>
-    <script src="js/musicControl.js"></script> 
+  <!-- Background Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Background Music">&#128263;</button>
+
+  <!-- JavaScript -->
+  <script src="js/fruits.js"></script>
+  <script src="js/musicControl.js"></script>
 </body>
 </html>

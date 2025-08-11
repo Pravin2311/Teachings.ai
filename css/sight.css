@@ -121,4 +121,19 @@
         padding: 40px 20px 20px 20px; 
     }
 }
+#target-word {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#target-word .target {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1a73e8;
+  background: #fff59d;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
   

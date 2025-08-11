@@ -4,46 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patterns & Sequences for Kids - Teachings.AI</title>
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/patterns.css" />
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Teachings.AI: Fun patterns and sequences game for kids to learn and identify patterns using emojis and shapes.">
   <meta name="keywords" content="patterns for kids, emoji pattern game, sequences, logic game, kids learning games, teachings.ai patterns">
-  <meta name="author" content="Teachings AI">
+  <meta name="author" content="Teachings.AI">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph / Social Media Meta Tags -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Patterns & Sequences for Kids - Teachings.AI" />
-  <meta property="og:description" content="Help kids learn patterns and sequences with emojis and shapes. Fun and educational game from Teachings.AI.">
+  <meta property="og:description" content="Help kids learn patterns and sequences with emojis and shapes. Fun and educational game from Teachings.AI." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/patterns.html" />
   <meta property="og:type" content="website" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Patterns & Sequences for Kids - Teachings.AI" />
+  <meta name="twitter:description" content="Help kids learn patterns and sequences with emojis and shapes. Fun and educational game from Teachings.AI." />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/app_logo.png" />
+
   <!-- Structured Data (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalAudience",
-  "educationalRole": "student",
-  "name": "Patterns & Sequences for Kids - Teachings.AI",
-  "description": "Interactive pattern recognition and sequences game using emojis and shapes for early learners. A fun logic-building game for kids.",
-  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-  "inLanguage": "en",
-  "url": "https://teachings.ai/patterns.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Teachings.AI",
-    "url": "https://teachings.ai",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://teachings.ai/assets/images/app_logo.png"
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalAudience",
+    "educationalRole": "student",
+    "name": "Patterns & Sequences for Kids - Teachings.AI",
+    "description": "Interactive pattern recognition and sequences game using emojis and shapes for early learners. A fun logic-building game for kids.",
+    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+    "inLanguage": "en",
+    "url": "https://teachings.ai/patterns.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
     }
   }
-}
-</script>
+  </script>
 
-  <!-- Google Analytics 4 -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -70,13 +78,13 @@
   </div>
 
   <!-- Music Audio Element -->
-  <audio id="background-music" loop muted>
+  <audio id="background-music" loop>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <!-- Music Toggle Button -->
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Music">&#128263;</button>
 
   <!-- Feedback Audio -->
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animals & Birds Sorting - Teachings.AI</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/grammar.css" />
+  <style>
+    body.dragging {
+  touch-action: none;
+  overflow: hidden;
+  }
+  .word {
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 10px;
+  background-color: #f0f0f0;
+  border: 2px solid #444;
+  border-radius: 10px;
+  cursor: grab;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+.word.correct {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.word.incorrect {
+  background-color: #f8d7da;
+  border-color: #dc3545;
+}
+
+#submit-btn, #try-again-btn {
+  margin: 20px 10px;
+  padding: 10px 25px;
+  font-size: 18px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.drop-zone {
+  border: 2px dashed #aaa;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 100px;
+  margin: 10px;
+  background-color: #f9f9f9;
+}
+
+ </style>
+
+  <meta name="description" content="Fun drag-and-drop game to sort Animals and Birds. Part of Teachings.AI interactive modules for kids.">
+  <meta name="keywords" content="Sorting game, Animals for kids, Birds for kids, teachings.ai Sorting, fun learning">
+  <meta name="author" content="Teachings AI">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Animals & Birds Sorting - Teachings.AI" />
+  <meta property="og:description" content="Drag and drop game for sorting Animals and Birds. Great for early learners. From Teachings.AI." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/animals-birds-sorting.html" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalAudience",
+    "educationalRole": "student",
+    "name": "Animals & Birds Sorting - Teachings.AI",
+    "description": "Drag and drop sorting activity to separate Animals and Birds for preschool and grade 1 students.",
+    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+    "inLanguage": "en",
+    "url": "https://teachings.ai/animals-birds-sorting.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
+    }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+
+<body>
+  <div class="container" role="main">
+  <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+  <h2>Sorting: <br> Animals & Birds</h2>
+  <div class="game-area">
+    <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Animal or Bird!</p>
+    <div class="word-bank" id="word-container"></div>
+    <div class="drop-zones">
+      <div class="drop-zone" id="animal-zone" data-type="Animal"><h2>Animal</h2></div>
+      <div class="drop-zone" id="bird-zone" data-type="Bird"><h2>Bird</h2></div>
+    </div>
+    <p id="feedback-message"></p>
+    <button id="submit-btn">Submit</button>
+    <button id="try-again-btn" style="display:none;">🔄 Try Again</button>
+  </div>
+</div>
+
+
+  <!-- Music and Feedback Audio -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute">🔊</button>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <!-- Scripts -->
+  <script src="js/musicControl.js"></script>
+  <script>
+  const wordSets = [
+    [
+      { word: "🐶 Dog", type: "Animal" },
+      { word: "🦊 Fox", type: "Animal" },
+      { word: "🦁 Lion", type: "Animal" },
+      { word: "🐻 Bear", type: "Animal" },
+      { word: "🦉 Owl", type: "Bird" },
+      { word: "🦆 Duck", type: "Bird" },
+      { word: "🦚 Peacock", type: "Bird" }, 
+      { word: "🐔 Hen", type: "Bird" },
+    ],
+    [
+      { word: "🐯 Tiger", type: "Animal" }, 
+      { word: "🐴 Horse", type: "Animal" },
+      { word: "🦓 Zebra", type: "Animal" },
+      { word: "🐱 Cat", type: "Animal" }, 
+      { word: "🦅 Eagle", type: "Bird" },
+      { word: "🦜 Parrot", type: "Bird" },
+      { word: "🕊️ Dove", type: "Bird" },
+      { word: "🕊️ Pigeon", type: "Bird" },
+    ]
+  ];
+
+  let currentSetIndex = 0;
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  function renderWords() {
+    const wordContainer = document.getElementById("word-container");
+    wordContainer.innerHTML = '';
+    const shuffled = shuffle([...wordSets[currentSetIndex]]);
+    shuffled.forEach(({ word }, index) => {
+      const span = document.createElement("span");
+      span.innerText = word;
+      span.className = "word";
+      span.setAttribute("data-word", word);
+      span.setAttribute("data-index", index);
+      wordContainer.appendChild(span);
+    });
+
+    attachDragListeners();
+  }
+
+  function attachDragListeners() {
+  document.querySelectorAll(".word").forEach(el => {
+    el.setAttribute("draggable", true);
+    el.addEventListener("dragstart", dragStart);
+    el.addEventListener("dragend", dragEnd);
+
+    // Touch support with scroll prevention
+    el.addEventListener("touchstart", function (e) {
+      e.preventDefault(); // prevent scroll
+      const touch = e.touches[0];
+      el.classList.add("dragging");
+      el.style.position = "absolute";
+      el.style.zIndex = 1000;
+      el.style.touchAction = "none";
+
+      moveAt(touch.pageX, touch.pageY);
+
+        function moveAt(x, y) {
+        el.style.left = x - el.offsetWidth / 2 + "px";
+        el.style.top = y - el.offsetHeight / 2 + "px";
+      }
+
+        function onTouchMove(e) {
+        e.preventDefault(); // prevent scroll
+        const touch = e.touches[0];
+        moveAt(touch.pageX, touch.pageY);
+      }
+
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
+
+        el.addEventListener("touchend", function onTouchEnd(e) {
+        document.removeEventListener("touchmove", onTouchMove);
+        el.classList.remove("dragging");
+        el.style.position = "";
+        el.style.zIndex = "";
+        el.style.left = "";
+        el.style.top = "";
+
+          // Detect the element user dropped on
+          const touch = e.changedTouches[0];
+          const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+          if (dropTarget) {
+            const dropZone = dropTarget.closest(".drop-zone");
+            if (dropZone && !dropZone.contains(el)) {
+              dropZone.appendChild(el);
+            }
+          }
+
+          el.removeEventListener("touchend", onTouchEnd, { once: true, passive: false });
+        }); 
+      });
+    });
+  }
+
+  function dragStart(e) {
+    e.dataTransfer?.setData("text/plain", e.target.dataset.index);
+    e.target.classList.add("dragging");
+  }
+
+  function dragEnd(e) {
+    e.target.classList.remove("dragging");
+  }
+
+  function checkAnswers() {
+    let score = 0;
+    const currentWords = wordSets[currentSetIndex];
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      const zoneType = zone.getAttribute("data-type");
+      zone.querySelectorAll(".word").forEach(wordEl => {
+        const wordText = wordEl.innerText;
+        const correct = currentWords.find(w => w.word === wordText);
+        if (correct && correct.type === zoneType) {
+          wordEl.classList.remove("incorrect");
+          wordEl.classList.add("correct");
+          document.getElementById("audio-correct").play();
+          score++;
+        } else {
+          wordEl.classList.remove("correct");
+          wordEl.classList.add("incorrect");
+          document.getElementById("audio-wrong").play();
+        }
+      });
+    });
+
+    document.getElementById("feedback-message").innerText =
+      `✅ You got ${score} out of 8 correct!`;
+
+    document.getElementById("submit-btn").style.display = "none";
+    document.getElementById("try-again-btn").style.display = "inline-block";
+  }
+
+  function resetGame() {
+    document.getElementById("feedback-message").innerText = "";
+    document.getElementById("submit-btn").style.display = "inline-block";
+    document.getElementById("try-again-btn").style.display = "none";
+
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      zone.innerHTML = `<h2>${zone.getAttribute("data-type")}</h2>`;
+    });
+
+    currentSetIndex = (currentSetIndex + 1) % wordSets.length;
+    renderWords();
+  }
+
+  window.onload = function () {
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+      zone.addEventListener("dragover", e => e.preventDefault());
+      zone.addEventListener("drop", e => {
+        e.preventDefault();
+        const index = e.dataTransfer.getData("text/plain");
+        const item = document.querySelector(`[data-index='${index}']`);
+        if (item && !zone.contains(item)) {
+          zone.appendChild(item);
+        }
+      });
+    });
+
+    document.getElementById("submit-btn").addEventListener("click", checkAnswers);
+    document.getElementById("try-again-btn").addEventListener("click", resetGame);
+
+    renderWords();
+  };
+</script>
+
+
+</body>
+</html>

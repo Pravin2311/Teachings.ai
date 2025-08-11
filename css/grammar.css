@@ -4,6 +4,13 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+body.dragging {
+  overflow: hidden;
+  touch-action: none;
 }
 
 .container {
@@ -32,19 +39,29 @@ h1 {
   margin-bottom: 20px;
 }
 
-.word {
-  background-color: #ef8d0b;
-  border: 2px solid #ccc;
+.draggable-word {
+  background-color: #bcae9d;
+  border: 2px solid #080000;
   border-radius: 12px;
-  padding: 10px 15px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  padding: 6px 10px;
+  font-size: 1rem;
+  max-width: 100%;
+  word-wrap: break-word;
+  cursor: grab;
+  transition: all 0.3s ease;
 }
 
-.word:hover {
+.draggable-word:hover {
   background-color: #eef;
   border-color: #88f;
+}
+
+.draggable-word.touch-dragging {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.9;
+  transform: scale(1.1);
 }
 
 .drop-zones {
@@ -58,16 +75,16 @@ h1 {
 
 .drop-zone {
   background-color: #fff;
-  border: 3px dashed #ccc;
+  border: 4px solid #888; /* ✅ Solid border instead of dashed */
   border-radius: 16px;
   width: 45%;
   min-width: 300px;
-  min-height: 150px;
+  min-height: 180px;
   padding: 20px;
   text-align: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
-
 
 .drop-zone h2 {
   font-size: 1.5rem;
@@ -133,6 +150,29 @@ h1 {
   border-radius: 16px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+#try-again-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+#try-again-btn:hover {
+  background-color: #43a047;
+  transform: scale(1.05);
+}
+
+#try-again-btn:active {
+  background-color: #388e3c;
+  transform: scale(0.98);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .drop-zone {
     width: 100%;

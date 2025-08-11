@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Number Match Game 1-10 - Teachings.AI</title>
+  <meta name="description" content="Fun drag-and-drop number to image matching game for kids aged 3-6." />
+  <meta name="keywords" content="number matching, drag and drop, educational game, teachings.ai, preschool" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #fffef5;
+      padding: 20px;
+      touch-action: manipulation;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .word-boxes, .image-draggers {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .word-box {
+      width: 80px;
+      height: 60px;
+      border: 3px dashed #2196f3;
+      border-radius: 10px;
+      font-size: 22px;
+      background-color: #f0faff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      padding: 10px;
+    }
+    .drag-img {
+      width: 60px;
+      height: 60px;
+      cursor: grab;
+      border-radius: 8px;
+      border: 2px solid #ffc107;
+      background: white;
+    }
+    .matched-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .back-button {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: #2196f3;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    #music-toggle-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #eeeeee;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <button class="back-button" onclick="window.location.href='index.html'">Home</button>
+  <button id="music-toggle-button" title="Toggle Music">🔇</button>
+
+  <h1>Match the Numbers</h1>
+
+  <div class="container">
+  <div class="word-boxes" id="wordBoxes">
+    <div class="word" data-word="0">Zero</div>
+    <div class="word" data-word="1">One</div>
+    <div class="word" data-word="2">Two</div>
+    <div class="word" data-word="3">Three</div>
+    <div class="word" data-word="4">Four</div>
+    <div class="word" data-word="5">Five</div>
+    <div class="word" data-word="6">Six</div>
+    <div class="word" data-word="7">Seven</div>
+    <div class="word" data-word="8">Eight</div>
+    <div class="word" data-word="9">Nine</div>
+  </div>
+
+  <div class="image-draggers" id="imageDraggers">
+    <img src="assets/images/numbers/0.png" class="draggable-img" id="0" alt="Zero" draggable="true">
+    <img src="assets/images/numbers/1.png" class="draggable-img" id="1" alt="One" draggable="true">
+    <img src="assets/images/numbers/2.png" class="draggable-img" id="2" alt="Two" draggable="true">
+    <img src="assets/images/numbers/3.png" class="draggable-img" id="3" alt="Three" draggable="true">
+    <img src="assets/images/numbers/4.png" class="draggable-img" id="4" alt="Four" draggable="true">
+    <img src="assets/images/numbers/5.png" class="draggable-img" id="5" alt="Five" draggable="true">
+    <img src="assets/images/numbers/6.png" class="draggable-img" id="6" alt="Six" draggable="true">
+    <img src="assets/images/numbers/7.png" class="draggable-img" id="7" alt="Seven" draggable="true">
+    <img src="assets/images/numbers/8.png" class="draggable-img" id="8" alt="Eight" draggable="true">
+    <img src="assets/images/numbers/9.png" class="draggable-img" id="9" alt="Nine" draggable="true">
+  </div>
+</div>
+
+  </div>
+
+  <div id="result"></div>
+  <button id="try-again-button" onclick="resetGame()">🔄 Try Again</button>
+
+  <!-- Audio -->
+  <audio id="background-music" loop>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+
+  <script>
+    const wordBoxes = document.getElementById("wordBoxes");
+    const imageDraggers = document.getElementById("imageDraggers");
+    const resultEl = document.getElementById("result");
+    const backgroundMusic = document.getElementById("background-music");
+    const musicToggleBtn = document.getElementById("music-toggle-button");
+
+    const numbers = [
+      { word: "one", image: "assets/images/numbers/1.png" },
+      { word: "two", image: "assets/images/numbers/2.png" },
+      { word: "three", image: "assets/images/numbers/3.png" },
+      { word: "four", image: "assets/images/numbers/4.png" },
+      { word: "five", image: "assets/images/numbers/5.png" },
+      { word: "six", image: "assets/images/numbers/6.png" },
+      { word: "seven", image: "assets/images/numbers/7.png" },
+      { word: "eight", image: "assets/images/numbers/8.png" },
+      { word: "nine", image: "assets/images/numbers/9.png" },
+      { word: "ten", image: "assets/images/numbers/10.png" }
+    ];
+
+    musicToggleBtn.addEventListener("click", () => {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicToggleBtn.innerText = "🔊";
+      } else {
+        backgroundMusic.pause();
+        musicToggleBtn.innerText = "🔇";
+      }
+    });
+
+    function toWord(w) {
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }
+
+    function resetGame() {
+      wordBoxes.innerHTML = "";
+      imageDraggers.innerHTML = "";
+      resultEl.innerText = "";
+      document.getElementById("try-again-button").style.display = "none";
+
+      shuffleArray(numbers);
+
+      numbers.forEach(num => {
+        const box = document.createElement("div");
+        box.className = "word-box";
+        box.setAttribute("data-word", num.word);
+        box.innerHTML = toWord(num.word);
+        box.addEventListener("drop", drop);
+        box.addEventListener("dragover", e => e.preventDefault());
+        wordBoxes.appendChild(box);
+      });
+
+      shuffleArray(numbers);
+      numbers.forEach(num => {
+        const img = document.createElement("img");
+        img.className = "drag-img";
+        img.src = num.image;
+        img.id = num.word;
+        img.draggable = true;
+        img.alt = num.word;
+        img.addEventListener("dragstart", drag);
+        img.addEventListener("touchstart", touchStart, { passive: false });
+        imageDraggers.appendChild(img);
+      });
+    }
+
+    function drag(e) {
+      e.dataTransfer.setData("text", e.target.id);
+    }
+
+    function drop(e) {
+      e.preventDefault();
+      const draggedId = e.dataTransfer.getData("text");
+      const box = e.target.closest(".word-box");
+      const targetWord = box.getAttribute("data-word");
+      const emojiEl = document.getElementById(draggedId);
+
+      if (draggedId === targetWord && !box.classList.contains("matched")) {
+        box.innerHTML = `<img src="${emojiEl.src}" alt="${emojiEl.alt}" class="matched-img">`;
+        box.classList.add("matched");
+        emojiEl.style.display = "none";
+        document.getElementById("audio-correct").play();
+        resultEl.innerText = "Correct! 🎉";
+        if (document.querySelectorAll(".matched").length === 10) {
+          resultEl.innerText = "🎉 All Matched! Great Job!";
+          document.getElementById("try-again-button").style.display = "inline-block";
+        }
+      } else {
+        resultEl.innerText = "Try Again ❌";
+        document.getElementById("audio-wrong").play();
+      }
+    }
+
+    // Touch events for mobile
+    let draggedElement = null;
+    function touchStart(e) {
+      const el = e.target;
+      draggedElement = el.cloneNode(true);
+      draggedElement.style.position = "absolute";
+      draggedElement.style.zIndex = "1000";
+      draggedElement.style.pointerEvents = "none";
+      document.body.appendChild(draggedElement);
+
+      function moveAt(touch) {
+        draggedElement.style.left = touch.pageX - 30 + "px";
+        draggedElement.style.top = touch.pageY - 30 + "px";
+      }
+
+      function onTouchMove(e) {
+        moveAt(e.touches[0]);
+      }
+
+      function onTouchEnd(e) {
+        const touch = e.changedTouches[0];
+        const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (dropTarget && dropTarget.classList.contains("word-box")) {
+          const targetWord = dropTarget.getAttribute("data-word");
+          const draggedId = el.id;
+          if (draggedId === targetWord && !dropTarget.classList.contains("matched")) {
+            dropTarget.innerHTML = `<img src="${el.src}" alt="${el.alt}" class="matched-img">`;
+            dropTarget.classList.add("matched");
+            el.style.display = "none";
+            document.getElementById("audio-correct").play();
+            resultEl.innerText = "Correct! 🎉";
+            if (document.querySelectorAll(".matched").length === 10) {
+              resultEl.innerText = "🎉 All Matched! Great Job!";
+              document.getElementById("try-again-button").style.display = "inline-block";
+            }
+          } else {
+            resultEl.innerText = "Try Again ❌";
+            document.getElementById("audio-wrong").play();
+          }
+        }
+        draggedElement.remove();
+        document.removeEventListener("touchmove", onTouchMove);
+        document.removeEventListener("touchend", onTouchEnd);
+      }
+
+      moveAt(e.touches[0]);
+      document.addEventListener("touchmove", onTouchMove);
+      document.addEventListener("touchend", onTouchEnd);
+      e.preventDefault();
+    }
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    window.onload = resetGame;
+  </script>
+</body>
+</html>

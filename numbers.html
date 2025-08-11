@@ -1,87 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Numbers - Teachings.AI</title>
-    <link rel="stylesheet" href="css/style.css"> 
-    <link rel="stylesheet" href="css/numbers.css"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Numbers - Teachings.AI</title>
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations.">
-    <meta name="keywords" content="learn numbers, counting for kids, numbers 0-10, math games, preschool numbers, kindergarten numbers, early math, teachings.ai numbers">
-    <meta name="author" content="Teachings AI">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Learn Numbers with Teachings.AI">
-    <meta property="og:description" content="Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations.">
-    <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
-    <meta property="og:url" content="https://teachings.ai/numbers.html">
-    <meta property="og:type" content="website">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations.">
+  <meta name="keywords" content="learn numbers, counting for kids, numbers 0-10, math games, preschool numbers, kindergarten numbers, early math, teachings.ai numbers">
+  <meta name="author" content="Teachings AI">
+  <meta name="robots" content="index, follow">
 
-    <!-- Structured Data (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalAudience",
-  "educationalRole": "student",
-  "name": "Learn Numbers - Teachings.AI",
-  "description": "Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations.",
-  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-  "inLanguage": "en",
-  "url": "https://teachings.ai/numbers.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Teachings.AI",
-    "url": "https://teachings.ai",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://teachings.ai/assets/images/app_logo.png"
+  <!-- Open Graph -->
+  <meta property="og:title" content="Learn Numbers with Teachings.AI" />
+  <meta property="og:description" content="Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta property="og:url" content="https://teachings.ai/numbers.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalAudience",
+    "educationalRole": "student",
+    "name": "Learn Numbers - Teachings.AI",
+    "description": "Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations.",
+    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+    "inLanguage": "en",
+    "url": "https://teachings.ai/numbers.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/assets/images/app_logo.png"
+      }
     }
   }
-}
-</script>
+  </script>
 
-    <!-- Google Analytics 4 (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/numbers.css" />
 
-      gtag('config', 'G-XVYMNTZLQJ');
-    </script>
-    <!-- End Google Analytics -->
-
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
 </head>
 <body>
-    <div class="container">
-        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-        <h1>Learn Numbers</h1>
-        <div class="number-display">
-            <p id="current-number-text"></p>
-            <div id="number-image-container">
-                <canvas id="drawing-canvas"></canvas>
-                <!-- The image will be dynamically added here by JavaScript -->
-            </div>
-        </div>
-        <div class="navigation-buttons">
-            <button id="prev-number">Previous</button>
-            <button id="next-number">Next</button>
-        </div>
+  <div class="container" role="main">
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Back to Home">Back to Home</button>
+    <h1>Learn Numbers</h1>
+
+    <div class="number-display">
+      <p id="current-number-text" aria-live="polite"></p>
+
+      <div id="number-image-container">
+        <canvas id="drawing-canvas" width="300" height="300" aria-label="Scratch to reveal number image"></canvas>
+        <!-- Image is added dynamically via JS -->
+      </div>
     </div>
-    
-    <!-- Music Audio Element -->
-    <audio id="background-music" loop muted>
-        <source src="assets/audio/background_music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
-    <!-- Music Toggle Button (positioned absolutely by CSS) -->
-    <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+    <div class="navigation-buttons">
+      <button id="prev-number" aria-label="Previous number">Previous</button>
+      <button id="next-number" aria-label="Next number">Next</button>
+    </div>
+  </div>
 
-    <script src="js/numbers.js"></script>
-    <script src="js/musicControl.js"></script> 
+  <!-- Background Music -->
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">&#128263;</button>
+
+  <!-- Scripts -->
+  <script src="js/numbers.js" defer></script>
+  <script src="js/musicControl.js" defer></script>
 </body>
 </html>
