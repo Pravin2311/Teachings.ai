@@ -176,6 +176,26 @@ h1 {
 #animals-birds-sorting { background-color: #05253a; }
 #animals-birds-sorting:hover { background-color: #3e739e; }
 
+#electronic-gadgets { background-color: #4FC3F7; }
+#electronic-gadgets:hover { background-color: #3e739e; }
+
+#fantasy-world { background-color: #4FC3F7; }
+#fantasy-world:hover { background-color: #3e739e; }
+
+#countries { background-color: #4FC3F7; }
+#countries:hover { background-color: #3e739e; }
+
+#nature-explorer { background-color: #4FC3F7; }
+#nature-explorer:hover { background-color: #3e739e; }
+
+#planets { background-color: #4FC3F7; }
+#planets:hover { background-color: #3e739e; }
+
+#scientists { background-color: #4FC3F7; }
+#scientists:hover { background-color: #3e739e; }
+
+
+
 /* Music Toggle */
 .music-toggle-absolute {
   position: absolute;
