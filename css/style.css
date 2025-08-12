@@ -102,6 +102,7 @@ h1 {
   align-items: center;
   justify-content: center;
   line-height: 1.2;
+  position: relative;
 }
 
 .module-button:hover {
@@ -375,4 +376,22 @@ h1 {
 
 .follow-me-icons a:hover {
   transform: scale(1.2);
+}
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #FF5252;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
 }
