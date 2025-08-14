@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Worksheet Download Center - Teachings.AI</title>
-  <meta name="description" content="Download free worksheets for preschool and kindergarten: alphabets, numbers, coloring, fruits, symmetry and more from Teachings.AI.">
-  <meta name="keywords" content="Free Worksheets, Kindergarten, Preschool, Teaching, Download PDFs, Teachings.AI">
+  <title>Free Printable Worksheets for Preschool & Kindergarten | Teachings.AI</title>
+  <meta name="description" content="Download 100% free printable worksheets for preschool and kindergarten kids. Fun activities: alphabets, numbers, math, coloring, fruits, shapes, symmetry, and more." />
+  <meta name="keywords" content="free worksheets, preschool worksheets, kindergarten worksheets, printable PDFs, alphabet tracing, numbers, math worksheets, coloring pages, Teachings.AI" />
   <meta name="author" content="Teachings.AI">
 
   <!-- Open Graph (Facebook, LinkedIn) -->
-  <meta property="og:title" content="Worksheet Download Center - Teachings.AI" />
-  <meta property="og:description" content="Download free, fun learning worksheets for kids." />
+  <meta property="og:title" content="Free Worksheets for Preschool & Kindergarten | Teachings.AI" />
+  <meta property="og:description" content="Download fun & free worksheets for preschool, LKG, and kindergarten kids. Perfect for learning at home or school." />
   <meta property="og:image" content="https://teachings.ai/assets/images/worksheet-cover.png" />
   <meta property="og:url" content="https://teachings.ai/worksheets.html" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Worksheet Download Center - Teachings.AI" />
-  <meta name="twitter:description" content="Fun worksheets for preschool and LKG kids. Download for free!" />
+  <meta name="twitter:title" content="Free Worksheets for Preschool & Kindergarten | Teachings.AI" />
+  <meta name="twitter:description" content="Download free worksheets: alphabets, numbers, coloring, and math for preschool & kindergarten." />
   <meta name="twitter:image" content="https://teachings.ai/assets/images/worksheet-cover.png" />
 
   <!-- Favicon -->
@@ -29,13 +29,30 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Worksheet Download Center - Teachings.AI",
+    "name": "Free Worksheets for Preschool & Kindergarten | Teachings.AI",
     "description": "Fun and educational worksheets for preschool and LKG kids, available for free download.",
     "url": "https://teachings.ai/worksheets.html",
     "publisher": {
       "@type": "Organization",
       "name": "Teachings.AI",
       "url": "https://teachings.ai"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://teachings.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Worksheets",
+          "item": "https://teachings.ai/worksheets.html"
+        }
+      ]
     }
   }
   </script>
@@ -44,7 +61,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
@@ -58,119 +75,24 @@
       margin: 0;
       transition: background-color 0.3s, color 0.3s;
     }
-
-    body.dark-mode {
-      background-color: #111;
-      color: #f0f0f0;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 1.6em;
-      padding: 0 10px;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .download-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      padding: 10px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .download-card {
-      background: #fff;
-      padding: 12px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      width: 220px;
-      box-sizing: border-box;
-      transition: transform 0.2s, background-color 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    body.dark-mode .download-card {
-      background: #222;
-      box-shadow: 0 2px 6px rgba(255,255,255,0.1);
-    }
-
-    .download-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .download-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .download-card h3 {
-      font-size: 1em;
-      margin: 10px 0;
-    }
-
-    .download-card a {
-      display: inline-block;
-      padding: 8px 12px;
-      background-color: orange;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 0.9em;
-    }
-
-    .download-card a:hover {
-      background-color: darkorange;
-    }
-
-    .back-button, .theme-toggle {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #6a9cff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .theme-toggle {
-      background-color: #444;
-    }
-
-    .back-button:hover {
-      background-color: #4a7cd1;
-    }
-
-    .theme-toggle:hover {
-      background-color: #222;
-    }
-
-    @media (max-width: 600px) {
-      .download-grid {
-        padding: 0 10px;
-      }
-
-      .download-card {
-        width: 100%;
-        max-width: 320px;
-      }
-    }
+    body.dark-mode { background-color: #111; color: #f0f0f0; }
+    h1 { margin-bottom: 20px; font-size: 1.8em; padding: 0 10px; }
+    h2 { margin-top: 30px; font-size: 1.4em; }
+    .controls { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+    .download-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 10px; max-width: 1200px; margin: 0 auto; }
+    .download-card { background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); width: 220px; transition: transform 0.2s; display: flex; flex-direction: column; align-items: center; }
+    body.dark-mode .download-card { background: #222; }
+    .download-card:hover { transform: translateY(-4px); }
+    .download-card img { width: 100%; border-radius: 8px; }
+    .download-card h3 { font-size: 1em; margin: 10px 0; }
+    .download-card a { padding: 8px 12px; background-color: orange; color: white; border-radius: 6px; font-weight: bold; font-size: 0.9em; text-decoration: none; }
+    .download-card a:hover { background-color: darkorange; }
+    .back-button, .theme-toggle { padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .back-button { background-color: #6a9cff; color: white; }
+    .theme-toggle { background-color: #444; color: white; }
+    .back-button:hover { background-color: #4a7cd1; }
+    .theme-toggle:hover { background-color: #222; }
+    @media (max-width: 600px) { .download-card { width: 100%; max-width: 320px; } }
   </style>
 </head>
 <body>
@@ -181,8 +103,9 @@
   </div>
 
   <h1>📚 Free Printable Worksheets for Preschool, LKG & Kindergarten</h1>
-  <p>Download fun, printable worksheets for early learners: alphabets, numbers, coloring, math, fruits, shapes, and more. Ideal for home or school use.</p>
+  <p>Teachings.AI offers a collection of <strong>free downloadable worksheets</strong> for early learners. Perfect for <em>preschool, nursery, LKG, UKG, and kindergarten</em> kids — covering alphabets, numbers, math, coloring, fruits, shapes, and more.</p>
 
+  <h2>Browse Worksheets by Category</h2>
 
   <div class="download-grid">
     <!-- REPEAT BLOCK START -->
@@ -308,19 +231,34 @@
       <h3>Addition-Substraction sheets</h3>
       <a href="assets/worksheets/Math-worksheet1.pdf" download>Download PDF</a>
     </div>
-    
-    
-    
-    
-    
-    
+      
     <!-- REPEAT BLOCK END -->
   </div>
+  <h2>Why Choose Teachings.AI Worksheets?</h2>
+  <ul style="text-align:left; max-width:800px; margin:20px auto;">
+    <li>✔ 100% Free printable PDFs for teachers & parents</li>
+    <li>✔ Covers <strong>alphabets, numbers, math, and creative skills</strong></li>
+    <li>✔ Perfect for <em>home learning & classroom activities</em></li>
+    <li>✔ Designed for <strong>preschool, kindergarten & early grades</strong></li>
+  </ul>
+
+  <h2>Frequently Asked Questions (FAQ)</h2>
+  <div style="max-width:800px; margin:20px auto; text-align:left;">
+    <h3>1. Are the worksheets really free?</h3>
+    <p>Yes! All worksheets on Teachings.AI are 100% free to download and print.</p>
+    <h3>2. What age group are these worksheets for?</h3>
+    <p>They are suitable for preschool, nursery, LKG, UKG, and early primary kids.</p>
+    <h3>3. Do I need to sign up?</h3>
+    <p>No sign-up required. Just click “Download PDF” and start learning.</p>
+  </div>
+
+  <p><a href="blog.html">Explore more learning resources on our blog →</a></p>
 
   <script>
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
     }
   </script>
+  
 </body>
 </html>
