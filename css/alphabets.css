@@ -150,3 +150,53 @@ h1 {
         padding: 40px 20px 20px 20px; 
     }
 }
+/* Learning Tips Section */
+.learning-tips {
+  background-color: #fef9e7; /* soft pastel background */
+  border: 2px solid #ffd700; /* gold border for fun */
+  border-radius: 15px;
+  padding: 20px 25px;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.learning-tips h2 {
+  color: #ff6f61; /* friendly coral color for heading */
+  font-size: 1.6em;
+  text-align: center;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px #fff5cc;
+}
+
+.learning-tips ul {
+  list-style-type: none; /* remove default bullets */
+  padding-left: 0;
+}
+
+.learning-tips li {
+  background-color: #fff8dc; /* soft cream for each tip */
+  margin: 8px 0;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ffe4b5;
+  font-size: 1.1em;
+  color: #333;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.learning-tips li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: default;
+}
+
+/* Optional: Add icon or emoji for each tip */
+.learning-tips li::before {
+  content: "⭐";
+  margin-right: 10px;
+  color: #ffcc00;
+  font-size: 1.2em;
+}

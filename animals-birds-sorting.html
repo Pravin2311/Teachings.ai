@@ -4,70 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Animals & Birds Sorting - Teachings.AI</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/grammar.css" />
-  <style>
-    body.dragging {
-  touch-action: none;
-  overflow: hidden;
-  }
-  .word {
-  display: inline-block;
-  padding: 10px 16px;
-  margin: 10px;
-  background-color: #f0f0f0;
-  border: 2px solid #444;
-  border-radius: 10px;
-  cursor: grab;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-  transition: background 0.3s;
-}
 
-.word.correct {
-  background-color: #d4edda;
-  border-color: #28a745;
-}
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Fun drag-and-drop game to sort Animals and Birds. Perfect for preschool, kindergarten, and grade 1 kids to learn animal names and bird recognition." />
+  <meta name="keywords" content="Animals sorting game, Birds sorting game, Preschool learning, Kindergarten activity, Interactive kids game, Early literacy, Teachings.AI" />
+  <meta name="author" content="Teachings AI" />
+  <meta name="robots" content="index, follow" />
 
-.word.incorrect {
-  background-color: #f8d7da;
-  border-color: #dc3545;
-}
-
-#submit-btn, #try-again-btn {
-  margin: 20px 10px;
-  padding: 10px 25px;
-  font-size: 18px;
-  background-color: orange;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.drop-zone {
-  border: 2px dashed #aaa;
-  border-radius: 12px;
-  padding: 20px;
-  min-height: 100px;
-  margin: 10px;
-  background-color: #f9f9f9;
-}
-
- </style>
-
-  <meta name="description" content="Fun drag-and-drop game to sort Animals and Birds. Part of Teachings.AI interactive modules for kids.">
-  <meta name="keywords" content="Sorting game, Animals for kids, Birds for kids, teachings.ai Sorting, fun learning">
-  <meta name="author" content="Teachings AI">
-  <meta name="robots" content="index, follow">
-
+  <!-- Open Graph for social sharing -->
   <meta property="og:title" content="Animals & Birds Sorting - Teachings.AI" />
   <meta property="og:description" content="Drag and drop game for sorting Animals and Birds. Great for early learners. From Teachings.AI." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/animals-birds-sorting.html" />
   <meta property="og:type" content="website" />
 
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -86,10 +37,13 @@
         "@type": "ImageObject",
         "url": "https://teachings.ai/assets/images/app_logo.png"
       }
-    }
+    },
+    "learningResourceType": "Interactive Learning Game",
+    "educationalUse": "Reinforces animal and bird recognition, observation, sorting skills, and early literacy."
   }
   </script>
 
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -97,25 +51,114 @@
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/grammar.css" />
+
+  <style>
+    body.dragging { touch-action: none; overflow: hidden; }
+    .word { display: inline-block; padding: 10px 16px; margin: 10px; background-color: #f0f0f0; border: 2px solid #444; border-radius: 10px; cursor: grab; font-size: 20px; font-weight: bold; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); transition: background 0.3s; }
+    .word.correct { background-color: #d4edda; border-color: #28a745; }
+    .word.incorrect { background-color: #f8d7da; border-color: #dc3545; }
+    #submit-btn, #try-again-btn { margin: 20px 10px; padding: 10px 25px; font-size: 18px; background-color: orange; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    .drop-zone { border: 2px dashed #aaa; border-radius: 12px; padding: 20px; min-height: 100px; margin: 10px; background-color: #f9f9f9; }
+    .game-area .tip { background-color: #e0f7fa; padding: 12px; border-radius: 10px; margin-bottom: 15px; font-size: 16px; font-weight: 500; }
+    @media (max-width: 600px) {
+      .word { font-size: 16px; padding: 8px 12px; margin: 5px; }
+      #submit-btn, #try-again-btn { font-size: 16px; padding: 8px 20px; }
+    }
+    /* Sorting Tips Section */
+    .sorting-tips {
+      margin-top: 2rem;
+      background: linear-gradient(135deg, #fef9f3, #f9f9ff);
+      border: 2px solid #ececec;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .sorting-tips h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #1a73e8;
+      font-weight: 600;
+    }
+
+    .sorting-tips ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sorting-tips li {
+      position: relative;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      margin-bottom: 0.75rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #444;
+      transition: transform 0.2s;
+    }
+
+    .sorting-tips li:hover {
+      transform: translateX(5px);
+    }
+
+    .sorting-tips li::before {
+      content: "✨";
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+    }
+
+    /* Mobile Friendly */
+    @media (max-width: 600px) {
+      .sorting-tips {
+        padding: 1rem;
+      }
+      .sorting-tips h2 {
+        font-size: 1.25rem;
+      }
+      .sorting-tips li {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div class="container" role="main">
-  <button class="back-button" onclick="window.location.href='index.html'">Back</button>
-  <h2>Sorting: <br> Animals & Birds</h2>
-  <div class="game-area">
-    <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Animal or Bird!</p>
-    <div class="word-bank" id="word-container"></div>
-    <div class="drop-zones">
-      <div class="drop-zone" id="animal-zone" data-type="Animal"><h2>Animal</h2></div>
-      <div class="drop-zone" id="bird-zone" data-type="Bird"><h2>Bird</h2></div>
+    <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+    <h1>Sorting: Animals & Birds</h1>
+    <div class="game-area">
+      <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category – Animal or Bird!</p>
+      <div class="word-bank" id="word-container" aria-label="Words to sort"></div>
+      <div class="drop-zones">
+        <div class="drop-zone" id="animal-zone" data-type="Animal"><h2>Animal</h2></div>
+        <div class="drop-zone" id="bird-zone" data-type="Bird"><h2>Bird</h2></div>
+      </div>
+      <p id="feedback-message" aria-live="polite"></p>
+      <button id="submit-btn">Submit</button>
+      <button id="try-again-btn" style="display:none;">🔄 Try Again</button>
     </div>
-    <p id="feedback-message"></p>
-    <button id="submit-btn">Submit</button>
-    <button id="try-again-btn" style="display:none;">🔄 Try Again</button>
-  </div>
-</div>
 
+    <!-- Additional SEO Tip Section -->
+    <section class="sorting-tips">
+      <h2>Learning Tips for Kids</h2>
+      <ul>
+        <li>Recognize each animal and bird by its name and emoji to improve memory.</li>
+        <li>Drag and drop words into correct zones to reinforce visual learning.</li>
+        <li>Play regularly to improve sorting skills and early literacy.</li>
+        <li>Encourage children to explain why each word belongs in its category.</li>
+      </ul>
+    </section>
+  </div>
 
   <!-- Music and Feedback Audio -->
   <audio id="background-music" loop muted>
@@ -169,49 +212,40 @@
       span.setAttribute("data-index", index);
       wordContainer.appendChild(span);
     });
-
     attachDragListeners();
   }
 
   function attachDragListeners() {
-  document.querySelectorAll(".word").forEach(el => {
-    el.setAttribute("draggable", true);
-    el.addEventListener("dragstart", dragStart);
-    el.addEventListener("dragend", dragEnd);
+    document.querySelectorAll(".word").forEach(el => {
+      el.setAttribute("draggable", true);
+      el.addEventListener("dragstart", dragStart);
+      el.addEventListener("dragend", dragEnd);
 
-    // Touch support with scroll prevention
-    el.addEventListener("touchstart", function (e) {
-      e.preventDefault(); // prevent scroll
-      const touch = e.touches[0];
-      el.classList.add("dragging");
-      el.style.position = "absolute";
-      el.style.zIndex = 1000;
-      el.style.touchAction = "none";
-
-      moveAt(touch.pageX, touch.pageY);
-
-        function moveAt(x, y) {
-        el.style.left = x - el.offsetWidth / 2 + "px";
-        el.style.top = y - el.offsetHeight / 2 + "px";
-      }
-
-        function onTouchMove(e) {
-        e.preventDefault(); // prevent scroll
+      // Touch support
+      el.addEventListener("touchstart", function (e) {
+        e.preventDefault();
         const touch = e.touches[0];
+        el.classList.add("dragging");
+        el.style.position = "absolute";
+        el.style.zIndex = 1000;
+        el.style.touchAction = "none";
+
         moveAt(touch.pageX, touch.pageY);
-      }
+
+        function moveAt(x, y) { el.style.left = x - el.offsetWidth / 2 + "px"; el.style.top = y - el.offsetHeight / 2 + "px"; }
+
+        function onTouchMove(e) { e.preventDefault(); const touch = e.touches[0]; moveAt(touch.pageX, touch.pageY); }
 
         document.addEventListener("touchmove", onTouchMove, { passive: false });
 
         el.addEventListener("touchend", function onTouchEnd(e) {
-        document.removeEventListener("touchmove", onTouchMove);
-        el.classList.remove("dragging");
-        el.style.position = "";
-        el.style.zIndex = "";
-        el.style.left = "";
-        el.style.top = "";
+          document.removeEventListener("touchmove", onTouchMove);
+          el.classList.remove("dragging");
+          el.style.position = "";
+          el.style.zIndex = "";
+          el.style.left = "";
+          el.style.top = "";
 
-          // Detect the element user dropped on
           const touch = e.changedTouches[0];
           const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
           if (dropTarget) {
@@ -222,19 +256,13 @@
           }
 
           el.removeEventListener("touchend", onTouchEnd, { once: true, passive: false });
-        }); 
+        });
       });
     });
   }
 
-  function dragStart(e) {
-    e.dataTransfer?.setData("text/plain", e.target.dataset.index);
-    e.target.classList.add("dragging");
-  }
-
-  function dragEnd(e) {
-    e.target.classList.remove("dragging");
-  }
+  function dragStart(e) { e.dataTransfer?.setData("text/plain", e.target.dataset.index); e.target.classList.add("dragging"); }
+  function dragEnd(e) { e.target.classList.remove("dragging"); }
 
   function checkAnswers() {
     let score = 0;
@@ -257,9 +285,7 @@
       });
     });
 
-    document.getElementById("feedback-message").innerText =
-      `✅ You got ${score} out of 8 correct!`;
-
+    document.getElementById("feedback-message").innerText = `✅ You got ${score} out of 8 correct!`;
     document.getElementById("submit-btn").style.display = "none";
     document.getElementById("try-again-btn").style.display = "inline-block";
   }
@@ -295,8 +321,6 @@
 
     renderWords();
   };
-</script>
-
-
+  </script>
 </body>
 </html>
