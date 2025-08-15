@@ -159,8 +159,8 @@ h1 {
 #publicservice { background-color: #4682b4; }
 #publicservice:hover { background-color: #3e739e; }
 
-#games { background-color: #000305; }
-#games:hover { background-color: #3e739e; }
+#games { background-color: rgb(40, 40, 4); }
+#games:hover { background-color: #092943; }
 
 #odd-even-sorting { background-color: #05253a; }
 #odd-even-sorting:hover { background-color: #3e739e; }
