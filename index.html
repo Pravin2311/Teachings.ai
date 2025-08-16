@@ -44,8 +44,23 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
 .module-button:hover{background-color:#6fbfa4;transform:translateY(-7px);box-shadow:0 8px 15px rgba(0,0,0,0.2);}
 .music-toggle-absolute{position:absolute;top:25px;right:25px;background-color:#ffb86c;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:1.6em;display:flex;justify-content:center;align-items:center;cursor:pointer;box-shadow:0 3px 6px rgba(0,0,0,0.1);transition:background-color 0.3s ease,transform 0.2s ease,box-shadow 0.3s ease;z-index:100;}
 .music-toggle-absolute:hover{background-color:#e6a760;transform:scale(1.1);}
-@media(max-width:600px){.container{padding:30px 20px;border-radius:15px;}h1{font-size:2.2em;margin-bottom:20px;}.modules-grid{gap:15px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}.module-button{padding:15px;font-size:1.1em;}.scroll-text{font-size:16px;}.music-toggle-absolute{width:40px;height:40px;font-size:1.4em;top:15px;right:15px;}}
-@media(max-width:400px){h1{font-size:1.8em;}.modules-grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}.module-button{font-size:1em;padding:10px;}.scroll-text{font-size:12px;}}
+
+@media(max-width:600px){
+  html, body {height:100%;}
+  .container {min-height:100vh; display:flex; flex-direction:column; padding:30px 20px; border-radius:15px;}
+  h1{font-size:2.2em;margin-bottom:20px;}
+  .modules-grid{gap:15px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
+  .module-button{padding:15px;font-size:1.1em;}
+  .scroll-text{font-size:16px;}
+  .music-toggle-absolute{width:40px;height:40px;font-size:1.4em;top:15px;right:15px;}
+}
+
+@media(max-width:400px){
+  h1{font-size:1.8em;}
+  .modules-grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}
+  .module-button{font-size:1em;padding:10px;}
+  .scroll-text{font-size:12px;}
+}
 </style>
 
 <!-- Preload Fonts & CSS -->
@@ -71,100 +86,101 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
 </head>
 <body>
 <div class="container">
-<div class="download-button-container"><button id="download-button" style="display:none;" aria-label="Add app to home screen">Download</button></div>
-<h1>Teachings.Ai <br>Fun Learning Modules</h1>
-<div class="follow-me-icons">
-<span>Updates 👉</span>
-<a href="https://www.instagram.com/teachingsai" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram"/></a>
-<a href="https://www.facebook.com/teachingsai" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook"/></a>
-<a href="https://twitter.com/teachingsai" target="_blank" aria-label="Twitter"><img src="assets/images/twitter.png" alt="Twitter"/></a>
-<a href="https://www.youtube.com/@teachingsai" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube"/></a>
-</div>
-<main>
-<div class="scroll-instruction"><div class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen | For music on tap 🔈</div></div>
-<div class="modules-grid">
-        <!-- Module buttons -->
-        <button class="module-button" id="downloads">📥 Worksheets</button>
-        <button class="module-button" id="games">🎮 Activity</button>
-        <button class="module-button" id="numbers">🔢 Numbers</button>
-        <button class="module-button" id="alphabets">🔠 Alphabets</button>
-        <button class="module-button" id="animals">🐶 Animals</button>
-        <button class="module-button" id="colors">🌈 Colors</button>
-        <button class="module-button" id="birds">🕊️ Birds</button>
-        <button class="module-button" id="fruits">🍎 Fruits</button>
-        <button class="module-button" id="vegetables">🥦 Vegetables</button>
-        <button class="module-button new" id="countries">🏳️‍🌈 countries <span class="badge">New</span></button>
-        <button class="module-button" id="plants">🌱 Plants</button>
-        <button class="module-button" id="vehicles">🚗 Vehicles</button>
-        <button class="module-button" id="bodyparts">💪 Body Parts</button>
-        <button class="module-button" id="math">➕ Simple Math</button>
-        <button class="module-button" id="rhyming">🧠 Rhyming</button>
-        <button class="module-button" id="sight">👀 Sight Words</button>
-        <button class="module-button" id="word-matching">🧩 Word Matching</button>
-        <button class="module-button" id="sentences">📝 Sentences</button>
-        <button class="module-button" id="counting">🔢 Counting Obj</button>
-        <button class="module-button" id="odd-even">🧮 Odd & Even</button>
-        <button class="module-button" id="shapes">🟦 Basic Shapes</button>
-        <button class="module-button" id="patterns">🪄 Patterns & Seq</button>
-        <button class="module-button" id="Grammar">📝 Grammar Fun</button>
-        <button class="module-button new" id="electronic-gadgets">💡 Electronics <span class="badge">New</span></button>
-        <button class="module-button new" id="fantasy-world">👽 Fantasy World <span class="badge">New</span></button>
-        <button class="module-button new" id="nature-explorer">🌳 Nature Lifes <span class="badge">New</span></button>
-        <button class="module-button new" id="planets">🌎 Planets <span class="badge">New</span></button>
-        <button class="module-button new" id="scientists">🔬 Scientists <span class="badge">New</span></button>
-        <button class="module-button" id="publicservice">🏛️ Public Services</button>
-      </div>
-    </main>
+  <div class="download-button-container"><button id="download-button" style="display:none;" aria-label="Add app to home screen">Download</button></div>
+  <h1>Teachings.Ai <br>Fun Learning Modules</h1>
+  <div class="follow-me-icons">
+    <span>Updates 👉</span>
+    <a href="https://www.instagram.com/teachingsai" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram"/></a>
+    <a href="https://www.facebook.com/teachingsai" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook"/></a>
+    <a href="https://twitter.com/teachingsai" target="_blank" aria-label="Twitter"><img src="assets/images/twitter.png" alt="Twitter"/></a>
+    <a href="https://www.youtube.com/@teachingsai" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube"/></a>
   </div>
 
-  <footer class="site-footer">
-    <p>© 2025 Teachings.AI</p>
+  <main>
+    <div class="scroll-instruction"><div class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen | For music on tap 🔈</div></div>
+    <div class="modules-grid">
+      <!-- Module buttons -->
+      <button class="module-button" id="downloads">📥 Worksheets</button>
+      <button class="module-button" id="games">🎮 Activity</button>
+      <button class="module-button" id="numbers">🔢 Numbers</button>
+      <button class="module-button" id="alphabets">🔠 Alphabets</button>
+      <button class="module-button" id="animals">🐶 Animals</button>
+      <button class="module-button" id="colors">🌈 Colors</button>
+      <button class="module-button" id="birds">🕊️ Birds</button>
+      <button class="module-button" id="fruits">🍎 Fruits</button>
+      <button class="module-button" id="vegetables">🥦 Vegetables</button>
+      <button class="module-button new" id="countries">🏳️‍🌈 countries <span class="badge">New</span></button>
+      <button class="module-button" id="plants">🌱 Plants</button>
+      <button class="module-button" id="vehicles">🚗 Vehicles</button>
+      <button class="module-button" id="bodyparts">💪 Body Parts</button>
+      <button class="module-button" id="math">➕ Simple Math</button>
+      <button class="module-button" id="rhyming">🧠 Rhyming</button>
+      <button class="module-button" id="sight">👀 Sight Words</button>
+      <button class="module-button" id="word-matching">🧩 Word Matching</button>
+      <button class="module-button" id="sentences">📝 Sentences</button>
+      <button class="module-button" id="counting">🔢 Counting Obj</button>
+      <button class="module-button" id="odd-even">🧮 Odd & Even</button>
+      <button class="module-button" id="shapes">🟦 Basic Shapes</button>
+      <button class="module-button" id="patterns">🪄 Patterns & Seq</button>
+      <button class="module-button" id="Grammar">📝 Grammar Fun</button>
+      <button class="module-button new" id="electronic-gadgets">💡 Electronics <span class="badge">New</span></button>
+      <button class="module-button new" id="fantasy-world">👽 Fantasy World <span class="badge">New</span></button>
+      <button class="module-button new" id="nature-explorer">🌳 Nature Lifes <span class="badge">New</span></button>
+      <button class="module-button new" id="planets">🌎 Planets <span class="badge">New</span></button>
+      <button class="module-button new" id="scientists">🔬 Scientists <span class="badge">New</span></button>
+      <button class="module-button" id="publicservice">🏛️ Public Services</button>
+    </div>
+  </main>
+</div>
 
-    <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
-    <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team%2C%0D%0A%0D%0A'" 
-            class="feedback-button">📩 Contact Us</button>
+<footer class="site-footer">
+  <p>© 2025 Teachings.AI</p>
+  <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
+  <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team'" class="feedback-button">📩 Contact Us</button>
 
-    <audio id="background-music" loop muted>
-      <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+  <audio id="background-music" loop muted>
+    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
 
-    <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
 
-    <!-- JS Scripts -->
-    <script src="js/script.js" defer></script>
-    <script src="js/musicControl.js" defer></script>
+  <!-- JS Scripts -->
+  <script src="js/script.js" defer></script>
+  <script src="js/musicControl.js" defer></script>
 
-    <!-- Service Worker -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('service-worker.js')
-            .then(reg => console.log('Service Worker Registered', reg))
-            .catch(err => console.error('Service Worker Failed:', err));
-        });
-      }
-    </script>
-
-    <!-- PWA Install Prompt -->
-    <script>
-      let deferredPrompt;
-      const downloadBtn = document.getElementById('download-button');
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        downloadBtn.style.display = 'inline-block';
-
-        downloadBtn.addEventListener('click', () => {
-          gtag('event', 'download_button_click', {
-            event_category: 'PWA',
-            event_label: 'Add to Home Screen'
-          });
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(choiceResult => { deferredPrompt = null; });
-        });
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker Registered', reg))
+          .catch(err => console.error('Service Worker Failed:', err));
       });
-    </script>
-  </footer>
+    }
+  </script>
+
+  <!-- PWA Install Prompt -->
+  <script>
+    let deferredPrompt;
+    const downloadBtn = document.getElementById('download-button');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      downloadBtn.style.display = 'inline-block';
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      if (!deferredPrompt) return;
+      gtag('event', 'download_button_click', {
+        event_category: 'PWA',
+        event_label: 'Add to Home Screen'
+      });
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+    });
+  </script>
+</footer>
 </body>
 </html>
