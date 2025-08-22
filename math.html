@@ -6,6 +6,35 @@
     <title>Simple Math for Kids - Teachings.AI</title>
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="css/math.css"> 
+    <style>
+      /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e3f2fd;
+  border-left: 5px solid #2196f3;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+    </style>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Teachings.AI: Fun and simple math exercises for kids. Practice addition and subtraction problems for early learners.">
@@ -56,7 +85,7 @@
 </head>
 <body>
     <div class="container" role="main">
-        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+        <button class="back-button" onclick="window.location.href='index.html'">Back</button>
         <h1>Simple Math</h1>
         <div class="math-problem-area">
             <p id="math-problem-text"></p>
@@ -67,7 +96,11 @@
             </div>
             <p id="feedback-message"></p>
         </div>
-      
+      <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>➕ Parent Tip: Make Math Part of Daily Life</h3>
+  <p>Reinforce math skills by counting everyday items: “How many spoons are on the table?” or “You ate 2 grapes, now eat 1 more—how many total?” This builds number sense, addition fluency, and problem-solving confidence in preschool and kindergarten kids.</p>
+</div>
     </div>
     
     <!-- Music Audio Element -->

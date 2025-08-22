@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Body Parts - Teachings.AI</title>
+    <title>Learn Body Parts | Interactive Game for Kids | Teachings.AI</title>
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="css/bodyparts.css"> 
+    <style>
+        /* Parenting Tip Section */
+.parenting-tip {
+  margin: 20px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #f5dede;
+  border-left: 5px solid #b74747;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+    </style>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Teachings.AI: Interactive module for kids to learn about human body parts. Scratch to reveal body part images and hear their names.">
+     <meta name="description" content="Interactive body parts game for kids 3-7. Discover head, shoulders, elbows, and toes with fun scratch-to-reveal gameplay. Perfect for preschool, kindergarten, and homeschool anatomy learning.">
     <meta name="keywords" content="learn body parts, human body for kids, anatomy for kids, body parts names, preschool anatomy, kindergarten science, teachings.ai bodyparts">
     <meta name="author" content="Goose AI">
     <meta name="robots" content="index, follow">
@@ -68,6 +97,11 @@
             <button id="prev-bodypart">Previous</button>
             <button id="next-bodypart">Next</button>
         </div>
+        <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🧍 Parent Tip: Make Learning Active & Fun</h3>
+  <p>Turn body part learning into a movement game! Say a body part and ask your child to touch it. Try “Touch your elbow!” or “Wiggle your toes!” This kinesthetic approach helps preschoolers remember names faster, builds body awareness, and supports early science and motor skills.</p>
+</div>
     </div>
     
     <!-- Music Audio Element -->

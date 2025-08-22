@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Colors - Teachings.AI</title>
+    <title>Learn Colors | Interactive Game for Kids | Teachings.AI</title>
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="css/colors.css"> 
+    <style>
+      /* Parenting Tip Section */
+.parenting-tip {
+  margin: 20px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #fff3e0;
+  border-left: 5px solid #ff8c42;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+    </style>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Teachings.AI: Interactive module for kids to learn about different colors. Scratch to reveal colored images and hear color names.">
+     <meta name="description" content="Interactive color learning game for kids 3-7. Discover primary and secondary colors with fun scratch-to-reveal gameplay. Perfect for preschool, kindergarten, and homeschool color recognition.">
     <meta name="keywords" content="learn colors, colors for kids, color recognition, preschool colors, kindergarten colors, early learning colors, teachings.ai colors">
     <meta name="author" content="Teachings AI">
     <meta name="robots" content="index, follow">
@@ -68,6 +97,11 @@
             <button id="prev-color">Previous</button>
             <button id="next-color">Next</button>
         </div>
+        <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🎨 Parent Tip: Turn Learning Into Everyday Play</h3>
+  <p>Reinforce color recognition by pointing out colors in daily life: “That’s a red apple!” or “Your blue shoe is ready.” Ask your child to find things around the house in specific colors. This builds vocabulary, strengthens memory, and makes learning fun and meaningful for preschool and kindergarten kids.</p>
+</div>
     </div>
     
     <!-- Music Audio Element -->

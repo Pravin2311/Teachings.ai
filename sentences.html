@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Sentences Builder - Teachings.AI</title>
-
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/sentences.css" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#1B2A5B" />
+  <title>Build Simple Sentences | Interactive Learning for Preschool & Kindergarten | Teachings.AI</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Teachings.AI: Build simple 3- and 4-word English sentences through fun interactive learning. Perfect for preschool and early learners." />
-  <meta name="keywords" content="sentence builder, simple sentences, kids english learning, preschool grammar, word order game, teachings.ai, early language development" />
+  <meta name="description" content="Interactive sentence builder for kids 3-7. Boost early reading, grammar, and word order skills with fun, no-distractor sentence puzzles. Perfect for preschool, kindergarten, and homeschool." />
+  <meta name="keywords" content="sentence builder, simple sentences, kids english learning, preschool grammar, word order game, early language development, kindergarten reading, homeschool literacy" />
   <meta name="author" content="Teachings.AI" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph Meta Tags -->
+  <!-- Open Graph / Social Sharing -->
   <meta property="og:title" content="Simple Sentences Builder - Teachings.AI" />
   <meta property="og:description" content="Interactive sentence building game for children to learn simple 3- and 4-word English sentences." />
   <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
   <meta property="og:url" content="https://teachings.ai/simple-sentences.html" />
   <meta property="og:type" content="website" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/sentences.css" />
+
+  <!-- Manifest & PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1B2A5B" />
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
@@ -51,34 +54,46 @@
 </head>
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='games.html'">Back to Home</button>
+    <!-- Back Button -->
+    <button class="back-button" onclick="window.location.href='games.html'" aria-label="Go back to games home">Back to Home</button>
+
+    <!-- Page Title -->
     <h1>Sentences Builder</h1>
-    
-    <div id="sentence-container" class="game-box">
+
+    <!-- Instruction & Game Area -->
+    <div id="sentence-container">
       <p id="instruction">Arrange the words in the correct order:</p>
       <div id="word-options" class="word-options"></div>
-      <button id="submit-btn">Submit</button>
+      <button id="submit-btn" style="display:none;">Submit</button>
       <p id="feedback"></p>
     </div>
 
+    <!-- Navigation Buttons -->
     <div class="navigation-buttons">
       <button id="prev-btn">Previous</button>
       <button id="next-btn">Next</button>
     </div>
-    
+
+    <!-- Parenting Tip -->
+    <div class="parenting-tip">
+      <h3>🔤 Parent Tip: Build Language Confidence</h3>
+      <p>Support early reading skills by encouraging your child to say each word aloud as they tap it. This multisensory approach—seeing, touching, and speaking—boosts vocabulary, improves word order understanding, and strengthens sentence formation for preschool and kindergarten learners.</p>
+    </div>
   </div>
 
-  <!-- Music -->
+  <!-- Background Music -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
+
+  <!-- Feedback Audio -->
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
-  <!-- Sentence Audio -->
   <audio id="sentence-audio" preload="auto"></audio>
 
+  <!-- Scripts -->
   <script src="js/sentences.js"></script>
   <script src="js/musicControl.js"></script>
 </body>
