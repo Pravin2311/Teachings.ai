@@ -6,9 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kids Learning – Alphabets, Numbers & Fun Worksheets | Teachings.AI</title>
 
-<link rel="manifest" href="manifest.json">
+<!-- Canonical URL to prevent / vs /index.html duplication -->
+<link rel="canonical" href="https://teachings.ai/" />
+
+<!-- Manifest & PWA -->
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1B2A5B">
 <meta name="google-adsense-account" content="ca-pub-7495143337429327">
+
 <!-- SEO & Social -->
 <meta name="description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, colors, and more in a fun way.">
 <meta name="keywords" content="kids learning app, educational games, children's app, preschool learning, kindergarten learning, interactive education, fun learning, primary school, early learning">
@@ -16,7 +21,7 @@
 <meta name="robots" content="index, follow">
 
 <meta property="og:title" content="Teachings.AI - Fun & Interactive Learning for Kids">
-<meta property="og:description" content="Teachings.AI: Interactive learning web app for kids aged 3-10.">
+<meta property="og:description" content="Interactive learning web app for kids aged 3-10. Engaging games for alphabets, numbers, and more.">
 <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
 <meta property="og:url" content="https://teachings.ai/">
 <meta property="og:type" content="website">
@@ -25,7 +30,48 @@
 <meta name="twitter:title" content="Teachings.AI - Fun & Interactive Learning for Kids">
 <meta name="twitter:description" content="Interactive learning web app for kids aged 3-10.">
 <meta name="twitter:image" content="https://teachings.ai/assets/images/app_logo.png">
-<link rel="canonical" href="https://teachings.ai/" />
+
+<!-- Preload Fonts & CSS -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalApplication",
+  "name": "Teachings.AI",
+  "operatingSystem": "All",
+  "applicationCategory": "Educational",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Goose AI"
+  },
+  "description": "Interactive learning platform for kids aged 3-10 with games for alphabets, numbers, animals, and more."
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XVYMNTZLQJ');
+</script>
+
 <!-- Critical CSS -->
 <style>
 html,body{margin:0;padding:0;font-family:'Poppins',sans-serif;background:#f7f9fb;color:#333d51;overflow-x:hidden;}
@@ -40,8 +86,10 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
 .scroll-text{display:inline-block;white-space:nowrap;padding-left:100%;animation:scroll-left 15s linear infinite;font-size:20px;font-weight:bold;color:black;}
 @keyframes scroll-left{from{transform:translateX(0%);}to{transform:translateX(-100%);}}
 .modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:20px;}
-.module-button{background-color:#7fd1b9;color:#fff;padding:25px 15px;border:none;border-radius:15px;font-size:1.4em;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;position:relative;transition:background-color 0.3s ease,transform 0.2s ease,box-shadow 0.3s ease;}
+.module-button{background-color:#7fd1b9;color:#fff;padding:25px 15px;border:none;border-radius:15px;font-size:1.4em;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;position:relative;transition:background-color 0.3s ease,transform 0.2s ease,box-shadow 0.3s ease;text-decoration:none;}
 .module-button:hover{background-color:#6fbfa4;transform:translateY(-7px);box-shadow:0 8px 15px rgba(0,0,0,0.2);}
+.module-button.new{position:relative;}
+.module-button .badge{position:absolute;top:-8px;right:8px;background:#ff6b6b;color:white;padding:4px 8px;border-radius:12px;font-size:12px;font-weight:bold;}
 .music-toggle-absolute{position:absolute;top:25px;right:25px;background-color:#ffb86c;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:1.6em;display:flex;justify-content:center;align-items:center;cursor:pointer;box-shadow:0 3px 6px rgba(0,0,0,0.1);transition:background-color 0.3s ease,transform 0.2s ease,box-shadow 0.3s ease;z-index:100;}
 .music-toggle-absolute:hover{background-color:#e6a760;transform:scale(1.1);}
 
@@ -62,32 +110,18 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
   .scroll-text{font-size:12px;}
 }
 </style>
-
-<!-- Preload Fonts & CSS -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-
-<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/style.css"></noscript>
-
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"EducationalApplication","name":"Teachings.AI","operatingSystem":"All","applicationCategory":"Educational","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Organization","name":"Goose AI"}}
-</script>
-
-<!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XVYMNTZLQJ');</script>
-
 </head>
 <body>
+
+<!-- Accessibility: Move music toggle inside container -->
 <div class="container">
-  <div class="download-button-container"><button id="download-button" style="display:none;" aria-label="Add app to home screen">Download</button></div>
-  <h1>Teachings.Ai <br>Fun Learning Modules</h1>
+  <div class="download-button-container">
+    <button id="download-button" style="display:none;" aria-label="Add app to home screen">Download</button>
+  </div>
+
+  <h1>Teachings.Ai</h1>
+  <p><h2>Fun Learning Modules</h2></p>
+
   <div class="follow-me-icons">
     <span>Updates 👉</span>
     <a href="https://www.instagram.com/teachingsai" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram"/></a>
@@ -97,58 +131,64 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
   </div>
 
   <main>
-    <div class="scroll-instruction"><div class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen | For music on tap 🔈</div></div>
+    <div class="scroll-instruction">
+      <div class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen" | For music on tap 🔈</div>
+    </div>
+
     <div class="modules-grid">
-      <!-- Module buttons -->
-      <button class="module-button" id="downloads">📥 Worksheets</button>
-      <button class="module-button" id="games">🎮 Activity</button>
-      <button class="module-button" id="numbers">🔢 Numbers</button>
-      <button class="module-button" id="alphabets">🔠 Alphabets</button>
-      <button class="module-button" id="animals">🐶 Animals</button>
-      <button class="module-button" id="colors">🌈 Colors</button>
-      <button class="module-button" id="birds">🕊️ Birds</button>
-      <button class="module-button" id="fruits">🍎 Fruits</button>
-      <button class="module-button" id="vegetables">🥦 Vegetables</button>
-      <button class="module-button new" id="countries">🏳️‍🌈 countries <span class="badge">New</span></button>
-      <button class="module-button" id="plants">🌱 Plants</button>
-      <button class="module-button" id="vehicles">🚗 Vehicles</button>
-      <button class="module-button" id="bodyparts">💪 Body Parts</button>
-      <button class="module-button" id="math">➕ Simple Math</button>
-      <button class="module-button" id="rhyming">🧠 Rhyming</button>
-      <button class="module-button" id="sight">👀 Sight Words</button>
-      <button class="module-button" id="word-matching">🧩 Word Matching</button>
-      <button class="module-button" id="sentences">📝 Sentences</button>
-      <button class="module-button" id="counting">🔢 Counting Obj</button>
-      <button class="module-button" id="odd-even">🧮 Odd & Even</button>
-      <button class="module-button" id="shapes">🟦 Basic Shapes</button>
-      <button class="module-button" id="patterns">🪄 Patterns & Seq</button>
-      <button class="module-button" id="Grammar">📝 Grammar Fun</button>
-      <button class="module-button new" id="electronic-gadgets">💡 Electronics <span class="badge">New</span></button>
-      <button class="module-button new" id="fantasy-world">👽 Fantasy World <span class="badge">New</span></button>
-      <button class="module-button new" id="nature-explorer">🌳 Nature Lifes <span class="badge">New</span></button>
-      <button class="module-button new" id="planets">🌎 Planets <span class="badge">New</span></button>
-      <button class="module-button new" id="scientists">🔬 Scientists <span class="badge">New</span></button>
-      <button class="module-button" id="publicservice">🏛️ Public Services</button>
+      <!-- Use <a> tags with href for robust navigation -->
+      <a href="/downloads.html" class="module-button" id="downloads">Worksheets</a>
+      <a href="/games.html" class="module-button" id="games">🎮 Activity</a>
+      <a href="/numbers.html" class="module-button" id="numbers">🔢 Numbers</a>
+      <a href="/alphabets.html" class="module-button" id="alphabets">🔠 Alphabets</a>
+      <a href="/animals.html" class="module-button" id="animals">🐶 Animals</a>
+      <a href="/colors.html" class="module-button" id="colors">🌈 Colors</a>
+      <a href="/birds.html" class="module-button" id="birds">🕊️ Birds</a>
+      <a href="/fruits.html" class="module-button" id="fruits">🍎 Fruits</a>
+      <a href="/vegetables.html" class="module-button" id="vegetables">Vegetables</a>
+      <a href="/countries.html" class="module-button new" id="countries">🏳️‍🌈 Countries <span class="badge">New</span></a>
+      <a href="/plants.html" class="module-button" id="plants">🌱 Plants</a>
+      <a href="/vehicles.html" class="module-button" id="vehicles">🚗 Vehicles</a>
+      <a href="/bodyparts.html" class="module-button" id="bodyparts">💪 Body Parts</a>
+      <a href="/math.html" class="module-button" id="math">Simple Math</a>
+      <a href="/rhyming.html" class="module-button" id="rhyming">🧠 Rhyming</a>
+      <a href="/sight.html" class="module-button" id="sight">Sight Words</a>
+      <a href="/word-matching.html" class="module-button" id="word-matching">Word Match</a>
+      
+      
+      <a href="/odd-even.html" class="module-button" id="odd-even">🧮 Odd-Even</a>
+      <a href="/shapes.html" class="module-button" id="shapes">🟦 Shapes</a>
+      
+      
+      <a href="/electronic-gadgets.html" class="module-button new" id="electronic-gadgets">💡 Electronics <span class="badge">New</span></a>
+      <a href="/fantasy-world.html" class="module-button new" id="fantasy-world">👽 Fantasy <span class="badge">New</span></a>
+      <a href="/nature-explorer.html" class="module-button new" id="nature-explorer">🌳 Nature <span class="badge">New</span></a>
+      <a href="/planets.html" class="module-button new" id="planets">🌎 Planets <span class="badge">New</span></a>
+      <a href="/scientists.html" class="module-button new" id="scientists">🔬 Scientists <span class="badge">New</span></a>
+      <a href="/publicservice.html" class="module-button" id="publicservice">🏛️ Public Ser</a>
     </div>
   </main>
+
+  <!-- Music Toggle moved inside .container -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
 </div>
 
+<!-- Footer -->
 <footer class="site-footer">
   <p>© 2025 Teachings.AI</p>
   <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
-  <button onclick="location.href='about.html'" class="blog-button">About</button>
-  <button onclick="location.href='privacy-policy.html'" class="blog-button">Privacy</button>
-  <button onclick="location.href='disclaimer.html'" class="blog-button">Disclaimer</button>
+  <button onclick="location.href='/about.html'" class="blog-button">About</button>
+  <button onclick="location.href='/privacy-policy.html'" class="blog-button">Privacy</button>
+  <button onclick="location.href='/disclaimer.html'" class="blog-button">Disclaimer</button>
   <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team'" class="feedback-button">📩 Contact Us</button>
   <p>“Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, and fun activities. Designed for preschool and kindergarten, our resources make learning joyful and effective.”</p>
+
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
-  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
-
-  <!-- JS Scripts -->
+  <!-- Scripts -->
   <script src="/safeguard.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/musicControl.js" defer></script>
@@ -157,7 +197,7 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js')
+        navigator.serviceWorker.register('/service-worker.js')
           .then(reg => console.log('Service Worker Registered', reg))
           .catch(err => console.error('Service Worker Failed:', err));
       });
@@ -186,5 +226,13 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
     });
   </script>
 </footer>
+
+<!-- NoScript Warning -->
+<noscript>
+  <div style="text-align:center;background:#ffdddd;padding:15px;margin:20px;border-radius:10px;font-family:Arial,sans-serif;">
+    <strong>⚠️ JavaScript is required</strong> to use Teachings.AI. Please enable JavaScript in your browser settings.
+  </div>
+</noscript>
+
 </body>
 </html>

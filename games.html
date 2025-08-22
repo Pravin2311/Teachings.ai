@@ -3,115 +3,286 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kids Learning App - Interactive Fun for Ages 3-10</title>
+  <title>Kids Learning Games – Sorting, Matching & More | Teachings.AI</title>
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="manifest" href="manifest.json" />
+  <!-- Canonical -->
+  <link rel="canonical" href="https://teachings.ai/games.html" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Manifest & PWA -->
+  <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#1B2A5B" />
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, colors, and more in a fun way." />
-  <meta name="keywords" content="kids learning app, educational games, children's app, preschool learning, kindergarten learning, interactive education, fun learning, primary school, early learning" />
-  <meta name="author" content="Goose AI" />
-  <meta name="robots" content="index, follow" />
+  <!-- SEO -->
+  <meta name="description" content="Interactive sorting and matching games for kids: odd/even, alphabets, numbers, animals, and more. Fun learning for ages 3-10.">
+  <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Teachings.AI - Fun & Interactive Learning for Kids" />
-  <meta property="og:description" content="Teachings.AI: Interactive learning web app for kids aged 3-10." />
-  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
-  <meta property="og:url" content="https://teachings.ai/" />
-  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Teachings.AI - Learning Games for Kids">
+  <meta property="og:description" content="Play sorting and matching games for numbers, alphabets, animals, and more.">
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
+  <meta property="og:url" content="https://teachings.ai/games.html">
+  <meta property="og:type" content="website">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
+
+  <!-- Critical Responsive CSS -->
+  <style>
+    /* Ensure no overflow */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f7f9fb;
+      color: #333d51;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container with safe spacing */
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px 10px; /* Reduced side padding on mobile */
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      flex: 1;
+    }
+
+    h1 {
+      color: #6a9cff;
+      margin-bottom: 20px;
+      font-size: 2.4em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1 br {
+      display: none;
+    }
+
+    /* Back Button - Fixed inside container bounds */
+    .back-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: #6a9cff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95em;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .back-button:hover {
+      background-color: #5c8ae6;
+      transform: translateY(-2px);
+    }
+
+    .back-button:active {
+      transform: translateY(0);
+    }
+
+    /* Music Toggle - Same fix */
+    .music-toggle-absolute {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #ffb86c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.4em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .music-toggle-absolute:hover {
+      background-color: #e6a760;
+      transform: scale(1.1);
+    }
+
+    /* Modules Grid - Responsive */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px;
+      margin: 15px auto;
+      padding: 0 10px;
+      max-width: 900px;
+    }
+
+    .module-button {
+      background-color: #7fd1b9;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 16px 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      min-height: 90px;
+    }
+
+    .module-button:hover {
+      background-color: #6fbfa4;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .module-button:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        padding: 25px 15px;
+        border-radius: 15px;
+      }
+
+      h1 {
+        font-size: 2.0em;
+      }
+
+      .modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 14px;
+      }
+
+      .module-button {
+        padding: 14px 8px;
+        font-size: 1.05em;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+        gap: 12px;
+      }
+
+      .module-button {
+        padding: 12px 6px;
+        font-size: 0.95em;
+        min-height: 80px;
+      }
+
+      .back-button,
+      .music-toggle-absolute {
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+      }
+
+      .back-button {
+        left: 10px;
+        padding: 6px 10px;
+      }
+
+      .music-toggle-absolute {
+        right: 10px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+
+  <!-- Container -->
   <div class="container">
-    <!-- Download Button (Top Left in Container) -->
-    <div class="download-button-container top-left">
-      <button id="download-button">Download</button>
-    </div>
+    <!-- Back Button -->
+    <button class="back-button" onclick="window.location.href='/'" aria-label="Go back to home">←</button>
 
-    <h1>Teachings.Ai <br>Learning Games</h1>
+    <!-- Page Title -->
+    <h1>Teachings.Ai</h1>
+    <p><h2>Learning Activity</h2></p>
+    <div class="follow-me-icons">
+    <span>Updates 👉</span>
+    <a href="https://www.instagram.com/teachingsai" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram"/></a>
+    <a href="https://www.facebook.com/teachingsai" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook"/></a>
+    <a href="https://twitter.com/teachingsai" target="_blank" aria-label="Twitter"><img src="assets/images/twitter.png" alt="Twitter"/></a>
+    <a href="https://www.youtube.com/@teachingsai" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube"/></a>
+  </div>
+  <main>
     <div class="scroll-instruction">
-      <span class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen | For music on tap 🔈</span>
+      <div class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen" | For music on tap 🔈</div>
     </div>
-    
-    <h2>Sorting Games</h2>
+    <!-- Modules Grid -->
     <div class="modules-grid">
-    <button class="module-button" id="odd-even-sorting">Odd-Evens</button>
-    <button class="module-button" id="numbers-alphabets-sorting">AlphaNumaric</button>
-    <button class="module-button" id="furits-vegetables-sorting">Fruits-Veggies</button>
-    <button class="module-button" id="colours-sorting">Colours</button>
-    <button class="module-button" id="animals-birds-sorting">Animals-Birds</button>
+      <a href="/counting.html" class="module-button" id="counting">🔢 Count Obj</a>
+      <a href="/patterns.html" class="module-button" id="patterns">🪄 Patterns</a>
+      <a href="/odd-even-sorting.html" class="module-button">🧮 Even-Odd</a>
+      <a href="/numbers-alphabets-sorting.html" class="module-button">🔣 AlphaNum</a>
+      <a href="/fruits-vegetables-sorting.html" class="module-button">🍎🥦 Fruits-Veggies</a>
+      <a href="/colours-sorting.html" class="module-button">🌈 Colors</a>
+      <a href="/animals-birds-sorting.html" class="module-button">🐶🕊️ Animals-Birds</a>
+      <a href="/grammar.html" class="module-button" id="grammar">📝 Grammar</a>
+      <a href="/sentences.html" class="module-button" id="sentences">📝 Sentences</a>
+      <a href="/match-words.html" class="module-button">🧩 Word-Match</a>
+      <a href="/match-shapes.html" class="module-button">🟦 Shape-Match</a>
+      <a href="/match-numbers.html" class="module-button">🔢 Number-Match</a>
+      <a href="/match-animals.html" class="module-button">🦁 Animal-Match</a>
     </div>
-    
-    <h2>Matching Games</h2>
-    <div class="modules-grid">
-    <button class="module-button" id="match-words">Words Match</button>
-    <button class="module-button" id="match-shapes">Match Shapes</button>
-    <button class="module-button" id="match-numbers">Match Numbers</button>
-    <button class="module-button" id="match-animals">Match Animals</button>
-    </div>
-    <h2>More games coming soon</h2>
-
   </div>
 
-  <!-- Background Music -->
+  <!-- Music Toggle (positioned outside .container but safe) -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
+
+  <!-- Audio -->
   <audio id="background-music" loop muted>
-    <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
+    <source src="/assets/audio/background_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Music Toggle Button -->
-  <button id="music-toggle-button" class="music-toggle-absolute">🔈</button>
-
   <!-- Scripts -->
-  <script src="js/script.js"></script>
-  <script src="js/musicControl.js"></script>
+  <script src="/js/script.js" defer></script>
+  <script src="/js/musicControl.js" defer></script>
 
-  <!-- Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('service-worker.js')
-          .then(reg => console.log('Service Worker Registered', reg))
-          .catch(err => console.error('Service Worker Failed:', err));
-      });
-    }
-  </script>
-
-  <!-- Install Prompt -->
-  <script>
-    let deferredPrompt;
-    const downloadBtn = document.getElementById('download-button');
-
-    // Show download button only when event is triggered
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      downloadBtn.style.display = 'block'; // show button on Android
-
-      downloadBtn.addEventListener('click', () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(choiceResult => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('App installed');
-            }
-            deferredPrompt = null;
-          });
-        }
-      });
-    });
-  </script>
+  <!-- NoScript -->
+  <noscript>
+    <div style="text-align:center;background:#ffdddd;padding:10px;margin:20px;border-radius:10px;">
+      <strong>JavaScript is required</strong> for full functionality.
+    </div>
+  </noscript>
 </body>
 </html>
