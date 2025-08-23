@@ -1,10 +1,10 @@
+/* style.css */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
   margin: 0;
   padding: 0;
   text-align: center;
-  overflow-x: hidden;
   overscroll-behavior: contain;
 }
 
@@ -16,7 +16,7 @@ body.dragging {
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  position: relative;
 }
 
 h1 {
@@ -37,64 +37,145 @@ h1 {
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+  min-height: 60px;
 }
 
-.draggable-word {
-  background-color: #bcae9d;
-  border: 2px solid #080000;
-  border-radius: 12px;
-  padding: 6px 10px;
-  font-size: 1rem;
-  max-width: 100%;
-  word-wrap: break-word;
-  cursor: grab;
-  transition: all 0.3s ease;
+#submit-btn,
+#try-again-btn {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: transform 0.2s ease;
 }
 
-.draggable-word:hover {
-  background-color: #eef;
-  border-color: #88f;
+#submit-btn:hover,
+#try-again-btn:hover {
+  transform: scale(1.05);
 }
 
-.draggable-word.touch-dragging {
+#feedback-message {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  min-height: 24px;
+  color: #333;
+}
+
+.back-button {
   position: absolute;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.9;
-  transform: scale(1.1);
+  top: 10px;
+  left: 10px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
+.music-toggle-absolute {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  .drop-zone {
+    width: 100%;
+  }
+}
+/* grammar.css */
 .drop-zones {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   gap: 20px;
   flex-wrap: wrap;
   margin: 20px 0;
 }
 
 .drop-zone {
-  background-color: #fff;
-  border: 4px solid #888; /* ✅ Solid border instead of dashed */
-  border-radius: 16px;
   width: 45%;
   min-width: 300px;
   min-height: 180px;
-  padding: 20px;
-  text-align: center;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  background: white;
+  border: 4px solid #888;
+  border-radius: 16px;
+  padding: 40px 20px 20px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.drop-zone h2 {
-  font-size: 1.5rem;
+.drop-zone::before {
+  content: "Nouns";
+  font: bold 1.5rem 'Segoe UI', sans-serif;
   color: #555;
-  margin-bottom: 10px;
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 0 10px;
+}
+
+#verb-zone::before {
+  content: "Verbs";
 }
 
 .drop-zone.over {
   background-color: #f0f8ff;
   border-color: #00f;
+}
+
+.draggable-word {
+  background: #bcae9d;
+  border: 2px solid #080000;
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  cursor: grab;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.draggable-word:hover {
+  background: #eef;
+}
+
+.draggable-word.touch-dragging {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.95;
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.drop-zone .draggable-word {
+  display: inline-flex !important;
+  margin: 4px !important;
+  font-size: 1rem !important;
+  padding: 6px 10px !important;
+  transform: none !important;
+  max-width: calc(100% - 20px);
 }
 
 .correct {
@@ -107,74 +188,4 @@ h1 {
   background-color: #ef9a9a !important;
   border-color: #c62828 !important;
   color: #fff !important;
-}
-
-#submit-btn {
-  background-color: #ff9800;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#submit-btn:hover {
-  background-color: #fb8c00;
-}
-
-#feedback-message {
-  font-size: 1.2rem;
-  margin-top: 20px;
-  color: #333;
-}
-
-.back-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #2196f3;
-  color: white;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.grammar-image img {
-  margin-top: 30px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-#try-again-btn {
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 15px;
-}
-
-#try-again-btn:hover {
-  background-color: #43a047;
-  transform: scale(1.05);
-}
-
-#try-again-btn:active {
-  background-color: #388e3c;
-  transform: scale(0.98);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .drop-zone {
-    width: 100%;
-  }
 }
