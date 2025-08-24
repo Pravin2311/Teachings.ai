@@ -5,92 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Phonics app: say sounds then word. C-A-T → cat. Uses your images and sounds. One file.">
   <title>Sound & Blend | teachings.ai</title>
+   
+  <link rel="stylesheet" href="css/phonics.css">
 
-  <!-- 🎨 Embedded CSS -->
-  <style>
-    body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: #f0f9ff;
-      text-align: center;
-      padding: 20px;
-      margin: 0;
-      color: #333;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      color: #2c5282;
-      font-size: 1.4em;
-      margin-bottom: 10px;
-    }
-
-    .word-card {
-      margin: 30px 0;
-    }
-
-    .word-image {
-      max-width: 220px;
-      height: auto;
-      margin: 10px auto;
-      border: 4px solid #4CAF50;
-      border-radius: 12px;
-    }
-
-    .word-text {
-      font-size: 2.8em;
-      font-weight: bold;
-      color: #d946ef;
-      margin: 15px 0;
-      letter-spacing: 3px;
-    }
-
-    .btn {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 14px 24px;
-      font-size: 1.2em;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
-      width: 85%;
-      max-width: 300px;
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .progress {
-      font-size: 0.9em;
-      color: #666;
-      margin: 20px 0;
-    }
-
-    .tip {
-      font-size: 0.95em;
-      text-align: left;
-      color: #555;
-      line-height: 1.6;
-      padding: 15px;
-    }
-  </style>
 </head>
 <body>
 
   <!-- Main App -->
   <div class="container">
+    <button class="btn" onclick="window.location.href='index.html'">Back</button>
     <h1>🔤 Sound & Blend</h1>
-
+    
     <div class="word-card">
+    
       <img id="wordImage" class="word-image" src="images/cat.png" alt="cat">
       <div id="wordText" class="word-text">cat</div>
     </div>
@@ -99,9 +26,8 @@
     <button class="btn" onclick="nextWord()">➡️ Next Word</button>
 
     <p class="progress">Word <span id="current">1</span> of 9</p>
-  </div>
-
-  <!-- Parent Tip -->
+    
+    <!-- Parent Tip -->
   <div class="container tip">
     <h3>🎯 How to Help</h3>
     <p>Say each sound with your child: <strong>"/c/ ... /a/ ... /t/ ... cat!"</strong><br>
@@ -109,134 +35,41 @@
     <p><em>— teachings.ai</em></p>
   </div>
 
+  </div>
+
+  
+
   <!-- Audio Elements -->
-  <audio id="sound-c" src="audio/c.mp3"></audio>
-  <audio id="sound-a" src="audio/a.mp3"></audio>
-  <audio id="sound-t" src="audio/t.mp3"></audio>
-  <audio id="sound-b" src="audio/b.mp3"></audio>
-  <audio id="sound-o" src="audio/o.mp3"></audio>
-  <audio id="sound-w" src="audio/w.mp3"></audio>
-  <audio id="sound-d" src="audio/d.mp3"></audio>
-  <audio id="sound-g" src="audio/g.mp3"></audio>
-  <audio id="sound-u" src="audio/u.mp3"></audio>
-  <audio id="sound-l" src="audio/l.mp3"></audio>
-  <audio id="sound-s" src="audio/s.mp3"></audio>
-  <audio id="sound-r" src="audio/r.mp3"></audio>
-  <audio id="sound-e" src="audio/e.mp3"></audio>
-  <audio id="sound-f" src="audio/f.mp3"></audio>
-  <audio id="sound-h" src="audio/h.mp3"></audio>
-  <audio id="sound-n" src="audio/n.mp3"></audio>
-  <audio id="sound-i" src="audio/i.mp3"></audio>
-  <audio id="sound-ai" src="audio/ai_sound.mp3"></audio> <!-- for /ai/ sound -->
+  <!-- A to Z Audio Elements -->
+<audio id="sound-a" src="assets/audio/phonics/A.mp3"></audio>
+<audio id="sound-b" src="assets/audio/phonics/B.mp3"></audio>
+<audio id="sound-c" src="assets/audio/phonics/C.mp3"></audio>
+<audio id="sound-d" src="assets/audio/phonics/D.mp3"></audio>
+<audio id="sound-e" src="assets/audio/phonics/E.mp3"></audio>
+<audio id="sound-f" src="assets/audio/phonics/F.mp3"></audio>
+<audio id="sound-g" src="assets/audio/phonics/G.mp3"></audio>
+<audio id="sound-h" src="assets/audio/phonics/H.mp3"></audio>
+<audio id="sound-i" src="assets/audio/phonics/I.mp3"></audio>
+<audio id="sound-j" src="assets/audio/phonics/J.mp3"></audio>
+<audio id="sound-k" src="assets/audio/phonics/K.mp3"></audio>
+<audio id="sound-l" src="assets/audio/phonics/L.mp3"></audio>
+<audio id="sound-m" src="assets/audio/phonics/M.mp3"></audio>
+<audio id="sound-n" src="assets/audio/phonics/N.mp3"></audio>
+<audio id="sound-o" src="assets/audio/phonics/O.mp3"></audio>
+<audio id="sound-p" src="assets/audio/phonics/P.mp3"></audio>
+<audio id="sound-q" src="assets/audio/phonics/Q.mp3"></audio>
+<audio id="sound-r" src="assets/audio/phonics/R.mp3"></audio>
+<audio id="sound-s" src="assets/audio/phonics/S.mp3"></audio>
+<audio id="sound-t" src="assets/audio/phonics/T.mp3"></audio>
+<audio id="sound-u" src="assets/audio/phonics/U.mp3"></audio>
+<audio id="sound-v" src="assets/audio/phonics/V.mp3"></audio>
+<audio id="sound-w" src="assets/audio/phonics/W.mp3"></audio>
+<audio id="sound-x" src="assets/audio/phonics/X.mp3"></audio>
+<audio id="sound-y" src="assets/audio/phonics/Y.mp3"></audio>
+<audio id="sound-z" src="assets/audio/phonics/Z.mp3"></audio>
 
-  <audio id="wordAudio" src="audio/cat.mp3"></audio>
 
-  <!-- 📜 Embedded JavaScript -->
-  <script>
-    // Define your words with: word, image, sound sequence, full word audio
-    const words = [
-      { 
-        word: "cat", 
-        img: "assets/images/animals/cat.png", 
-        sounds: ["c", "a", "t"], 
-        full: "assets/audio/animals/cat.mp3" 
-      },
-      { 
-        word: "cow", 
-        img: "assets/images/animals/cow.png", 
-        sounds: ["c", "o", "w"], 
-        full: "assets/audio/animals/cow.mp3" 
-      },
-      { 
-        word: "dog", 
-        img: "assets/images/animals/dog.png", 
-        sounds: ["d", "o", "g"], 
-        full: "assets/audio/animals/dog.mp3" 
-      },
-      { 
-        word: "owl", 
-        img: "assets/images/birds/owl.png", 
-        sounds: ["o", "w", "l"], 
-        full: "assets/audio/birds/owl.mp3" 
-      },
-      { 
-        word: "bus", 
-        img: "assets/images/vehicles/bus.png", 
-        sounds: ["b", "u", "s"], 
-        full: "assets/audio/vehicles/bus.mp3" 
-      },
-      { 
-        word: "car", 
-        img: "assets/images/vehicles/car.png", 
-        sounds: ["c", "a", "r"], 
-        full: "assets/audio/vehicles/car.mp3" 
-      },
-      { 
-        word: "elf", 
-        img: "assets/images/fiction/elf.png", 
-        sounds: ["e", "l", "f"], 
-        full: "assets/audio/fiction/elf.mp3" 
-      },
-      { 
-        word: "hen", 
-        img: "assets/images/birds/hen.png", 
-        sounds: ["h", "e", "n"], 
-        full: "assets/audio/birds/hen.mp3" 
-      },
-      { 
-        word: "ai", 
-        img: "assets/images/electronics/ai.png", 
-        sounds: ["ai"], 
-        full: "assets/audio/electronics/ai.mp3" 
-      }
-    ];
-
-    let currentIndex = 0;
-
-    function updateWord() {
-      const w = words[currentIndex];
-      document.getElementById("wordText").textContent = w.word;
-      document.getElementById("wordImage").src = w.img;
-      document.getElementById("wordImage").alt = w.word;
-      document.getElementById("wordAudio").src = w.full;
-      document.getElementById("current").textContent = currentIndex + 1;
-    }
-
-    function playSound(letter) {
-      const audio = document.getElementById(`sound-${letter}`);
-      if (audio) {
-        audio.currentTime = 0;
-        audio.play().catch(e => console.log("Audio failed:", e));
-      }
-    }
-
-    function blendWord() {
-      const wordData = words[currentIndex];
-      const sounds = wordData.sounds;
-      let time = 0;
-
-      // Play each sound slowly
-      sounds.forEach((sound, i) => {
-        setTimeout(() => playSound(sound), time);
-        time += 600; // 0.6 seconds between sounds
-      });
-
-      // Say full word after blending
-      setTimeout(() => {
-        const fullAudio = document.getElementById("wordAudio");
-        fullAudio.currentTime = 0;
-        fullAudio.play().catch(e => console.log("Word play failed:", e));
-      }, time + 300);
-    }
-
-    function nextWord() {
-      currentIndex = (currentIndex + 1) % words.length;
-      updateWord();
-    }
-
-    // Initialize
-    window.onload = updateWord;
-  </script>
-
+ <audio id="wordAudio" src="audio/cat.mp3"></audio>
+<script src="js/phonics.js"></script>
 </body>
 </html>

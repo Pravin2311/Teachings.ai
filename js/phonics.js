@@ -1,81 +1,133 @@
-function playSound(letter) {
-  // Stop all audio before playing new one
-  document.querySelectorAll('audio').forEach(audio => {
-    audio.pause();
-    audio.currentTime = 0;
-  });
+    // Define your words with: word, image, sound sequence, full word audio
+    const words = [
+      { 
+        word: "CAT", 
+        img: "assets/images/animals/cat.png", 
+        sounds: ["c", "a", "t"], 
+        full: "assets/audio/animals/cat.mp3" 
+      },
+      { 
+        word: "COW", 
+        img: "assets/images/animals/cow.png", 
+        sounds: ["c", "o", "w"], 
+        full: "assets/audio/animals/cow.mp3" 
+      },
+      { 
+        word: "DOG", 
+        img: "assets/images/animals/dog.png", 
+        sounds: ["d", "o", "g"], 
+        full: "assets/audio/animals/dog.mp3" 
+      },
+      { 
+        word: "OWL", 
+        img: "assets/images/birds/owl.png", 
+        sounds: ["o", "w", "l"], 
+        full: "assets/audio/birds/owl.mp3" 
+      },
+      { 
+        word: "BUS", 
+        img: "assets/images/vehicles/bus.png", 
+        sounds: ["b", "u", "s"], 
+        full: "assets/audio/vehicles/bus.mp3" 
+      },
+      { 
+        word: "CAR", 
+        img: "assets/images/vehicles/car.png", 
+        sounds: ["c", "a", "r"], 
+        full: "assets/audio/vehicles/car.mp3" 
+      },
+      { 
+        word: "HORSE", 
+        img: "assets/images/animals/horse.png", 
+        sounds: ["h", "o", "r", "s", "e"], 
+        full: "assets/audio/animals/horse.mp3" 
+      },
+      { 
+        word: "HEN", 
+        img: "assets/images/birds/hen.png", 
+        sounds: ["h", "e", "n"], 
+        full: "assets/audio/birds/hen.mp3" 
+      },
+      { 
+        word: "LION", 
+        img: "assets/images/animals/lion.png", 
+        sounds: ["l", "i", "o", "n"], 
+        full: "assets/audio/animals/lion.mp3" 
+      },
+      { 
+        word: "TIGER", 
+        img: "assets/images/animals/tiger.png", 
+        sounds: ["t", "i", "g", "e", "r"], 
+        full: "assets/audio/animals/tiger.mp3" 
+      },
+      { 
+        word: "DUCK", 
+        img: "assets/images/birds/duck.png", 
+        sounds: ["d", "u", "c", "k"], 
+        full: "assets/audio/birds/duck.mp3" 
+      },
+      { 
+        word: "APPLE", 
+        img: "assets/images/fruits/apple.png", 
+        sounds: ["a", "p", "p", "l", "e"], 
+        full: "assets/audio/fruits/apple.mp3" 
+      },
+      { 
+        word: "EARTH", 
+        img: "assets/images/planets/earth.png", 
+        sounds: ["e", "a", "r", "t", "h"], 
+        full: "assets/audio/planets/earth.mp3" 
+      },
+      { 
+        word: "MANGO", 
+        img: "assets/images/fruits/mango.png", 
+        sounds: ["m", "a", "n", "g", "o"], 
+        full: "assets/audio/fruits/mango.mp3" 
+      }
+    ];
 
-  const audio = document.getElementById(`sound-${letter}`);
-  if (audio) {
-    audio.play().catch(e => console.log("Play failed:", e));
-  }
-}
+    let currentIndex = 0;
 
-let flipped = false;
-document.getElementById('flipbook').addEventListener('click', function(e) {
-  const rect = this.getBoundingClientRect();
-  const relY = e.clientY - rect.top;
-  if (relY < 50 || relY > rect.height - 50) return;
-  flipped = !flipped;
-  this.classList.toggle('flipped', flipped);
-});
+    function updateWord() {
+      const w = words[currentIndex];
+      document.getElementById("wordText").textContent = w.word;
+      document.getElementById("wordImage").src = w.img;
+      document.getElementById("wordImage").alt = w.word;
+      document.getElementById("wordAudio").src = w.full;
+      document.getElementById("current").textContent = currentIndex + 1;
+    }
 
-// Drag & Drop
-let droppedSounds = [];
-function allowDrop(e) {
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.add('active');
-}
-function drop(e) {
-  e.preventDefault();
-  document.getElementById('drop-zone').classList.remove('active');
-  const sound = e.dataTransfer.getData("text");
-  droppedSounds.push(sound);
-  updateDropZone();
-}
-function updateDropZone() {
-  const zone = document.getElementById('drop-zone');
-  zone.innerHTML = droppedSounds.join(' ');
-}
-function playBlendedWord() {
-  const word = droppedSounds.join('');
-  document.getElementById('result').innerHTML = `<strong>You made: ${word}</strong>`;
-  sayWord(word);
-}
+    function playSound(letter) {
+      const audio = document.getElementById(`sound-${letter}`);
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(e => console.log("Audio failed:", e));
+      }
+    }
 
-// Read Word
-function readWord(word) {
-  sayWord(word);
-}
+    function blendWord() {
+      const wordData = words[currentIndex];
+      const sounds = wordData.sounds;
+      let time = 0;
 
-function sayWord(word) {
-  const sounds = word.split('');
-  let time = 0;
-  sounds.forEach(sound => {
-    setTimeout(() => playSound(sound), time);
-    time += 500;
-  });
-  setTimeout(() => speakText(word), time + 300);
-}
+      // Play each sound slowly
+      sounds.forEach((sound, i) => {
+        setTimeout(() => playSound(sound), time);
+        time += 600; // 0.6 seconds between sounds
+      });
 
-function speakText(text) {
-  // Stop any ongoing speech
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 0.8;
-    utterance.pitch = 1.2;
-    window.speechSynthesis.speak(utterance);
-  }
-}
+      // Say full word after blending
+      setTimeout(() => {
+        const fullAudio = document.getElementById("wordAudio");
+        fullAudio.currentTime = 0;
+        fullAudio.play().catch(e => console.log("Word play failed:", e));
+      }, time + 300);
+    }
 
-// Make tiles draggable
-document.addEventListener("DOMContentLoaded", () => {
-  const tiles = document.querySelectorAll(".sound-tile");
-  tiles.forEach(tile => {
-    tile.addEventListener("dragstart", (e) => {
-      e.dataTransfer.setData("text/plain", tile.textContent);
-      e.dataTransfer.setData("text", tile.dataset.sound);
-    });
-  });
-});
+    function nextWord() {
+      currentIndex = (currentIndex + 1) % words.length;
+      updateWord();
+    }
+
+    // Initialize
+    window.onload = updateWord;
