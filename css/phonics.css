@@ -1,0 +1,198 @@
+/* Mobile-First Reset & Base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: #f0f9ff;
+  color: #333;
+  line-height: 1.5;
+  -webkit-text-size-adjust: none; /* Prevent iOS zoom */
+}
+
+/* Flipbook Container - Responsive */
+.flipbook {
+  width: 100%;
+  max-width: 300px; /* Fits most phones */
+  height: 400px;
+  margin: 20px auto;
+  perspective: 1500px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Page Styling */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 1em;
+  color: #333;
+  border: 1px solid #ddd;
+  transition: transform 0.6s ease-in-out;
+  text-align: center;
+}
+
+/* Flip Animation */
+#flipbook > .page {
+  transform: rotateY(180deg) translateZ(1px);
+}
+#flipbook > .page:first-child {
+  transform: rotateY(0deg) translateZ(1px);
+}
+#flipbook.flipped > .page:first-child {
+  transform: rotateY(-180deg) translateZ(1px);
+}
+#flipbook.flipped > .page:last-child {
+  transform: rotateY(0deg) translateZ(1px);
+}
+
+/* Images */
+.page img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+/* Buttons */
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  margin: 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: bold;
+}
+button:hover {
+  background: #45a049;
+}
+
+/* Drag & Drop */
+#draggable-sounds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.sound-tile {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  background: #2196F3;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: grab;
+  user-select: none;
+}
+
+#drop-zone {
+  min-height: 50px;
+  border: 2px dashed #ccc;
+  margin: 15px auto;
+  padding: 10px;
+  width: 100%;
+  max-width: 260px;
+  color: #777;
+  font-size: 0.9em;
+  background: #fafafa;
+}
+
+#drop-zone.active {
+  border-color: #2196F3;
+  background: #e3f2fd;
+}
+
+/* Word Grid - Responsive */
+#top-words-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.word-btn {
+  background: #ff793e;
+  color: white;
+  padding: 6px 0;
+  border-radius: 20px;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+.word-btn:hover {
+  background: #ff6014;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .flipbook {
+    height: 320px;
+    max-height: 80vh;
+  }
+  .page {
+    font-size: 0.95em;
+    padding: 12px;
+  }
+  .page h2 {
+    font-size: 1.3em;
+  }
+  #top-words-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .word-btn {
+    font-size: 0.9em;
+    padding: 5px 0;
+  }
+  .sound-tile {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95em;
+  }
+  button {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+  body {
+    padding: 12px;
+  }
+}
+
+/* Extra Small Devices (e.g. iPhone SE) */
+@media (max-width: 360px) {
+  .flipbook {
+    width: 280px;
+    height: 300px;
+  }
+  .page {
+    font-size: 0.85em;
+    padding: 10px;
+  }
+  #top-words-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+  .word-btn {
+    font-size: 0.85em;
+  }
+}

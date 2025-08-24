@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Free interactive phonics flipbook for kids. Learn sounds s, a, t, p, i, n, m, d and 20 top words like sat, pat, it, is. Perfect for parents and teachers. No login.">
+  <meta name="keywords" content="phonics, early reading, kids learning, phonics for toddlers, free phonics, teaching reading, parenting tips, blending words, CVC words, Jolly Phonics, Letters and Sounds">
+  <meta name="author" content="teachings.ai">
+  <title>Phonics Flipbook: Learn Sounds & Words | teachings.ai</title>
+  <link rel="stylesheet" href="css/phonics.css" />
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #f0f9ff;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c5282;
+    }
+    .section {
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      margin: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <h1>🔤 Phonics Flipbook: Level 1</h1>
+  <p>Learn letter sounds and build 20 top words — no login, no ads, 100% free!</p>
+
+  <!-- Flipbook -->
+  <div class="section">
+    <div id="flipbook" class="flipbook">
+      <div class="page"><h2>Level 1: s, a, t, p</h2><p>Flip to learn the sounds!</p><img src="https://cdn-icons-png.flaticon.com/512/1667/1667575.png" width="80"></div>
+      <div class="page"><h2>s</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671445.png" width="100"><p>/s/ like snake</p><button onclick="playSound('s')">🔊 Play /s/</button></div>
+      <div class="page"><h2>a</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671430.png" width="100"><p>/a/ like apple</p><button onclick="playSound('a')">🔊 Play /a/</button></div>
+      <div class="page"><h2>t</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671545.png" width="100"><p>/t/ like table</p><button onclick="playSound('t')">🔊 Play /t/</button></div>
+      <div class="page"><h2>p</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671498.png" width="100"><p>/p/ like pig</p><button onclick="playSound('p')">🔊 Play /p/</button></div>
+      <div class="page"><h2>i</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671472.png" width="100"><p>/i/ like ink</p><button onclick="playSound('i')">🔊 Play /i/</button></div>
+      <div class="page"><h2>n</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671502.png" width="100"><p>/n/ like net</p><button onclick="playSound('n')">🔊 Play /n/</button></div>
+      <div class="page"><h2>m</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671484.png" width="100"><p>/m/ like man</p><button onclick="playSound('m')">🔊 Play /m/</button></div>
+      <div class="page"><h2>d</h2><img src="https://cdn-icons-png.flaticon.com/512/1671/1671451.png" width="100"><p>/d/ like dog</p><button onclick="playSound('d')">🔊 Play /d/</button></div>
+
+      <!-- Blending Game -->
+      <div class="page">
+        <h2>🎮 Blending Game</h2>
+        <p>Drag sounds to make a word!</p>
+        <div id="draggable-sounds">
+          <span class="sound-tile" draggable="true" data-sound="s">s</span>
+          <span class="sound-tile" draggable="true" data-sound="a">a</span>
+          <span class="sound-tile" draggable="true" data-sound="t">t</span>
+          <span class="sound-tile" draggable="true" data-sound="p">p</span>
+          <span class="sound-tile" draggable="true" data-sound="i">i</span>
+          <span class="sound-tile" draggable="true" data-sound="n">n</span>
+          <span class="sound-tile" draggable="true" data-sound="m">m</span>
+          <span class="sound-tile" draggable="true" data-sound="d">d</span>
+        </div>
+        <div id="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">Drop here!</div>
+        <button onclick="playBlendedWord()">🔊 Say It!</button>
+        <p id="result"></p>
+      </div>
+
+      <!-- Top 20 Words -->
+      <div class="page">
+        <h2>📚 Top 20 Words</h2>
+        <p>Click to hear each word!</p>
+        <div style="overflow: hidden; padding: 0 10px;">
+        <div id="top-words-grid">
+          <span class="word-btn" onclick="readWord('it')">it</span>
+          <span class="word-btn" onclick="readWord('is')">is</span>
+          <span class="word-btn" onclick="readWord('in')">in</span>
+          <span class="word-btn" onclick="readWord('at')">at</span>
+          <span class="word-btn" onclick="readWord('as')">as</span>
+          <span class="word-btn" onclick="readWord('an')">an</span>
+          <span class="word-btn" onclick="readWord('on')">on</span>
+          <span class="word-btn" onclick="readWord('am')">am</span>
+          <span class="word-btn" onclick="readWord('sat')">sat</span>
+          <span class="word-btn" onclick="readWord('pat')">pat</span>
+          <span class="word-btn" onclick="readWord('tap')">tap</span>
+          <span class="word-btn" onclick="readWord('pin')">pin</span>
+          <span class="word-btn" onclick="readWord('sip')">sip</span>
+          <span class="word-btn" onclick="readWord('tip')">tip</span>
+          <span class="word-btn" onclick="readWord('tin')">tin</span>
+          <span class="word-btn" onclick="readWord('man')">man</span>
+          <span class="word-btn" onclick="readWord('dad')">dad</span>
+          <span class="word-btn" onclick="readWord('map')">map</span>
+          <span class="word-btn" onclick="readWord('pan')">pan</span>
+          <span class="word-btn" onclick="readWord('mad')">mad</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Parenting Tips (SEO + Value) -->
+  <div class="section">
+    <h2>🎯 Parenting Tips: How to Teach Phonics at Home</h2>
+    <p>Support your child’s reading journey with these simple, research-backed tips.</p>
+
+    <ul style="text-align: left; max-width: 600px; margin: 20px auto; line-height: 1.6;">
+      <li><strong>1. Say sounds, not letter names:</strong> Say "/s/" not "ess". This helps blending.</li>
+      <li><strong>2. Blend slowly:</strong> Stretch words: "ssssaaaat" → "sat".</li>
+      <li><strong>3. Use gestures:</strong> Rub arms for /s/ (snake), tap head for /t/.</li>
+      <li><strong>4. Keep it fun:</strong> Turn words into games: “Can you <em>sip</em> the magic potion?”</li>
+      <li><strong>5. Revisit daily:</strong> 5–10 minutes a day beats 30 minutes once a week.</li>
+      <li><strong>6. Praise effort:</strong> “You sounded that out perfectly!”</li>
+      <li><strong>7. Read together:</strong> Use simple books with CVC words (e.g., “Pat the Cat”).</li>
+    </ul>
+
+    <p><em>Tip from teachings.ai: Consistency beats perfection. Celebrate every sound!</em></p>
+  </div>
+
+  <!-- Footer -->
+  <footer style="margin-top: 40px; color: #666; font-size: 0.9em;">
+    <p>© 2025 teachings.ai | Free for home and classroom use</p>
+    <button class="btn" onclick="window.print()">🖨️ Print This Page</button>
+  </footer>
+
+  <!-- Audio Elements -->
+  <audio id="sound-s" src="audio/s.mp3"></audio>
+  <audio id="sound-a" src="audio/a.mp3"></audio>
+  <audio id="sound-t" src="audio/t.mp3"></audio>
+  <audio id="sound-p" src="audio/p.mp3"></audio>
+  <audio id="sound-i" src="audio/i.mp3"></audio>
+  <audio id="sound-n" src="audio/n.mp3"></audio>
+  <audio id="sound-m" src="audio/m.mp3"></audio>
+  <audio id="sound-d" src="audio/d.mp3"></audio>
+
+  <!-- Touch support for drag-and-drop -->
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  <script src="js/phonics.js"></script>
+</body>
+</html>
