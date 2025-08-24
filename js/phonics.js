@@ -1,10 +1,13 @@
 function playSound(letter) {
+  // Stop all audio before playing new one
+  document.querySelectorAll('audio').forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
   const audio = document.getElementById(`sound-${letter}`);
   if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(e => console.log("Audio play failed:", e));
-  } else {
-    console.warn(`Audio not found for: ${letter}`);
+    audio.play().catch(e => console.log("Play failed:", e));
   }
 }
 
@@ -56,7 +59,9 @@ function sayWord(word) {
 }
 
 function speakText(text) {
+  // Stop any ongoing speech
   if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.8;
     utterance.pitch = 1.2;
