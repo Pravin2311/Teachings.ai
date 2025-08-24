@@ -4,6 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn Numbers - Teachings.AI</title>
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e3f2fd;
+  border-left: 5px solid #2196f3;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Teachings.AI: Interactive module for kids to learn numbers 0-10. Scratch to reveal fun images and hear number pronunciations.">
@@ -57,7 +86,7 @@
 </head>
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Back to Home">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'" aria-label="Back to Home">Back</button>
     <h1>Learn Numbers</h1>
 
     <div class="number-display">
@@ -73,6 +102,11 @@
       <button id="prev-number" aria-label="Previous number">Previous</button>
       <button id="next-number" aria-label="Next number">Next</button>
     </div>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🔢 Parent Tip: Build Number Sense Through Play</h3>
+  <p>Reinforce number learning by counting everyday objects: stairs, toys, or snacks. Ask, “How many blocks did you stack?” or “Can you show me 5 fingers?” This builds number recognition, one-to-one correspondence, and early math confidence in preschool and kindergarten kids.</p>
+</div>
   </div>
 
   <!-- Background Music -->

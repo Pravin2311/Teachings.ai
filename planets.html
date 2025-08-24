@@ -5,6 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn Planets: Fun Scratch Game for Kids | Teachings.AI</title> <!-- ✅ Better SEO & CTR -->
 
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e8f4f8;
+  border-left: 5px solid #007BFF;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
   <!-- SEO Meta Tags -->
   <meta name="description" content="Interactive game to teach kids about Planets. Scratch to reveal and hear names of Planets in this fun module by Teachings.AI." />
   <meta name="keywords" content="learn Planets, Planets for kids, Planets world, Planets names, preschool learning, kindergarten Planets, teachings.ai, kids sratch card game" />
@@ -61,7 +90,7 @@
 
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'">Back </button>
     <h1>Learn Planets</h1>
     <div class="vegetable-display">
       <p id="current-vegetable-name" aria-live="polite"></p> <!-- ✅ Live region for screen readers -->
@@ -74,6 +103,11 @@
       <button id="prev-vegetable">Previous</button>
       <button id="next-vegetable">Next</button>
     </div>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🪐 Parent Tip: Spark a Love for Space</h3>
+  <p>After playing, explore the night sky together. Point to the moon and stars and ask, “Can you see the moon tonight?” or “Which planet is the biggest?” This builds curiosity about science, space, and our solar system—perfect for preschool and kindergarten explorers.</p>
+</div>
   </div>
 
   <!-- Background Music -->

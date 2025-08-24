@@ -14,7 +14,7 @@ const images = [
     { word: "Cat", img: "assets/images/animals/cat.png" },
     { word: "Dog", img: "assets/images/animals/dog.png" },
     { word: "Horse", img: "assets/images/animals/horse.png" },
-    { word: "Monkey", img: "assets/images/animals/Monkey.png" },
+    { word: "Monkey", img: "assets/images/animals/monkey.png" },
     { word: "Heart", img: "assets/images/shapes/heart.png" },
     { word: "Star", img: "assets/images/shapes/star.png" }
   ];

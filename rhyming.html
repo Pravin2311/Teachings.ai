@@ -4,6 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rhyming Words - Teachings.AI</title>
+  <style>
+    /* Highlight the rhyming part of the word */
+.rhyme-part {
+  font-weight: bold;
+  color: #d32f2f;
+  text-decoration: underline;
+  background-color: #fff3e0;
+  padding: 0 2px;
+}
+
+/* Optional: Larger font for focus */
+.word-card {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #333;
+}
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e8f4f8;
+  border-left: 5px solid #007BFF;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+/* Rhyming Word Game Styles */
+
+#instruction {
+  font-size: 1.2em;
+  margin: 15px 0;
+  color: #333;
+}
+
+.prompt {
+  font-size: 1.3em;
+  margin: 15px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.word-highlight {
+  background-color: #ea5858;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.word-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.word-button {
+  padding: 12px 20px;
+  font-size: 1.4em;
+  background-color: #f0f4ff;
+  border: 2px solid #6a9cff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.word-button:hover {
+  background-color: #e0e8ff;
+  transform: translateY(-2px);
+}
+
+.word-button:focus {
+  outline: 3px solid #6a9cff;
+}
+
+.feedback {
+  font-size: 1.2em;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.feedback.correct {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.feedback.wrong {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.next-button {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background-color: #6a9cff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.next-button:hover {
+  background-color: #5c8ae6;
+}
+  </style>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Play the Rhyming Words Game on Teachings.AI. A fun and educational tool to help kids learn rhyming, phonics, and word matching. Ideal for preschool to grade 2." />
@@ -27,7 +154,7 @@
   <meta name="twitter:site" content="@teachings_ai" />
 
   <!-- Favicon -->
-  <link rel="icon" href="https://teachings.ai/assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
@@ -75,8 +202,10 @@
       <p class="loading">Loading rhyming game...</p>
     </div>
 
-    <div class="rhyming-image">
-      <img src="assets/images/rhymings.png" alt="Rhyming Illustration" />
+    <!-- Parenting Tip -->
+    <div class="parenting-tip">
+      <h3>🔤 Parent Tip: Build Phonics & Listening Skills</h3>
+      <p>After playing, say a word like “cat” and ask your child to name other words that rhyme. This strengthens phonemic awareness, vocabulary, and reading readiness—perfect for preschool and kindergarten learners.</p>
     </div>
   </div>
 
@@ -85,8 +214,7 @@
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
-  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Music">&#128263;</button>
-
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Music">🔈</button>
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
 

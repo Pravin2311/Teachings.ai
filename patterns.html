@@ -4,6 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patterns & Sequences for Kids - Teachings.AI</title>
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #f3e5f5;
+  border-left: 5px solid #9c27b0;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
@@ -63,7 +92,7 @@
 
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='games.html'">Back</button>
     <h1>Patterns & Sequences</h1>
     <div class="pattern-game-area">
       <p class="tip"><span>🧠 Tip:</span> Look closely at the repeating emojis or shapes. Can you spot the pattern?</p>
@@ -72,9 +101,11 @@
       <p id="feedback-message"></p>
       <button id="next-pattern-btn">Next Pattern</button>
     </div>
-    <div class="rhyming-image">
-      <img src="assets/images/patterns-sequences.png" alt="Patterns and Sequences Illustration" />
-    </div>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🧠 Parent Tip: Build Logical Thinking Through Patterns</h3>
+  <p>Encourage your child to find patterns in daily life: tiles, clothing stripes, or nature (like leaf arrangements). Ask, “What comes next?” This strengthens logical reasoning, prediction skills, and early math thinking — perfect for preschool and kindergarten learners.</p>
+</div>
   </div>
 
   <!-- Music Audio Element -->

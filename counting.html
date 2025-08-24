@@ -3,12 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Counting with Objects - Teachings.AI</title>
+  <title>Counting with Objects | Interactive Math Game for Kids | Teachings.AI</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/counting.css" />
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e3f2fd;
+  border-left: 5px solid #2196f3;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
 
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Teachings.AI: Count objects like animals, birds, and fruits. Fun way for kids to learn numbers.">
+   <meta name="description" content="Interactive counting game for kids 3-7. Count animals, fruits, and birds to build number sense and early math skills. Perfect for preschool, kindergarten, and homeschool.">
   <meta name="keywords" content="counting objects, math games, kids learning, numbers, teachings.ai, preschool">
   <meta name="author" content="Teachings.AI">
   <meta name="robots" content="index, follow">
@@ -55,15 +83,17 @@
 </head>
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='games.html'">Back to Home</button>
     <h1>Counting with Objects</h1>
     <p id="instruction">How many objects do you see? Tap the correct number!</p>
     <div id="game-container">
       <p class="loading">Loading counting game...</p>
     </div>
-    <div class="rhyming-image">
-      <img src="assets/images/counting-objects.png" alt="Counting objects Illustration" />
-    </div>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🔢 Parent Tip: Turn Counting Into Everyday Fun</h3>
+  <p>Reinforce number skills by counting real objects at home: toys, stairs, fruits, or buttons! Ask “How many apples are in the bowl?” or “Can you count your blocks?” This hands-on practice builds number sense, one-to-one correspondence, and early math confidence in preschool and kindergarten kids.</p>
+</div>
   </div>
 
   <!-- Music -->

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Color Sorting Game - Teachings.AI</title>
+  <title>Color Sorting Game | Interactive Learning for Kids | Teachings.AI</title>
   <link rel="icon" href="assets/favicon.png" type="image/png" />
-  <meta name="description" content="Interactive color sorting game for kids - match colorful shapes to their respective zones. A fun activity by Teachings.AI." />
+  <meta name="description" content="Interactive color sorting game for kids 3-7. Drag and drop colorful shapes into matching zones to build color recognition and early math skills. Perfect for preschool, kindergarten, and homeschool.">
   <meta name="keywords" content="color sorting game, kids learning game, color recognition, preschool activity, teachings.ai" />
   <meta name="author" content="Teachings.AI" />
   <meta property="og:title" content="Color Sorting Game - Teachings.AI" />
@@ -167,6 +167,33 @@ button {
   color: #444;
   transition: all 0.3s ease;
 }
+/* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #fff3e0;
+  border-left: 5px solid #ff8c42;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
 
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
@@ -179,7 +206,7 @@ button {
 </head>
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+    <button class="back-button" onclick="window.location.href='games.html'">Back</button>
     <h1>🎨 Color Sorting Game</h1>
     <p class="tip"><span>Tip:</span> Drag shapes to the matching color zone.</p>
     <div class="word-bank" id="word-container"></div>
@@ -191,7 +218,13 @@ button {
     </div>
     <p id="feedback-message"></p>
     <button id="submit-btn">Submit</button>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🎨 Parent Tip: Strengthen Color & Categorization Skills</h3>
+  <p>After playing, extend the fun with real-life sorting! Use colored toys, blocks, or clothes and ask your child to group them by color. This hands-on practice builds color recognition, fine motor skills, and early math concepts like sorting and categorizing — perfect for preschool and kindergarten learners.</p>
+</div>
   </div>
+  
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
   <script>

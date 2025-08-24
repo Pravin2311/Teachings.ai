@@ -4,6 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn About Plants - Teachings.AI</title>
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e8f5e8;
+  border-left: 5px solid #4CAF50;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
 
   <!-- Styles and PWA -->
   <link rel="stylesheet" href="css/style.css" />
@@ -70,6 +99,11 @@
       <button id="prev-plant">Previous</button>
       <button id="next-plant">Next</button>
     </div>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🌿 Parent Tip: Grow Learning Alongside Plants</h3>
+  <p>After playing, plant seeds together—like beans or sunflowers—and watch them grow. Ask your child: “What do plants need to grow?” or “Can you measure how tall it is?” This builds science skills, patience, and a love for nature in preschool and kindergarten kids.</p>
+</div>
   </div>
 
   <audio id="plant-audio" preload="auto"></audio>

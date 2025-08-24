@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { word: "Cat", img: "assets/images/animals/cat.png" },
       { word: "Dog", img: "assets/images/animals/dog.png" },
       { word: "Horse", img: "assets/images/animals/horse.png" },
-      { word: "Monkey", img: "assets/images/animals/Monkey.png" },
+      { word: "Monkey", img: "assets/images/animals/monkey.png" },
       { word: "Tiger", img: "assets/images/animals/tiger.png" },
       { word: "Bear", img: "assets/images/animals/bear.png" },
       // Add more items...

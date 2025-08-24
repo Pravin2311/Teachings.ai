@@ -4,6 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn Nature Life: Fun Scratch Game for Kids | Teachings.AI</title> <!-- ✅ Better SEO & CTR -->
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #e8f5e8;
+  border-left: 5px solid #4CAF50;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Interactive game to teach kids about Nature Life. Scratch to reveal and hear names ofNature Life in this fun module by Teachings.AI." />
@@ -61,7 +90,7 @@
 
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'">Back</button>
     <h1>Learn Nature Lifes</h1>
     <div class="vegetable-display">
       <p id="current-vegetable-name" aria-live="polite"></p> <!-- ✅ Live region for screen readers -->
@@ -74,6 +103,11 @@
       <button id="prev-vegetable">Previous</button>
       <button id="next-vegetable">Next</button>
     </div>
+    <!-- Parenting Tip -->
+<div class="parenting-tip">
+  <h3>🌿 Parent Tip: Connect to Nature Every Day</h3>
+  <p>After playing, explore nature together: go for a walk, plant seeds, or observe insects. Ask your child: “What do trees need to grow?” or “Can you hear the birds?” This builds curiosity, science skills, and a love for the natural world in preschool and kindergarten kids.</p>
+</div>
   </div>
 
   <!-- Background Music -->
