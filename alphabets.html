@@ -3,45 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn Alphabets - Teachings.AI</title>
+  <title>Learn Alphabets: A-Z Interactive Game for Kids | Teachings.AI</title>
 
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Interactive alphabet game for kids: scratch to reveal letters A-Z, hear pronunciation, and learn with example words. Fun, audio-rich, and perfect for preschool and kindergarten." />
+  <meta name="keywords" content="learn alphabets, ABC for kids, English letters, alphabet pronunciation, preschool phonics, kindergarten literacy, letter sounds, teachings.ai, interactive alphabet game" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://teachings.ai/alphabets.html" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Learn Alphabets - Teachings.AI" />
+  <meta property="og:description" content="Interactive module for kids to learn English alphabets (A-Z). Scratch to reveal letter images and hear pronunciation with example words." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/alphabets-preview.jpg" />
+  <meta property="og:image:alt" content="Kids learning the alphabet with interactive scratch cards on teachings.ai" />
+  <meta property="og:url" content="https://teachings.ai/alphabets.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teachings.AI" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Learn Alphabets - Teachings.AI" />
+  <meta name="twitter:description" content="Scratch to reveal and hear the sounds of each letter. A fun and interactive way to build early literacy skills." />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/alphabets-preview.jpg" />
+  <meta name="twitter:image:alt" content="Interactive alphabet learning game for preschoolers" />
+  <meta name="twitter:site" content="@TeachingsAI" />
+
+  <!-- Stylesheets & PWA -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/alphabets.css" />
   <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
   <meta name="theme-color" content="#1B2A5B" />
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Teachings.AI: Interactive module for kids to learn English alphabets (A-Z). Scratch to reveal letter images and hear pronunciation with example words." />
-  <meta name="keywords" content="learn alphabets, ABC for kids, English letters, alphabet pronunciation, preschool letters, kindergarten phonics, early literacy, teachings.ai alphabets" />
-  <meta name="author" content="Goose AI" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph / Social Media Meta Tags -->
-  <meta property="og:title" content="Learn Alphabets with Teachings.AI" />
-  <meta property="og:description" content="Teachings.AI: Interactive module for kids to learn English alphabets (A-Z). Scratch to reveal letter images and hear pronunciation with example words." />
-  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
-  <meta property="og:url" content="https://teachings.ai/alphabets.html" />
-  <meta property="og:type" content="website" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationalOccupationalProgram",
+    "@type": "LearningResource",
     "name": "Learn Alphabets - Teachings.AI",
-    "description": "Interactive module for kids to learn English alphabets (A-Z). Scratch to reveal letter images and hear pronunciation with example words.",
-    "educationalLevel": ["Preschool", "Kindergarten", "Elementary School"],
-    "educationalCredentialAwarded": "Basic Alphabet Literacy",
-    "provider": {
+    "description": "An interactive, audio-supported game that teaches children the English alphabet (A-Z) with letter sounds, example words, and visual discovery.",
+    "url": "https://teachings.ai/alphabets.html",
+    "image": "https://teachings.ai/assets/images/alphabets-preview.jpg",
+    "thumbnailUrl": "https://teachings.ai/assets/images/alphabets-preview.jpg",
+    "inLanguage": "en",
+    "learningResourceType": "Interactive Game",
+    "educationalLevel": "Preschool, Kindergarten",
+    "educationalSubject": "Phonics, Early Literacy, Language Arts",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student",
+      "ageRange": "3-7"
+    },
+    "isAccessibleForFree": true,
+    "datePublished": "2025-04-05",
+    "publisher": {
       "@type": "Organization",
       "name": "Teachings.AI",
       "url": "https://teachings.ai",
       "logo": "https://teachings.ai/assets/images/app_logo.png"
     },
-    "url": "https://teachings.ai/alphabets.html",
-    "image": "https://teachings.ai/assets/images/app_logo.png",
-    "learningResourceType": "Interactive Educational Game",
-    "inLanguage": "en"
+    "keywords": "alphabet for kids, ABC learning, letter sounds, phonics game"
   }
   </script>
 
@@ -49,11 +72,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
 
+  <!-- Inline Styling for Alphabet Tips -->
   <style>
    .alphabet-tips {
     background: linear-gradient(135deg, #f0f4ff, #dbe6ff);
@@ -68,61 +92,59 @@
     overflow: hidden;
     word-wrap: break-word;
     overflow-wrap: break-word;
-}
+  }
 
-.alphabet-tips h2 {
+  .alphabet-tips h2 {
     color: #1B2A5B;
     font-size: 1.6rem;
     margin-bottom: 15px;
     text-align: center;
     word-break: break-word;
-}
+  }
 
-.alphabet-tips ul {
+  .alphabet-tips ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
+  }
 
-.alphabet-tips ul li {
+  .alphabet-tips ul li {
     background: #ffffff;
     border-radius: 12px;
     padding: 12px;
     margin-bottom: 10px;
-    display: block;
-    font-size: 1rem;
+    font-size: 1em;
     line-height: 1.4;
     color: #333;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     word-break: break-word;
     overflow-wrap: break-word;
-}
+  }
 
-/* Mobile Responsiveness */
-@media (max-width: 480px) {
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
     .alphabet-tips {
-        padding: 15px;
-        margin: 15px auto;
+      padding: 15px;
+      margin: 15px auto;
     }
     .alphabet-tips h2 {
-        font-size: 1.4rem;
+      font-size: 1.4rem;
     }
     .alphabet-tips ul li {
-        font-size: 0.95rem;
-        padding: 10px;
+      font-size: 0.95rem;
+      padding: 10px;
     }
-}
-
+  }
   </style>
 </head>
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
-    <h1>Learn Alphabets</h1>
+    <button class="back-button" onclick="window.location.href='index.html'">← Back to Home</button>
+    <h1>🔤 Learn Alphabets</h1>
     <div class="alphabet-display">
-      <p id="current-letter-text"></p>
+      <p id="current-letter-text" aria-live="polite"></p>
       <div id="letter-image-container">
-        <canvas id="drawing-canvas"></canvas>
+        <canvas id="drawing-canvas" aria-label="Scratch to reveal the letter"></canvas>
       </div>
     </div>
     <div class="navigation-buttons">
@@ -144,14 +166,16 @@
     </div>
   </div>
 
-  <!-- Music -->
+  <!-- Background Music -->
   <audio id="background-music" loop muted>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
-  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+  <!-- Music Toggle -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Background Music">🔈</button>
 
+  <!-- Scripts -->
   <script src="js/alphabets.js"></script>
   <script src="js/musicControl.js"></script>
 </body>

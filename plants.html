@@ -3,67 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn About Plants - Teachings.AI</title>
-  <style>
-    /* Parenting Tip Section */
-.parenting-tip {
-  margin: 25px auto;
-  padding: 18px 20px;
-  max-width: 600px;
-  background-color: #e8f5e8;
-  border-left: 5px solid #4CAF50;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 1em;
-  color: #333;
-  line-height: 1.5;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
+  <title>Learn About Plants - Fun Interactive Module for Kids | Teachings.AI</title>
 
-.parenting-tip h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3em;
-  color: #1B2A5B;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+  <!-- Basic SEO -->
+  <meta name="description" content="Interactive plant learning module for preschool and kindergarten kids. See real plant images, hear names, and explore nature with audio support. Free & fun!">
+  <meta name="keywords" content="plants for kids, learn plants, preschool science, kindergarten nature, plant names, plant sounds, interactive learning, teachings.ai, early science education" />
+  <meta name="author" content="Teachings.AI" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://teachings.ai/plants.html" />
+  <meta name="theme-color" content="#1B5E20" />
 
-.parenting-tip h3::before {
-  content: "💡";
-}
-  </style>
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Learn About Plants - Teachings.AI" />
+  <meta property="og:description" content="Fun and visual plant learning for preschool and kindergarten kids. Explore leaves, stems, roots, and more!" />
+  <meta property="og:image" content="https://teachings.ai/assets/images/plants-cover.png" />
+  <meta property="og:image:alt" content="Kids learning about plants with teachings.ai" />
+  <meta property="og:url" content="https://teachings.ai/plants.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teachings.AI" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Learn About Plants - Teachings.AI" />
+  <meta name="twitter:description" content="Interactive plant learning for young children. Perfect for home and classroom use." />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/plants-cover.png" />
+  <meta name="twitter:image:alt" content="Interactive plant learning module for kids" />
+  <meta name="twitter:site" content="@TeachingsAI" />
 
   <!-- Styles and PWA -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/plants.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#1B5E20" />
-
-  <!-- Basic SEO -->
-  <meta name="description" content="Teachings.AI: Learn about plants with visuals and audio narration for kids." />
-  <meta name="keywords" content="plants for kids, learn plants, preschool science, kindergarten nature, plant images, educational module, teachings.ai plants" />
-  <meta name="author" content="Teachings.AI" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph for Facebook -->
-  <meta property="og:title" content="Learn About Plants - Teachings.AI" />
-  <meta property="og:description" content="Fun and visual plant learning for preschool and kindergarten kids." />
-  <meta property="og:image" content="https://teachings.ai/assets/images/plants-cover.png" />
-  <meta property="og:url" content="https://teachings.ai/plants.html" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Learn About Plants - Teachings.AI" />
-  <meta name="twitter:description" content="Fun and educational plant learning for young children." />
-  <meta name="twitter:image" content="https://teachings.ai/assets/images/plants-cover.png" />
+  <link rel="icon" href="/favicon.ico" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
@@ -72,38 +49,51 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationalAudience",
-    "educationalRole": "learner",
+    "@type": "LearningResource",
     "name": "Learn About Plants - Teachings.AI",
-    "description": "A fun, interactive module to help young children learn about plants with visuals and audio.",
-    "educationalLevel": "preschool",
+    "description": "An interactive, audio-supported module that teaches young children the names and parts of common plants and trees. Designed for preschool and kindergarten science learning.",
+    "url": "https://teachings.ai/plants.html",
+    "image": "https://teachings.ai/assets/images/plants-cover.png",
+    "thumbnailUrl": "https://teachings.ai/assets/images/plants-cover.jpg",
+    "inLanguage": "en",
+    "learningResourceType": "Interactive Tool",
+    "educationalLevel": "Preschool, Kindergarten",
+    "educationalSubject": "Science, Biology, Nature",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student",
+      "ageRange": "3-7"
+    },
+    "isAccessibleForFree": true,
+    "datePublished": "2025-04-05",
     "publisher": {
       "@type": "Organization",
       "name": "Teachings.AI",
-      "url": "https://teachings.ai"
+      "url": "https://teachings.ai",
+      "logo": "https://teachings.ai/assets/images/logo.png"
     },
-    "image": "https://teachings.ai/assets/images/plants-cover.png",
-    "url": "https://teachings.ai/plants.html"
+    "keywords": "plants for kids, learn plants, preschool science, plant names, kindergarten nature"
   }
   </script>
 </head>
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'">Back</button>
     <h1>🌱 Learn About Plants</h1>
     <div class="plant-display">
-      <p id="current-plant-name" aria-live="polite"></p> <!-- accessibility improvement -->
-      <img id="plant-image" src="" alt="Plant Image" />
+      <p id="current-plant-name" aria-live="polite"></p>
+      <img id="plant-image" src="" alt="Plant image - name will be revealed" />
     </div>
     <div class="navigation-buttons">
       <button id="prev-plant">Previous</button>
       <button id="next-plant">Next</button>
     </div>
+
     <!-- Parenting Tip -->
-<div class="parenting-tip">
-  <h3>🌿 Parent Tip: Grow Learning Alongside Plants</h3>
-  <p>After playing, plant seeds together—like beans or sunflowers—and watch them grow. Ask your child: “What do plants need to grow?” or “Can you measure how tall it is?” This builds science skills, patience, and a love for nature in preschool and kindergarten kids.</p>
-</div>
+    <div class="parenting-tip">
+      <h3>🌿 Parent Tip: Grow Learning Alongside Plants</h3>
+      <p>After playing, plant seeds together—like beans or sunflowers—and watch them grow. Ask your child: “What do plants need to grow?” or “Can you measure how tall it is?” This builds science skills, patience, and a love for nature in preschool and kindergarten kids.</p>
+    </div>
   </div>
 
   <audio id="plant-audio" preload="auto"></audio>

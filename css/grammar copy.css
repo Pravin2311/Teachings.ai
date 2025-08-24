@@ -1,0 +1,191 @@
+/* style.css */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overscroll-behavior: contain;
+}
+
+body.dragging {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #0965f0;
+  margin-bottom: 10px;
+}
+
+.tip {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  min-height: 60px;
+}
+
+#submit-btn,
+#try-again-btn {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px 5px;
+  transition: transform 0.2s ease;
+}
+
+#submit-btn:hover,
+#try-again-btn:hover {
+  transform: scale(1.05);
+}
+
+#feedback-message {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  min-height: 24px;
+  color: #333;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.music-toggle-absolute {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  .drop-zone {
+    width: 100%;
+  }
+}
+/* grammar.css */
+.drop-zones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.drop-zone {
+  width: 45%;
+  min-width: 300px;
+  min-height: 180px;
+  background: white;
+  border: 4px solid #888;
+  border-radius: 16px;
+  padding: 40px 20px 20px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.drop-zone::before {
+  
+  font: bold 1.5rem 'Segoe UI', sans-serif;
+  color: #555;
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 0 10px;
+}
+
+#verb-zone::before {
+  content: "Verbs";
+}
+
+.drop-zone.over {
+  background-color: #f0f8ff;
+  border-color: #00f;
+}
+
+.draggable-word {
+  background: #bcae9d;
+  border: 2px solid #080000;
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-size: 1rem;
+  cursor: grab;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.draggable-word:hover {
+  background: #eef;
+}
+
+.draggable-word.touch-dragging {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.95;
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.drop-zone .draggable-word {
+  display: inline-flex !important;
+  margin: 4px !important;
+  font-size: 1rem !important;
+  padding: 6px 10px !important;
+  transform: none !important;
+  max-width: calc(100% - 20px);
+}
+
+.correct {
+  background-color: #a5d6a7 !important;
+  border-color: #2e7d32 !important;
+  color: #fff !important;
+}
+
+.incorrect {
+  background-color: #ef9a9a !important;
+  border-color: #c62828 !important;
+  color: #fff !important;
+}

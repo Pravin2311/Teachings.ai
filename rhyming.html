@@ -1,160 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rhyming Words - Teachings.AI</title>
-  <style>
-    /* Highlight the rhyming part of the word */
-.rhyme-part {
-  font-weight: bold;
-  color: #d32f2f;
-  text-decoration: underline;
-  background-color: #fff3e0;
-  padding: 0 2px;
-}
-
-/* Optional: Larger font for focus */
-.word-card {
-  font-size: 1.6em;
-  font-weight: 600;
-  color: #333;
-}
-    /* Parenting Tip Section */
-.parenting-tip {
-  margin: 25px auto;
-  padding: 18px 20px;
-  max-width: 600px;
-  background-color: #e8f4f8;
-  border-left: 5px solid #007BFF;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 1em;
-  color: #333;
-  line-height: 1.5;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.parenting-tip h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3em;
-  color: #1B2A5B;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.parenting-tip h3::before {
-  content: "💡";
-}
-/* Rhyming Word Game Styles */
-
-#instruction {
-  font-size: 1.2em;
-  margin: 15px 0;
-  color: #333;
-}
-
-.prompt {
-  font-size: 1.3em;
-  margin: 15px 0;
-  color: #333;
-  line-height: 1.5;
-}
-
-.word-highlight {
-  background-color: #ea5858;
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.word-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.word-button {
-  padding: 12px 20px;
-  font-size: 1.4em;
-  background-color: #f0f4ff;
-  border: 2px solid #6a9cff;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 100px;
-  text-align: center;
-}
-
-.word-button:hover {
-  background-color: #e0e8ff;
-  transform: translateY(-2px);
-}
-
-.word-button:focus {
-  outline: 3px solid #6a9cff;
-}
-
-.feedback {
-  font-size: 1.2em;
-  margin: 20px 0;
-  padding: 10px;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.feedback.correct {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.feedback.wrong {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.next-button {
-  padding: 10px 20px;
-  font-size: 1.1em;
-  background-color: #6a9cff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.next-button:hover {
-  background-color: #5c8ae6;
-}
-  </style>
+  <title>Rhyming Words - Fun Phonics Game for Kids | Teachings.AI</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Play the Rhyming Words Game on Teachings.AI. A fun and educational tool to help kids learn rhyming, phonics, and word matching. Ideal for preschool to grade 2." />
-  <meta name="keywords" content="rhyming words game, phonics game, kids educational game, vocabulary learning, preschool rhymes, early literacy, Teachings.AI" />
+  <meta name="description" content="Interactive rhyming words game for kids. Match words that rhyme, hear audio, and build phonics skills. Perfect for preschool, kindergarten, and early readers." />
+  <meta name="keywords" content="rhyming words game, phonics for kids, learn to rhyme, phonemic awareness, early literacy, kindergarten reading, preschool phonics, teachings.ai, word matching game" />
   <meta name="author" content="Teachings.AI" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://teachings.ai/rhyming.html" />
 
-  <!-- Open Graph Meta -->
-  <meta property="og:title" content="Rhyming Words Game for Kids - Teachings.AI" />
-  <meta property="og:description" content="Interactive rhyming game that helps children recognize similar-sounding words and improve vocabulary." />
-  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Rhyming Words Game - Teachings.AI" />
+  <meta property="og:description" content="Fun and interactive rhyming game for kids. Match words that sound alike and build reading skills. Perfect for preschool and kindergarten." />
+  <meta property="og:image" content="https://teachings.ai/assets/images/rhyming-preview.jpg" />
+  <meta property="og:image:alt" content="Kids playing a rhyming words game on teachings.ai" />
   <meta property="og:url" content="https://teachings.ai/rhyming.html" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teachings.AI" />
 
-  <!-- Twitter Card Meta -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rhyming Words Game for Kids - Teachings.AI" />
-  <meta name="twitter:description" content="A fun phonics game designed to teach children rhyming and vocabulary. Perfect for early learners." />
-  <meta name="twitter:image" content="https://teachings.ai/assets/images/app_logo.png" />
+  <meta name="twitter:title" content="Rhyming Words Game - Teachings.AI" />
+  <meta name="twitter:description" content="Interactive phonics game to help children learn rhyming words. Great for building reading readiness." />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/rhyming-preview.jpg" />
+  <meta name="twitter:image:alt" content="Rhyming words learning game for kids" />
   <meta name="twitter:site" content="@teachings_ai" />
 
   <!-- Favicon -->
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css" />
@@ -164,32 +39,152 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationalGame",
+    "@type": "LearningResource",
     "name": "Rhyming Words Game - Teachings.AI",
-    "description": "Interactive rhyming words game for kids. Helps children learn phonics and vocabulary with matching and audio feedback.",
-    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1", "Grade 2"],
-    "inLanguage": "en",
+    "description": "An interactive, audio-supported game that helps children identify and match rhyming words. Designed to build phonemic awareness and early reading skills.",
     "url": "https://teachings.ai/rhyming.html",
+    "image": "https://teachings.ai/assets/images/rhyming-preview.jpg",
+    "thumbnailUrl": "https://teachings.ai/assets/images/rhyming-preview.jpg",
+    "inLanguage": "en",
+    "learningResourceType": "Interactive Game",
+    "educationalLevel": "Preschool, Kindergarten, Grade 1",
+    "educationalSubject": "Phonics, Literacy, Language Arts",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student",
+      "ageRange": "3-8"
+    },
+    "isAccessibleForFree": true,
+    "datePublished": "2025-04-05",
     "publisher": {
       "@type": "Organization",
       "name": "Teachings.AI",
       "url": "https://teachings.ai",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://teachings.ai/assets/images/app_logo.png"
-      }
-    }
+      "logo": "https://teachings.ai/assets/images/app_logo.png"
+    },
+    "keywords": "rhyming game, phonics for kids, learn to rhyme, early reading"
   }
   </script>
 
-  <!-- Google Analytics -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
+
+  <!-- Inline Styles (Preserved from your original) -->
+  <style>
+    .rhyme-part {
+      font-weight: bold;
+      color: #d32f2f;
+      text-decoration: underline;
+      background-color: #fff3e0;
+      padding: 0 2px;
+    }
+    .word-card {
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #333;
+    }
+    .parenting-tip {
+      margin: 25px auto;
+      padding: 18px 20px;
+      max-width: 600px;
+      background-color: #e8f4f8;
+      border-left: 5px solid #007BFF;
+      border-radius: 10px;
+      text-align: left;
+      font-size: 1em;
+      color: #333;
+      line-height: 1.5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .parenting-tip h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+      color: #1B2A5B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .parenting-tip h3::before {
+      content: "🔤";
+    }
+    #instruction {
+      font-size: 1.2em;
+      margin: 15px 0;
+      color: #333;
+    }
+    .prompt {
+      font-size: 1.3em;
+      margin: 15px 0;
+      color: #333;
+      line-height: 1.5;
+    }
+    .word-highlight {
+      background-color: #ea5858;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .word-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .word-button {
+      padding: 12px 20px;
+      font-size: 1.4em;
+      background-color: #194cd6;
+      border: 2px solid #6a9cff;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-width: 100px;
+      text-align: center;
+    }
+    .word-button:hover {
+      background-color: #e0e8ff;
+      transform: translateY(-2px);
+    }
+    .word-button:focus {
+      outline: 3px solid #6a9cff;
+    }
+    .feedback {
+      font-size: 1.2em;
+      margin: 20px 0;
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .feedback.correct {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .feedback.wrong {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .next-button {
+      padding: 10px 20px;
+      font-size: 1.1em;
+      background-color: #6a9cff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .next-button:hover {
+      background-color: #5c8ae6;
+    }
+  </style>
+</head>
 </head>
 
 <body>

@@ -22,7 +22,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "EducationalAudience",
+    "@type": "LearningResource",
     "educationalRole": "student",
     "name": "Animals & Birds Sorting - Teachings.AI",
     "description": "Drag and drop sorting activity to separate Animals and Birds for preschool and grade 1 students.",
@@ -53,7 +53,7 @@
   </script>
 
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/grammar.css" />
+  <link rel="stylesheet" href="css/animal-birds-sorting.css" />
 
   <style>
     body.dragging { touch-action: none; overflow: hidden; }
@@ -201,19 +201,21 @@
   }
 
   function renderWords() {
-    const wordContainer = document.getElementById("word-container");
-    wordContainer.innerHTML = '';
-    const shuffled = shuffle([...wordSets[currentSetIndex]]);
-    shuffled.forEach(({ word }, index) => {
-      const span = document.createElement("span");
-      span.innerText = word;
-      span.className = "word";
-      span.setAttribute("data-word", word);
-      span.setAttribute("data-index", index);
-      wordContainer.appendChild(span);
-    });
-    attachDragListeners();
-  }
+  const wordContainer = document.getElementById("word-container");
+  wordContainer.innerHTML = '';
+  const shuffled = shuffle([...wordSets[currentSetIndex]]);
+  shuffled.forEach(({ word, type }, index) => {
+    const span = document.createElement("span");
+    span.innerText = word;
+    span.className = "word";
+    span.setAttribute("data-word", word);
+    span.setAttribute("data-index", index);
+    span.setAttribute("data-type", type); // ✅ Add type to each word
+    wordContainer.appendChild(span);
+  });
+  attachDragListeners();
+}
+
 
   function attachDragListeners() {
     document.querySelectorAll(".word").forEach(el => {
