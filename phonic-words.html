@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Free phonics app for kids: learn to blend sounds like C-A-T → cat. Interactive, no login, perfect for preschool, kindergarten, and homeschool.">
+  <meta name="keywords" content="phonics for kids, learn to read, blending sounds, CVC words, early reading, phonics app, kindergarten reading, homeschool phonics, sound and blend, teachings.ai">
+  <meta name="author" content="teachings.ai">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Sound & Blend - Learn Phonics | teachings.ai">
+  <meta property="og:description" content="Interactive phonics app: blend letter sounds to read words. Perfect for early readers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teachings.ai/phonics/sound-and-blend.html">
+  <meta property="og:image" content="https://teachings.ai/images/phonics-preview.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sound & Blend - Phonics for Kids">
+  <meta name="twitter:description" content="Free phonics tool: blend sounds like C-A-T → cat. No login, no ads.">
+  <meta name="twitter:image" content="https://teachings.ai/images/phonics-preview.jpg">
+
+  <title>Sound & Blend - Learn Phonics | teachings.ai</title>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://teachings.ai/phonics/sound-and-blend.html">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/phonics.css">
+
+  <!-- JSON-LD Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Sound & Blend - Learn Phonics",
+    "description": "Interactive phonics module for early readers. Learn to blend letter sounds into words like C-A-T → cat. Designed for preschool and kindergarten students.",
+    "url": "https://teachings.ai/phonics/sound-and-blend.html",
+    "thumbnailUrl": "https://teachings.ai/images/phonics-preview.jpg",
+    "encodingFormat": "text/html",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalRole": "student",
+      "ageRange": "3-7"
+    },
+    "educationalLevel": "Preschool, Kindergarten, Grade 1",
+    "learningResourceType": "Interactive Tool",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": {
+      "@type": "Organization",
+      "name": "teachings.ai",
+      "url": "https://teachings.ai"
+    },
+    "datePublished": "2025-04-05",
+    "inLanguage": "en"
+  }
+  </script>
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+<body>
+
+  <!-- Main App -->
+  <div class="container">
+    <!-- Back Button -->
+    <button class="btn" onclick="window.location.href='phonics.html'">← Back</button>
+
+    <!-- Main Heading -->
+    <h1>🔤 Sound & Blend</h1>
+    <p class="subtitle">Learn to read by blending letter sounds</p>
+
+    <!-- Word Card -->
+    <div class="word-card">
+      <img id="wordImage" class="word-image" src="images/cat.png" alt="Picture of a cat">
+      <div id="wordText" class="word-text">cat</div>
+    </div>
+
+    <!-- Interactive Buttons -->
+    <button class="btn" onclick="blendWord()">🔊 Sound It Out</button>
+    <button class="btn" onclick="nextWord()">➡️ Next Word</button>
+
+    <!-- Progress Indicator -->
+    <p class="progress">Word <span id="current">1</span> of 14</p>
+  </div>
+
+  <!-- Parent Tip Section -->
+  <div class="container tip">
+    <h3>🎯 How to Help Your Child</h3>
+    <p>Say each sound together: <strong>"/c/ ... /a/ ... /t/ ... cat!"</strong><br>
+    This teaches how letters <strong>blend</strong> into words — the foundation of reading!</p>
+    <p><em>— teachings.ai | Free for home & classroom use</em></p>
+  </div>
+
+  <!-- Audio Elements -->
+<audio id="sound-a" src="assets/audio/phonics/A.mp3" preload="auto"></audio>
+<audio id="sound-b" src="assets/audio/phonics/B.mp3" preload="auto"></audio>
+<audio id="sound-c" src="assets/audio/phonics/C.mp3" preload="auto"></audio>
+<audio id="sound-d" src="assets/audio/phonics/D.mp3" preload="auto"></audio>
+<audio id="sound-e" src="assets/audio/phonics/E.mp3" preload="auto"></audio>
+<audio id="sound-f" src="assets/audio/phonics/F.mp3" preload="auto"></audio>
+<audio id="sound-g" src="assets/audio/phonics/G.mp3" preload="auto"></audio>
+<audio id="sound-h" src="assets/audio/phonics/H.mp3" preload="auto"></audio>
+<audio id="sound-i" src="assets/audio/phonics/I.mp3" preload="auto"></audio>
+<audio id="sound-j" src="assets/audio/phonics/J.mp3" preload="auto"></audio>
+<audio id="sound-k" src="assets/audio/phonics/K.mp3" preload="auto"></audio>
+<audio id="sound-l" src="assets/audio/phonics/L.mp3" preload="auto"></audio>
+<audio id="sound-m" src="assets/audio/phonics/M.mp3" preload="auto"></audio>
+<audio id="sound-n" src="assets/audio/phonics/N.mp3" preload="auto"></audio>
+<audio id="sound-o" src="assets/audio/phonics/O.mp3" preload="auto"></audio>
+<audio id="sound-p" src="assets/audio/phonics/P.mp3" preload="auto"></audio>
+<audio id="sound-q" src="assets/audio/phonics/Q.mp3" preload="auto"></audio>
+<audio id="sound-r" src="assets/audio/phonics/R.mp3" preload="auto"></audio>
+<audio id="sound-s" src="assets/audio/phonics/S.mp3" preload="auto"></audio>
+<audio id="sound-t" src="assets/audio/phonics/T.mp3" preload="auto"></audio>
+<audio id="sound-u" src="assets/audio/phonics/U.mp3" preload="auto"></audio>
+<audio id="sound-v" src="assets/audio/phonics/V.mp3" preload="auto"></audio>
+<audio id="sound-w" src="assets/audio/phonics/W.mp3" preload="auto"></audio>
+<audio id="sound-x" src="assets/audio/phonics/X.mp3" preload="auto"></audio>
+<audio id="sound-y" src="assets/audio/phonics/Y.mp3" preload="auto"></audio>
+<audio id="sound-z" src="assets/audio/phonics/Z.mp3" preload="auto"></audio>
+
+  <script src="assets/js/globalImageLoader.js" defer></script>
+  <audio id="wordAudio" src="audio/cat.mp3"></audio>
+
+  <!-- JavaScript -->
+  <script src="js/phonics.js"></script>
+  <script src="assets/js/globalImageLoader.js" defer></script>
+</body>
+</html>

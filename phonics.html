@@ -2,136 +2,290 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Free phonics app for kids: learn to blend sounds like C-A-T → cat. Interactive, no login, perfect for preschool, kindergarten, and homeschool.">
-  <meta name="keywords" content="phonics for kids, learn to read, blending sounds, CVC words, early reading, phonics app, kindergarten reading, homeschool phonics, sound and blend, teachings.ai">
-  <meta name="author" content="teachings.ai">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kids Learning Games – Sorting, Matching & More | Teachings.AI</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://teachings.ai/games.html" />
+
+  <!-- Styles -->
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css" />
+
+
+  <!-- Manifest & PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#1B2A5B" />
+
+  <!-- SEO -->
+  <meta name="description" content="Interactive sorting and matching games for kids: odd/even, alphabets, numbers, animals, and more. Fun learning for ages 3-10.">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="Sound & Blend - Learn Phonics | teachings.ai">
-  <meta property="og:description" content="Interactive phonics app: blend letter sounds to read words. Perfect for early readers.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Teachings.AI - Learning Games for Kids">
+  <meta property="og:description" content="Play sorting and matching games for numbers, alphabets, animals, and more.">
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
+  <meta property="og:url" content="https://teachings.ai/games.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://teachings.ai/phonics/sound-and-blend.html">
-  <meta property="og:image" content="https://teachings.ai/images/phonics-preview.jpg">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sound & Blend - Phonics for Kids">
-  <meta name="twitter:description" content="Free phonics tool: blend sounds like C-A-T → cat. No login, no ads.">
-  <meta name="twitter:image" content="https://teachings.ai/images/phonics-preview.jpg">
-
-  <title>Sound & Blend - Learn Phonics | teachings.ai</title>
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://teachings.ai/phonics/sound-and-blend.html">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/phonics.css">
-
-  <!-- JSON-LD Schema Markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LearningResource",
-    "name": "Sound & Blend - Learn Phonics",
-    "description": "Interactive phonics module for early readers. Learn to blend letter sounds into words like C-A-T → cat. Designed for preschool and kindergarten students.",
-    "url": "https://teachings.ai/phonics/sound-and-blend.html",
-    "thumbnailUrl": "https://teachings.ai/images/phonics-preview.jpg",
-    "encodingFormat": "text/html",
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "student",
-      "ageRange": "3-7"
-    },
-    "educationalLevel": "Preschool, Kindergarten, Grade 1",
-    "learningResourceType": "Interactive Tool",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "creator": {
-      "@type": "Organization",
-      "name": "teachings.ai",
-      "url": "https://teachings.ai"
-    },
-    "datePublished": "2025-04-05",
-    "inLanguage": "en"
-  }
-  </script>
-  <!-- Google Analytics 4 (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
+
+  <!-- Critical Responsive CSS -->
+  <style>
+    /* Ensure no overflow */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f7f9fb;
+      color: #333d51;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container with safe spacing */
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px 10px; /* Reduced side padding on mobile */
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      flex: 1;
+    }
+
+    h1 {
+      color: #6a9cff;
+      margin-bottom: 20px;
+      font-size: 2.4em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1 br {
+      display: none;
+    }
+
+    /* Back Button - Fixed inside container bounds */
+    .back-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: #6a9cff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95em;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .back-button:hover {
+      background-color: #5c8ae6;
+      transform: translateY(-2px);
+    }
+
+    .back-button:active {
+      transform: translateY(0);
+    }
+
+    /* Music Toggle - Same fix */
+    .music-toggle-absolute {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #ffb86c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 1.4em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .music-toggle-absolute:hover {
+      background-color: #e6a760;
+      transform: scale(1.1);
+    }
+
+    /* Modules Grid - Responsive */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 16px;
+      margin: 15px auto;
+      padding: 0 10px;
+      max-width: 900px;
+    }
+
+    .module-button {
+      background-color: #7fd1b9;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 16px 10px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      min-height: 90px;
+    }
+
+    .module-button:hover {
+      background-color: #6fbfa4;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .module-button:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        padding: 25px 15px;
+        border-radius: 15px;
+      }
+
+      h1 {
+        font-size: 2.0em;
+      }
+
+      .modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 14px;
+      }
+
+      .module-button {
+        padding: 14px 8px;
+        font-size: 1.05em;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+        gap: 12px;
+      }
+
+      .module-button {
+        padding: 12px 6px;
+        font-size: 0.95em;
+        min-height: 80px;
+      }
+
+      .back-button,
+      .music-toggle-absolute {
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+      }
+
+      .back-button {
+        left: 10px;
+        padding: 6px 10px;
+      }
+
+      .music-toggle-absolute {
+        right: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Main App -->
+  <!-- Container -->
   <div class="container">
     <!-- Back Button -->
-    <button class="btn" onclick="window.location.href='index.html'">← Back</button>
+    <button class="back-button" onclick="window.location.href='/'" aria-label="Go back to home">←</button>
 
-    <!-- Main Heading -->
-    <h1>🔤 Sound & Blend</h1>
-    <p class="subtitle">Learn to read by blending letter sounds</p>
-
-    <!-- Word Card -->
-    <div class="word-card">
-      <img id="wordImage" class="word-image" src="images/cat.png" alt="Picture of a cat">
-      <div id="wordText" class="word-text">cat</div>
+    <!-- Page Title -->
+    <h1>Teachings.Ai</h1>
+    <p><h2>Learning Activity</h2></p>
+    <div class="follow-me-icons">
+    <span>Updates 👉</span>
+    <a href="https://www.instagram.com/teachingsai" target="_blank" aria-label="Instagram"><img src="assets/images/instagram.png" alt="Instagram"/></a>
+    <a href="https://www.facebook.com/teachingsai" target="_blank" aria-label="Facebook"><img src="assets/images/facebook.png" alt="Facebook"/></a>
+    <a href="https://twitter.com/teachingsai" target="_blank" aria-label="Twitter"><img src="assets/images/twitter.png" alt="Twitter"/></a>
+    <a href="https://www.youtube.com/@teachingsai" target="_blank" aria-label="YouTube"><img src="assets/images/youtube.png" alt="YouTube"/></a>
+  </div>
+  <main>
+    <div class="scroll-instruction">
+      <div class="scroll-text">To Download App, tap the browser menu (⋮) or Tap Share ↑ and choose "Add to Home screen" | For music on tap 🔈</div>
     </div>
-
-    <!-- Interactive Buttons -->
-    <button class="btn" onclick="blendWord()">🔊 Sound It Out</button>
-    <button class="btn" onclick="nextWord()">➡️ Next Word</button>
-
-    <!-- Progress Indicator -->
-    <p class="progress">Word <span id="current">1</span> of 14</p>
+    <!-- Modules Grid -->
+    <div class="modules-grid">
+      <a href="/phonic-words.html" class="module-button" id="phonic-words">Phonic Words</a>
+      <a href="/phonic-letter-sound.html" class="module-button" id="phonic-letter-sound">Phonic Letters</a>
+      
+    </div>
   </div>
 
-  <!-- Parent Tip Section -->
-  <div class="container tip">
-    <h3>🎯 How to Help Your Child</h3>
-    <p>Say each sound together: <strong>"/c/ ... /a/ ... /t/ ... cat!"</strong><br>
-    This teaches how letters <strong>blend</strong> into words — the foundation of reading!</p>
-    <p><em>— teachings.ai | Free for home & classroom use</em></p>
-  </div>
+  <!-- Music Toggle (positioned outside .container but safe) -->
+  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
 
-  <!-- Audio Elements -->
-<audio id="sound-a" src="assets/audio/phonics/A.mp3" preload="auto"></audio>
-<audio id="sound-b" src="assets/audio/phonics/B.mp3" preload="auto"></audio>
-<audio id="sound-c" src="assets/audio/phonics/C.mp3" preload="auto"></audio>
-<audio id="sound-d" src="assets/audio/phonics/D.mp3" preload="auto"></audio>
-<audio id="sound-e" src="assets/audio/phonics/E.mp3" preload="auto"></audio>
-<audio id="sound-f" src="assets/audio/phonics/F.mp3" preload="auto"></audio>
-<audio id="sound-g" src="assets/audio/phonics/G.mp3" preload="auto"></audio>
-<audio id="sound-h" src="assets/audio/phonics/H.mp3" preload="auto"></audio>
-<audio id="sound-i" src="assets/audio/phonics/I.mp3" preload="auto"></audio>
-<audio id="sound-j" src="assets/audio/phonics/J.mp3" preload="auto"></audio>
-<audio id="sound-k" src="assets/audio/phonics/K.mp3" preload="auto"></audio>
-<audio id="sound-l" src="assets/audio/phonics/L.mp3" preload="auto"></audio>
-<audio id="sound-m" src="assets/audio/phonics/M.mp3" preload="auto"></audio>
-<audio id="sound-n" src="assets/audio/phonics/N.mp3" preload="auto"></audio>
-<audio id="sound-o" src="assets/audio/phonics/O.mp3" preload="auto"></audio>
-<audio id="sound-p" src="assets/audio/phonics/P.mp3" preload="auto"></audio>
-<audio id="sound-q" src="assets/audio/phonics/Q.mp3" preload="auto"></audio>
-<audio id="sound-r" src="assets/audio/phonics/R.mp3" preload="auto"></audio>
-<audio id="sound-s" src="assets/audio/phonics/S.mp3" preload="auto"></audio>
-<audio id="sound-t" src="assets/audio/phonics/T.mp3" preload="auto"></audio>
-<audio id="sound-u" src="assets/audio/phonics/U.mp3" preload="auto"></audio>
-<audio id="sound-v" src="assets/audio/phonics/V.mp3" preload="auto"></audio>
-<audio id="sound-w" src="assets/audio/phonics/W.mp3" preload="auto"></audio>
-<audio id="sound-x" src="assets/audio/phonics/X.mp3" preload="auto"></audio>
-<audio id="sound-y" src="assets/audio/phonics/Y.mp3" preload="auto"></audio>
-<audio id="sound-z" src="assets/audio/phonics/Z.mp3" preload="auto"></audio>
+  <!-- Audio -->
+  <audio id="background-music" loop muted>
+    <source src="/assets/audio/background_music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 Teachings.AI</p>
+  <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
+  <button onclick="location.href='/about.html'" class="blog-button">About</button>
+  <button onclick="location.href='/privacy-policy.html'" class="blog-button">Privacy</button>
+  <button onclick="location.href='/disclaimer.html'" class="blog-button">Disclaimer</button>
+  <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team'" class="feedback-button">📩 Contact Us</button>
+  <p>“Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, and fun activities. Designed for preschool and kindergarten, our resources make learning joyful and effective.”</p>
 
+  <!-- Scripts -->
+  <script src="/js/script.js" defer></script>
+  <script src="/js/musicControl.js" defer></script>
   <script src="assets/js/globalImageLoader.js" defer></script>
-  <audio id="wordAudio" src="audio/cat.mp3"></audio>
 
-  <!-- JavaScript -->
-  <script src="js/phonics.js"></script>
-  <script src="assets/js/globalImageLoader.js" defer></script>
+  <!-- NoScript -->
+  <noscript>
+    <div style="text-align:center;background:#ffdddd;padding:10px;margin:20px;border-radius:10px;">
+      <strong>JavaScript is required</strong> for full functionality.
+    </div>
+  </noscript>
 </body>
 </html>

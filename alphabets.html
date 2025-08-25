@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn Alphabets: A-Z Interactive Game for Kids | Teachings.AI</title>
 
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css" />
+
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="Interactive alphabet game for kids: scratch to reveal letters A-Z, hear pronunciation, and learn with example words. Fun, audio-rich, and perfect for preschool and kindergarten." />
   <meta name="keywords" content="learn alphabets, ABC for kids, English letters, alphabet pronunciation, preschool phonics, kindergarten literacy, letter sounds, teachings.ai, interactive alphabet game" />
@@ -139,7 +144,7 @@
 </head>
 <body>
   <div class="container">
-    <button class="back-button" onclick="window.location.href='index.html'">← Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'">Back</button>
     <h1>🔤 Learn Alphabets</h1>
     <div class="alphabet-display">
       <p id="current-letter-text" aria-live="polite"></p>
@@ -160,6 +165,7 @@
         <li>Listen to the <strong>alphabet pronunciation audio</strong> to strengthen <strong>phonics and early literacy</strong>.</li>
         <li>Use <strong>colorful images</strong> and <strong>example words</strong> to make <strong>letter recognition</strong> easy and engaging.</li>
         <li>Sing the <strong>alphabet song</strong> to reinforce memory in a playful way.</li>
+  <!--  <li>We recommend this <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" rel="noopener">Colorful Counting Abacus for Kids</a>. Using it, your child can practice counting, addition, and subtraction while having fun.</li> -->
         <li>Encourage tracing letters on paper or touchscreen to develop <strong>handwriting skills</strong>.</li>
         <li>Pair each letter with simple words and objects for better <strong>memorization</strong> and learning fun.</li>
       </ul>
@@ -174,6 +180,15 @@
 
   <!-- Music Toggle -->
   <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Background Music">🔈</button>
+  <!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 Teachings.AI</p>
+  <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
+  <button onclick="location.href='/about.html'" class="blog-button">About</button>
+  <button onclick="location.href='/privacy-policy.html'" class="blog-button">Privacy</button>
+  <button onclick="location.href='/disclaimer.html'" class="blog-button">Disclaimer</button>
+  <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team'" class="feedback-button">📩 Contact Us</button>
+  <p>“Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, and fun activities. Designed for preschool and kindergarten, our resources make learning joyful and effective.”</p>
 
   <!-- Scripts -->
   <script src="js/alphabets.js"></script>

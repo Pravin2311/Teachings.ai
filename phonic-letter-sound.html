@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phonics A–Z: Letter Sound Correspondence Game | Teachings.AI</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Interactive phonics A–Z letter-sound correspondence game for kids. Teachings.AI helps children learn phonics with drag-and-drop activities, audio sounds, and images.">
+<meta name="keywords" content="phonics, kids phonics game, alphabet sounds, letter sound correspondence, phonics A to Z, educational games for kids, preschool learning, kindergarten phonics, Teachings.AI">
+<meta name="author" content="Teachings.AI">
+<link rel="stylesheet" href="css/style.css" />
+
+<style>
+body { font-family:'Poppins', sans-serif; margin:0; padding:20px; background:#f9fafc; color:#333; overflow-x:hidden; }
+h1 { text-align:center; color:#1B2A5B; font-size:1.8em; }
+
+/* Letters Grid */
+.letter-grid { display:flex; flex-wrap:wrap; justify-content:center; margin:15px 0; gap:12px; max-width:100%; box-sizing:border-box; }
+.letter { width:60px; height:60px; display:flex; align-items:center; justify-content:center; font-size:2em; background:#6a9cff; color:#fff; border-radius:15px; cursor:pointer; user-select:none; touch-action: manipulation; box-sizing:border-box; }
+.letter:active { transform:scale(0.95); }
+
+/* Drop Zones */
+.drop-zone { width:90px; height:90px; border:2px dashed #6a9cff; border-radius:15px; margin:8px; display:inline-flex; align-items:center; justify-content:center; font-size:1.5em; font-weight:700; color:#bbb; flex-direction:column; text-align:center; box-sizing:border-box; }
+.drop-zone.correct { background:#6a9cff; color:#fff; border:none; }
+.drop-zone img { width:45px; margin-top:5px; display:none; }
+
+/* Game Container */
+.game-container { text-align:center; margin:15px 0; }
+.score { font-weight:bold; margin-top:10px; font-size:1.1em; }
+
+/* Try Again/Next Button */
+#nextBtn { margin-top:12px; padding:10px 20px; font-size:1em; background:#ff9c6c; color:#fff; border:none; border-radius:25px; cursor:pointer; box-shadow:0 3px 6px rgba(0,0,0,0.1); display:none; }
+
+/* Parenting Tip */
+.parenting-tip { background:#f0f8ff; padding:12px; border-left:4px solid #6a9cff; border-radius:8px; margin-top:25px; font-size:0.95em; }
+.parenting-tip h3 { margin-top:0; color:#1B2A5B; font-size:1.1em; }
+.parenting-tip a { color:#6a9cff; text-decoration:underline; }
+
+/* Footer */
+footer { text-align:center; margin-top:35px; font-size:0.9em; color:#666; }
+
+/* Responsive */
+@media (max-width:500px){
+  .letter { width:calc(14vw); height:calc(14vw); font-size:calc(4vw); }
+  .drop-zone { width:calc(16vw); height:calc(16vw); font-size:calc(3.5vw); }
+  .drop-zone img { width:calc(8vw); }
+}
+</style>
+</head>
+<body>
+<button class="back-button" onclick="window.location.href='phonics.html'">Back</button>
+<h1>Phonics: <br> Letter-Sound Correspondence</h1>
+
+<div class="letter-grid" id="letterGrid"></div>
+
+<div class="game-container">
+  <p>Drag the correct letter to match the sound and image:</p>
+  <div id="dropZones" style="display:flex; justify-content:center; flex-wrap:wrap;"></div>
+  <p class="score" id="score">Score: 0</p>
+  <button id="nextBtn">Next / Try Again</button>
+</div>
+
+<div class="parenting-tip">
+  <h3>Parenting Tip</h3>
+  <p>Reinforce letter sounds at home by pointing out letters in books, signs, or toys. Try a hands-on tool like <a href="#">Colorful Letter Magnet Set</a>. Praise your child for each correct sound!</p>
+</div>
+
+<script>
+// Letters A–Z
+const letters = [
+  {letter:'A', sound:'assets/audio/phonics/A.mp3', word:'Apple', img:'assets/images/fruits/apple.png'},
+  {letter:'B', sound:'assets/audio/phonics/B.mp3', word:'Ball', img:'assets/images/phonics/ball.png'},
+  {letter:'C', sound:'assets/audio/phonics/C.mp3', word:'Cat', img:'assets/images/animals/cat.png'},
+  {letter:'D', sound:'assets/audio/phonics/D.mp3', word:'Dog', img:'assets/images/animals/dog.png'},
+  {letter:'E', sound:'assets/audio/phonics/E.mp3', word:'Egg', img:'assets/images/phonics/egg.png'},
+  {letter:'F', sound:'assets/audio/phonics/F.mp3', word:'Fish', img:'assets/images/phonics/fish.png'},
+  {letter:'G', sound:'assets/audio/phonics/G.mp3', word:'Goat', img:'assets/images/phonics/goat.png'},
+  {letter:'H', sound:'assets/audio/phonics/H.mp3', word:'Hat', img:'assets/images/phonics/hat.png'},
+  {letter:'I', sound:'assets/audio/phonics/I.mp3', word:'Ice', img:'assets/images/phonics/ice.png'},
+  {letter:'J', sound:'assets/audio/phonics/J.mp3', word:'Jug', img:'assets/images/phonics/jug.png'},
+  {letter:'K', sound:'assets/audio/phonics/K.mp3', word:'Kite', img:'assets/images/phonics/kite.png'},
+  {letter:'L', sound:'assets/audio/phonics/L.mp3', word:'Lion', img:'assets/images/animals/lion.png'},
+  {letter:'M', sound:'assets/audio/phonics/M.mp3', word:'Mug', img:'assets/images/phonics/mug.png'},
+  {letter:'N', sound:'assets/audio/phonics/N.mp3', word:'Nut', img:'assets/images/phonics/notebook.png'},
+  {letter:'O', sound:'assets/audio/phonics/O.mp3', word:'Octopus', img:'assets/images/phonics/octopus.png'},
+  {letter:'P', sound:'assets/audio/phonics/P.mp3', word:'Pen', img:'assets/images/phonics/pen.png'},
+  {letter:'Q', sound:'assets/audio/phonics/Q.mp3', word:'Queen', img:'assets/images/phonics/queen.png'},
+  {letter:'R', sound:'assets/audio/phonics/R.mp3', word:'Rat', img:'assets/images/phonics/rat.png'},
+  {letter:'S', sound:'assets/audio/phonics/S.mp3', word:'Sun', img:'assets/images/phonics/sun.png'},
+  {letter:'T', sound:'assets/audio/phonics/T.mp3', word:'Tap', img:'assets/images/phonics/tap.png'},
+  {letter:'U', sound:'assets/audio/phonics/U.mp3', word:'Umbrella', img:'assets/images/phonics/umbrella.png'},
+  {letter:'V', sound:'assets/audio/phonics/V.mp3', word:'Van', img:'assets/images/phonics/van.png'},
+  {letter:'W', sound:'assets/audio/phonics/W.mp3', word:'Wolf', img:'assets/images/phonics/wolf.png'},
+  {letter:'X', sound:'assets/audio/phonics/X.mp3', word:'Xylophone', img:'assets/images/phonics/xylophone.png'},
+  {letter:'Y', sound:'assets/audio/phonics/Y.mp3', word:'Yak', img:'assets/images/phonics/yak.png'},
+  {letter:'Z', sound:'assets/audio/phonics/Z.mp3', word:'Zebra', img:'assets/images/animals/zebra.png'}
+];
+
+let currentIndex=0;
+let batchSize=8;
+let score=0;
+let draggedLetter=null;
+let touchDraggedLetter=null;
+
+const letterGrid=document.getElementById('letterGrid');
+const dropZones=document.getElementById('dropZones');
+const scoreEl=document.getElementById('score');
+const nextBtn=document.getElementById('nextBtn');
+
+function loadBatch(){
+  letterGrid.innerHTML='';
+  dropZones.innerHTML='';
+  score=0;
+  scoreEl.textContent='Score: 0';
+  nextBtn.style.display='none';
+  const batch=letters.slice(currentIndex,currentIndex+batchSize);
+
+  // Letters grid
+  batch.forEach(l=>{
+    const div=document.createElement('div');
+    div.className='letter';
+    div.textContent=l.letter;
+    div.dataset.letter=l.letter;
+    div.onclick=()=>new Audio(l.sound).play();
+    div.draggable=true;
+    div.addEventListener('dragstart',e=>draggedLetter=l.letter);
+    letterGrid.appendChild(div);
+  });
+
+  // Drop zones with trace letters
+  batch.forEach(l=>{
+    const dz=document.createElement('div');
+    dz.className='drop-zone';
+    dz.dataset.letter=l.letter;
+    dz.innerHTML=`<span style="opacity:0.4;">${l.letter}</span><br><img data-src="${l.img}" alt="${l.word}">`;
+
+    dz.addEventListener('dragover', e=> e.preventDefault());
+    dz.addEventListener('drop', e=>{
+      const img = dz.querySelector('img');
+      if(!img.src) img.src = img.dataset.src;
+      handleDrop(dz,batch);
+    });
+    dropZones.appendChild(dz);
+
+    // Preload images for smoother experience
+    const imgPreload = new Image();
+    imgPreload.src = l.img;
+  });
+}
+
+function handleDrop(dz,batch,letterOverride=null){
+  const letter = letterOverride || draggedLetter;
+  if(letter===dz.dataset.letter){
+    dz.classList.add('correct');
+    dz.querySelector('span').textContent=letter;
+    const img = dz.querySelector('img');
+    if(!img.src) img.src = img.dataset.src;
+    img.style.display='block';
+    const letterObj=batch.find(l=>l.letter===letter);
+    new Audio(letterObj.sound).play();
+    score++;
+    scoreEl.textContent='Score: '+score;
+    if(score===batch.length) nextBtn.style.display='inline-block';
+  }else{
+    alert('Try again!');
+  }
+  draggedLetter=null;
+}
+
+// Mobile touch drag
+letterGrid.addEventListener('touchstart', e=>{
+  const target=e.target.closest('.letter');
+  if(!target) return;
+  touchDraggedLetter=target;
+  touchDraggedLetter.style.position='absolute';
+  touchDraggedLetter.style.zIndex='1000';
+});
+
+letterGrid.addEventListener('touchmove', e=>{
+  if(!touchDraggedLetter) return;
+  const touch=e.touches[0];
+  touchDraggedLetter.style.left=touch.clientX-touchDraggedLetter.offsetWidth/2+'px';
+  touchDraggedLetter.style.top=touch.clientY-touchDraggedLetter.offsetHeight/2+'px';
+  e.preventDefault();
+});
+
+letterGrid.addEventListener('touchend', e=>{
+  if(!touchDraggedLetter) return;
+
+  touchDraggedLetter.style.display='none';
+  const touch = e.changedTouches[0];
+  const dz = document.elementFromPoint(touch.clientX,touch.clientY)?.closest('.drop-zone');
+  touchDraggedLetter.style.display='';
+
+  if(dz) handleDrop(dz,letters.slice(currentIndex,currentIndex+batchSize),touchDraggedLetter.textContent);
+
+  touchDraggedLetter.style.position='';
+  touchDraggedLetter.style.left='';
+  touchDraggedLetter.style.top='';
+  touchDraggedLetter.style.zIndex='';
+  touchDraggedLetter=null;
+});
+
+// Next / Try Again
+nextBtn.addEventListener('click',()=>{
+  currentIndex+=batchSize;
+  if(currentIndex>=letters.length) currentIndex=0;
+  loadBatch();
+});
+
+loadBatch();
+</script>
+</body>
+</html>
