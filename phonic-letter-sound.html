@@ -10,6 +10,11 @@
 <meta name="keywords" content="phonics, kids phonics game, alphabet sounds, letter sound correspondence, phonics A to Z, educational games for kids, preschool learning, kindergarten phonics, Teachings.AI">
 <meta name="author" content="Teachings.AI">
 <link rel="stylesheet" href="css/style.css" />
+<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+<link rel="stylesheet" href="/css/style.css" />
+
+
 
 <style>
 body { font-family:'Poppins', sans-serif; margin:0; padding:20px; background:#f9fafc; color:#333; overflow-x:hidden; }
@@ -104,6 +109,14 @@ footer { text-align:center; margin-top:35px; font-size:0.9em; color:#666; }
   <h3>Parenting Tip</h3>
   <p>Reinforce letter sounds at home by pointing out letters in books, signs, or toys. Try a hands-on tool like <a href="#">Colorful Letter Magnet Set</a>. Praise your child for each correct sound!</p>
 </div>
+<footer class="site-footer">
+  <p>© 2025 Teachings.AI</p>
+  <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
+  <button onclick="location.href='/about.html'" class="blog-button">About</button>
+  <button onclick="location.href='/privacy-policy.html'" class="blog-button">Privacy</button>
+  <button onclick="location.href='/disclaimer.html'" class="blog-button">Disclaimer</button>
+  <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team'" class="feedback-button">📩 Contact Us</button>
+  <p>“Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, and fun activities. Designed for preschool and kindergarten, our resources make learning joyful and effective.”</p>
 
 <script>
 // Letters A–Z
@@ -147,6 +160,22 @@ const dropZones=document.getElementById('dropZones');
 const scoreEl=document.getElementById('score');
 const nextBtn=document.getElementById('nextBtn');
 
+// ✅ Preload Audio
+const phonicsSounds = {};
+letters.forEach(l=>{
+  const audio = new Audio(l.sound);
+  audio.preload = "auto";
+  phonicsSounds[l.letter] = audio;
+});
+
+// Play sound helper
+function playPhonics(letter){
+  if(phonicsSounds[letter]){
+    phonicsSounds[letter].currentTime = 0;
+    phonicsSounds[letter].play().catch(()=>{});
+  }
+}
+
 function loadBatch(){
   letterGrid.innerHTML='';
   dropZones.innerHTML='';
@@ -161,7 +190,7 @@ function loadBatch(){
     div.className='letter';
     div.textContent=l.letter;
     div.dataset.letter=l.letter;
-    div.onclick=()=>new Audio(l.sound).play();
+    div.onclick=()=>playPhonics(l.letter); // ✅ use preloaded sound
     div.draggable=true;
     div.addEventListener('dragstart',e=>draggedLetter=l.letter);
     letterGrid.appendChild(div);
@@ -196,8 +225,7 @@ function handleDrop(dz,batch,letterOverride=null){
     const img = dz.querySelector('img');
     if(!img.src) img.src = img.dataset.src;
     img.style.display='block';
-    const letterObj=batch.find(l=>l.letter===letter);
-    new Audio(letterObj.sound).play();
+    playPhonics(letter); // ✅ play preloaded sound
     score++;
     scoreEl.textContent='Score: '+score;
     if(score===batch.length) nextBtn.style.display='inline-block';
@@ -249,6 +277,8 @@ nextBtn.addEventListener('click',()=>{
 });
 
 loadBatch();
+</script>
+
 </script>
 </body>
 </html>
