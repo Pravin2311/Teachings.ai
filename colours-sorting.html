@@ -8,17 +8,167 @@
   <meta name="description" content="Interactive color sorting game for kids 3-7. Drag and drop colorful shapes into matching zones to build color recognition and early math skills. Perfect for preschool, kindergarten, and homeschool.">
   <meta name="keywords" content="color sorting game, kids learning game, color recognition, preschool activity, teachings.ai" />
   <meta name="author" content="Teachings.AI" />
-  <meta property="og:title" content="Color Sorting Game - Teachings.AI" />
-  <meta property="og:description" content="Drag and drop colorful shapes into matching color zones. A fun and educational game for preschoolers!" />
-  <meta property="og:image" content="https://teachings.ai/assets/cover-color-sorting.png" />
-  <meta property="og:url" content="https://teachings.ai/color-sorting.html" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Color Sorting Game - Teachings.AI" />
-  <meta name="twitter:description" content="Fun color sorting activity for preschoolers. Drag shapes to matching zones!" />
-  <meta name="twitter:image" content="https://teachings.ai/assets/colours-sorting.png" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/grammar.css" />
+  <style>
+    body.dragging {
+      touch-action: none;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #333;
+    }
+
+    #word-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 15px;
+    }
+
+    .word {
+      padding: 12px 18px;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      font-size: 24px;
+      cursor: grab;
+      transition: transform 0.2s;
+    }
+
+    .word:active {
+      cursor: grabbing;
+      transform: scale(1.1);
+    }
+
+    /* Dragging state */
+    .word.dragging {
+      position: absolute !important;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .drop-zones {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 400px;
+      margin: 40px auto;
+      justify-content: center;
+    }
+
+    .drop-zone {
+      border: 3px solid #333;
+      border-radius: 12px;
+      min-height: 100px;
+      min-width: 140px;
+      background-color: #f9f9f9;
+      font-size: 18px;
+      font-weight: bold;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .drop-zone:hover {
+      background-color: #f1f1f1;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    #submit-btn {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    #submit-btn:hover {
+      background-color: #fb8c00;
+    }
+
+    #reset-btn {
+      background-color: #2196f3;
+      color: white;
+    }
+
+    #reset-btn:hover {
+      background-color: #1976d2;
+    }
+
+    .correct {
+      background-color: #c8e6c9 !important;
+      border-color: #2e7d32 !important;
+    }
+
+    .incorrect {
+      background-color: #ffcdd2 !important;
+      border-color: #c62828 !important;
+    }
+
+    #feedback-message {
+      font-size: 22px;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #444;
+      transition: all 0.3s ease;
+    }
+
+    .parenting-tip {
+      margin: 25px auto;
+      padding: 18px 20px;
+      max-width: 600px;
+      background-color: #fff3e0;
+      border-left: 5px solid #ff8c42;
+      border-radius: 10px;
+      text-align: left;
+      font-size: 1em;
+      color: #333;
+      line-height: 1.5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .parenting-tip h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+      color: #1B2A5B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .parenting-tip h3::before {
+      content: "💡";
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,166 +193,6 @@
     "url": "https://teachings.ai/colours-sorting.html"
   }
   </script>
-  <style>
-    body.dragging {
-  touch-action: none;
-  overflow: hidden;
-  }
- </style>
-  <style>
-    body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f8ff;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-h1 {
-  margin-top: 20px;
-  color: #333;
-}
-
-#game-container {
-  padding: 20px;
-}
-
-#word-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 15px;
-}
-
-.word {
-  padding: 12px 18px;
-  background-color: white;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  font-size: 24px;
-  cursor: grab;
-  transition: transform 0.2s;
-}
-
-.word:active {
-  cursor: grabbing;
-  transform: scale(1.1);
-}
-
-.drop-zones {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 400px;
-  margin: 40px auto;
-  justify-content: center;
-}
-
-.drop-zone {
-  border: 3px solid #333;
-  border-radius: 12px;
-  min-height: 100px;
-  min-width: 140px;
-  background-color: #f9f9f9;
-  font-size: 18px;
-  font-weight: bold;
-  color: #222; /* 👈 Changed from white to dark */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.drop-zone:hover {
-  background-color: #f1f1f1;
-}
-
-button {
-  padding: 12px 24px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 10px;
-  transition: background-color 0.3s ease;
-}
-
-#submit-btn {
-  background-color: #ff9800;
-  color: white;
-}
-
-#submit-btn:hover {
-  background-color: #fb8c00;
-}
-
-#reset-btn {
-  background-color: #2196f3;
-  color: white;
-}
-
-#reset-btn:hover {
-  background-color: #1976d2;
-}
-
-.correct {
-  background-color: #c8e6c9 !important;
-  border-color: #2e7d32 !important;
-}
-
-.incorrect {
-  background-color: #ffcdd2 !important;
-  border-color: #c62828 !important;
-}
-
-#feedback-message {
-  font-size: 22px;
-  margin-top: 15px;
-  font-weight: bold;
-  color: #444;
-  transition: all 0.3s ease;
-}
-/* Parenting Tip Section */
-.parenting-tip {
-  margin: 25px auto;
-  padding: 18px 20px;
-  max-width: 600px;
-  background-color: #fff3e0;
-  border-left: 5px solid #ff8c42;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 1em;
-  color: #333;
-  line-height: 1.5;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.parenting-tip h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3em;
-  color: #1B2A5B;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.parenting-tip h3::before {
-  content: "💡";
-}
-
-  </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XVYMNTZLQJ');
-  </script>
 </head>
 <body>
   <div class="container" role="main">
@@ -210,23 +200,20 @@ button {
     <h1>🎨 Color Sorting Game</h1>
     <p class="tip"><span>Tip:</span> Drag shapes to the matching color zone.</p>
     <div class="word-bank" id="word-container"></div>
-    <div class="drop-zones">
-      <div class="drop-zone" id="red-zone" data-type="Red">🔴</div>
-      <div class="drop-zone" id="blue-zone" data-type="Blue">🔵</div>
-      <div class="drop-zone" id="green-zone" data-type="Green">🟢</div>
-      <div class="drop-zone" id="orange-zone" data-type="Orange">🟠</div>
-    </div>
+    <div class="drop-zones" id="drop-zone-container"></div>
     <p id="feedback-message"></p>
     <button id="submit-btn">Submit</button>
-    <!-- Parenting Tip -->
-<div class="parenting-tip">
-  <h3>🎨 Parent Tip: Strengthen Color & Categorization Skills</h3>
-  <p>After playing, extend the fun with real-life sorting! Use colored toys, blocks, or clothes and ask your child to group them by color. This hands-on practice builds color recognition, fine motor skills, and early math concepts like sorting and categorizing — perfect for preschool and kindergarten learners.</p>
-</div>
+    <button id="reset-btn">Reset</button>
+
+    <div class="parenting-tip">
+      <h3>🎨 Parent Tip: Strengthen Color & Categorization Skills</h3>
+      <p>After playing, extend the fun with real-life sorting! Use colored toys, blocks, or clothes and ask your child to group them by color. This hands-on practice builds color recognition, fine motor skills, and early math concepts like sorting and categorizing — perfect for preschool and kindergarten learners.</p>
+    </div>
   </div>
   
   <audio id="audio-correct" src="assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="audio-wrong" src="assets/audio/math_feedback/incorrect.mp3" preload="auto"></audio>
+  
   <script>
 const fullColorSet = [
   { word: "🟥", type: "Red" },
@@ -255,31 +242,26 @@ function shuffle(array) {
 
 function initializeGame() {
   const wordContainer = document.getElementById("word-container");
-  const dropZoneContainer = document.querySelector(".drop-zones");
+  const dropZoneContainer = document.getElementById("drop-zone-container");
   const feedback = document.getElementById("feedback-message");
   feedback.innerText = "";
 
-  // Reset audios
   ["audio-correct", "audio-wrong"].forEach(id => {
     const audio = document.getElementById(id);
     audio.pause();
     audio.currentTime = 0;
   });
 
-  // Clear containers
   wordContainer.innerHTML = "";
   dropZoneContainer.innerHTML = "";
 
-  // Pick 4 random color types (no duplicates)
   const allTypes = [...new Set(fullColorSet.map(w => w.type))];
   const selectedTypes = shuffle(allTypes).slice(0, 4);
 
-  // Get 2 emojis per selected type
   currentWords = selectedTypes.flatMap(type =>
     fullColorSet.filter(w => w.type === type)
   );
 
-  // Shuffle emojis for draggable section
   shuffle(currentWords).forEach(({ word }, index) => {
     const span = document.createElement("span");
     span.innerText = word;
@@ -290,18 +272,14 @@ function initializeGame() {
     wordContainer.appendChild(span);
   });
 
-  // Create 4 drop zones with matching emoji and label
-selectedTypes.forEach(type => {
-  const zone = document.createElement("div");
-  zone.className = "drop-zone";
-  zone.setAttribute("data-type", type);
-
-  // Pick first matching emoji as label
-  const emoji = fullColorSet.find(e => e.type === type).word;
-  zone.innerText = `${emoji} ${type.toUpperCase()}`;
-
-  dropZoneContainer.appendChild(zone);
-});
+  selectedTypes.forEach(type => {
+    const zone = document.createElement("div");
+    zone.className = "drop-zone";
+    zone.setAttribute("data-type", type);
+    const emoji = fullColorSet.find(e => e.type === type).word;
+    zone.innerText = `${emoji} ${type.toUpperCase()}`;
+    dropZoneContainer.appendChild(zone);
+  });
 
   setupDragAndDrop();
 }
@@ -313,35 +291,38 @@ function setupDragAndDrop() {
     });
 
     el.addEventListener("touchstart", e => {
-    e.preventDefault();
-    el.classList.add("dragging");
+      e.preventDefault();
+      el.classList.add("dragging");
     }, { passive: false });
-    
+
     el.addEventListener("touchmove", e => {
       e.preventDefault();
       const touch = e.touches[0];
-      const dragging = document.querySelector(".dragging");
+      const dragging = document.querySelector(".word.dragging");
       if (dragging) {
-        dragging.style.position = "absolute";
         dragging.style.left = `${touch.pageX - 30}px`;
         dragging.style.top = `${touch.pageY - 30}px`;
       }
-      }, { passive: false });
-    
+    }, { passive: false });
+
     el.addEventListener("touchend", e => {
-      const dragging = document.querySelector(".dragging");
-      dragging.classList.remove("dragging");
-      dragging.style.position = "";
+      const dragging = document.querySelector(".word.dragging");
+      if (dragging) {
+        dragging.classList.remove("dragging");
+        dragging.style.left = "";
+        dragging.style.top = "";
+        dragging.style.position = "";
+        dragging.style.zIndex = "";
+        dragging.style.pointerEvents = "auto";
+      }
       const dropZones = document.querySelectorAll(".drop-zone");
       const touch = e.changedTouches[0];
       dropZones.forEach(zone => {
         const rect = zone.getBoundingClientRect();
-        if (
-          touch.clientX >= rect.left &&
-          touch.clientX <= rect.right &&
-          touch.clientY >= rect.top &&
-          touch.clientY <= rect.bottom
-        ) {
+        if (touch.clientX >= rect.left &&
+            touch.clientX <= rect.right &&
+            touch.clientY >= rect.top &&
+            touch.clientY <= rect.bottom) {
           zone.appendChild(dragging);
         }
       });
@@ -355,6 +336,12 @@ function setupDragAndDrop() {
       const index = e.dataTransfer.getData("text/plain");
       const item = document.querySelector(`[data-index='${index}']`);
       if (item && !zone.contains(item)) {
+        item.classList.remove("dragging");
+        item.style.left = "";
+        item.style.top = "";
+        item.style.position = "";
+        item.style.zIndex = "";
+        item.style.pointerEvents = "auto";
         zone.appendChild(item);
       }
     });
@@ -398,15 +385,10 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     feedback.innerText = `✅ You got ${score} out of ${currentWords.length} correct. Try Again!`;
     feedback.style.color = "orange";
   }
-
-  setTimeout(() => {
-    initializeGame(); // Reload game with different 4 colors
-  }, 2000);
 });
 
+document.getElementById("reset-btn").addEventListener("click", initializeGame);
 window.onload = initializeGame;
-</script>
-
-
+  </script>
 </body>
 </html>

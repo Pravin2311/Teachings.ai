@@ -1,4 +1,4 @@
-/* style.css */
+/* =================== General Styles =================== */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f9f9f9;
@@ -17,6 +17,7 @@ body.dragging {
   max-width: 900px;
   margin: 0 auto;
   position: relative;
+  padding: 20px;
 }
 
 h1 {
@@ -31,6 +32,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* =================== Word Bank =================== */
 .word-bank {
   display: flex;
   flex-wrap: wrap;
@@ -40,6 +42,7 @@ h1 {
   min-height: 60px;
 }
 
+/* =================== Buttons =================== */
 #submit-btn,
 #try-again-btn {
   background: #ff9800;
@@ -93,12 +96,7 @@ h1 {
   z-index: 200;
 }
 
-@media (max-width: 768px) {
-  .drop-zone {
-    width: 100%;
-  }
-}
-/* grammar.css */
+/* =================== Drop Zones =================== */
 .drop-zones {
   display: flex;
   justify-content: center;
@@ -114,7 +112,7 @@ h1 {
   background: white;
   border: 4px solid #888;
   border-radius: 16px;
-  padding: 40px 20px 20px;
+  padding: 20px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -125,7 +123,7 @@ h1 {
 }
 
 .drop-zone::before {
-  content: "Nouns";
+  content: attr(data-type);
   font: bold 1.5rem 'Segoe UI', sans-serif;
   color: #555;
   position: absolute;
@@ -136,48 +134,91 @@ h1 {
   padding: 0 10px;
 }
 
-#verb-zone::before {
-  content: "Verbs";
-}
-
 .drop-zone.over {
   background-color: #f0f8ff;
   border-color: #00f;
 }
 
+/* =================== Draggable Words (Enhanced) =================== */
 .draggable-word {
-  background: #bcae9d;
-  border: 2px solid #080000;
-  border-radius: 12px;
-  padding: 6px 10px;
-  font-size: 1rem;
+  /* Background & Color */
+  background: linear-gradient(145deg, #e0d3c3, #f5e8d6);
+  color: #3e322c;
+  border: 2px solid #a89c8e;
+  border-radius: 16px;
+  padding: 10px 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
   cursor: grab;
   user-select: none;
-  transition: background 0.3s ease;
+
+  /* Layout & Display */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+
+  /* Subtle shadow for depth */
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
+/* Hover effect - lift and glow */
 .draggable-word:hover {
-  background: #eef;
+  background: linear-gradient(145deg, #d8c9b8, #ede0d0);
+  border-color: #8f7f70;
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
+/* Active drag state (mouse down) */
+.draggable-word:active {
+  cursor: grabbing;
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Touch dragging (visual during drag) */
 .draggable-word.touch-dragging {
   position: absolute;
   z-index: 9999;
   pointer-events: none;
   opacity: 0.95;
-  transform: scale(1.1);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  transform: scale(1.15);
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+  border-color: #0056b3;
 }
 
+/* Inside Drop Zone - consistent styling */
 .drop-zone .draggable-word {
   display: inline-flex !important;
-  margin: 4px !important;
-  font-size: 1rem !important;
-  padding: 6px 10px !important;
+  margin: 6px !important;
+  padding: 10px 14px !important;
+  font-size: 1.1rem !important;
   transform: none !important;
-  max-width: calc(100% - 20px);
+  max-width: calc(100% - 24px);
+  word-break: break-word;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive tweak for small screens */
+@media (max-width: 480px) {
+  .draggable-word {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+}
+
+/* =================== Correct / Incorrect =================== */
 .correct {
   background-color: #a5d6a7 !important;
   border-color: #2e7d32 !important;
@@ -188,4 +229,11 @@ h1 {
   background-color: #ef9a9a !important;
   border-color: #c62828 !important;
   color: #fff !important;
+}
+
+/* =================== Responsive =================== */
+@media (max-width: 768px) {
+  .drop-zone {
+    width: 100%;
+  }
 }

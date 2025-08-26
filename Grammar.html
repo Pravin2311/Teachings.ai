@@ -22,6 +22,7 @@
   <meta property="og:url" content="https://teachings.ai/Grammar.html" />
   <meta property="og:type" content="website" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
@@ -34,7 +35,7 @@
 <body>
   <div class="container">
     <button class="back-button" onclick="window.location.href='games.html'">Back</button>
-    <h1>Grammar: Nouns & Verbs</h1>
+    <h1>Grammar: <br> Nouns & Verbs</h1>
 
     <div class="game-area">
       <p class="tip"><span>📚 Tip:</span> Drag each word to the correct category!</p>
@@ -44,8 +45,8 @@
 
       <!-- Drop Zones -->
       <div class="drop-zones">
-        <div class="drop-zone" id="noun-zone"></div>
-        <div class="drop-zone" id="verb-zone"></div>
+        <div class="drop-zone" id="noun-zone" data-type="noun"></div>
+        <div class="drop-zone" id="verb-zone" data-type="verb"></div>
       </div>
 
       <!-- Feedback -->

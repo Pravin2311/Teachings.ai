@@ -1,153 +1,144 @@
 // js/grammar.js
+
+// Word lists
 const nounWords = ["dog", "cat", "school", "apple", "car", "tree", "ball", "book", "city", "flower"];
 const verbWords = ["run", "jump", "eat", "read", "write", "play", "sleep", "drive", "draw", "sing"];
-let currentWords = [];
 
 const wordContainer = document.getElementById("word-container");
 const nounZone = document.getElementById("noun-zone");
 const verbZone = document.getElementById("verb-zone");
-const feedbackMessage = document.getElementById("feedback-message");
 const submitBtn = document.getElementById("submit-btn");
 const tryAgainBtn = document.getElementById("try-again-btn");
-const correctAudio = document.getElementById("audio-correct");
-const wrongAudio = document.getElementById("audio-wrong");
+const feedbackMessage = document.getElementById("feedback-message");
 
+let currentWords = []; // active 8 words
+
+// Shuffle helper
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-function generateWords() {
+// Generate a new round (4 nouns + 4 verbs)
+function generateRound() {
+  feedbackMessage.textContent = "";
+  nounZone.innerHTML = "";
+  verbZone.innerHTML = "";
   wordContainer.innerHTML = "";
 
-  // Clear only draggable words from zones
-  [...nounZone.children, ...verbZone.children]
-    .forEach(child => {
-      if (child.classList?.contains("draggable-word")) child.remove();
-    });
-
-  feedbackMessage.textContent = "";
-  tryAgainBtn.style.display = "none";
-
+  // Pick 4 random nouns + 4 random verbs
   const selectedNouns = shuffle(nounWords).slice(0, 4).map(w => ({ word: w, type: "noun" }));
   const selectedVerbs = shuffle(verbWords).slice(0, 4).map(w => ({ word: w, type: "verb" }));
+
   currentWords = shuffle([...selectedNouns, ...selectedVerbs]);
 
+  // Create word bank
   currentWords.forEach(({ word, type }) => {
     const el = document.createElement("div");
-    el.className = "draggable-word";
+    el.classList.add("draggable-word");
     el.textContent = word;
     el.dataset.type = type;
+    el.setAttribute("draggable", "true");
     addDragListeners(el);
     wordContainer.appendChild(el);
   });
 }
 
+// Drag/drop setup
 function addDragListeners(el) {
-  el.draggable = true;
-
-  el.addEventListener("dragstart", (e) => {
-    e.dataTransfer.setData("text", el.textContent);
-    el.classList.add("dragging");
-    document.body.classList.add("dragging");
+  el.addEventListener("dragstart", e => {
+    e.dataTransfer.setData("text/plain", el.textContent);
+    e.dataTransfer.setData("type", el.dataset.type);
+    setTimeout(() => el.classList.add("touch-dragging"), 0);
   });
 
   el.addEventListener("dragend", () => {
-    el.classList.remove("dragging");
-    document.body.classList.remove("dragging");
+    el.classList.remove("touch-dragging");
   });
 
-  // Touch
-  el.addEventListener("touchstart", (e) => {
+  // Touch support
+  el.addEventListener("touchstart", e => {
     if (e.touches.length !== 1) return;
     e.preventDefault();
-    el.classList.add("dragging");
-    document.body.classList.add("dragging");
 
     const t = e.touches[0];
-    el.startX = t.clientX - el.offsetLeft;
-    el.startY = t.clientY - el.offsetTop;
-
-    const clone = el.cloneNode(true);
-    clone.classList.add("touch-dragging");
-    clone.style.left = `${el.offsetLeft}px`;
-    clone.style.top = `${el.offsetTop}px`;
-    document.body.appendChild(clone);
-    el.clone = clone;
+    const ghost = el.cloneNode(true);
+    ghost.classList.add("touch-dragging");
+    ghost.style.position = "fixed";
+    ghost.style.left = t.clientX + "px";
+    ghost.style.top = t.clientY + "px";
+    ghost.style.opacity = "0.85";
+    ghost.style.pointerEvents = "none";
+    document.body.appendChild(ghost);
+    el.ghost = ghost;
   });
 
-  el.addEventListener("touchmove", (e) => {
-    e.preventDefault();
-    if (!el.clone) return;
+  el.addEventListener("touchmove", e => {
+    if (!el.ghost) return;
     const t = e.touches[0];
-    el.clone.style.left = `${t.clientX - el.startX}px`;
-    el.clone.style.top = `${t.clientY - el.startY}px`;
-
-    const zone = getDropZone(t.clientX, t.clientY);
-    [nounZone, verbZone].forEach(z => {
-      z.classList.toggle("over", z === zone);
-    });
+    el.ghost.style.left = t.clientX + "px";
+    el.ghost.style.top = t.clientY + "px";
   });
 
-  el.addEventListener("touchend", (e) => {
-    document.body.classList.remove("dragging");
-    el.classList.remove("dragging");
-    if (el.clone) document.body.removeChild(el.clone);
-
+  el.addEventListener("touchend", e => {
+    if (el.ghost) {
+      document.body.removeChild(el.ghost);
+      el.ghost = null;
+    }
     const t = e.changedTouches[0];
     const zone = getDropZone(t.clientX, t.clientY);
     if (zone) zone.appendChild(el);
+  });
 
-    [nounZone, verbZone].forEach(z => z.classList.remove("over"));
-    el.clone = null;
+  el.addEventListener("touchcancel", () => {
+    if (el.ghost) {
+      document.body.removeChild(el.ghost);
+      el.ghost = null;
+    }
   });
 }
 
+// Helper: get drop zone for touch
 function getDropZone(x, y) {
-  const rects = [
-    { el: nounZone, rect: nounZone.getBoundingClientRect() },
-    { el: verbZone, rect: verbZone.getBoundingClientRect() }
-  ];
-  for (const { el, rect } of rects) {
-    if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-      return el;
-    }
-  }
-  return null;
+  return [nounZone, verbZone].find(zone => {
+    const rect = zone.getBoundingClientRect();
+    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+  });
 }
 
-// Mouse drop
+// Drop zones (mouse)
 [nounZone, verbZone].forEach(zone => {
-  zone.addEventListener("dragover", e => e.preventDefault());
+  zone.addEventListener("dragover", e => {
+    e.preventDefault();
+    zone.classList.add("over");
+  });
+
+  zone.addEventListener("dragleave", () => {
+    zone.classList.remove("over");
+  });
+
   zone.addEventListener("drop", e => {
     e.preventDefault();
-    const text = e.dataTransfer.getData("text");
-    const el = [...wordContainer.children].find(w => w.textContent === text);
+    zone.classList.remove("over");
+
+    const word = e.dataTransfer.getData("text/plain");
+    const el = [...document.querySelectorAll(".draggable-word")].find(c => c.textContent === word);
     if (el) zone.appendChild(el);
   });
 });
 
-// Submit
+// Submit check
 submitBtn.addEventListener("click", () => {
   let correct = 0;
-  let playedCorrect = false;
-  let playedWrong = false;
 
   const checkZone = (zone, expectedType) => {
-    [...zone.children].forEach(child => {
-      if (child.classList.contains("draggable-word")) {
-        if (child.dataset.type === expectedType) {
-          child.classList.add("correct");
+    [...zone.children].forEach(el => {
+      if (el.classList.contains("draggable-word")) {
+        el.classList.remove("correct", "incorrect"); // reset before marking
+        if (el.dataset.type === expectedType) {
+          el.classList.add("correct");  // ✅ turn green
           correct++;
-          if (!playedCorrect) {
-            correctAudio.play().catch(() => {});
-            playedCorrect = true;
-          }
         } else {
-          child.classList.add("incorrect");
-          if (!playedWrong) {
-            wrongAudio.play().catch(() => {});
-            playedWrong = true;
-          }
+          el.classList.add("incorrect"); // ❌ turn red
         }
       }
     });
@@ -156,15 +147,17 @@ submitBtn.addEventListener("click", () => {
   checkZone(nounZone, "noun");
   checkZone(verbZone, "verb");
 
-  feedbackMessage.textContent = 
-    correct === currentWords.length 
-      ? "🎉 Great job! All correct!" 
-      : `❌ Oops! ${correct} out of ${currentWords.length} correct.`;
-
-  tryAgainBtn.style.display = "inline-block";
+  if (correct === currentWords.length) {
+    feedbackMessage.textContent = "🎉 Great job! All 8 correct!";
+    document.getElementById("audio-correct").play().catch(() => {});
+  } else {
+    feedbackMessage.textContent = `❌ You got ${correct} out of ${currentWords.length} correct.`;
+    document.getElementById("audio-wrong").play().catch(() => {});
+  }
 });
 
-tryAgainBtn.addEventListener("click", generateWords);
+// Try again → new 4+4 set
+tryAgainBtn.addEventListener("click", generateRound);
 
-// Init
-generateWords();
+// Init game
+window.onload = generateRound;
