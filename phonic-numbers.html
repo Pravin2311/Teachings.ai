@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Sound Match Game for Kids | Teachings.AI</title>
+<meta name="description" content="Interactive Number Sound Match game for kids aged 3-6. Learn numbers 1-10 through images, audio, and fun drag-and-drop gameplay. Free on Teachings.AI.">
+<meta name="keywords" content="number game for kids, number phonics, number sound match, interactive learning, preschool math, counting game, Teachings.AI">
+<meta name="author" content="Teachings.AI">
+<meta property="og:title" content="Number Sound Match Game for Kids | Teachings.AI">
+<meta property="og:description" content="Learn numbers 1-10 through images, audio, and interactive drag-and-drop. Fun learning for preschoolers on Teachings.AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teachings.ai/number-sound-match.html">
+<meta property="og:image" content="https://teachings.ai/images/number-sound-match-thumbnail.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Number Sound Match Game for Kids | Teachings.AI">
+<meta name="twitter:description" content="Learn numbers 1-10 through images, audio, and drag-and-drop gameplay. Fun for preschoolers!">
+<meta name="twitter:image" content="https://teachings.ai/images/number-sound-match-thumbnail.png">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: #fff8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    color: #ff6f61;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .drop-zone {
+    width: 140px;
+    height: 140px;
+    border: 3px dashed #ff6f61;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff0f0;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+  }
+
+  .card {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 12px;
+    background: #ffe4e1;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  .card:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+  }
+
+  .card img {
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+  }
+
+  .btn-play {
+    padding: 10px 20px;
+    background: #ff6f61;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalGame",
+  "name": "Number Sound Match Game for Kids",
+  "description": "Interactive Number Sound Match game for kids aged 3-6. Learn numbers 1-10 through images, audio, and fun drag-and-drop gameplay.",
+  "url": "https://teachings.ai/number-sound-match.html",
+  "image": "https://teachings.ai/images/number-sound-match-thumbnail.png",
+  "educationalUse": "Learning numbers and number phonics",
+  "audience": {
+    "@type": "Audience",
+    "educationalRole": "student",
+    "ageRange": "3-6"
+  },
+  "learningResourceType": "Game",
+  "inLanguage": "en",
+  "creator": {
+    "@type": "Organization",
+    "name": "Teachings.AI",
+    "url": "https://teachings.ai"
+  }
+}
+</script>
+</script>
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+</head>
+<body>
+<button class="back-button" onclick="window.location.href='games.html'">⬅</button>
+<h2>Number Sound Match</h2>
+
+<div class="drop-zone" id="drop-zone">Drop numbers here</div>
+<button class="btn-play" id="play-sound">🔊 Play Number</button>
+
+<div class="cards" id="cards-container"></div>
+
+<div id="parent-tips" style="max-width:500px; margin-top:30px; background:#fff8e7; padding:15px; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
+  <h2 style="color:#ff6f61; font-size:20px; margin-bottom:10px;">Parenting Tips</h2>
+  <ul style="padding-left:20px; line-height:1.6; color:#333;">
+    <li>Encourage your child to say the number out loud when the audio plays.</li>
+    <li>Let your child try multiple times; mistakes are part of learning.</li>
+    <li>Use counting objects at home (fruits, toys) to reinforce numbers 1–10.</li>
+    <li>Praise effort, not just correct answers, to boost confidence.</li>
+    <li>Play the game in short sessions (5–10 minutes) to maintain attention.</li>
+    <li>Ask questions: “Can you find the number 3?” before the audio plays to engage memory.</li>
+  </ul>
+</div>
+
+
+<audio id="correct-sound" src="assets/audio/math_feedback/correct.mp3"></audio>
+<audio id="wrong-sound" src="assets/audio/math_feedback/incorrect.mp3"></audio>
+
+<script>
+const numbers = [1,2,3,4,5,6,7,8,9,10];
+let currentNumber;
+
+const dropZone = document.getElementById('drop-zone');
+const container = document.getElementById('cards-container');
+const correctAudio = document.getElementById('correct-sound');
+const wrongAudio = document.getElementById('wrong-sound');
+
+function shuffleArray(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
+
+// Create cards using number images
+function createCards() {
+  container.innerHTML = '';
+  const shuffled = shuffleArray([...numbers]);
+  shuffled.forEach(num => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.number = num;
+
+    const img = document.createElement('img');
+    img.src = `assets/images/numbers/${num}.png`;
+    img.alt = num;
+    card.appendChild(img);
+
+    // Drag for desktop
+    card.draggable = true;
+    card.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text', num);
+    });
+
+    // Touch support
+    card.addEventListener('touchstart', touchStart, {passive:false});
+
+    container.appendChild(card);
+  });
+}
+
+// Touch drag for mobile
+let draggedCard = null;
+
+function touchStart(e) {
+  draggedCard = e.target.closest('.card');
+  draggedCard.style.transform = 'scale(1.1)';
+  document.addEventListener('touchmove', touchMove, {passive:false});
+  document.addEventListener('touchend', touchEnd);
+}
+
+function touchMove(e) {
+  e.preventDefault();
+  const touch = e.touches[0];
+  draggedCard.style.position = 'absolute';
+  draggedCard.style.left = touch.pageX - 40 + 'px';
+  draggedCard.style.top = touch.pageY - 40 + 'px';
+  draggedCard.style.zIndex = 1000;
+}
+
+function touchEnd(e) {
+  const rect = dropZone.getBoundingClientRect();
+  const cardRect = draggedCard.getBoundingClientRect();
+
+  if (
+    cardRect.left < rect.right &&
+    cardRect.right > rect.left &&
+    cardRect.top < rect.bottom &&
+    cardRect.bottom > rect.top
+  ) {
+    checkAnswer(draggedCard.dataset.number);
+  }
+
+  draggedCard.style.position = 'static';
+  draggedCard.style.transform = 'scale(1)';
+  draggedCard.style.zIndex = 'auto';
+  draggedCard = null;
+  document.removeEventListener('touchmove', touchMove);
+  document.removeEventListener('touchend', touchEnd);
+}
+
+// Desktop drag-drop
+dropZone.addEventListener('dragover', e => e.preventDefault());
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  const dropped = e.dataTransfer.getData('text');
+  checkAnswer(dropped);
+});
+
+// Check answer and give feedback
+function checkAnswer(droppedNumber) {
+  if (parseInt(droppedNumber) === currentNumber) {
+    correctAudio.play();
+    dropZone.style.background = '#c8f7c5';
+    dropZone.style.transform = 'scale(1.1)';
+    setTimeout(() => { dropZone.style.background='#fff0f0'; dropZone.style.transform='scale(1)'; }, 400);
+    nextNumber();
+    createCards(); // reshuffle cards
+  } else {
+    wrongAudio.play();
+    dropZone.style.background = '#f7c5c5';
+    dropZone.style.transform = 'scale(0.9)';
+    setTimeout(() => { dropZone.style.background='#fff0f0'; dropZone.style.transform='scale(1)'; }, 400);
+  }
+}
+
+// Play number audio
+function playNumber() {
+  const audio = new Audio(`assets/audio/numbers/${currentNumber}.mp3`);
+  audio.play();
+}
+
+// Next number
+function nextNumber() {
+  currentNumber = numbers[Math.floor(Math.random() * numbers.length)];
+  playNumber();
+}
+
+// Start the game
+nextNumber();
+createCards();
+
+document.getElementById('play-sound').addEventListener('click', playNumber);
+
+</script>
+</body>
+</html>
