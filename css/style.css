@@ -270,6 +270,32 @@ html, body {
   margin-top: auto;
 }
 
+.site-footer .footer-nav {
+  margin: 15px 0;
+}
+.site-footer .footer-nav a {
+  display: inline-block;
+  margin: 5px 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: transparent;       /* transparent background */
+  color: yellow;                 /* yellow text */
+  border: 2px solid yellow;      /* yellow border */
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.site-footer .footer-nav a:hover {
+  background: yellow;            /* yellow background on hover */
+  color: #222;                   /* dark text for contrast */
+}
+
+.site-footer .footer-description {
+  margin-top: 15px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #ccc;
+}
 .site-footer button {
   background-color: #ffb400;
   color: black;
