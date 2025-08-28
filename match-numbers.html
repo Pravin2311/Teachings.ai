@@ -8,7 +8,7 @@
   <meta name="keywords" content="number matching, drag and drop, educational game, teachings.ai, preschool" />
   <meta name="author" content="Teachings.AI" />
   <meta name="robots" content="index, follow" />
-
+  <link rel="stylesheet" href="css/style.css">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -18,7 +18,7 @@
       touch-action: manipulation;
     }
     h1 {
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
     .container {
       display: flex;
@@ -100,10 +100,10 @@
   </style>
 </head>
 <body>
-  <button class="back-button" onclick="window.location.href='games.html'">Home</button>
+  <button class="back-button" onclick="window.location.href='games.html'">⬅</button>
   <button id="music-toggle-button" title="Toggle Music">🔇</button>
 
-  <h1>Match the Numbers</h1>
+  <h2>Match the Numbers</h2>
 
   <div class="container">
   <div class="word-boxes" id="wordBoxes">
@@ -137,7 +137,26 @@
 
   <div id="result"></div>
   <button id="try-again-button" onclick="resetGame()">🔄 Try Again</button>
+ <!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 Teachings.AI</p>
 
+  <!-- Footer Navigation -->
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
+    <a href="/about.html" class="blog-button">About</a>
+    <a href="/privacy-policy.html" class="blog-button">Privacy</a>
+    <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
+    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
+       class="feedback-button">📩 Contact Us</a>
+  </nav>
+
+  <p class="footer-description">
+    Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, 
+    and fun activities. Designed for preschool and kindergarten, our resources make learning joyful 
+    and effective.
+  </p>
+</footer>
   <!-- Audio -->
   <audio id="background-music" loop>
     <source src="assets/audio/background_music.mp3" type="audio/mpeg">

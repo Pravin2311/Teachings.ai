@@ -32,6 +32,35 @@
   <noscript><link rel="stylesheet" href="css/style.css"></noscript>
   <link rel="stylesheet" href="/css/style.css" />
 
+  <style>
+    /* Parenting Tip Section */
+.parenting-tip {
+  margin: 25px auto;
+  padding: 18px 20px;
+  max-width: 600px;
+  background-color: #f3e5f5;
+  border-left: 5px solid #9c27b0;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.parenting-tip h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #1B2A5B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.parenting-tip h3::before {
+  content: "💡";
+}
+  </style>
 
   <!-- JSON-LD Schema Markup -->
   <script type="application/ld+json">
@@ -96,7 +125,7 @@
   </div>
 
   <!-- Parent Tip Section -->
-  <div class="container tip">
+  <div class="parenting-tip">
     <h3>🎯 How to Help Your Child</h3>
     <p>Say each sound together: <strong>"/c/ ... /a/ ... /t/ ... cat!"</strong><br>
     This teaches how letters <strong>blend</strong> into words — the foundation of reading!</p>
@@ -137,14 +166,25 @@
   <!-- JavaScript -->
   <script src="js/phonics.js"></script>
   <script src="assets/js/globalImageLoader.js" defer></script>
-  <footer class="site-footer">
+   <!-- Footer -->
+<footer class="site-footer">
   <p>© 2025 Teachings.AI</p>
-  <button onclick="location.href='/Blog/index.html'" class="blog-button">📝 Blog</button>
-  <button onclick="location.href='/about.html'" class="blog-button">About</button>
-  <button onclick="location.href='/privacy-policy.html'" class="blog-button">Privacy</button>
-  <button onclick="location.href='/disclaimer.html'" class="blog-button">Disclaimer</button>
-  <button onclick="location.href='mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team'" class="feedback-button">📩 Contact Us</button>
-  <p>“Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, and fun activities. Designed for preschool and kindergarten, our resources make learning joyful and effective.”</p>
 
+  <!-- Footer Navigation -->
+  <nav class="footer-nav" aria-label="Footer navigation">
+    <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
+    <a href="/about.html" class="blog-button">About</a>
+    <a href="/privacy-policy.html" class="blog-button">Privacy</a>
+    <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
+    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
+       class="feedback-button">📩 Contact Us</a>
+  </nav>
+
+  <p class="footer-description">
+    Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, 
+    and fun activities. Designed for preschool and kindergarten, our resources make learning joyful 
+    and effective.
+  </p>
+</footer>
 </body>
 </html>
