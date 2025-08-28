@@ -65,22 +65,37 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LearningResource",
-  "educationalRole": "student",
-  "name": "Fruits & Vegetables Sorting - Teachings.AI",
-  "description": "Drag and drop sorting activity to separate Fruits and Vegetables for preschool and grade 1 students.",
-  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-  "inLanguage": "en",
-  "url": "https://teachings.ai/fruits-vegetables-sorting.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Teachings.AI",
-    "url": "https://teachings.ai",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://teachings.ai/assets/images/app_logo.png"
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Fruits & Vegetables Sorting Game",
+      "description": "Drag-and-drop game to sort fruits and vegetables. Fun preschool and kindergarten learning activity.",
+      "url": "https://teachings.ai/fruits-vegetables-sorting.html",
+      "inLanguage": "en",
+      "learningResourceType": "InteractiveGame",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Preschool, Kindergarten, Grade 1"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Teachings.AI",
+        "url": "https://teachings.ai",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://teachings.ai/assets/images/app_logo.png"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://teachings.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://teachings.ai/games.html" },
+        { "@type": "ListItem", "position": 3, "name": "Fruits & Vegetables Sorting", "item": "https://teachings.ai/fruits-vegetables-sorting.html" }
+      ]
     }
-  }
+  ]
 }
 </script>
 

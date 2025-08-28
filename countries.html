@@ -34,48 +34,93 @@
 }
   </style>
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Interactive game to teach kids about countries. Scratch to reveal and hear names of healthy countries in this fun module by Teachings.AI." />
-  <meta name="keywords" content="learn countries, countries for kids, explore world, country names, preschool learning, kindergarten food, teachings.ai, kids country game" />
+    <!-- SEO Meta Tags -->
+  <meta name="description" content="Interactive scratch-to-reveal game where kids learn country names. Fun geography learning for preschool and kindergarten by Teachings.AI." />
+  <meta name="keywords" content="learn countries, kids geography, preschool world learning, country names, kindergarten games, teachings.ai" />
   <meta name="author" content="Teachings.AI" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://teachings.ai/countries.html" />
-  <meta name="theme-color" content="#ffffff" /> <!-- ✅ Mobile theme color -->
+  <meta name="theme-color" content="#ffffff" />
 
-  <!-- Open Graph / Facebook / LinkedIn -->
-  <meta property="og:title" content="Learn Vegetables - Teachings.AI" />
-  <meta property="og:description" content="A fun scratch-and-learn countries game for kids! Reveal, hear, and explore world." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Learn Countries - Teachings.AI" />
+  <meta property="og:description" content="Scratch to reveal and hear country names. A fun geography game for preschool and kindergarten learners!" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://teachings.ai/countries.html" />
-  <meta property="og:image" content="https://teachings.ai/assets/images/vegetables-preview.jpg" />
+  <meta property="og:image" content="https://teachings.ai/assets/images/countries-preview.jpg" />
   <meta property="og:site_name" content="Teachings.AI" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Learn Vegetables - Teachings.AI" />
-  <meta name="twitter:description" content="Scratch to reveal and hear the names of countries. A fun and interactive way for kids to learn worlds top countries!" />
-  <meta name="twitter:image" content="https://teachings.ai/assets/images/vegetables-preview.jpg" />
+  <meta name="twitter:title" content="Learn Countries - Teachings.AI" />
+  <meta name="twitter:description" content="Scratch to reveal and hear the names of countries. An interactive way for kids to learn geography!" />
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/countries-preview.jpg" />
   <meta name="twitter:site" content="@TeachingsAI" />
 
-  <!-- Structured Data (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LearningResource",
-  "name": "Learn Countries - Teachings.AI",
-  "description": "A fun and interactive scratch-to-reveal game for kids to learn country names and sounds.",
-  "url": "https://teachings.ai/countries.html",
-  "image": "https://teachings.ai/assets/images/vegetables-preview.jpg",
-  "inLanguage": "en",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Teachings.AI",
-    "url": "https://teachings.ai"
+  <!-- Structured Data (Lightweight JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LearningResource",
+        "@id": "https://teachings.ai/countries.html#resource",
+        "url": "https://teachings.ai/countries.html",
+        "name": "Learn Countries - Interactive Game",
+        "description": "A fun scratch-to-reveal game for kids to learn country names and sounds. Suitable for preschool and kindergarten learners.",
+        "learningResourceType": "Game",
+        "educationalUse": ["Learning", "Exploration"],
+        "teaches": ["Countries", "Geography awareness", "Cultural curiosity"],
+        "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": "student",
+          "ageRange": "3-7"
+        },
+        "inLanguage": "en",
+        "educationalLevel": ["Preschool", "Kindergarten"],
+        "publisher": {
+          "@id": "https://teachings.ai/#organization"
+        },
+        "image": "https://teachings.ai/assets/images/countries-preview.jpg"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://teachings.ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Games",
+            "item": "https://teachings.ai/games.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Learn Countries",
+            "item": "https://teachings.ai/countries.html"
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://teachings.ai/#organization",
+        "name": "Teachings.AI",
+        "url": "https://teachings.ai",
+        "logo": "https://teachings.ai/assets/images/logo.png",
+        "sameAs": [
+          "https://twitter.com/TeachingsAI",
+          "https://www.facebook.com/TeachingsAI",
+          "https://www.linkedin.com/company/teachingsai"
+        ]
+      }
+    ]
   }
-}
-</script>
-
-
+  </script>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/vegetables.css" />
 
@@ -91,7 +136,7 @@
 
 <body>
   <div class="container" role="main">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <button class="back-button" onclick="window.location.href='index.html'">Back</button>
     <h1>Learn Country Names</h1>
     <div class="vegetable-display">
       <p id="current-vegetable-name" aria-live="polite"></p> <!-- ✅ Live region for screen readers -->

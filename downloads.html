@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free Printable Worksheets for Preschool & Kindergarten | Teachings.AI</title>
   <meta name="description" content="Download 100% free printable worksheets for preschool and kindergarten kids. Fun activities: alphabets, numbers, math, coloring, fruits, shapes, symmetry, and more." />
   <meta name="keywords" content="free worksheets, preschool worksheets, kindergarten worksheets, printable PDFs, alphabet tracing, numbers, math worksheets, coloring pages, Teachings.AI" />
   <meta name="author" content="Teachings.AI">
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://teachings.ai/worksheets.html" />
 
-  <!-- Open Graph (Facebook, LinkedIn) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Free Worksheets for Preschool & Kindergarten | Teachings.AI" />
   <meta property="og:description" content="Download fun & free worksheets for preschool, LKG, and kindergarten kids. Perfect for learning at home or school." />
   <meta property="og:image" content="https://teachings.ai/assets/images/worksheet-cover.png" />
@@ -25,38 +28,57 @@
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/style.css"></noscript>
-  <!-- JSON-LD Schema -->
+
+  <!-- JSON-LD Schema (Fixed + Lightweight) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LearningResource",
-    "name": "Free Worksheets for Preschool & Kindergarten | Teachings.AI",
-    "description": "Fun and educational worksheets for preschool and LKG kids, available for free download.",
-    "url": "https://teachings.ai/worksheets.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai"
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://teachings.ai/"
+    "@graph": [
+      {
+        "@type": "LearningResource",
+        "name": "Free Worksheets for Preschool & Kindergarten",
+        "description": "Fun and educational worksheets for preschool, LKG, and kindergarten kids, available for free download.",
+        "url": "https://teachings.ai/downloads.html",
+        "learningResourceType": "Worksheet",
+        "educationalUse": ["Tracing", "Counting", "Math", "Coloring", "Creativity"],
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Preschool, Kindergarten, LKG, UKG"
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Worksheets",
-          "item": "https://teachings.ai/worksheets.html"
-        }
-      ]
-    }
+        "inLanguage": "en",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Teachings.AI",
+          "url": "https://teachings.ai",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://teachings.ai/assets/images/logo.png"
+          }
+        },
+        "image": "https://teachings.ai/assets/images/worksheet-cover.png"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://teachings.ai/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Worksheets",
+            "item": "https://teachings.ai/downloads.html"
+          }
+        ]
+      }
+    ]
   }
   </script>
+</head>
+
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
@@ -99,7 +121,7 @@
 <body>
 
   <div class="controls">
-    <a href="index.html" class="back-button">← Back to Home</a>
+    <a href="index.html" class="back-button">← Back</a>
     <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Dark Mode</button>
   </div>
 

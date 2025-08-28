@@ -51,27 +51,114 @@
   <meta property="og:type" content="website">
 
   <!-- Structured Data (JSON-LD) -->
+<!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LearningResource",
-  "educationalRole": "student",
-  "name": "Learn Animals - Teachings.AI",
-  "description": "Interactive learning module for children to explore animal names and sounds. Features wild, farm, and safari animals with audio and visuals.",
-  "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-  "inLanguage": "en",
-  "url": "https://teachings.ai/animals.html",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Teachings.AI",
-    "url": "https://teachings.ai",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://teachings.ai/assets/images/app_logo.png"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://teachings.ai/animals.html",
+      "url": "https://teachings.ai/animals.html",
+      "name": "Learn Animal Names & Sounds | Interactive Game for Kids | Teachings.AI",
+      "description": "Interactive animal learning game for kids 3-7. Discover wild, farm, and jungle animals with sounds, names, and scratch-to-reveal fun.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://teachings.ai/#website" },
+      "publisher": { "@id": "https://teachings.ai/#organization" },
+      "image": "https://teachings.ai/assets/images/app_logo.png",
+      "breadcrumb": { "@id": "https://teachings.ai/animals.html#breadcrumb" }
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://teachings.ai/animals.html#resource",
+      "url": "https://teachings.ai/animals.html",
+      "name": "Learn Animals - Teachings.AI",
+      "description": "Interactive module for kids to explore animal names, sounds, and habitats with scratch-to-reveal fun.",
+      "learningResourceType": "Interactive Educational Game",
+      "educationalUse": ["Play", "Learning", "Exploration", "Listening"],
+      "teaches": ["Animal recognition", "Animal sounds", "Vocabulary building"],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "ageRange": "3-7"
+      },
+      "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
+      "isAccessibleForFree": true,
+      "educationalSubject": ["Science", "Early Literacy"],
+      "publisher": { "@id": "https://teachings.ai/#organization" },
+      "image": "https://teachings.ai/assets/images/app_logo.png",
+      "thumbnailUrl": "https://teachings.ai/assets/images/app_logo.png",
+      "keywords": ["learn animals","animal sounds","wild animals","farm animals","preschool learning"]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://teachings.ai/animals.html#howto",
+      "name": "Parent Tip: Boost Vocabulary & Listening Skills",
+      "description": "Step-by-step guidance for parents to help kids learn animal names, sounds, and habitats while playing.",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Name the animal", "text": "Ask your child to say the animal name aloud." },
+        { "@type": "HowToStep", "position": 2, "name": "Mimic the sound", "text": "Encourage them to mimic the animal sound." },
+        { "@type": "HowToStep", "position": 3, "name": "Talk about habitat", "text": "Discuss where the animal lives (farm, jungle, ocean)." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://teachings.ai/animals.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Learn Animals game?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It is an interactive game where kids discover animals by scratching to reveal images, names, and sounds." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is this game for?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The game is designed for preschool, kindergarten, and grade 1 children (ages 3-7)." }
+        },
+        {
+          "@type": "Question",
+          "name": "What skills does this game build?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It helps kids build vocabulary, listening skills, and knowledge of habitats." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the Learn Animals game free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, the game is free to play on Teachings.AI." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://teachings.ai/animals.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://teachings.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://teachings.ai/games.html" },
+        { "@type": "ListItem", "position": 3, "name": "Learn Animals" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://teachings.ai/#organization",
+      "name": "Teachings.AI",
+      "url": "https://teachings.ai",
+      "logo": "https://teachings.ai/assets/images/app_logo.png",
+      "sameAs": [
+        "https://twitter.com/TeachingsAI",
+        "https://www.facebook.com/TeachingsAI",
+        "https://www.linkedin.com/company/teachingsai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://teachings.ai/#website",
+      "url": "https://teachings.ai",
+      "name": "Teachings.AI",
+      "publisher": { "@id": "https://teachings.ai/#organization" }
     }
-  }
+  ]
 }
 </script>
+
 
   <!-- Google Analytics 4 (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>

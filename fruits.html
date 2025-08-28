@@ -62,26 +62,42 @@
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LearningResource",
-    "educationalRole": "student",
-    "name": "Learn Fruits - Teachings.AI",
-    "description": "Teachings.AI: Interactive module for kids to learn about different fruits. Scratch to reveal fruit images and hear their names.",
-    "educationalLevel": ["Preschool", "Kindergarten", "Grade 1"],
-    "inLanguage": "en",
-    "url": "https://teachings.ai/fruits.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Teachings.AI",
-      "url": "https://teachings.ai",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://teachings.ai/assets/images/app_logo.png"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Learn Fruits - Teachings.AI",
+      "description": "Interactive scratch-to-reveal module for kids to learn about fruits. Hear names and discover images to build vocabulary and healthy habits.",
+      "url": "https://teachings.ai/fruits.html",
+      "inLanguage": "en",
+      "learningResourceType": "InteractiveGame",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Preschool, Kindergarten, Grade 1"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Teachings.AI",
+        "url": "https://teachings.ai",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://teachings.ai/assets/images/app_logo.png"
+        }
       }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://teachings.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://teachings.ai/games.html" },
+        { "@type": "ListItem", "position": 3, "name": "Learn Fruits", "item": "https://teachings.ai/fruits.html" }
+      ]
     }
-  }
-  </script>
+  ]
+}
+</script>
+
 </head>
 
 <body>
