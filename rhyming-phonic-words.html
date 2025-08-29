@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhyming & Listening Game - Teachings.AI</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background: #fff8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  h1 { color: #ff6f61; margin-bottom: 20px; text-align:center; }
+
+  .btn-play {
+    padding: 10px 20px;
+    background: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 500px;
+  }
+
+  .option {
+    width: 120px;
+    height: 120px;
+    background: #ffe4e1;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  .option img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .option.correct { background: #c8f7c5; }
+  .option.wrong { background: #f7c5c5; }
+
+  #parent-tips {
+    max-width:500px;
+    margin-top:30px;
+    background:#fff8e7;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  #parent-tips h2 { color:#ff6f61; font-size:20px; margin-bottom:10px; }
+  #parent-tips ul { padding-left:20px; line-height:1.6; color:#333; }
+</style>
+</head>
+<body>
+
+<h1>Rhyming & Listening Game</h1>
+<button class="btn-play" id="play-sound">🔊 Play Sound</button>
+
+<div class="options" id="options-container"></div>
+
+<audio id="correct-sound" src="audio/correct.mp3"></audio>
+<audio id="wrong-sound" src="audio/wrong.mp3"></audio>
+
+<div id="parent-tips">
+  <h2>Parenting Tips</h2>
+  <ul>
+    <li>Encourage your child to say the word aloud before choosing an answer.</li>
+    <li>Let them listen multiple times if needed; repetition helps learning.</li>
+    <li>Use real objects at home to reinforce rhyming words (e.g., cat & hat).</li>
+    <li>Praise effort and curiosity, not just correct answers.</li>
+    <li>Keep sessions short (5–10 minutes) for maximum attention.</li>
+  </ul>
+</div>
+
+<script>
+// Rhyming sets
+const items = [
+  {word:'cat', audio:'assets/audio/animals/cat.mp3', options:['hat','dog','pen']},
+  {word:'sun', audio:'assets/audio/animals/dog.mp3', options:['fun','ball','frog']},
+  {word:'tree', audio:'assets/audio/colors/red.mp3', options:['bed','car','hat']},
+  {word:'frog', audio:'assets/audio/animals/cow.mp3', options:['log','wow','sun']},
+  {word:'ball', audio:'assets/audio/bodyparts/nose.mp3', options:['fall','dog','rose']}
+];
+
+// Preload audio objects for performance
+items.forEach(item => item.audioObj = new Audio(item.audio));
+
+const optionsContainer = document.getElementById('options-container');
+const correctAudio = document.getElementById('correct-sound');
+const wrongAudio = document.getElementById('wrong-sound');
+
+let currentItem;
+
+function shuffleArray(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+function nextQuestion() {
+  currentItem = items[Math.floor(Math.random()*items.length)];
+  const options = shuffleArray([...currentItem.options]);
+
+  optionsContainer.innerHTML = '';
+  options.forEach(opt=>{
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.dataset.word = opt;
+    div.textContent = opt;
+
+    div.addEventListener('click', ()=>{
+      if(div.dataset.word === currentItem.options[0]){
+        div.classList.add('correct');
+        correctAudio.currentTime = 0;
+        correctAudio.play();
+      } else {
+        div.classList.add('wrong');
+        wrongAudio.currentTime = 0;
+        wrongAudio.play();
+      }
+      setTimeout(nextQuestion, 500); // faster transition
+    });
+
+    optionsContainer.appendChild(div);
+  });
+
+  // Auto-play current word audio
+  currentItem.audioObj.currentTime = 0;
+  currentItem.audioObj.play();
+}
+
+// Play current word audio on button click
+document.getElementById('play-sound').addEventListener('click', ()=>{
+  currentItem.audioObj.currentTime = 0;
+  currentItem.audioObj.play();
+});
+
+// Start game
+nextQuestion();
+</script>
+
+</body>
+</html>
