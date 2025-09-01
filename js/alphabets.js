@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageBasePath = CDN + 'assets/images/alphabets/';
     const audioBasePath = CDN + 'assets/audio/alphabets/';
     const audioFormat = '.mp3';
-    const imageFormat = '.png';
+    const imageFormat = '.JPEG';
 
     const exampleWords = {
-        A: 'Apple', B: 'Ball', C: 'Cat', D: 'Dog', E: 'Elephant', F: 'Fish', G: 'Giraffe',
-        H: 'Hat', I: 'Ice cream', J: 'Juice', K: 'Kite', L: 'Lion', M: 'Monkey', N: 'Nest',
-        O: 'Orange', P: 'Penguin', Q: 'Queen', R: 'Rabbit', S: 'Sun', T: 'Tiger',
-        U: 'Umbrella', V: 'Violin', W: 'Whale', X: 'Xylophone', Y: 'Yacht', Z: 'Zebra'
+        A: 'Apple', B: 'Ball', C: 'Cat', D: 'Dog', E: 'Elephant', F: 'Fish', G: 'Goat',
+        H: 'Hen', I: 'Ice cream', J: 'Joker', K: 'Kite', L: 'Lion', M: 'Mango', N: 'Nest',
+        O: 'Owl', P: 'Parrot', Q: 'Queen', R: 'Rose', S: 'Sun', T: 'Tiger',
+        U: 'Umbrella', V: 'Van', W: 'Watch', X: 'Xmas tree', Y: 'Yak', Z: 'Zebra'
     };
 
     function setupCanvas() {
