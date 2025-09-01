@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const imageBasePath = CDN + 'assets/images/alphabets/';
     const audioBasePath = CDN + 'assets/audio/alphabets/';
-    const audioFormat = '.mp3';
+    const audioFormat = '.mp3?v=2';
     const imageFormat = '.jpeg';
 
     const exampleWords = {
