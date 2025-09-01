@@ -77,8 +77,8 @@
 
 <div class="options" id="options-container"></div>
 
-<audio id="correct-sound" src="audio/correct.mp3"></audio>
-<audio id="wrong-sound" src="audio/wrong.mp3"></audio>
+<audio id="correct-sound" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
+<audio id="wrong-sound" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
 
 <div id="parent-tips">
   <h2>Parenting Tips</h2>
@@ -90,15 +90,15 @@
     <li>Keep sessions short (5–10 minutes) for maximum attention.</li>
   </ul>
 </div>
-
+<script src="js/script.js"></script>
 <script>
 // Rhyming sets
 const items = [
-  {word:'cat', audio:'assets/audio/animals/cat.mp3', options:['hat','dog','pen']},
-  {word:'sun', audio:'assets/audio/animals/dog.mp3', options:['fun','ball','frog']},
-  {word:'tree', audio:'assets/audio/colors/red.mp3', options:['bed','car','hat']},
-  {word:'frog', audio:'assets/audio/animals/cow.mp3', options:['log','wow','sun']},
-  {word:'ball', audio:'assets/audio/bodyparts/nose.mp3', options:['fall','dog','rose']}
+  {word:'cat', audio: CDN + 'assets/audio/animals/cat.mp3', options:['hat','dog','pen']},
+  {word:'sun', audio: CDN + 'assets/audio/animals/dog.mp3', options:['fun','ball','frog']},
+  {word:'tree', audio: CDN + 'assets/audio/colors/red.mp3', options:['bed','car','hat']},
+  {word:'frog', audio: CDN + 'assets/audio/animals/cow.mp3', options:['log','wow','sun']},
+  {word:'ball', audio:CDN + 'assets/audio/bodyparts/nose.mp3', options:['fall','dog','rose']}
 ];
 
 // Preload audio objects for performance

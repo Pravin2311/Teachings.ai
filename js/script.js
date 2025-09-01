@@ -30,3 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Global CDN Definition -->
+
+  const CDN = 'https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/';

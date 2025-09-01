@@ -1,25 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     const data = [
-      { word: "Lion", img: "assets/images/animals/lion.png" },
-      { word: "Elephant", img: "assets/images/animals/elephant.png" },
-      { word: "Peacock", img: "assets/images/birds/peacock.png" },
-      { word: "Parrot", img: "assets/images/birds/parrot.png" },
-      { word: "Apple", img: "assets/images/fruits/apple.png" },
-      { word: "Orange", img: "assets/images/fruits/orange.png" },
-      { word: "Cherry", img: "assets/images/fruits/cherry.png" },
-      { word: "Strawberry", img: "assets/images/fruits/strawberry.png" },
-      { word: "Watermelon", img: "assets/images/fruits/watermelon.png" },
-      { word: "Owl", img: "assets/images/birds/owl.png" },
-      { word: "Hen", img: "assets/images/birds/hen.png" },
-      { word: "Eagle", img: "assets/images/birds/eagle.png" },
-      { word: "Cat", img: "assets/images/animals/cat.png" },
-      { word: "Dog", img: "assets/images/animals/dog.png" },
-      { word: "Horse", img: "assets/images/animals/horse.png" },
-      { word: "Monkey", img: "assets/images/animals/monkey.png" },
-      { word: "Tiger", img: "assets/images/animals/tiger.png" },
-      { word: "Bear", img: "assets/images/animals/bear.png" },
-      // Add more items...
-    ];
+  { word: "Lion",         img: CDN + "assets/images/animals/lion.png" },
+  { word: "Elephant",     img: CDN + "assets/images/animals/elephant.png" },
+  { word: "Peacock",      img: CDN + "assets/images/birds/peacock.png" },
+  { word: "Parrot",       img: CDN + "assets/images/birds/parrot.png" },
+  { word: "Apple",        img: CDN + "assets/images/fruits/apple.png" },
+  { word: "Orange",       img: CDN + "assets/images/fruits/orange.png" },
+  { word: "Cherry",       img: CDN + "assets/images/fruits/cherry.png" },
+  { word: "Strawberry",   img: CDN + "assets/images/fruits/strawberry.png" },
+  { word: "Watermelon",   img: CDN + "assets/images/fruits/watermelon.png" },
+  { word: "Owl",          img: CDN + "assets/images/birds/owl.png" },
+  { word: "Hen",          img: CDN + "assets/images/birds/hen.png" },
+  { word: "Eagle",        img: CDN + "assets/images/birds/eagle.png" },
+  { word: "Cat",          img: CDN + "assets/images/animals/cat.png" },
+  { word: "Dog",          img: CDN + "assets/images/animals/dog.png" },
+  { word: "Horse",        img: CDN + "assets/images/animals/horse.png" },
+  { word: "Monkey",       img: CDN + "assets/images/animals/monkey.png" },
+  { word: "Tiger",        img: CDN + "assets/images/animals/tiger.png" },
+  { word: "Bear",         img: CDN + "assets/images/animals/bear.png" }
+  // Add more items...
+];
   
     const gameContainer = document.getElementById("game-container");
     const correctSound = document.getElementById("correct-sound");

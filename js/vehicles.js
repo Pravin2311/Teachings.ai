@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let isRevealed = false;
 
   // Base paths for assets
-  const imageBasePath = 'assets/images/vehicles/';
-  const audioNameBasePath = 'assets/audio/vehicles/';     // e.g., car.mp3 (says "car")
-  const audioSoundBasePath = 'assets/audio/vehicle_sounds/'; // e.g., car_sound.mp3 (engine sound)
+  const imageBasePath = CDN + 'assets/images/vehicles/';
+  const audioNameBasePath = CDN + 'assets/audio/vehicles/';     // e.g., car.mp3 (says "car")
+  const audioSoundBasePath = CDN + 'assets/audio/vehicle_sounds/'; // e.g., car_sound.mp3 (engine sound)
   const audioFormat = '.mp3';
   const imageFormat = '.png';
 

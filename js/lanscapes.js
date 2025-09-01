@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isRevealed = false;
 
     // Base paths for assets
-    const imageBasePath = 'assets/images/nature/';
-    const audioBasePath = 'assets/audio/nature/'; 
+    const imageBasePath = CDN + 'assets/images/nature/';
+    const audioBasePath = CDN + 'assets/audio/nature/'; 
     const audioFormat = '.mp3'; 
     const imageFormat = '.png'; 
 
