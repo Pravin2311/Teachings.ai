@@ -2,7 +2,7 @@
   "name": "teachings.ai",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'No build needed' && mkdir -p public && cp -r ./* public/",
+    "build": "echo 'No build needed'",
     "start": "echo 'Static site'"
   },
   "dependencies": {
