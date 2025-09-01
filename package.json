@@ -1,5 +1,11 @@
 {
+  "name": "teachings.ai",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'No build needed' && mkdir -p public && cp -r ./* public/",
+    "start": "echo 'Static site'"
+  },
   "dependencies": {
-    "web-push": "^3.6.7"
+    "web-push": "^3.6.4"
   }
 }
