@@ -1,0 +1,8 @@
+curl -X POST https://teachings.ai/api/send-notification \
+  -H "Content-Type: application/json" \
+  -d '{
+    "subscription": { "endpoint": "..." },
+    "title": "🎉 New Module Added!",
+    "body": "Learn about AI Concepts – Smart machines explained!",
+    "url": "/ai-concepts.html"
+  }'
