@@ -1,0 +1,11 @@
+{
+  "name": "teachings.ai",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'No build needed'",
+    "start": "echo 'Static site'"
+  },
+  "dependencies": {
+    "web-push": "^3.6.4"
+  }
+}

@@ -6,49 +6,76 @@
   <link rel="canonical" href="https://teachings.ai/about.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta name="description" content="Learn more about Teachings.AI – our mission, vision, and story.">
+
+  <!-- AMP Runtime -->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- AMP Boilerplate -->
+  <style amp-boilerplate>
+    body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}
+    @-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  </style>
+  <noscript>
+    <style amp-boilerplate>
+      body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+    </style>
+  </noscript>
+
+  <!-- Inline styles (AMP requires amp-custom) -->
   <style amp-custom>
-    body { font-family:'Poppins', sans-serif; margin:0; padding:20px; background:#f9fafc; color:#333; line-height:1.6; }
-    header { text-align:center; padding:15px; font-size:1.6em; font-weight:700; color:#1B2A5B; }
-    h2 { color:#6a9cff; margin-top:20px; }
+    :root { --brand:#6a9cff; --ink:#333; --bg:#f9fafc; --head:#1B2A5B; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; padding:20px; background:var(--bg); color:var(--ink); line-height:1.6; }
+    header { text-align:center; padding:15px; font-size:1.6em; font-weight:700; color:var(--head); }
+    h2 { color:var(--brand); margin-top:20px; }
     footer { margin-top:40px; text-align:center; font-size:0.9em; color:#666; }
-    .btn-home { display:inline-block; margin:20px auto; padding:12px 20px; background:#6a9cff; color:#fff; text-decoration:none; font-weight:600; border-radius:30px; box-shadow:0 3px 6px rgba(0,0,0,0.1); transition:0.3s; }
-    .btn-home:hover { background:#1B2A5B; }
     .container { max-width:800px; margin:auto; background:#fff; padding:25px; border-radius:14px; box-shadow:0 3px 8px rgba(0,0,0,0.1); }
+    .btn-home { display:inline-block; margin:20px auto; padding:12px 20px; background:var(--brand); color:#fff; text-decoration:none; font-weight:600; border-radius:30px; box-shadow:0 3px 6px rgba(0,0,0,0.1); transition:background .3s; }
+    .btn-home:focus, .btn-home:hover { background:var(--head); }
+    .footer-nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:10px 0 6px; }
+    .footer-nav a { text-decoration:none; padding:8px 12px; border-radius:10px; background:#eef3ff; color:#1B2A5B; font-weight:600; }
+    .footer-description { max-width:820px; margin:10px auto 0; padding:0 10px; }
   </style>
 </head>
 <body>
   <header>About Us</header>
+
   <div class="container">
     <p><strong>Teachings.AI</strong> is a fun learning platform for kids aged 3–10. We create engaging worksheets, interactive games, and educational activities that make learning joyful and effective.</p>
+
     <h2>Our Mission</h2>
     <p>To provide free, high-quality, and interactive educational resources that help children learn alphabets, numbers, animals, colors, and more in a playful way.</p>
+
     <h2>Our Vision</h2>
     <p>We believe in making education accessible, fun, and creative — helping children everywhere build strong foundations for lifelong learning.</p>
+
     <div style="text-align:center;">
-      <a href="index.html" class="btn-home">⬅ Back to Home</a>
+      <a href="/index.html" class="btn-home" aria-label="Go back to home">⬅ Back</a>
     </div>
   </div>
+
   <!-- Footer -->
-<footer class="site-footer">
-  <p>© 2025 Teachings.AI</p>
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2025 Teachings.AI</p>
 
-  <!-- Footer Navigation -->
-  <nav class="footer-nav" aria-label="Footer navigation">
-    <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
-    <a href="/about.html" class="blog-button">About</a>
-    <a href="/privacy-policy.html" class="blog-button">Privacy</a>
-    <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
-    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
-       class="feedback-button">📩 Contact Us</a>
-  </nav>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
+      <a href="/about.html" class="blog-button" aria-current="page">About</a>
+      <a href="/privacy-policy.html" class="blog-button">Privacy</a>
+      <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
+      <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" class="feedback-button">📩 Contact Us</a>
+    </nav>
 
-  <p class="footer-description">
-    Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, 
-    and fun activities. Designed for preschool and kindergarten, our resources make learning joyful 
-    and effective.
-  </p>
-</footer>
+    <p class="footer-description">
+      Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets,
+      and fun activities. Designed for preschool and kindergarten, our resources make learning joyful
+      and effective.
+    </p>
+  </footer>
 </body>
 </html>
+

@@ -6,20 +6,46 @@
   <link rel="canonical" href="https://teachings.ai/disclaimer.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <meta name="description" content="Disclaimer and affiliate disclosure for Teachings.AI.">
+
+  <!-- AMP Runtime -->
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- AMP Boilerplate -->
+  <style amp-boilerplate>
+    body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+         -moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+         -ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+         animation:-amp-start 8s steps(1,end) 0s 1 normal both}
+    @-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  </style>
+  <noscript>
+    <style amp-boilerplate>
+      body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+    </style>
+  </noscript>
+
+  <!-- Custom Styles -->
   <style amp-custom>
-    body { font-family:'Poppins', sans-serif; margin:0; padding:20px; background:#f9fafc; color:#333; line-height:1.6; }
-    header { text-align:center; padding:15px; font-size:1.6em; font-weight:700; color:#1B2A5B; }
-    h2 { color:#6a9cff; margin-top:20px; }
-    footer { margin-top:40px; text-align:center; font-size:0.9em; color:#666; }
-    .btn-home { display:inline-block; margin:20px auto; padding:12px 20px; background:#6a9cff; color:#fff; text-decoration:none; font-weight:600; border-radius:30px; box-shadow:0 3px 6px rgba(0,0,0,0.1); transition:0.3s; }
-    .btn-home:hover { background:#1B2A5B; }
+    :root { --brand:#6a9cff; --ink:#333; --bg:#f9fafc; --head:#1B2A5B; }
+    body { font-family:'Poppins', sans-serif; margin:0; padding:20px; background:var(--bg); color:var(--ink); line-height:1.6; }
+    header { text-align:center; padding:15px; font-size:1.6em; font-weight:700; color:var(--head); }
+    h2 { color:var(--brand); margin-top:20px; }
     .container { max-width:800px; margin:auto; background:#fff; padding:25px; border-radius:14px; box-shadow:0 3px 8px rgba(0,0,0,0.1); }
+    .btn-home { display:inline-block; margin:20px auto; padding:12px 20px; background:var(--brand); color:#fff; text-decoration:none; font-weight:600; border-radius:30px; box-shadow:0 3px 6px rgba(0,0,0,0.1); transition:background .3s; }
+    .btn-home:hover, .btn-home:focus { background:var(--head); }
+    footer { margin-top:40px; text-align:center; font-size:0.9em; color:#666; }
+    .footer-nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:10px 0 6px; }
+    .footer-nav a { text-decoration:none; padding:8px 12px; border-radius:10px; background:#eef3ff; color:#1B2A5B; font-weight:600; }
+    .footer-description { max-width:820px; margin:10px auto 0; padding:0 10px; }
   </style>
 </head>
 <body>
-<header>Disclaimer & Affiliate Disclosure</header>
+<header>Disclaimer &amp; Affiliate Disclosure</header>
+
 <div class="container">
   <h2>Disclaimer</h2>
   <p>The educational materials and activities provided on <strong>Teachings.AI</strong> are for informational and learning purposes only. While we strive for accuracy, we do not guarantee that all content is free from errors.</p>
@@ -29,21 +55,20 @@
   <p>Some links on Teachings.AI are <strong>affiliate links</strong>. This means we earn a small commission at no extra cost to you if you make a purchase through these links. Affiliate links are included only in parent-focused sections, such as Parenting Tips and recommended resources, to help support the platform.</p>
 
   <div style="text-align:center;">
-    <a href="index.html" class="btn-home">⬅ Back to Home</a>
+    <a href="/index.html" class="btn-home" aria-label="Back to Home">⬅ Back to Home</a>
   </div>
 </div>
-  <!-- Footer -->
-<footer class="site-footer">
+
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
   <p>© 2025 Teachings.AI</p>
 
-  <!-- Footer Navigation -->
   <nav class="footer-nav" aria-label="Footer navigation">
     <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
     <a href="/about.html" class="blog-button">About</a>
     <a href="/privacy-policy.html" class="blog-button">Privacy</a>
-    <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
-    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
-       class="feedback-button">📩 Contact Us</a>
+    <a href="/disclaimer.html" class="blog-button" aria-current="page">Disclaimer</a>
+    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&amp;body=Hello%20Teachings.AI%20Team" class="feedback-button">📩 Contact Us</a>
   </nav>
 
   <p class="footer-description">
