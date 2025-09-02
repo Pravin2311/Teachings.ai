@@ -1,114 +1,179 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const currentLetterText = document.getElementById('current-letter-text');
-    const letterImageContainer = document.getElementById('letter-image-container');
-    const prevLetterButton = document.getElementById('prev-letter');
-    const nextLetterButton = document.getElementById('next-letter');
+  const currentLetterText = document.getElementById('current-letter-text');
+  const letterImageContainer = document.getElementById('letter-image-container');
+  const prevLetterButton = document.getElementById('prev-letter');
+  const nextLetterButton = document.getElementById('next-letter');
+  const canvas = document.getElementById('drawing-canvas');
 
-    const canvas = document.getElementById('drawing-canvas');
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  if (!currentLetterText || !letterImageContainer || !canvas) {
+    console.error('Missing required DOM elements (current-letter-text / letter-image-container / drawing-canvas).');
+    return;
+  }
 
-    const alphabets = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
-    let currentIndex = 0;
-    let isDrawing = false;
-    let isRevealed = false;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const DPR = window.devicePixelRatio || 1;
 
-    const imageBasePath = CDN + 'assets/images/alphabets/';
-<<<<<<< HEAD
-    const audioBasePath = CDN + 'assets/audio/alphabets/';
-    const audioFormat = '.mp3?v=2';
-    const imageFormat = '.png';
-=======
-    const audioBasePath =  'assets/audio/alphabets/';
-    const audioFormat = '.mp3';
-    const imageFormat = '.jpeg';
->>>>>>> 910439c6fa272abe168d2be0af2f4f55acbe02eb
+  const alphabets = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
+  let currentIndex = 0;
+  let isDrawing = false;
+  let isRevealed = false;
 
-    const exampleWords = {
-        A: 'Apple', B: 'Ball', C: 'Cat', D: 'Dog', E: 'Elephant', F: 'Fish', G: 'Goat',
-        H: 'Hen', I: 'Ice cream', J: 'Joker', K: 'Kite', L: 'Lion', M: 'Mango', N: 'Nest',
-        O: 'Owl', P: 'Parrot', Q: 'Queen', R: 'Rose', S: 'Sun', T: 'Tiger',
-        U: 'Umbrella', V: 'Van', W: 'Watch', X: 'Xmas tree', Y: 'Yak', Z: 'Zebra'
-    };
+  // CDN fallback: if you don't set global CDN, use empty string (local relative paths)
+  const CDN_BASE = (typeof CDN !== 'undefined' && CDN) ? CDN : '';
+  const imageBasePath = CDN_BASE + 'assets/images/alphabets/';
+  const audioBasePath = CDN_BASE + 'assets/audio/alphabets/';
+  const audioFormat = '.mp3?v=2'; // keep for cache-busting if you use a CDN
+  const imageFormats = ['.jpeg', '.png', '.webp']; // try these in order
 
-    function setupCanvas() {
-        canvas.width = letterImageContainer.clientWidth;
-        canvas.height = letterImageContainer.clientHeight;
+  const exampleWords = {
+    A: 'Apple', B: 'Ball', C: 'Cat', D: 'Dog', E: 'Elephant', F: 'Fish', G: 'Goat',
+    H: 'Hen', I: 'Ice cream', J: 'Joker', K: 'Kite', L: 'Lion', M: 'Mango', N: 'Nest',
+    O: 'Owl', P: 'Parrot', Q: 'Queen', R: 'Rose', S: 'Sun', T: 'Tiger',
+    U: 'Umbrella', V: 'Van', W: 'Watch', X: 'Xmas tree', Y: 'Yak', Z: 'Zebra'
+  };
 
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // Stroke-based fallback metrics (used if getImageData is blocked)
+  let strokeCount = 0;
+  let strokeLength = 0;
+  let lastPos = null;
 
-        ctx.lineWidth = canvas.width * 0.15;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.globalCompositeOperation = 'destination-out';
+  function setupCanvas(widthCssPx, heightCssPx) {
+    // position canvas as overlay
+    if (getComputedStyle(letterImageContainer).position === 'static') {
+      letterImageContainer.style.position = 'relative';
+    }
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.touchAction = 'none';
 
-        canvas.style.opacity = '1';
-        canvas.style.transition = 'none';
-        isRevealed = false;
+    // Set actual pixel size using devicePixelRatio for crisp drawing
+    canvas.width = Math.round(widthCssPx * DPR);
+    canvas.height = Math.round(heightCssPx * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0); // scale so drawing coordinates are CSS pixels
 
-        // "Scratch Here" overlay
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-        ctx.font = 'bold ' + (canvas.width * 0.1) + 'px Poppins';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('SCRATCH HERE', canvas.width / 2, canvas.height / 2);
-        ctx.globalCompositeOperation = 'destination-out';
+    // Clear & draw dark overlay
+    ctx.clearRect(0, 0, widthCssPx, heightCssPx);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(0,0,0,0.75)';
+    ctx.fillRect(0, 0, widthCssPx, heightCssPx);
+
+    // Prepare eraser stroke
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineWidth = Math.max(8, widthCssPx * 0.12);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = 'rgba(0,0,0,1)';
+
+    // Draw "SCRATCH HERE" overlay text then switch back to eraser mode
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.font = 'bold ' + Math.round(widthCssPx * 0.08) + 'px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SCRATCH HERE', widthCssPx / 2, heightCssPx / 2);
+    ctx.globalCompositeOperation = 'destination-out';
+
+    // reset reveal metrics
+    isRevealed = false;
+    strokeCount = 0;
+    strokeLength = 0;
+    lastPos = null;
+    canvas.style.opacity = '1';
+    canvas.style.transition = 'none';
+  }
+
+  function getPosFromEvent(e) {
+    const rect = canvas.getBoundingClientRect();
+    if (e.touches && e.touches.length) {
+      return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+    } else if (e.changedTouches && e.changedTouches.length) {
+      return { x: e.changedTouches[0].clientX - rect.left, y: e.changedTouches[0].clientY - rect.top };
+    }
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  function startDrawing(e) {
+    if (isRevealed) return;
+    isDrawing = true;
+    ctx.beginPath();
+    const pos = getPosFromEvent(e);
+    ctx.moveTo(pos.x, pos.y);
+    lastPos = pos;
+    strokeCount++;
+    e.preventDefault();
+  }
+
+  function draw(e) {
+    if (!isDrawing || isRevealed) return;
+    e.preventDefault();
+    const pos = getPosFromEvent(e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    if (lastPos) {
+      const dx = pos.x - lastPos.x, dy = pos.y - lastPos.y;
+      strokeLength += Math.sqrt(dx * dx + dy * dy);
+      lastPos = pos;
+    }
+  }
+
+  function stopDrawing() {
+    if (!isDrawing) return;
+    isDrawing = false;
+    lastPos = null;
+    checkRevealProgressSafe();
+  }
+
+  function checkRevealProgressSafe() {
+    // Try the reliable pixel-check (may throw if canvas is tainted)
+    try {
+      const w = canvas.width; // pixels
+      const h = canvas.height;
+      const imageData = ctx.getImageData(0, 0, w, h); // may throw SecurityError if tainted
+      const data = imageData.data;
+      let transparentSamples = 0;
+      const totalPixels = data.length / 4;
+      const sampleStep = 60; // sample less for performance
+      for (let i = 3; i < data.length; i += 4 * sampleStep) {
+        if (data[i] < 50) transparentSamples++;
+      }
+      const sampledTotal = Math.max(1, Math.floor(totalPixels / sampleStep));
+      const revealPercentage = (transparentSamples / sampledTotal) * 100;
+      if (revealPercentage >= 30) {
+        reveal();
+        return;
+      }
+    } catch (err) {
+      // likely security/cors taint or other error — fall back
+      console.warn('getImageData failed (canvas may be tainted). Using stroke fallback.', err);
     }
 
-    function getMousePos(e) {
-        const rect = canvas.getBoundingClientRect();
-        return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    // Stroke-based fallback — heuristics tuned for common sizes
+    const strokeDistanceThreshold = Math.max(600, canvas.width / DPR * 40); // css px based estimate
+    const strokeCountThreshold = 12;
+    if (strokeCount >= strokeCountThreshold || strokeLength >= strokeDistanceThreshold) {
+      reveal();
     }
+  }
 
-    function getTouchPos(e) {
-        const rect = canvas.getBoundingClientRect();
-        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
-    }
+  function reveal() {
+    if (isRevealed) return;
+    isRevealed = true;
+    canvas.style.transition = 'opacity 0.9s ease-out';
+    canvas.style.opacity = '0';
+    playLetterAudio();
+  }
 
-    function startDrawing(e) {
-        if (isRevealed) return;
-        isDrawing = true;
-        ctx.beginPath();
-        const pos = e.touches ? getTouchPos(e) : getMousePos(e);
-        ctx.moveTo(pos.x, pos.y);
-    }
-
-    function draw(e) {
-        if (!isDrawing || isRevealed) return;
-        e.preventDefault();
-        const pos = e.touches ? getTouchPos(e) : getMousePos(e);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-    }
-
-    function checkRevealProgress() {
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imageData.data;
-        let transparentPixels = 0;
-        const totalPixels = data.length / 4;
-
-        const sampleStep = 40;
-        for (let i = 3; i < data.length; i += 4 * sampleStep) {
-            if (data[i] < 50) transparentPixels++;
-        }
-
-        const sampledTotalPixels = Math.floor(totalPixels / sampleStep);
-        const revealPercentage = (transparentPixels / sampledTotalPixels) * 100;
-
-        if (revealPercentage >= 30 && !isRevealed) {
-            isRevealed = true;
-            canvas.style.opacity = '0';
-            canvas.style.transition = 'opacity 1s ease-out';
-            playLetterAudio();
-        }
-    }
-
-    function stopDrawing() {
-        isDrawing = false;
-        if (!isRevealed) checkRevealProgress();
-    }
-
+  // Event listeners: use pointer events when available, else mouse+touch
+  if (window.PointerEvent) {
+    canvas.addEventListener('pointerdown', startDrawing);
+    canvas.addEventListener('pointermove', draw);
+    canvas.addEventListener('pointerup', stopDrawing);
+    canvas.addEventListener('pointercancel', stopDrawing);
+    canvas.addEventListener('pointerleave', stopDrawing);
+  } else {
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mouseup', stopDrawing);
@@ -117,106 +182,146 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('touchmove', draw, { passive: false });
     canvas.addEventListener('touchend', stopDrawing);
     canvas.addEventListener('touchcancel', stopDrawing);
+  }
 
-    function updateLetterDisplay() {
-        const currentLetter = alphabets[currentIndex];
-        currentLetterText.textContent = currentLetter;
-        letterImageContainer.innerHTML = '';
+  // Load image with fallback formats and crossOrigin to avoid tainting (requires server CORS)
+  function loadImageWithFallback(letter) {
+    return new Promise(async (resolve, reject) => {
+      for (const fmt of imageFormats) {
+        const url = imageBasePath + letter + fmt;
+        const img = new Image();
+        img.crossOrigin = 'anonymous'; // require the server to send Access-Control-Allow-Origin: *
+        img.decoding = 'async';
+        const p = new Promise((res, rej) => {
+          img.onload = () => res(img);
+          img.onerror = () => rej(url);
+        });
+        img.src = url;
+        try {
+          const loaded = await p;
+          console.log('Loaded image:', url);
+          resolve(loaded);
+          return;
+        } catch (errUrl) {
+          console.warn('Image failed to load:', errUrl);
+        }
+      }
+      reject(new Error('All image formats failed'));
+    });
+  }
 
-        const img = document.createElement('img');
-        img.src = imageBasePath + currentLetter + imageFormat;
-        img.alt = `Letter ${currentLetter}: ${exampleWords[currentLetter]} - Learn ABC letters with Teachings.AI`;
-        img.loading = 'lazy';
+  async function updateLetterDisplay() {
+    const currentLetter = alphabets[currentIndex];
+    currentLetterText.textContent = currentLetter;
+    letterImageContainer.innerHTML = '';
 
-        img.onload = () => {
-            letterImageContainer.appendChild(img);
-            letterImageContainer.appendChild(canvas);
-            setupCanvas();
-            canvas.setAttribute('aria-label', `Scratch card for letter ${currentLetter}`);
-        };
+    try {
+      const img = await loadImageWithFallback(currentLetter);
+      img.alt = `Letter ${currentLetter}: ${exampleWords[currentLetter]} - Learn ABC letters with Teachings.AI`;
+      img.loading = 'lazy';
+      // ensure image fills container
+      img.style.display = 'block';
+      img.style.width = '100%';
+      img.style.height = 'auto';
+      letterImageContainer.appendChild(img);
+      letterImageContainer.appendChild(canvas);
+      // Use the container's CSS size for the canvas; image may still be loading layout, so read container size
+      const rect = letterImageContainer.getBoundingClientRect();
+      setupCanvas(rect.width, rect.height);
+      canvas.setAttribute('aria-label', `Scratch card for letter ${currentLetter}`);
 
-        img.onerror = () => {
-            console.error('Error loading image: ' + img.src);
-            const fallbackText = document.createElement('p');
-            fallbackText.textContent = `Image for ${currentLetter} not found. Add ${currentLetter}${imageFormat} to assets/images/alphabets/`;
-            letterImageContainer.appendChild(fallbackText);
-            letterImageContainer.appendChild(canvas);
-            setupCanvas();
-            canvas.setAttribute('aria-label', `Scratch card for letter ${currentLetter}`);
-        };
-
-        letterImageContainer.appendChild(img);
-
-        // Structured Data for SEO
-        const oldScript = document.getElementById('ld-json-letter');
-        if (oldScript) oldScript.remove();
-        const ldJson = {
-            "@context": "https://schema.org",
-            "@type": "LearningResource",
-            "name": `Learn letter ${currentLetter} - ABC for kids`,
-            "educationalLevel": "Preschool",
-            "learningResourceType": "Interactive Scratch Card",
-            "inLanguage": "en",
-            "url": window.location.href,
-            "description": `Interactive ABC learning for kids. Letter ${currentLetter} with image, pronunciation and example word: ${exampleWords[currentLetter]}.`
-        };
-        const script = document.createElement('script');
-        script.id = 'ld-json-letter';
-        script.type = 'application/ld+json';
-        script.textContent = JSON.stringify(ldJson);
-        document.head.appendChild(script);
-
-        console.log('Displaying letter: ' + currentLetter);
+    } catch (err) {
+      console.error('Could not load image for', currentLetter, err);
+      const fallbackText = document.createElement('p');
+      fallbackText.textContent = `Image for ${currentLetter} not found. Add ${currentLetter}.[jpeg|png|webp] to assets/images/alphabets/`;
+      letterImageContainer.appendChild(fallbackText);
+      letterImageContainer.appendChild(canvas);
+      const rect = letterImageContainer.getBoundingClientRect();
+      setupCanvas(rect.width || 300, rect.height || 200);
     }
 
-    function playLetterAudio() {
-        const currentLetter = alphabets[currentIndex];
-        const audioSrc = audioBasePath + currentLetter + audioFormat;
-        const audio = new Audio(audioSrc);
-        audio.setAttribute('aria-label', `Pronunciation of letter ${currentLetter}: ${exampleWords[currentLetter]}`);
+    // Add structured data (SEO)
+    const oldScript = document.getElementById('ld-json-letter');
+    if (oldScript) oldScript.remove();
+    const ldJson = {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      "name": `Learn letter ${currentLetter} - ABC for kids`,
+      "educationalLevel": "Preschool",
+      "learningResourceType": "Interactive Scratch Card",
+      "inLanguage": "en",
+      "url": window.location.href,
+      "description": `Interactive ABC learning for kids. Letter ${currentLetter} with image, pronunciation and example word: ${exampleWords[currentLetter]}.`
+    };
+    const script = document.createElement('script');
+    script.id = 'ld-json-letter';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(ldJson);
+    document.head.appendChild(script);
 
-        const hiddenText = document.createElement('span');
-        hiddenText.style.position = 'absolute';
-        hiddenText.style.left = '-9999px';
-        hiddenText.textContent = `Audio pronunciation for letter ${currentLetter}: ${exampleWords[currentLetter]}`;
-        document.body.appendChild(hiddenText);
+    console.log('Displaying letter:', currentLetter);
+  }
 
-        if (window.pauseBackgroundMusic) window.pauseBackgroundMusic();
-        audio.play().catch(e => console.error('Error playing audio for ' + currentLetter, e));
+  function playLetterAudio() {
+    const currentLetter = alphabets[currentIndex];
+    const audioSrc = audioBasePath + currentLetter + audioFormat;
+    console.log('Playing audio:', audioSrc);
+    const audio = new Audio(audioSrc);
+    audio.setAttribute('aria-label', `Pronunciation of letter ${currentLetter}: ${exampleWords[currentLetter]}`);
 
-        audio.onended = () => {
-            document.body.removeChild(hiddenText);
-            if (window.resumeBackgroundMusic) window.resumeBackgroundMusic();
-        };
+    const hiddenText = document.createElement('span');
+    hiddenText.style.position = 'absolute';
+    hiddenText.style.left = '-9999px';
+    hiddenText.textContent = `Audio pronunciation for letter ${currentLetter}: ${exampleWords[currentLetter]}`;
+    document.body.appendChild(hiddenText);
 
-        // Audio structured data for SEO
-        const oldAudioScript = document.getElementById('ld-json-audio');
-        if (oldAudioScript) oldAudioScript.remove();
-        const audioLdJson = {
-            "@context": "https://schema.org",
-            "@type": "AudioObject",
-            "name": `Pronunciation of letter ${currentLetter}`,
-            "description": `Audio pronunciation of letter ${currentLetter}: ${exampleWords[currentLetter]}`,
-            "contentUrl": audioSrc,
-            "inLanguage": "en"
-        };
-        const audioScript = document.createElement('script');
-        audioScript.id = 'ld-json-audio';
-        audioScript.type = 'application/ld+json';
-        audioScript.textContent = JSON.stringify(audioLdJson);
-        document.head.appendChild(audioScript);
-    }
+    if (window.pauseBackgroundMusic) window.pauseBackgroundMusic();
+    audio.play().catch(e => console.error('Error playing audio for ' + currentLetter, e));
 
-    prevLetterButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + alphabets.length) % alphabets.length;
-        updateLetterDisplay();
-    });
+    audio.onended = () => {
+      document.body.removeChild(hiddenText);
+      if (window.resumeBackgroundMusic) window.resumeBackgroundMusic();
+    };
 
-    nextLetterButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % alphabets.length;
-        updateLetterDisplay();
-    });
+    // Add Audio structured data
+    const oldAudioScript = document.getElementById('ld-json-audio');
+    if (oldAudioScript) oldAudioScript.remove();
+    const audioLdJson = {
+      "@context": "https://schema.org",
+      "@type": "AudioObject",
+      "name": `Pronunciation of letter ${currentLetter}`,
+      "description": `Audio pronunciation of letter ${currentLetter}: ${exampleWords[currentLetter]}`,
+      "contentUrl": audioSrc,
+      "inLanguage": "en"
+    };
+    const audioScript = document.createElement('script');
+    audioScript.id = 'ld-json-audio';
+    audioScript.type = 'application/ld+json';
+    audioScript.textContent = JSON.stringify(audioLdJson);
+    document.head.appendChild(audioScript);
+  }
 
-    // Initial display
+  prevLetterButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + alphabets.length) % alphabets.length;
     updateLetterDisplay();
+  });
+
+  nextLetterButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % alphabets.length;
+    updateLetterDisplay();
+  });
+
+  // Window resize: re-setup canvas to match resized container
+  window.addEventListener('resize', () => {
+    setTimeout(() => {
+      const img = letterImageContainer.querySelector('img');
+      if (img) {
+        const rect = letterImageContainer.getBoundingClientRect();
+        setupCanvas(rect.width, rect.height);
+      }
+    }, 60);
+  });
+
+  // initial
+  updateLetterDisplay();
 });
