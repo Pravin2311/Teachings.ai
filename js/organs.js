@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDrawing = false;
     let isRevealed = false;
 
-    const imageBasePath = 'assets/images/organs/';
-    const audioNameBasePath = 'assets/audio/organs/';
+    const imageBasePath = CDN + 'assets/images/organs/';
+    const audioNameBasePath = CDN + 'assets/audio/organs/';
     const audioFormat = '.mp3';
     const imageFormat = '.png';
 
