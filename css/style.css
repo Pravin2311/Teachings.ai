@@ -160,6 +160,11 @@ html, body {
 #bodyparts { background: linear-gradient(135deg, #ff7f50, #e67248); }
 #vehicles { background: linear-gradient(135deg, #5bc0de, #50a8c2); }
 #plants { background: linear-gradient(135deg, #8bc34a, #79b040); }
+#organs { background: linear-gradient(135deg, #c44e4e, #cf5e5e); }
+#countries { background: linear-gradient(135deg, #433b9f, #5e60cf); }
+#electronic-gadgets { background: linear-gradient(135deg, #010101, #050508); }
+#fantasy-world { background: linear-gradient(135deg, #d1b140, #cfa63c); }
+#scientists { background: linear-gradient(135deg, #9662b6, #973ccf); }
 
 /* Sorting & Matching Games */
 #odd-even-sorting,

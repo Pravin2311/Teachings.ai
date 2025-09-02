@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Human Organs | Interactive Anatomy Game for Kids | Teachings.AI</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animals.css"> <!-- Reusing styles for now -->
+  <style>
+    /* Parenting Tip Section */
+    .parenting-tip {
+      margin: 20px auto;
+      padding: 18px 20px;
+      max-width: 600px;
+      background-color: #f0f7ff;
+      border-left: 5px solid #4a90e2;
+      border-radius: 10px;
+      text-align: left;
+      font-size: 1em;
+      color: #333;
+      line-height: 1.5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .parenting-tip h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+      color: #1B2A5B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .parenting-tip h3::before {
+      content: "💡";
+    }
+  </style>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Interactive human organs learning game for kids 6-10. Discover heart, lungs, brain, stomach & more with scratch-to-reveal fun. Great for elementary science and anatomy lessons.">
+  <meta name="keywords" content="learn organs, human body, body parts, anatomy for kids, internal organs, science game, teachings.ai organs">
+  <meta name="author" content="Teachings AI">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Learn Human Organs with Teachings.AI">
+  <meta property="og:description" content="Interactive module for kids to learn about human organs. Scratch to reveal organ images and hear their names and functions.">
+  <meta property="og:image" content="https://teachings.ai/assets/images/app_logo.png">
+  <meta property="og:url" content="https://teachings.ai/organs.html">
+  <meta property="og:type" content="website">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://teachings.ai/organs.html",
+        "url": "https://teachings.ai/organs.html",
+        "name": "Learn Human Organs | Interactive Anatomy Game for Kids | Teachings.AI",
+        "description": "Interactive organ learning game for kids 6-10. Discover heart, lungs, brain, stomach & more with scratch-to-reveal fun.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://teachings.ai/#website" },
+        "publisher": { "@id": "https://teachings.ai/#organization" },
+        "image": "https://teachings.ai/assets/images/app_logo.png",
+        "breadcrumb": { "@id": "https://teachings.ai/organs.html#breadcrumb" }
+      },
+      {
+        "@type": "LearningResource",
+        "@id": "https://teachings.ai/organs.html#resource",
+        "url": "https://teachings.ai/organs.html",
+        "name": "Learn Organs - Teachings.AI",
+        "description": "Interactive module for kids to explore human organs, names, and functions with scratch-to-reveal fun.",
+        "learningResourceType": "Interactive Educational Game",
+        "educationalUse": ["Play", "Learning", "Exploration", "Science"],
+        "teaches": ["Organ recognition", "Anatomy basics", "Vocabulary building"],
+        "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": "student",
+          "ageRange": "6-10"
+        },
+        "educationalLevel": ["Elementary School", "Grade 2", "Grade 3"],
+        "isAccessibleForFree": true,
+        "educationalSubject": ["Science", "Biology", "Health"],
+        "publisher": { "@id": "https://teachings.ai/#organization" },
+        "image": "https://teachings.ai/assets/images/app_logo.png",
+        "thumbnailUrl": "https://teachings.ai/assets/images/app_logo.png",
+        "keywords": ["learn organs","human body","body parts","anatomy for kids","science game"]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://teachings.ai/organs.html#howto",
+        "name": "Parent Tip: Teach Body Awareness & Science Skills",
+        "description": "Step-by-step guidance for parents to help kids learn organ names, functions, and locations in the body.",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Name the organ", "text": "Ask your child to say the organ name aloud (e.g., 'Heart')." },
+          { "@type": "HowToStep", "position": 2, "name": "Explain its job", "text": "Tell them simply what it does (e.g., 'The heart pumps blood through your body.')" },
+          { "@type": "HowToStep", "position": 3, "name": "Point to location", "text": "Have them touch their chest when learning about the heart, or their head for the brain." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://teachings.ai/organs.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the Learn Organs game?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It is an interactive game where kids discover human organs by scratching to reveal images, names, and facts." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is this game for?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The game is designed for elementary school children (ages 6–10), especially those studying the human body." }
+          },
+          {
+            "@type": "Question",
+            "name": "What skills does this game build?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It helps kids build science vocabulary, body awareness, memory, and understanding of organ functions." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the Learn Organs game free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, the game is free to play on Teachings.AI." }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://teachings.ai/organs.html#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://teachings.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Science", "item": "https://teachings.ai/science.html" },
+          { "@type": "ListItem", "position": 3, "name": "Learn Organs" }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://teachings.ai/#organization",
+        "name": "Teachings.AI",
+        "url": "https://teachings.ai",
+        "logo": "https://teachings.ai/assets/images/app_logo.png",
+        "sameAs": [
+          "https://twitter.com/TeachingsAI",
+          "https://www.facebook.com/TeachingsAI",
+          "https://www.linkedin.com/company/teachingsai"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://teachings.ai/#website",
+        "url": "https://teachings.ai",
+        "name": "Teachings.AI",
+        "publisher": { "@id": "https://teachings.ai/#organization" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    <h1>Learn Human Organs</h1>
+    <div class="animal-display">
+      <p id="current-animal-name"></p>
+      <div id="animal-image-container">
+        <canvas id="drawing-canvas"></canvas>
+        <!-- Organ image will be dynamically loaded by JS -->
+      </div>
+    </div>
+    <div class="navigation-buttons">
+      <button id="prev-animal">Previous</button>
+      <button id="next-animal">Next</button>
+    </div>
+
+    <!-- Parenting Tip -->
+    <div class="parenting-tip">
+      <h3>🧠 Parent Tip: <br>Teach Body Awareness & Science Skills</h3>
+      <p>Encourage your child to name the organ, describe its job (e.g., 'The brain helps us think'), and point to where it is in their body. Ask questions like “What does your stomach do?” or “Why do we need lungs?” to deepen understanding. This builds science vocabulary and body confidence!</p>
+    </div>
+  </div>
+
+  <!-- Music Audio Element -->
+  <audio id="background-music" loop muted>
+    <source src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="music-toggle-button" class="music-toggle-absolute">&#128263;</button>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script src="js/organs.js"></script>
+  <script src="js/musicControl.js"></script>
+  <script src="js/globalImageLoader.js" defer></script>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Teachings.AI</p>
+
+    <!-- Footer Navigation -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
+      <a href="/about.html" class="blog-button">About</a>
+      <a href="/privacy-policy.html" class="blog-button">Privacy</a>
+      <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
+      <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
+         class="feedback-button">📩 Contact Us</a>
+    </nav>
+
+    <p class="footer-description">
+      Teachings.AI helps kids learn alphabets, numbers, body parts, and more with interactive games, worksheets, 
+      and fun activities. Designed for elementary and early learners, our resources make science and literacy joyful 
+      and effective.
+    </p>
+  </footer>
+</body>
+</html>
