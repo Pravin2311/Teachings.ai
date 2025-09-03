@@ -271,5 +271,58 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
 >
 🔔
 </a>
+<!-- Update Popup -->
+<div id="updatePopup" class="popup">
+  <div class="popup-content">
+    <h2 id="popupTitle"></h2>
+    <p id="popupMessage"></p>
+    <button id="popupCTA" style="display:none;">View Now</button>
+    <br>
+    <button id="closePopup">Close</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("/updates.json")
+    .then(res => res.json())
+    .then(data => {
+      const lastSeen = localStorage.getItem("lastAnnouncementSeen");
+
+      if (lastSeen !== data.id) {
+        // Insert content
+        document.getElementById("popupTitle").textContent = data.title;
+        document.getElementById("popupMessage").textContent = data.message;
+
+        // CTA button
+        const ctaBtn = document.getElementById("popupCTA");
+        if (data.link) {
+          ctaBtn.style.display = "inline-block";
+          ctaBtn.onclick = () => { window.location.href = data.link; };
+        }
+
+        // Show popup
+        const popup = document.getElementById("updatePopup");
+        popup.style.display = "flex";
+        document.body.style.overflow = "hidden"; // stop background scroll
+
+        // Close popup
+        document.getElementById("closePopup").onclick = () => {
+          popup.style.display = "none";
+          document.body.style.overflow = "";
+          localStorage.setItem("lastAnnouncementSeen", data.id);
+        };
+
+        // Auto-hide after 10s
+        setTimeout(() => {
+          popup.style.display = "none";
+          document.body.style.overflow = "";
+          localStorage.setItem("lastAnnouncementSeen", data.id);
+        }, 10000);
+      }
+    })
+    .catch(err => console.error("Update check failed:", err));
+});
+</script>
+
 </body>
 </html>

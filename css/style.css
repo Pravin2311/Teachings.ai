@@ -446,3 +446,90 @@ html, body {
         border-radius: 8px;
     }
   }
+
+  /* Popup overlay */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Popup box */
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease-out;
+  font-family: Arial, sans-serif;
+}
+
+/* Text */
+.popup-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.popup-content p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Buttons */
+#popupCTA, #closePopup {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 280px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#popupCTA {
+  background: #28a745;
+  color: #fff;
+}
+#popupCTA:active {
+  background: #218838;
+}
+
+#closePopup {
+  background: #ff7b00;
+  color: #fff;
+}
+#closePopup:active {
+  background: #e56f00;
+}
+
+/* Animation */
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile full-width optimization */
+@media (max-width: 480px) {
+  .popup-content {
+    width: 100%;
+    border-radius: 0;
+    max-width: none;
+    height: auto;
+  }
+  .popup-content h2 {
+    font-size: 1.2rem;
+  }
+  .popup-content p {
+    font-size: 1rem;
+  }
+}
