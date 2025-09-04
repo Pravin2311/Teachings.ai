@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const imageBasePath = CDN_BASE + 'assets/images/alphabets/';
   const audioBasePath = CDN_BASE + 'assets/audio/alphabets/';
   const audioFormat = '.mp3?v=2'; // keep for cache-busting if you use a CDN
-  const imageFormats = ['.jpeg', '.png', '.webp']; // try these in order
+ const imageFormats = ['.png?v=2', '.jpg?v=2', '.jpeg?v=2', '.webp?v=2'];
 
   const exampleWords = {
     A: 'Apple', B: 'Ball', C: 'Cat', D: 'Dog', E: 'Elephant', F: 'Fish', G: 'Goat',
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error('Could not load image for', currentLetter, err);
       const fallbackText = document.createElement('p');
-      fallbackText.textContent = `Image for ${currentLetter} not found. Add ${currentLetter}.[jpeg|png|webp] to assets/images/alphabets/`;
+      fallbackText.textContent = `Image for ${currentLetter} not found. Add ${currentLetter}.[jpeg|png|webp|jpg] to assets/images/alphabets/`;
       letterImageContainer.appendChild(fallbackText);
       letterImageContainer.appendChild(canvas);
       const rect = letterImageContainer.getBoundingClientRect();
