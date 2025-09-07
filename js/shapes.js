@@ -1,16 +1,18 @@
+const version = "?v=2"; // increase this number each time you deploy new images
+
 const shapes = [
-  { word: "Circle",     img: CDN + "assets/images/shapes/circle.png" },
-  { word: "Square",     img: CDN + "assets/images/shapes/square.png" },
-  { word: "Triangle",   img: CDN + "assets/images/shapes/triangle.png" },
-  { word: "Rectangle",  img: CDN + "assets/images/shapes/rectangle.png" },
-  { word: "Oval",       img: CDN + "assets/images/shapes/oval.png" },
-  { word: "Star",       img: CDN + "assets/images/shapes/star.png" },
-  { word: "Heart",      img: CDN + "assets/images/shapes/heart.png" },
-  { word: "Hexagon",    img: CDN + "assets/images/shapes/hexagon.png" },
-  { word: "Diamond",    img: CDN + "assets/images/shapes/diamond.png" },
-  { word: "Crescent",   img: CDN + "assets/images/shapes/crescent.png" },
-  { word: "Pentagon",   img: CDN + "assets/images/shapes/pentagon.png" },
-  { word: "Octagon",    img: CDN + "assets/images/shapes/octagon.png" }
+  { word: "Circle",    img: CDN + "assets/images/shapes/circle.png" + version },
+  { word: "Square",    img: CDN + "assets/images/shapes/square.png" + version },
+  { word: "Triangle",  img: CDN + "assets/images/shapes/triangle.png" + version },
+  { word: "Rectangle", img: CDN + "assets/images/shapes/rectangle.png" + version },
+  { word: "Oval",      img: CDN + "assets/images/shapes/oval.png" + version },
+  { word: "Star",      img: CDN + "assets/images/shapes/star.png" + version },
+  { word: "Heart",     img: CDN + "assets/images/shapes/heart.png" + version },
+  { word: "Hexagon",   img: CDN + "assets/images/shapes/hexagon.png" + version },
+  { word: "Diamond",   img: CDN + "assets/images/shapes/diamond.png" + version },
+  { word: "Crescent",  img: CDN + "assets/images/shapes/crescent.png" + version },
+  { word: "Pentagon",  img: CDN + "assets/images/shapes/pentagon.png" + version },
+  { word: "Octagon",   img: CDN + "assets/images/shapes/octagon.png" + version }
 ];
   
   let currentShape;
