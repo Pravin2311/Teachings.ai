@@ -1,7 +1,7 @@
 {
   "id": "2025-09-build-words",
   "title": "📚 New Module!",
-  "image": "assets/images/ph-seg.png",
   "message": "Our Build Words Phonic learning module is now live 🚀 Try it out today!",
+  "image": "assets/images/ph-seg.png",
   "link": "/phonic-segmenting.html"
 }
