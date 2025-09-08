@@ -62,6 +62,8 @@ const urlsToCache = [
   '/assets/images/app_icon_512.png',
   '/assets/audio/background_music.mp3',
   '/assets/audio/click.mp3',
+  '/assets/images/ph-seg.png',
+  '/updates.json',
 
   // ———————————— CSS —————————————
   '/css/style.css',

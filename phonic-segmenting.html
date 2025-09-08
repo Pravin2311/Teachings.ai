@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
@@ -12,7 +14,7 @@
   <meta property="og:title" content="Phonics Fun — Build the Word! 🎈">
   <meta property="og:description" content="A fun, colorful phonics game for kids to learn reading by building words. Drag, tap, and listen! Perfect for preschool & kindergarten.">
   <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/phonics/preview.png">
-  <meta property="og:url" content="https://yourwebsite.com/phonics-game">
+  <meta property="og:url" content="https://teachings.ai/phonics-game">
   <meta property="og:site_name" content="Teachings.ai - Kids Learning Games">
   <meta property="og:locale" content="en_US">
 
@@ -31,10 +33,8 @@
     "@type": "EducationalGame",
     "name": "Phonics Fun — Build the Word!",
     "description": "An interactive phonics game for young children to practice segmenting and building CVC words. Features drag-and-drop tiles, audio support, and instant feedback.",
-    "url": "https://yourwebsite.com/phonics-game",
-    "image": [
-      "https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/phonics/preview.png"
-    ],
+    "url": "https://teachings.ai/phonics-game",
+    "image": "https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/phonics/preview.png",
     "author": {
       "@type": "Organization",
       "name": "Teachings.ai",
@@ -101,7 +101,7 @@
       background: linear-gradient(135deg, #ffebf3 0%, #d4f0ff 100%);
       color: #333;
       touch-action: manipulation;
-      overflow-x: hidden; /* 🔥 Prevents horizontal scroll */
+      overflow-x: hidden;
     }
 
     .app {
@@ -109,7 +109,6 @@
       max-width: 100vw;
       margin: 0 auto;
       padding: 16px;
-      overflow: hidden;
     }
 
     header {
@@ -141,17 +140,12 @@
     .stage {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
     }
 
     @media (min-width: 768px) {
       .stage {
         grid-template-columns: 1fr 1fr;
       }
-    }
-
-    .left, .right {
-      width: 100%;
     }
 
     .picture {
@@ -189,18 +183,12 @@
       transition: all 0.2s;
       min-width: 90px;
       flex: 1 1 auto;
-      white-space: nowrap;
-    }
-
-    button:active {
-      transform: translateY(2px);
     }
 
     button.secondary {
       background: transparent;
       color: var(--accent-2);
       border: 2px solid #c8e4ff;
-      box-shadow: none;
     }
 
     .boxes {
@@ -326,8 +314,8 @@
       animation: pop 0.5s ease-out;
     }
   </style>
-  </script>
-  <!-- Google Analytics 4 (gtag.js) -->
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -337,7 +325,8 @@
   </script>
 </head>
 <body>
-    <button class="back-button" onclick="window.location.href='phonics.html'">Back</button>
+  <button class="back-button" onclick="window.location.href='phonics.html'">Back</button>
+
   <div class="app">
     <header>
       <div class="card" style="padding:10px 14px; border-radius:14px; font-size:28px;">🎈</div>
@@ -353,7 +342,6 @@
         <div class="word-controls">
           <button id="playWord">🔊 Word</button>
           <button id="playParts">🔈 Letters</button>
-          <button id="next" class="secondary">➡️ Next</button>
         </div>
 
         <div class="boxes" id="boxes" aria-live="polite"></div>
@@ -363,19 +351,12 @@
       <div class="card right">
         <div style="font-weight:800; margin-bottom:10px; font-size:20px; color:#ff6b9d;">🔤 Letter Tiles</div>
         <div class="tiles" id="tiles"></div>
-
-        <div class="meta">
-          <div class="hint">Drag or tap a tile, then tap a box!</div>
-          <div style="display:flex; gap:12px;">
-            <button id="check" class="secondary">✅ Check</button>
-            <button id="reset" class="secondary">🔄 Reset</button>
-          </div>
-        </div>
+        
+        <div class="hint">Drag or tap a tile, then tap a box!</div>
       </div>
     </div>
 
     <div class="confetti" id="confetti"></div>
-
     <footer class="card">🌈 Happy Learning, Superstar! 🌈</footer>
   </div>
 
@@ -386,7 +367,7 @@
       { word: "ball", img: CDN + "assets/images/phonics/ball.png", parts: ["b", "a", "l", "l"], sounds: [CDN + "assets/audio/phonics/B.mp3", CDN + "assets/audio/phonics/A.mp3", CDN + "assets/audio/phonics/L.mp3", CDN + "assets/audio/phonics/L.mp3"] },
       { word: "egg", img: CDN + "assets/images/phonics/egg.png", parts: ["e", "g", "g"], sounds: [CDN + "assets/audio/phonics/E.mp3", CDN + "assets/audio/phonics/G.mp3", CDN + "assets/audio/phonics/G.mp3"] },
       { word: "fish", img: CDN + "assets/images/phonics/fish.png", parts: ["f", "i", "s", "h"], sounds: [CDN + "assets/audio/phonics/F.mp3", CDN + "assets/audio/phonics/I.mp3", CDN + "assets/audio/phonics/S.mp3", CDN + "assets/audio/phonics/H.mp3"] },
-      { word: "goat", img: CDN + "assets/images/phonics/goat.png", parts: ["g", "o", "a", "t"], sounds: [CDN + "assets/audio/phonics/G.mp3", CDN + "assets/audio/phonics/O.mp3", CDN + "assets/audio/phonics/A.mp3",  CDN + "assets/audio/phonics/T.mp3"] },
+      { word: "goat", img: CDN + "assets/images/phonics/goat.png", parts: ["g", "o", "a", "t"], sounds: [CDN + "assets/audio/phonics/G.mp3", CDN + "assets/audio/phonics/O.mp3", CDN + "assets/audio/phonics/A.mp3", CDN + "assets/audio/phonics/T.mp3"] },
       { word: "hat", img: CDN + "assets/images/phonics/hat.png", parts: ["h", "a", "t"], sounds: [CDN + "assets/audio/phonics/H.mp3", CDN + "assets/audio/phonics/A.mp3", CDN + "assets/audio/phonics/T.mp3"] },
       { word: "ice", img: CDN + "assets/images/phonics/ice.png", parts: ["i", "c", "e"], sounds: [CDN + "assets/audio/phonics/I.mp3", CDN + "assets/audio/phonics/C.mp3", CDN + "assets/audio/phonics/E.mp3"] },
       { word: "jug", img: CDN + "assets/images/phonics/jug.png", parts: ["j", "u", "g"], sounds: [CDN + "assets/audio/phonics/J.mp3", CDN + "assets/audio/phonics/U.mp3", CDN + "assets/audio/phonics/G.mp3"] },
@@ -407,9 +388,6 @@
     const tilesEl = document.getElementById('tiles');
     const playWord = document.getElementById('playWord');
     const playParts = document.getElementById('playParts');
-    const nextBtn = document.getElementById('next');
-    const checkBtn = document.getElementById('check');
-    const resetBtn = document.getElementById('reset');
     const feedback = document.getElementById('feedback');
     const confetti = document.getElementById('confetti');
 
@@ -424,7 +402,6 @@
       tilesEl.innerHTML = '';
       state.filled = Array(item.parts.length).fill('');
 
-      // Create boxes
       item.parts.forEach((p, i) => {
         const b = document.createElement('div');
         b.className = 'box';
@@ -433,14 +410,11 @@
         b.addEventListener('click', () => {
           if (selectedTile && !b.textContent) {
             fillBox(b, selectedTile.dataset.value);
-            selectedTile = null;
-            updateTiles();
           }
         });
         boxesEl.appendChild(b);
       });
 
-      // Create tiles
       const shuffled = shuffle(item.parts.slice());
       shuffled.forEach(t => {
         const el = document.createElement('div');
@@ -452,21 +426,11 @@
         el.addEventListener('click', () => {
           selectedTile = el;
           feedback.textContent = `🔤 ${t.toUpperCase()} selected! Tap a box.`;
-          updateTiles();
         });
         tilesEl.appendChild(el);
       });
 
-      updateTiles();
       feedback.textContent = '🔤 Pick a letter to start!';
-    }
-
-    function updateTiles() {
-      document.querySelectorAll('.tile').forEach(t => {
-        t.style.borderColor = t === selectedTile ? '#ff6b9d' : '';
-        t.style.borderWidth = t === selectedTile ? '3px' : '';
-        t.style.borderStyle = 'solid';
-      });
     }
 
     function onTilePointerDown(e) {
@@ -499,10 +463,17 @@
             nearest = b;
           }
         });
-        if (nearest && minD < 120) {
-          fillBox(nearest, el.dataset.value);
-          selectedTile = null;
-          updateTiles();
+
+        if (nearest) {
+          const val = el.dataset.value;
+          const expected = nearest.dataset.accept;
+          if (val === expected) {
+            fillBox(nearest, val);
+          } else {
+            feedback.textContent = '❌ Oops! That doesn’t go here!';
+            new Audio(CDN + 'assets/audio/phonics/wrong.mp3').play();
+            setTimeout(() => feedback.textContent = '', 1000);
+          }
         }
       };
       document.addEventListener('pointermove', move);
@@ -512,70 +483,37 @@
     function fillBox(box, val) {
       const i = Number(box.dataset.index);
       const item = words[idx];
-      if (val === item.parts[i]) {
-        state.filled[i] = val;
-        box.textContent = val.toUpperCase();
-        box.classList.add('filled');
-        new Audio(CDN + 'assets/audio/phonics/pop.mp3').play();
-      } else {
-        feedback.textContent = '❌ Not quite!';
-        setTimeout(() => {}, 800);
+      state.filled[i] = val;
+      box.textContent = val.toUpperCase();
+      box.classList.add('filled');
+      new Audio(CDN + 'assets/audio/phonics/pop.mp3').play();
+
+      // Check if all boxes are filled
+      if (state.filled.every(Boolean)) {
+        const isCorrect = item.parts.every((p, i) => state.filled[i] === p);
+        if (isCorrect) {
+          feedback.textContent = `🎉 "${item.word}"!`;
+          new Audio(CDN + "assets/audio/phonics/correct.mp3").play();
+
+          // Speak the full word (fixed typo)
+          const utterance = new SpeechSynthesisUtterance(item.word);
+          utterance.rate = 1;
+          utterance.pitch = 1.1;
+          window.speechSynthesis.speak(utterance);
+
+          // Confetti!
+          burstConfetti();
+
+          // Auto-next after 1.8 seconds
+          setTimeout(() => {
+            idx = (idx + 1) % words.length;
+            render();
+          }, 1800);
+        } else {
+          feedback.textContent = '❌ Try again!';
+          new Audio(CDN + "assets/audio/phonics/wrong.mp3").play();
+        }
       }
-    }
-
-    function checkAnswer() {
-      const item = words[idx];
-      const correct = item.parts.every((p, i) => state.filled[i] === p);
-      if (correct) {
-        feedback.textContent = '🎉 YES! You did it!';
-        playAudioSequence(item.sounds);
-        new Audio(CDN + "assets/audio/phonics/correct.mp3").play();
-        burstConfetti();
-      } else {
-        feedback.textContent = '❌ Try again!';
-        new Audio(CDN + "assets/audio/phonics/wrong.mp3").play();
-      }
-    }
-
-    function resetSlots() {
-      const item = words[idx];
-      state.filled = Array(item.parts.length).fill('');
-      document.querySelectorAll('.box').forEach(b => {
-        b.textContent = '';
-        b.classList.remove('filled');
-      });
-      feedback.textContent = '🔄 All reset! Try again!';
-    }
-
-    function nextWord() {
-      idx = (idx + 1) % words.length;
-      render();
-    }
-
-    playWord.addEventListener('click', () => {
-      const utterance = new SpeechSynthesisUtterance(words[idx].word);
-      utterance.rate = 0.8;
-      utterance.pitch = 1.2;
-      window.speechSynthesis.speak(utterance);
-      feedback.textContent = `🗣️ "${words[idx].word}"`;
-    });
-
-    playParts.addEventListener('click', () => {
-      const item = words[idx];
-      playAudioSequence(item.sounds);
-      feedback.textContent = `🔊 Listening to sounds...`;
-    });
-
-    nextBtn.addEventListener('click', nextWord);
-    checkBtn.addEventListener('click', checkAnswer);
-    resetBtn.addEventListener('click', resetSlots);
-
-    function playAudioSequence(arr) {
-      let delay = 0;
-      arr.forEach(src => {
-        setTimeout(() => { new Audio(src).play(); }, delay);
-        delay += 900;
-      });
     }
 
     function burstConfetti() {
@@ -589,6 +527,25 @@
         setTimeout(() => s.remove(), 2500);
       }
     }
+
+    playWord.addEventListener('click', () => {
+      const item = words[idx];
+      const utterance = new SpeechSynthesisUtterance(item.word);
+      utterance.rate = 0.8;
+      utterance.pitch = 1.2;
+      window.speechSynthesis.speak(utterance);
+      feedback.textContent = `🗣️ "${item.word}"`;
+    });
+
+    playParts.addEventListener('click', () => {
+      const item = words[idx];
+      let delay = 0;
+      item.sounds.forEach(src => {
+        setTimeout(() => { new Audio(src).play(); }, delay);
+        delay += 900;
+      });
+      feedback.textContent = `🔊 Listening to sounds...`;
+    });
 
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
