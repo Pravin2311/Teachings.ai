@@ -11,7 +11,7 @@
   <!-- Styles -->
   <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/style.css"></noscript>
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 
 
   <!-- Manifest & PWA -->
@@ -227,6 +227,8 @@
         right: 10px;
       }
     }
+    .module-button .badge{position:absolute;top:-8px;right:8px;background:#ff6b6b;color:white;padding:4px 8px;border-radius:12px;font-size:12px;font-weight:bold;}
+
   </style>
 </head>
 <body>
@@ -255,6 +257,7 @@
       <a href="/phonic-words.html" class="module-button" id="phonic-words">💡 Phonic Words</a>
       <a href="/phonic-letter-sound.html" class="module-button" id="phonic-letter-sound">🔠 Phonic Letters</a>
       <a href="/phonic-numbers.html" class="module-button" id="phonic-numbers">🔢 Phonic Numbers</a>
+      <a href="/phonic-segmenting.html" class="module-button" id="phonic-numbers">🤯 Build Words <span class="badge">New</span></a>
     </div>
   </div>
 
@@ -268,9 +271,9 @@
   </audio>
  
   <!-- Scripts -->
-  <script src="/js/script.js" defer></script>
-  <script src="/js/musicControl.js" defer></script>
-  <script src="assets/js/globalImageLoader.js" defer></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/musicControl.js" defer></script>
+  <script src="js/globalImageLoader.js" defer></script>
 
    <!-- Footer -->
 <footer class="site-footer">
