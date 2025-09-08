@@ -494,10 +494,10 @@
             fillBox(nearest, val);
           } else {
             feedback.textContent = '❌ Oops! That doesn’t go here!';
-            new Audio(CDN + 'assets/audio/phonics/wrong.mp3').play();
+            new Audio(CDN + 'assets/audio/math_feedback/wrong.mp3').play();
             setTimeout(() => feedback.textContent = '', 1000);
           }
-        }
+        } 
       };
       document.addEventListener('pointermove', move);
       document.addEventListener('pointerup', up);
@@ -516,7 +516,7 @@
         const isCorrect = item.parts.every((p, i) => state.filled[i] === p);
         if (isCorrect) {
           feedback.textContent = `🎉 "${item.word}"!`;
-          new Audio(CDN + "assets/audio/phonics/correct.mp3").play();
+          new Audio(CDN + "assets/audio/math_feedback/correct.mp3").play();
 
           // Speak the full word (fixed typo)
           const utterance = new SpeechSynthesisUtterance(item.word);
