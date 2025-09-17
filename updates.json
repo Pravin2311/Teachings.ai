@@ -1,7 +1,7 @@
 {
-  "id": "2025-09-build-words",
+  "id": "2025-09-reels",
   "title": "📚 New Module!",
-  "message": "Our Build Words Phonic learning module is now live 🚀 Try it out today!",
-  "image": "assets/images/ph-seg.png",
-  "link": "/phonic-segmenting.html"
+  "message": "Our Educational reels module is now live 🚀 Try it out today!",
+  "image": "assets/images/reels.png",
+  "link": "/reels.html"
 }
