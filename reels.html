@@ -12,7 +12,7 @@
       height: 100%;
       overflow-x: hidden;
       font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', system-ui, -apple-system, sans-serif;
-      touch-action: manipulation;
+      touch-action: pan-y; /* Allows vertical swipe, prevents zoom */
     }
 
     body {
@@ -96,34 +96,6 @@
       100% { box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6); }
     }
 
-    /* 🏠 Home Button */
-    #homeBtn {
-      position: fixed;
-      top: 750px;
-      left: 350px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #000;
-      border: none;
-      border-radius: 50px;
-      width: 50px;
-      height: 50px;
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      cursor: pointer;
-      z-index: 99999;
-      transition: all 0.2s ease;
-      pointer-events: auto;
-    }
-
-    #homeBtn:hover {
-      transform: scale(1.1);
-      background: white;
-    }
-
     /* Volume Confirmation Icon */
     #volumeIcon {
       position: fixed;
@@ -168,8 +140,39 @@
     }
     body.sound-enabling #playSoundBtn,
     body.sound-enabling #volumeIcon,
-    body.sound-enabling #homeBtn {
+    body.sound-enabling .sideButtons button {
       pointer-events: auto;
+    }
+
+    /* ✅ FIXED: Clean, non-overlapping side buttons */
+    .sideButtons {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 99999; /* Ensure above tap blocker */
+    }
+
+    .sideButtons button {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    .sideButtons button:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -182,8 +185,11 @@
   <!-- 🎵 Sound Button -->
   <button id="playSoundBtn">🔊 Turn On Sound!</button>
 
-  <!-- 🏠 Home Button -->
-  <button id="homeBtn" title="Back to Home">🏠</button>
+  <!-- ✅ FIXED: Side buttons container - no overlap -->
+  <div class="sideButtons">
+    <button id="homeBtn" title="Go to Home">🏠</button>
+    <button id="shareBtn" title="Share this Reel">📤</button>
+  </div>
 
   <!-- 🎶 Volume Confirmation -->
   <div id="volumeIcon">🎶 Sound On!</div>
@@ -247,11 +253,8 @@
                     },
                     'onStateChange': (event) => {
                       if (event.data === YT.PlayerState.PLAYING) {
-                        if (!soundEnabled) {
-                          event.target.mute();
-                        } else {
-                          event.target.unMute();
-                        }
+                        if (!soundEnabled) event.target.mute();
+                        else event.target.unMute();
                       }
                     }
                   }
@@ -273,10 +276,7 @@
         if (players[index]) {
           if (entry.isIntersecting) {
             players[index].playVideo();
-            // ✅ Auto-unmute if global sound is enabled
-            if (soundEnabled) {
-              players[index].unMute();
-            }
+            if (soundEnabled) players[index].unMute(); // ✅ Auto-unmute if sound enabled
           } else {
             players[index].pauseVideo();
           }
@@ -290,16 +290,32 @@
     function loadYouTubeAPI() {
       apiLoaded = true;
       const tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api"; // ✅ NO TRAILING SPACES
+      tag.src = "https://www.youtube.com/iframe_api";
       tag.async = true;
       document.head.appendChild(tag);
     }
 
-    // 🔊 Sound Button Handler — Plays current video + enables future autoplay with sound
+    function getCurrentReelIframe() {
+      let best = null;
+      let bestRatio = 0;
+      document.querySelectorAll('.reel').forEach(reel => {
+        const rect = reel.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+        const ratio = visible / rect.height;
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          best = reel.querySelector('iframe');
+        }
+      });
+      return best;
+    }
+
+    // 🔊 Sound Button Handler — MOBILE SAFE
     const playSoundBtn = document.getElementById('playSoundBtn');
     const volumeIcon = document.getElementById('volumeIcon');
     const tapBlocker = document.getElementById('tapBlocker');
     const homeBtn = document.getElementById('homeBtn');
+    const shareBtn = document.getElementById('shareBtn');
 
     playSoundBtn.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -308,14 +324,13 @@
       if (!soundEnabled) {
         document.body.classList.add('sound-enabling');
 
-        soundEnabled = true; // ✅ GLOBAL SOUND FLAG ENABLED
+        soundEnabled = true;
         playSoundBtn.style.display = 'none';
         volumeIcon.classList.add('show');
 
-        // Remove tap blocker
         document.body.classList.remove('sound-not-enabled');
 
-        // ✅ PLAY & UNMUTE CURRENTLY VISIBLE VIDEO
+        // Play & unmute first visible video
         const visibleReel = document.querySelector('.reel');
         if (visibleReel) {
           const index = Number(visibleReel.dataset.index);
@@ -336,19 +351,66 @@
     homeBtn.addEventListener('click', (event) => {
       event.stopPropagation();
       event.preventDefault();
-      window.location.href = "https://teachings.ai"; // ✅ NO TRAILING SPACES
+      window.location.href = "https://teachings.ai"; // ✅ Clean URL
     });
 
-    // Prevent zooming
+    // 📤 Share Button
+    shareBtn.addEventListener('click', async (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
+      const iframe = getCurrentReelIframe();
+      const currentVideo = iframe ? iframe.src : window.location.href;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Check this video!',
+            url: currentVideo
+          });
+        } catch (err) {
+          console.log('Share canceled or failed:', err);
+        }
+      } else {
+        navigator.clipboard.writeText(currentVideo)
+          .then(() => {
+            alert('Link copied to clipboard! 📋\nShare it with friends.');
+          })
+          .catch(err => {
+            alert('Failed to copy link. Please share manually.');
+          });
+      }
+    });
+
+    
+    // Prevent pinch-to-zoom only
     document.addEventListener('touchmove', function(event) {
-      if (event.scale !== 1) { event.preventDefault(); }
+      if (event.scale !== 1) {
+        event.preventDefault();
+      }
     }, { passive: false });
 
+    // Allow swipes — only prevent double-tap if NOT swiping
     let lastTouchEnd = 0;
+    let lastTouchY = 0;
+    let isSwiping = false;
+
+    document.addEventListener('touchstart', function(event) {
+      lastTouchY = event.touches[0].clientY;
+      isSwiping = false;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function(event) {
+      const currentY = event.touches[0].clientY;
+      if (Math.abs(currentY - lastTouchY) > 10) { // Threshold for swipe
+        isSwiping = true;
+      }
+    }, { passive: true });
+
     document.addEventListener('touchend', function(event) {
       const now = new Date().getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
+      if (now - lastTouchEnd <= 300 && !isSwiping) {
+        event.preventDefault(); // Only prevent if it's a double-tap, not a swipe
       }
       lastTouchEnd = now;
     }, { passive: false });
