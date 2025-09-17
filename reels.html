@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
   <title>Teachings.ai Reels</title>
   <style>
     html, body {
@@ -10,15 +10,20 @@
       padding: 0;
       background: #000;
       height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', system-ui, -apple-system, sans-serif;
+      touch-action: manipulation; /* Improves tap responsiveness */
     }
+
     body {
       display: flex;
       flex-direction: column;
       overflow-y: scroll;
       scroll-snap-type: y mandatory;
       -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
     }
+
     .reel {
       position: relative;
       height: 100vh;
@@ -29,30 +34,160 @@
       scroll-snap-align: start;
       background: #000;
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
+      background: #111;
     }
+
+    /* 🛡️ Overlay to block iframe interaction until sound is enabled */
+    #tapBlocker {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99990;
+      pointer-events: none; /* Initially transparent to events */
+      background: transparent;
+    }
+
+    body.sound-not-enabled #tapBlocker {
+      pointer-events: auto; /* Blocks taps from reaching iframes */
+      background: transparent; /* Still invisible */
+    }
+
+    /* 🎵 Floating Sound Button */
+    #playSoundBtn {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 24px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+      cursor: pointer;
+      z-index: 99999;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: pulse 2s infinite;
+      pointer-events: auto;
+      /* Prevent text selection */
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #playSoundBtn:hover,
+    #playSoundBtn:active {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.8);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6); }
+      50% { box-shadow: 0 6px 30px rgba(255, 217, 61, 0.9); }
+      100% { box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6); }
+    }
+
+    /* 🏠 Home Button */
+    #homeBtn {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 99999;
+      transition: all 0.2s ease;
+      pointer-events: auto;
+    }
+
+    #homeBtn:hover {
+      transform: scale(1.1);
+      background: white;
+    }
+
+    /* Volume Confirmation Icon */
     #volumeIcon {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      font-size: 30px;
-      color: #fff;
+      top: 24px;
+      right: 24px;
+      font-size: 36px;
+      color: #FFD93D;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.5s ease;
+      z-index: 99998;
+      text-shadow: 0 0 10px rgba(255, 217, 61, 0.8);
       pointer-events: none;
-      z-index: 999;
     }
+
     #volumeIcon.show {
       opacity: 1;
+      animation: bounce 0.8s;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+      40% {transform: translateY(-10px);}
+      60% {transform: translateY(-5px);}
+    }
+
+    /* Loading placeholder */
+    .reel::before {
+      content: "Loading video...";
+      color: #aaa;
+      font-size: 18px;
+      position: absolute;
+      z-index: 10;
+    }
+
+    .reel.loaded::before {
+      display: none;
+    }
+
+    /* Extra safety */
+    body.sound-enabling * {
+      pointer-events: none;
+    }
+    body.sound-enabling #playSoundBtn,
+    body.sound-enabling #volumeIcon,
+    body.sound-enabling #homeBtn {
+      pointer-events: auto;
     }
   </style>
 </head>
-<body>
+<body class="sound-not-enabled">
   <div id="reels"></div>
-  <div id="volumeIcon">🔊</div>
+
+  <!-- 🛡️ Tap Blocker Overlay -->
+  <div id="tapBlocker"></div>
+
+  <!-- 🎵 Sound Button -->
+  <button id="playSoundBtn">🔊 Turn On Sound!</button>
+
+  <!-- 🏠 Home Button -->
+  <button id="homeBtn" title="Back to Home">🏠</button>
+
+  <!-- 🎶 Volume Confirmation -->
+  <div id="volumeIcon">🎶 Sound On!</div>
 
   <script>
     const videoList = [
@@ -64,70 +199,149 @@
     ];
 
     const reelsContainer = document.getElementById("reels");
-    videoList.forEach(id => {
-      const div = document.createElement("div");
-      div.className = "reel";
-      div.innerHTML = `
-        <iframe 
-          src="https://www.youtube.com/embed/${id}?enablejsapi=1&mute=1&playsinline=1"
-          allow="autoplay; encrypted-media; fullscreen"
-          allowfullscreen></iframe>`;
-      reelsContainer.appendChild(div);
-    });
-
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-
     let players = [];
     let readyPlayers = [];
     let soundEnabled = false;
+    let apiLoaded = false;
 
-    function onYouTubeIframeAPIReady() {
-      const iframes = document.querySelectorAll("iframe");
-      iframes.forEach((iframe, i) => {
-        players[i] = new YT.Player(iframe, {
-          events: {
-            'onReady': (event) => {
-              readyPlayers.push(event.target);
+    // Lazy-load iframes
+    const reelElements = [];
+
+    videoList.forEach((id, index) => {
+      const div = document.createElement("div");
+      div.className = "reel";
+      div.dataset.videoId = id;
+      div.dataset.index = index;
+      reelsContainer.appendChild(div);
+      reelElements.push(div);
+    });
+
+    // Load Observer
+    const loadObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const div = entry.target;
+          const id = div.dataset.videoId;
+          const index = div.dataset.index;
+
+          if (!div.querySelector('iframe')) {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${id}?enablejsapi=1&mute=1&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`;
+            iframe.allow = "autoplay; encrypted-media; fullscreen";
+            iframe.allowFullscreen = true;
+            iframe.loading = "lazy";
+            div.appendChild(iframe);
+
+            if (!apiLoaded) {
+              loadYouTubeAPI();
             }
+
+            const checkAPI = setInterval(() => {
+              if (window.YT && typeof YT.Player === 'function') {
+                clearInterval(checkAPI);
+                players[index] = new YT.Player(iframe, {
+                  events: {
+                    'onReady': (event) => {
+                      readyPlayers.push(event.target);
+                      div.classList.add('loaded');
+                    },
+                    'onStateChange': (event) => {
+                      if (event.data === YT.PlayerState.PLAYING) {
+                        if (!soundEnabled) event.target.mute();
+                        else event.target.unMute();
+                      }
+                    }
+                  }
+                });
+              }
+            }, 100);
           }
-        });
+          loadObserver.unobserve(div);
+        }
       });
+    }, { rootMargin: "200px" });
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const index = [...document.querySelectorAll(".reel")].indexOf(entry.target);
-          if (players[index]) {
-            if (entry.isIntersecting) {
-              players[index].playVideo();
-              if (soundEnabled) players[index].unMute();
-            } else {
-              players[index].pauseVideo();
-            }
+    reelElements.forEach(el => loadObserver.observe(el));
+
+    // Play/Pause Observer
+    const playObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const index = Number(entry.target.dataset.index);
+        if (players[index]) {
+          if (entry.isIntersecting) {
+            players[index].playVideo();
+          } else {
+            players[index].pauseVideo();
           }
-        });
-      }, { threshold: 0.7 });
+        }
+      });
+    }, { threshold: 0.6 });
 
-      document.querySelectorAll(".reel").forEach(reel => observer.observe(reel));
+    reelElements.forEach(el => playObserver.observe(el));
+
+    function loadYouTubeAPI() {
+      apiLoaded = true;
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      tag.async = true;
+      document.head.appendChild(tag);
     }
 
+    // 🔊 Sound Button Handler — MOBILE SAFE
+    const playSoundBtn = document.getElementById('playSoundBtn');
     const volumeIcon = document.getElementById('volumeIcon');
+    const tapBlocker = document.getElementById('tapBlocker');
+    const homeBtn = document.getElementById('homeBtn');
 
-    document.addEventListener('click', () => {
+    playSoundBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+
       if (!soundEnabled) {
+        document.body.classList.add('sound-enabling');
+
         soundEnabled = true;
-        readyPlayers.forEach(p => p.unMute());
-        showVolumeIcon();
+        playSoundBtn.style.display = 'none';
+        volumeIcon.classList.add('show');
+
+        // Remove tap blocker — now safe to interact with iframes
+        document.body.classList.remove('sound-not-enabled');
+
+        // Unmute playing videos
+        readyPlayers.forEach(p => {
+          if (p.getPlayerState() === YT.PlayerState.PLAYING) {
+            p.unMute();
+          }
+        });
+
+        setTimeout(() => {
+          volumeIcon.classList.remove('show');
+          document.body.classList.remove('sound-enabling');
+        }, 2000);
       }
     });
 
-    function showVolumeIcon() {
-      volumeIcon.classList.add('show');
-      setTimeout(() => {
-        volumeIcon.classList.remove('show');
-      }, 2000);
-    }
+    // 🏠 Home Button — Replace with your actual homepage URL
+    homeBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      event.preventDefault();
+      // ✅ Redirect to your homepage — UPDATE THIS URL
+      window.location.href = "https://teachings.ai"; // or "https://teachings.ai"
+    });
+
+    // Prevent zooming
+    document.addEventListener('touchmove', function(event) {
+      if (event.scale !== 1) { event.preventDefault(); }
+    }, { passive: false });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+      const now = new Date().getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, { passive: false });
   </script>
 </body>
 </html>
