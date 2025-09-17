@@ -4,14 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
   <title>Teachings.ai Reels</title>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XVYMNTZLQJ');
-  </script>
   <style>
     html, body {
       margin: 0;
@@ -20,7 +12,7 @@
       height: 100%;
       overflow-x: hidden;
       font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', system-ui, -apple-system, sans-serif;
-      touch-action: pan-y; /* Allows vertical swipe, prevents zoom */
+      touch-action: pan-y;
     }
 
     body {
@@ -48,6 +40,38 @@
       height: 100%;
       border: none;
       background: #111;
+    }
+
+    /* 🌀 Enhanced Loading UI */
+    .reel::before {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 4px solid #333;
+      border-top: 4px solid #FFD93D;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      z-index: 20;
+    }
+
+    .reel span.loader-text {
+      position: absolute;
+      bottom: 40px;
+      color: #aaa;
+      font-size: 16px;
+      text-align: center;
+      z-index: 20;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .reel.loaded::before,
+    .reel.loaded span.loader-text {
+      display: none;
     }
 
     /* 🛡️ Overlay to block iframe interaction until sound is enabled */
@@ -129,29 +153,6 @@
       60% {transform: translateY(-5px);}
     }
 
-    /* Loading placeholder */
-    .reel::before {
-      content: "Loading video...";
-      color: #aaa;
-      font-size: 18px;
-      position: absolute;
-      z-index: 10;
-    }
-
-    .reel.loaded::before {
-      display: none;
-    }
-
-    /* Extra safety */
-    body.sound-enabling * {
-      pointer-events: none;
-    }
-    body.sound-enabling #playSoundBtn,
-    body.sound-enabling #volumeIcon,
-    body.sound-enabling .sideButtons button {
-      pointer-events: auto;
-    }
-
     /* ✅ FIXED: Clean, non-overlapping side buttons */
     .sideButtons {
       position: fixed;
@@ -161,7 +162,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      z-index: 99999; /* Ensure above tap blocker */
+      z-index: 99999;
     }
 
     .sideButtons button {
@@ -193,7 +194,7 @@
   <!-- 🎵 Sound Button -->
   <button id="playSoundBtn">🔊 Turn On Sound!</button>
 
-  <!-- ✅ FIXED: Side buttons container - no overlap -->
+  <!-- Side buttons -->
   <div class="sideButtons">
     <button id="homeBtn" title="Go to Home">🏠</button>
     <button id="shareBtn" title="Share this Reel">📤</button>
@@ -217,7 +218,7 @@
     let soundEnabled = false;
     let apiLoaded = false;
 
-    // Lazy-load iframes
+    // Lazy-load iframes with retry & preloading
     const reelElements = [];
 
     videoList.forEach((id, index) => {
@@ -225,11 +226,18 @@
       div.className = "reel";
       div.dataset.videoId = id;
       div.dataset.index = index;
+      
+      // Add loading text
+      const loaderText = document.createElement('span');
+      loaderText.className = 'loader-text';
+      loaderText.textContent = 'Loading video...';
+      div.appendChild(loaderText);
+      
       reelsContainer.appendChild(div);
       reelElements.push(div);
     });
 
-    // Load Observer
+    // Load Observer with retry logic
     const loadObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -238,66 +246,97 @@
           const index = div.dataset.index;
 
           if (!div.querySelector('iframe')) {
-            const iframe = document.createElement('iframe');
-            // ✅ FIXED: Removed extra spaces in URL
-            iframe.src = `https://www.youtube.com/embed/${id}?enablejsapi=1&mute=1&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`;
-            iframe.allow = "autoplay; encrypted-media; fullscreen";
-            iframe.allowFullscreen = true;
-            iframe.loading = "lazy";
-            div.appendChild(iframe);
-
-            if (!apiLoaded) {
-              loadYouTubeAPI();
-            }
-
-            const checkAPI = setInterval(() => {
-              if (window.YT && typeof YT.Player === 'function') {
-                clearInterval(checkAPI);
-                players[index] = new YT.Player(iframe, {
-                  events: {
-                    'onReady': (event) => {
-                      readyPlayers.push(event.target);
-                      div.classList.add('loaded');
-                    },
-                    'onStateChange': (event) => {
-                      if (event.data === YT.PlayerState.PLAYING) {
-                        if (!soundEnabled) event.target.mute();
-                        else event.target.unMute();
-                      }
-                    }
-                  }
-                });
-              }
-            }, 100);
+            loadVideoIframe(div, id, index);
           }
           loadObserver.unobserve(div);
         }
       });
-    }, { rootMargin: "200px" });
+    }, { rootMargin: "300px" }); // Start loading earlier
 
-    reelElements.forEach(el => loadObserver.observe(el));
-
-    // Play/Pause Observer — FIXED to auto-unmute if sound is enabled
+    // Preload next reel when current one is playing
     const playObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const index = Number(entry.target.dataset.index);
         if (players[index]) {
           if (entry.isIntersecting) {
             players[index].playVideo();
-            if (soundEnabled) {
-              players[index].unMute(); // ✅ CRITICAL: Unmute if global sound is on
+            if (soundEnabled) players[index].unMute();
+            
+            // ✅ PRELOAD NEXT VIDEO
+            const nextIndex = index + 1;
+            if (nextIndex < reelElements.length && !reelElements[nextIndex].querySelector('iframe')) {
+              const nextId = reelElements[nextIndex].dataset.videoId;
+              loadVideoIframe(reelElements[nextIndex], nextId, nextIndex);
             }
           } else {
             players[index].pauseVideo();
           }
         }
       });
-    }, { threshold: 0.6 });
+    }, { threshold: 0.5 });
 
-    reelElements.forEach(el => playObserver.observe(el));
+    reelElements.forEach(el => {
+      loadObserver.observe(el);
+      playObserver.observe(el);
+    });
+
+    function loadVideoIframe(div, id, index) {
+      const iframe = document.createElement('iframe');
+      // ✅ FIXED: Removed extra spaces + added quality hint for faster start
+      iframe.src = `https://www.youtube.com/embed/${id}?enablejsapi=1&mute=1&playsinline=1&origin=${encodeURIComponent(window.location.origin)}&vq=small`;
+      iframe.allow = "autoplay; encrypted-media; fullscreen";
+      iframe.allowFullscreen = true;
+      iframe.loading = "eager"; // Prioritize loading
+      div.appendChild(iframe);
+
+      if (!apiLoaded) {
+        loadYouTubeAPI();
+      }
+
+      let attempts = 0;
+      const maxAttempts = 3;
+
+      const checkAPI = setInterval(() => {
+        if (window.YT && typeof YT.Player === 'function') {
+          clearInterval(checkAPI);
+          players[index] = new YT.Player(iframe, {
+            events: {
+              'onReady': (event) => {
+                readyPlayers.push(event.target);
+                div.classList.add('loaded');
+              },
+              'onStateChange': (event) => {
+                if (event.data === YT.PlayerState.PLAYING) {
+                  if (!soundEnabled) event.target.mute();
+                  else event.target.unMute();
+                }
+                // ✅ AUTO-REPLAY CURRENT VIDEO WHEN IT ENDS
+                else if (event.data === YT.PlayerState.ENDED) {
+                  // Seek to start and play again
+                  event.target.seekTo(0);
+                  event.target.playVideo();
+                  if (soundEnabled) event.target.unMute(); // Ensure sound stays on
+                }
+              },
+              'onError': (event) => {
+                if (attempts < maxAttempts) {
+                  attempts++;
+                  console.log(`Retry ${attempts} for video ${id}`);
+                  div.innerHTML = ''; // Clear failed iframe
+                  loadVideoIframe(div, id, index); // Retry
+                } else {
+                  div.querySelector('span.loader-text').textContent = 'Failed to load. Swipe for next.';
+                }
+              }
+            }
+          });
+        }
+      }, 200); // Check more frequently
+    }
 
     // ✅ FIXED: Clean API URL
     function loadYouTubeAPI() {
+      if (apiLoaded) return;
       apiLoaded = true;
       const tag = document.createElement('script');
       tag.src = "https://www.youtube.com/iframe_api";
@@ -320,7 +359,7 @@
       return best;
     }
 
-    // 🔊 Sound Button Handler — MOBILE SAFE
+    // 🔊 Sound Button Handler
     const playSoundBtn = document.getElementById('playSoundBtn');
     const volumeIcon = document.getElementById('volumeIcon');
     const tapBlocker = document.getElementById('tapBlocker');
@@ -333,11 +372,9 @@
 
       if (!soundEnabled) {
         document.body.classList.add('sound-enabling');
-
         soundEnabled = true;
         playSoundBtn.style.display = 'none';
         volumeIcon.classList.add('show');
-
         document.body.classList.remove('sound-not-enabled');
 
         // Play & unmute first visible video
@@ -347,6 +384,9 @@
           if (players[index]) {
             players[index].playVideo();
             players[index].unMute();
+          } else if (visibleReel.dataset.videoId) {
+            // If not loaded yet, trigger load
+            loadVideoIframe(visibleReel, visibleReel.dataset.videoId, index);
           }
         }
 
@@ -382,25 +422,24 @@
           console.log('Share canceled or failed:', err);
         }
       } else {
-        navigator.clipboard.writeText(currentVideo)
-          .then(() => {
-            alert('Link copied to clipboard! 📋\nShare it with friends.');
-          })
-          .catch(err => {
-            alert('Failed to copy link. Please share manually.');
-          });
+        // Fallback for iOS/Safari
+        const el = document.createElement('textarea');
+        el.value = currentVideo;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert('Link copied to clipboard! 📋\nShare it with friends.');
       }
     });
 
-    
-    // Prevent pinch-to-zoom only
+    // Touch handlers for swipe
     document.addEventListener('touchmove', function(event) {
       if (event.scale !== 1) {
         event.preventDefault();
       }
     }, { passive: false });
 
-    // Allow swipes — only prevent double-tap if NOT swiping
     let lastTouchEnd = 0;
     let lastTouchY = 0;
     let isSwiping = false;
@@ -412,7 +451,7 @@
 
     document.addEventListener('touchmove', function(event) {
       const currentY = event.touches[0].clientY;
-      if (Math.abs(currentY - lastTouchY) > 10) { // Threshold for swipe
+      if (Math.abs(currentY - lastTouchY) > 10) {
         isSwiping = true;
       }
     }, { passive: true });
@@ -420,7 +459,7 @@
     document.addEventListener('touchend', function(event) {
       const now = new Date().getTime();
       if (now - lastTouchEnd <= 300 && !isSwiping) {
-        event.preventDefault(); // Only prevent if it's a double-tap, not a swipe
+        event.preventDefault();
       }
       lastTouchEnd = now;
     }, { passive: false });
