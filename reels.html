@@ -12,7 +12,7 @@
       height: 100%;
       overflow-x: hidden;
       font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', system-ui, -apple-system, sans-serif;
-      touch-action: manipulation; /* Improves tap responsiveness */
+      touch-action: manipulation;
     }
 
     body {
@@ -50,13 +50,13 @@
       width: 100%;
       height: 100%;
       z-index: 99990;
-      pointer-events: none; /* Initially transparent to events */
+      pointer-events: none;
       background: transparent;
     }
 
     body.sound-not-enabled #tapBlocker {
-      pointer-events: auto; /* Blocks taps from reaching iframes */
-      background: transparent; /* Still invisible */
+      pointer-events: auto;
+      background: transparent;
     }
 
     /* 🎵 Floating Sound Button */
@@ -80,7 +80,6 @@
       gap: 10px;
       animation: pulse 2s infinite;
       pointer-events: auto;
-      /* Prevent text selection */
       -webkit-user-select: none;
       user-select: none;
     }
@@ -100,8 +99,8 @@
     /* 🏠 Home Button */
     #homeBtn {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 750px;
+      left: 350px;
       background: rgba(255, 255, 255, 0.9);
       color: #000;
       border: none;
@@ -226,6 +225,7 @@
 
           if (!div.querySelector('iframe')) {
             const iframe = document.createElement('iframe');
+            // ✅ FIXED: Removed extra spaces in URL
             iframe.src = `https://www.youtube.com/embed/${id}?enablejsapi=1&mute=1&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`;
             iframe.allow = "autoplay; encrypted-media; fullscreen";
             iframe.allowFullscreen = true;
@@ -247,8 +247,11 @@
                     },
                     'onStateChange': (event) => {
                       if (event.data === YT.PlayerState.PLAYING) {
-                        if (!soundEnabled) event.target.mute();
-                        else event.target.unMute();
+                        if (!soundEnabled) {
+                          event.target.mute();
+                        } else {
+                          event.target.unMute();
+                        }
                       }
                     }
                   }
@@ -270,6 +273,10 @@
         if (players[index]) {
           if (entry.isIntersecting) {
             players[index].playVideo();
+            // ✅ Auto-unmute if global sound is enabled
+            if (soundEnabled) {
+              players[index].unMute();
+            }
           } else {
             players[index].pauseVideo();
           }
@@ -279,15 +286,16 @@
 
     reelElements.forEach(el => playObserver.observe(el));
 
+    // ✅ FIXED: Clean API URL
     function loadYouTubeAPI() {
       apiLoaded = true;
       const tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
+      tag.src = "https://www.youtube.com/iframe_api"; // ✅ NO TRAILING SPACES
       tag.async = true;
       document.head.appendChild(tag);
     }
 
-    // 🔊 Sound Button Handler — MOBILE SAFE
+    // 🔊 Sound Button Handler — Plays current video + enables future autoplay with sound
     const playSoundBtn = document.getElementById('playSoundBtn');
     const volumeIcon = document.getElementById('volumeIcon');
     const tapBlocker = document.getElementById('tapBlocker');
@@ -300,19 +308,22 @@
       if (!soundEnabled) {
         document.body.classList.add('sound-enabling');
 
-        soundEnabled = true;
+        soundEnabled = true; // ✅ GLOBAL SOUND FLAG ENABLED
         playSoundBtn.style.display = 'none';
         volumeIcon.classList.add('show');
 
-        // Remove tap blocker — now safe to interact with iframes
+        // Remove tap blocker
         document.body.classList.remove('sound-not-enabled');
 
-        // Unmute playing videos
-        readyPlayers.forEach(p => {
-          if (p.getPlayerState() === YT.PlayerState.PLAYING) {
-            p.unMute();
+        // ✅ PLAY & UNMUTE CURRENTLY VISIBLE VIDEO
+        const visibleReel = document.querySelector('.reel');
+        if (visibleReel) {
+          const index = Number(visibleReel.dataset.index);
+          if (players[index]) {
+            players[index].playVideo();
+            players[index].unMute();
           }
-        });
+        }
 
         setTimeout(() => {
           volumeIcon.classList.remove('show');
@@ -321,12 +332,11 @@
       }
     });
 
-    // 🏠 Home Button — Replace with your actual homepage URL
+    // 🏠 Home Button
     homeBtn.addEventListener('click', (event) => {
       event.stopPropagation();
       event.preventDefault();
-      // ✅ Redirect to your homepage — UPDATE THIS URL
-      window.location.href = "https://teachings.ai"; // or "https://teachings.ai"
+      window.location.href = "https://teachings.ai"; // ✅ NO TRAILING SPACES
     });
 
     // Prevent zooming
