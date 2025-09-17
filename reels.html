@@ -269,14 +269,16 @@
 
     reelElements.forEach(el => loadObserver.observe(el));
 
-    // Play/Pause Observer
+    // Play/Pause Observer — FIXED to auto-unmute if sound is enabled
     const playObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const index = Number(entry.target.dataset.index);
         if (players[index]) {
           if (entry.isIntersecting) {
             players[index].playVideo();
-            if (soundEnabled) players[index].unMute(); // ✅ Auto-unmute if sound enabled
+            if (soundEnabled) {
+              players[index].unMute(); // ✅ CRITICAL: Unmute if global sound is on
+            }
           } else {
             players[index].pauseVideo();
           }
