@@ -5,66 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rhyming & Listening Game - Teachings.AI</title>
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Fun rhyming game for kids to practice phonics and listening skills. Learn rhyming words with audio, images, and interactive feedback. Perfect for preschool and kindergarten.">
-  <meta name="keywords" content="rhyming game, phonics for kids, listening game, preschool learning, kindergarten phonics, word games, Teachings.ai">
-  <meta name="author" content="Teachings.ai">
+  <!-- Google Fonts for Kids -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@600&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:title" content="Rhyming & Listening Game 🎵">
-  <meta property="og:description" content="Interactive rhyming game for young learners. Listen, match, and learn with fun sounds and images!">
-  <meta property="og:image" content="https://teachings.ai/assets/images/rhyming-game-preview.png">
-  <meta property="og:url" content="https://teachings.ai/rhyming-game.html">
-  <meta property="og:type" content="website">
-
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalGame",
-    "name": "Rhyming & Listening Game",
-    "description": "An interactive game for children to practice rhyming words through listening and matching. Designed for early literacy development.",
-    "url": "https://teachings.ai/rhyming-game.html",
-    "image": "https://teachings.ai/assets/images/rhyming-game-preview.png",
-    "author": {
-      "@type": "Organization",
-      "name": "Teachings.ai"
-    },
-    "audience": {
-      "@type": "EducationalAudience",
-      "ageRange": "3-6"
-    },
-    "learningResourceType": "Interactive Game",
-    "isAccessibleForFree": true,
-    "inLanguage": "en",
-    "datePublished": "2025-04-05",
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/InStock",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
-<link rel="stylesheet" href="css/style.css" />
   <style>
     :root {
-      --bg: #fff8f0;
-      --accent: #ff6f61;
+      --bg: #fffaf3;
+      --accent: #ff7b54;
+      --accent-light: #ffd6c0;
       --correct: #c8f7c5;
       --wrong: #f7c5c5;
-      --card: #fff;
       --text: #333;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-family: 'Comic Neue', 'Baloo Bhaijaan 2', cursive;
       background: var(--bg);
       display: flex;
       flex-direction: column;
@@ -73,114 +28,114 @@
       min-height: 100vh;
       color: var(--text);
     }
-
     h1 {
+      font-family: 'Baloo Bhaijaan 2', cursive;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: center;
-      font-size: 28px;
+      font-size: 32px;
+      text-shadow: 2px 2px 0px #ffd6c0;
     }
-
     .score {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 10px;
-      text-align: center;
+      font-size: 18px;
+      margin-bottom: 12px;
+      background: var(--accent-light);
+      padding: 6px 14px;
+      border-radius: 20px;
     }
-
     .btn-play {
-      padding: 14px 24px;
+      padding: 14px 22px;
       background: var(--accent);
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 25px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
-      box-shadow: 0 4px 10px rgba(255,111,97,0.3);
-      transition: all 0.2s;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
     }
-
     .btn-play:active {
-      transform: translateY(2px);
+      transform: scale(0.95);
     }
-
     .feedback {
       font-size: 20px;
       font-weight: bold;
       margin: 10px 0;
-      min-height: 28px;
+      min-height: 30px;
       text-align: center;
       color: var(--accent);
     }
-
-    .options {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      max-width: 600px;
-      margin-top: 10px;
-    }
-
+  .options {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 650px;
+  margin-top: 20px;
+}
     .option {
-      width: 80px;
-      height: 40px;
-      background: #ffe4e1;
-      border-radius: 16px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 10px;
-      text-align: center;
-    }
+  background: #ffeedd;
+  border-radius: 50px;
+  padding: 14px 22px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  min-width: 100px;
+}
 
+.option:hover {
+  transform: scale(1.05);
+  background: #ffd6c0;
+}
+
+.option.correct {
+  background: #c8f7c5 !important;
+  transform: scale(1.15);
+}
+
+.option.wrong {
+  background: #f7c5c5 !important;
+  animation: shake 0.3s;
+}
     .option img {
-      width: 60px;
-      height: 60px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
       margin-bottom: 8px;
     }
-
     .option span {
       font-weight: bold;
+      font-size: 18px;
     }
-
-    .option.correct { background: var(--correct); transform: scale(1.05); }
-    .option.wrong { background: var(--wrong); }
-
-    #parent-tips {
-      max-width: 500px;
-      margin-top: 30px;
-      background: #fff8e7;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    .option.correct {
+      background: var(--correct);
+      transform: scale(1.1);
     }
-
-    #parent-tips h2 {
-      color: var(--accent);
-      font-size: 20px;
-      margin-bottom: 12px;
-      text-align: center;
+    .option.wrong {
+      background: var(--wrong);
     }
-
-    #parent-tips ul {
-      padding-left: 20px;
-      line-height: 1.6;
-      color: #333;
-      font-size: 15px;
+    .option:hover {
+      transform: translateY(-4px);
     }
-
-    #parent-tips li {
-      margin-bottom: 8px;
+    @media (max-width: 480px) {
+      .option {
+        width: 90px;
+        padding: 8px;
+      }
+      .option img {
+        width: 70px;
+        height: 70px;
+      }
+      .option span {
+        font-size: 16px;
+      }
+      h1 { font-size: 26px; }
     }
-
     .confetti {
       position: fixed;
       top: 0;
@@ -191,160 +146,156 @@
       z-index: 1000;
       overflow: hidden;
     }
-
     .confetti span {
       position: absolute;
       top: -30px;
-      font-size: 28px;
+      font-size: 24px;
       animation: fall 1500ms linear forwards;
     }
-
     @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0;
-      }
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
+    .back-button {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--accent-light);
+      border: none;
+      font-size: 20px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+    @keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
   </style>
 </head>
 <body>
-<button class="back-button" onclick="window.location.href='games.html'">⬅</button>
-  <h1>Phonic Rhyming 🎵</h1>
-  <div class="score">Score: <span id="score">0</span> / 5</div>
+  <button class="back-button" onclick="window.location.href='games.html'">⬅</button>
+  <h1>🎵 Rhyming Fun</h1>
+  <div class="score">Score: <span id="score">0</span> / <span id="total"></span></div>
   <div class="feedback" id="feedback"></div>
   <button class="btn-play" id="play-sound">🔊 Play Word</button>
 
   <div class="options" id="options-container"></div>
-
-  <div id="parent-tips">
-    <h2>🎯 Parenting Tips</h2>
-    <ul>
-      <li>🗣️ Ask your child to say the word aloud before choosing.</li>
-      <li>🔁 Let them listen 2–3 times — repetition builds confidence.</li>
-      <li>🧢 Use real objects: show a “hat” when practicing rhymes.</li>
-      <li>🌟 Praise effort: “I love how you’re thinking!”</li>
-      <li>⏱️ Keep it fun: 5–10 minutes is perfect!</li>
-    </ul>
-  </div>
-
-  <!-- Confetti -->
   <div class="confetti" id="confetti"></div>
 
-  <!-- Audio -->
+  <!-- Feedback sounds -->
   <audio id="correct-sound" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
   <audio id="wrong-sound" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/math_feedback/wrong.mp3" preload="auto"></audio>
 
   <script>
-    const CDN = 'https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/';
+    const CDN = "https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/";
 
-    // Rhyming game data with images
+    // ✅ Rhyming dataset
     const items = [
-      { word: 'cat', audio: CDN + 'assets/audio/animals/cat.mp3', image: CDN + 'assets/images/animals/cat.png', options: ['hat', 'dog', 'pen'], correct: 'hat' },
-      { word: 'sun', audio: CDN + 'assets/audio/animals/dog.mp3', image: CDN + 'assets/images/animals/dog.png', options: ['fun', 'ball', 'frog'], correct: 'frog' },
-      { word: 'tree', audio: CDN + 'assets/audio/colors/red.mp3', image: CDN + 'assets/images/colors/red.png', options: ['bed', 'car', 'hat'], correct: 'bed' },
-      { word: 'frog', audio: CDN + 'assets/audio/animals/cow.mp3', image: CDN + 'assets/images/animals/cow.png', options: ['log', 'wow', 'sun'], correct: 'wow' },
-      { word: 'ball', audio: CDN + 'assets/audio/bodyparts/nose.mp3', image: CDN + 'assets/images/bodyparts/nose.png', options: ['fall', 'dog', 'rose'], correct: 'rose' },
-  ];
+      { word: "cat", audio: CDN+"assets/audio/animals/cat.mp3", image: CDN+"assets/images/animals/cat.png", options: ["hat","dog","pen"], correct: "hat" },
+      { word: "dog", audio: CDN+"assets/audio/animals/dog.mp3", image: CDN+"assets/images/animals/dog.png", options: ["log","cow","bat"], correct: "log" },
+      { word: "cow", audio: CDN+"assets/audio/animals/cow.mp3", image: CDN+"assets/images/animals/cow.png", options: ["now","pig","hen"], correct: "now" },
+      { word: "bear", audio: CDN+"assets/audio/animals/bear.mp3", image: CDN+"assets/images/animals/bear.png", options: ["chair","lion","toy"], correct: "chair" },
+      { word: "lion", audio: CDN+"assets/audio/animals/lion.mp3", image: CDN+"assets/images/animals/lion.png", options: ["iron","cat","fish"], correct: "iron" },
+      { word: "tiger", audio: CDN+"assets/audio/animals/tiger.mp3", image: CDN+"assets/images/animals/tiger.png", options: ["bigger","zebra","frog"], correct: "bigger" },
+      { word: "zebra", audio: CDN+"assets/audio/animals/zebra.mp3", image: CDN+"assets/images/animals/zebra.png", options: ["cobra","bear","cow"], correct: "cobra" },
+      { word: "duck", audio: CDN+"assets/audio/birds/duck.mp3", image: CDN+"assets/images/birds/duck.png", options: ["luck","hen","dog"], correct: "luck" },
+      { word: "hen", audio: CDN+"assets/audio/birds/hen.mp3", image: CDN+"assets/images/birds/hen.png", options: ["pen","owl","cat"], correct: "pen" },
+      { word: "owl", audio: CDN+"assets/audio/birds/owl.mp3", image: CDN+"assets/images/birds/owl.png", options: ["howl","dog","bat"], correct: "howl" }
+    ];
 
-    // Preload audio
-    items.forEach(item => {
-      item.audioObj = new Audio(item.audio);
-    });
+    items.forEach(i => i.audioObj = new Audio(i.audio));
 
-    const optionsContainer = document.getElementById('options-container');
-    const correctAudio = document.getElementById('correct-sound');
-    const wrongAudio = document.getElementById('wrong-sound');
-    const feedbackEl = document.getElementById('feedback');
-    const scoreEl = document.getElementById('score');
-    const confetti = document.getElementById('confetti');
+    const totalQ = items.length;
+    document.getElementById("total").textContent = totalQ;
 
-    let currentItem;
+    const optionsContainer = document.getElementById("options-container");
+    const feedbackEl = document.getElementById("feedback");
+    const scoreEl = document.getElementById("score");
+    const confetti = document.getElementById("confetti");
+    const correctAudio = document.getElementById("correct-sound");
+    const wrongAudio = document.getElementById("wrong-sound");
+
+    let currentIndex = 0;
     let score = 0;
-    const maxScore = 5;
 
     function shuffleArray(arr) {
       return [...arr].sort(() => Math.random() - 0.5);
     }
 
     function burstConfetti() {
-      const emojis = ['🎉', '✨', '🌟', '🎈', '⭐', '🌈'];
-      for (let i = 0; i < 25; i++) {
-        const s = document.createElement('span');
-        s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        s.style.left = (Math.random() * 90 + 5) + '%';
-        s.style.animationDuration = (1000 + Math.random() * 1000) + 'ms';
+      const emojis = ["🎉","✨","🌟","🎈","⭐","🌈"];
+      for (let i=0;i<25;i++) {
+        const s=document.createElement("span");
+        s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        s.style.left = (Math.random()*90+5)+"%";
+        s.style.animationDuration = (1000+Math.random()*1000)+"ms";
         confetti.appendChild(s);
-        setTimeout(() => s.remove(), 2000);
+        setTimeout(()=>s.remove(),2000);
       }
     }
 
     function nextQuestion() {
-      if (score >= maxScore) {
-        feedbackEl.textContent = '🏆 You did it! Great job!';
-        setTimeout(() => {
-          alert('🎉 You’ve mastered rhyming! Play again tomorrow!');
-          score = 0;
-          scoreEl.textContent = score;
+      if (currentIndex >= totalQ) {
+        feedbackEl.innerHTML = `🏆 Game Over! Your score: ${score}/${totalQ}<br>`;
+        const restartBtn = document.createElement("button");
+        restartBtn.textContent = "Play Again";
+        restartBtn.className = "btn-play";
+        restartBtn.onclick = () => {
+          score=0; currentIndex=0;
+          scoreEl.textContent=score;
           nextQuestion();
-        }, 1000);
+          restartBtn.remove();
+        };
+        feedbackEl.appendChild(restartBtn);
         return;
       }
 
-      currentItem = items[Math.floor(Math.random() * items.length)];
-      const shuffledOptions = shuffleArray([...currentItem.options]);
+      const item = items[currentIndex];
+      const shuffled = shuffleArray(item.options);
 
-      optionsContainer.innerHTML = '';
-      feedbackEl.textContent = '';
-
-      shuffledOptions.forEach(opt => {
-        const div = document.createElement('div');
-        div.className = 'option';
-        div.dataset.word = opt;
-        div.dataset.correct = opt === currentItem.correct;
-
-        // Add image from CDN
+      optionsContainer.innerHTML="";
+      feedbackEl.textContent="";
+      shuffled.forEach(opt=>{
+        const div=document.createElement("div");
+        div.className="option";
+        div.dataset.word=opt;
         div.innerHTML = `
           <img src="${CDN}assets/images/rhymes/${opt}.png" 
                alt="${opt}" 
-               onerror="this.src='https://via.placeholder.com/60?text=${opt}'">
-          <span>${opt}</span>
-        `;
-
-        div.addEventListener('click', () => {
-          if (opt === currentItem.correct) {
-            div.classList.add('correct');
-            feedbackEl.textContent = `🎉 Yes! "${opt}" rhymes with "${currentItem.word}"!`;
-            correctAudio.currentTime = 0;
+               onerror="this.src='https://via.placeholder.com/80?text=${opt}'">
+          <span>${opt}</span>`;
+        div.onclick=()=>{
+          if(opt===item.correct){
+            div.classList.add("correct");
+            feedbackEl.textContent=`🎉 Yes! "${opt}" rhymes with "${item.word}"!`;
             correctAudio.play();
-            score++;
-            scoreEl.textContent = score;
+            score++; scoreEl.textContent=score;
             burstConfetti();
-            setTimeout(nextQuestion, 1800);
+            setTimeout(()=>{ currentIndex++; nextQuestion(); },1500);
           } else {
-            div.classList.add('wrong');
-            feedbackEl.textContent = `❌ "${opt}" doesn’t rhyme. Try again!`;
-            wrongAudio.currentTime = 0;
+            div.classList.add("wrong");
+            feedbackEl.textContent=`❌ "${opt}" doesn’t rhyme. Try again!`;
             wrongAudio.play();
-            setTimeout(() => nextQuestion(), 1200);
+            setTimeout(()=>{ currentIndex++; nextQuestion(); },1200);
           }
-        });
-
+        };
         optionsContainer.appendChild(div);
       });
 
-      // Play word audio
-      currentItem.audioObj.currentTime = 0;
-      currentItem.audioObj.play();
+      // auto play word
+      item.audioObj.currentTime=0;
+      item.audioObj.play();
     }
 
-    document.getElementById('play-sound').addEventListener('click', () => {
-      if (currentItem) {
-        currentItem.audioObj.currentTime = 0;
-        currentItem.audioObj.play();
-      }
-    });
+    document.getElementById("play-sound").onclick=()=>{
+      const item=items[currentIndex];
+      if(item){ item.audioObj.currentTime=0; item.audioObj.play(); }
+    };
 
-    // Start game
     nextQuestion();
   </script>
 </body>
