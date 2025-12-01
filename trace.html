@@ -1,9 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-<title>Tracing: Letters & Numbers — Option B (Mask + Skeleton) — Fixed</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Tracing Letters & Numbers for Kids | Learn ABC & 123</title>
+<meta name="description" content="Fun and interactive tracing app for kids to learn ABC letters and numbers with smooth drawing, glowing effects, and a happy bell reward on completion. Perfect for toddlers, preschool, and kindergarten." />
+<meta name="keywords" content="tracing letters, tracing numbers, ABC tracing, kids learning, preschool tracing game, alphabet tracing app, number tracing, kids handwriting practice" />
+<meta name="author" content="teachings.ai" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="apple-touch-icon" href="/assets/images/app_icon_192.png" />
+
 <style>
   :root{ --bg:#eef6ff; --panel:#fff; --muted:#6b7280; --card-shadow:0 8px 28px rgba(11,35,71,0.06); }
   html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased;}
@@ -31,14 +40,14 @@
 </head>
 <body>
 <header>
-  <h1>Tracing: Letters & Numbers (Option B)</h1>
+  <h1>Teachings.ai</h1>
   <div class="controls" role="group" aria-label="controls">
     <label for="symbolSelect" class="small">Symbol</label>
     <select id="symbolSelect" aria-label="Choose letter or number"></select>
     <button id="resetTop" class="btn reset" style="padding:8px 10px;font-size:13px;">Reset</button>
   </div>
 </header>
-
+<h1>Tracing: Letters & Numbers</h1>
 <main class="stage" role="main" aria-live="polite">
   <div class="canvas-wrap" id="canvasWrap" aria-hidden="false">
     <canvas id="traceCanvas" class="main-canvas" aria-label="Tracing canvas"></canvas>
@@ -50,23 +59,25 @@
     <button id="nextBtn" class="btn next" aria-label="Next symbol">Next ▶︎</button>
   </div>
 
-  <div class="hint">Trace the grey outline only inside the letter. When fully traced the letter will glow and you’ll hear a happy bell.</div>
+  <div class="hint">Trace the grey outline only inside the letter. Reach 100% to see a glow & hear a happy bell 🎵</div>
 </main>
 
-<script>
-/* Option B implementation (fixed):
-   - mask rendering
-   - distance transform (Manhattan) + Zhang-Suen thinning to get skeleton
-   - build polylines from skeleton pixels, sample by arc-length
-   - record user points only inside mask and clip visible strokes
-   - spatial grid for fast nearest checks
-   - require full coverage (100%) with proximity based on local stroke half-width
+<!-- user-provided audio (replace path) -->
+<audio id="happyBell" src="/assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
 
-   BUG FIX: polylines is now declared early to avoid TDZ "Cannot access 'polylines' before initialization" error.
+<script>
+/* Combined fixes:
+   1) Use an <audio> element for custom bell (with WebAudio fallback)
+   2) Cache mask pixels to avoid getImageData calls per-pointer
+   3) Smooth raw strokes for desktop (quadratic segments)
+   4) Normalize canvas coordinate handling using ctx.setTransform(dpr,0,0,dpr,0,0)
+   5) store userPoints in device pixels to match mask sampling
 */
 
+const COVERAGE_REQUIRED = 1.00; // require full coverage
+const COVERAGE_TOLERANCE = 0.001; // allow tiny float error
 const symbols = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"];
-const colors = { "A":"#FF6B6B","B":"#6BCB77","C":"#4D96FF","D":"#FFD166","E":"#845EC2","F":"#FF9671","G":"#2EC4B6","H":"#FF6AD5","I":"#B0A8B9","J":"#00C2A8","K":"#9BE7C4","L":"#FFB3C1","M":"#FDE68A","N":"#A78BFA","O":"#F472B6","P":"#60A5FA","Q":"#F59E0B","R":"#34D399","S":"#F97316","T":"#7C3AED","U":"#06B6D4","V":"#EF476F","W":"#10B981","X":"#FF8A65","Y":"#3B82F6","Z":"#C084FC","0":"#FF9AA2","1":"#FFB7B2","2":"#FFDAC1","3":"#E2F0CB","4":"#B5EAD7","5":"#C7CEEA","6":"#A0CED9","7":"#FFD1DC","8":"#F3EAC2","9":"#D6EAF8" };
+const colors = {"A":"#FF6B6B","B":"#6BCB77","C":"#4D96FF","D":"#FFD166","E":"#845EC2","F":"#FF9671","G":"#2EC4B6","H":"#FF6AD5","I":"#B0A8B9","J":"#00C2A8","K":"#9BE7C4","L":"#FFB3C1","M":"#FDE68A","N":"#A78BFA","O":"#F472B6","P":"#60A5FA","Q":"#F59E0B","R":"#34D399","S":"#F97316","T":"#7C3AED","U":"#06B6D4","V":"#EF476F","W":"#10B981","X":"#FF8A65","Y":"#3B82F6","Z":"#C084FC","0":"#FF9AA2","1":"#FFB7B2","2":"#FFDAC1","3":"#E2F0CB","4":"#B5EAD7","5":"#C7CEEA","6":"#A0CED9","7":"#FFD1DC","8":"#F3EAC2","9":"#D6EAF8"};
 
 const wrap = document.getElementById('canvasWrap');
 const mainCanvas = document.getElementById('traceCanvas');
@@ -78,7 +89,7 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const resetTop = document.getElementById('resetTop');
 
-// hidden canvases
+/* hidden raw canvas and mask (device pixels) */
 const rawCanvas = document.createElement('canvas');
 const rawCtx = rawCanvas.getContext('2d', { willReadFrequently: true });
 const maskCanvas = document.createElement('canvas');
@@ -87,23 +98,17 @@ const maskCtx = maskCanvas.getContext('2d', { willReadFrequently: true });
 let cssW, cssH, dpr;
 let current = 'A';
 let drawing = false;
-let last = null;
+let lastCSS = null; // last CSS coords for smoothing
 let progressMet = false;
-let totalDrawDistance = 0;
-let userPoints = []; // device pixels inside mask
-let targetSamples = null; // {x,y, localHalfWidth}
-let skeletonPixels = null; // binary skeleton
-let distanceMap = null; // integer Manhattan distance to background
+let totalDrawDistance = 0; // device pixels only inside mask
+let userPoints = [];       // device-pixel points inside mask
+let targetSamples = null;  // device-pixel samples
+let maskImageData = null;  // Uint8ClampedArray RGBA device pixels
 
-// IMPORTANT: declare polylines early to avoid TDZ errors when functions are called before later code execution
-let polylines = [];
-
-// tuning
-const proximityFactor = 1.15; // multiplier for half-width
-const sampleStepCss = 3;      // denser sampling
-const minDistanceAbsoluteCss = 12; // allow shorter travel
-const COVERAGE_REQUIRED = 1.00; // require full coverage
-const COVERAGE_TOLERANCE = 0.002;
+// tuning (more forgiving for 100% requirement)
+const proximityFactor = 1.4; // generous radius
+const sampleStepCss = 3;     // dense sampling (CSS px)
+const minDistanceAbsoluteCss = 16; // CSS px
 
 let audioCtx = null;
 function ensureAudioCtx(){ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume().catch(()=>{}); }
@@ -115,7 +120,7 @@ prevBtn.addEventListener('click', ()=> changeSymbol(-1));
 nextBtn.addEventListener('click', ()=> changeSymbol(1));
 resetTop.addEventListener('click', resetAll);
 
-/* Resize / DPR handling */
+/* Resize / DPR handling: set canvas size in device pixels, but set transform so drawing uses CSS px directly */
 function resize(){
   const rect = wrap.getBoundingClientRect();
   dpr = window.devicePixelRatio || 1;
@@ -126,23 +131,24 @@ function resize(){
   mainCanvas.style.height = cssH + 'px';
   mainCanvas.width = Math.floor(cssW * dpr);
   mainCanvas.height = Math.floor(cssH * dpr);
-  ctx.setTransform(1,0,0,1,0,0);
+  // use transform so we can draw in CSS pixels
+  ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.imageSmoothingEnabled = true;
 
   visibleOverlay.style.width = cssW + 'px';
   visibleOverlay.style.height = cssH + 'px';
   visibleOverlay.width = Math.floor(cssW * dpr);
   visibleOverlay.height = Math.floor(cssH * dpr);
-  overlayCtx.setTransform(1,0,0,1,0,0);
+  overlayCtx.setTransform(dpr,0,0,dpr,0,0);
 
   rawCanvas.width = Math.floor(cssW * dpr);
   rawCanvas.height = Math.floor(cssH * dpr);
-  rawCtx.setTransform(1,0,0,1,0,0);
+  rawCtx.setTransform(dpr,0,0,dpr,0,0);
   rawCtx.imageSmoothingEnabled = true;
 
   maskCanvas.width = Math.floor(cssW * dpr);
   maskCanvas.height = Math.floor(cssH * dpr);
-  maskCtx.setTransform(1,0,0,1,0,0);
+  maskCtx.setTransform(dpr,0,0,dpr,0,0);
   maskCtx.imageSmoothingEnabled = true;
 
   drawSymbol();
@@ -153,302 +159,154 @@ function resize(){
 window.addEventListener('resize', debounce(resize, 120));
 resize();
 
-/* Draw letter + mask */
+/* Draw letter + mask and cache mask pixels */
 function drawSymbol(){
-  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62);
-  const fontPx = Math.floor(fontCSS * dpr);
-  const strokeW = Math.max(10 * dpr, Math.floor(fontPx * 0.08));
-  const cx = mainCanvas.width/2;
-  const cy = mainCanvas.height/2 + Math.floor(fontPx * 0.02);
+  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62); // CSS px
+  const strokeW = Math.max(10, Math.floor(fontCSS * 0.08)); // CSS px
+  const cx = cssW / 2; // CSS coords
+  const cy = cssH / 2 + Math.floor(fontCSS * 0.02);
 
-  ctx.clearRect(0,0,mainCanvas.width, mainCanvas.height);
-  ctx.fillStyle = '#fff'; ctx.fillRect(0,0,mainCanvas.width, mainCanvas.height);
+  // clear main canvas (in device space but transform handles)
+  ctx.clearRect(0,0,cssW, cssH);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0,0,cssW, cssH);
 
   ctx.lineWidth = strokeW; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle = '#cfcfcf';
-  ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.font = `${fontPx}px "Segoe UI", Roboto, Arial, sans-serif`;
+  ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.font = `${fontCSS}px "Segoe UI", Roboto, Arial, sans-serif`;
+  // draw stroked letter (CSS coords)
   ctx.strokeText(current, cx, cy);
 
-  // mask: white where stroke is
-  maskCtx.clearRect(0,0,maskCanvas.width, maskCanvas.height);
-  maskCtx.fillStyle = 'black'; maskCtx.fillRect(0,0,maskCanvas.width, maskCanvas.height);
-  maskCtx.lineWidth = strokeW; maskCtx.lineJoin=ctx.lineJoin; maskCtx.lineCap=ctx.lineCap;
-  maskCtx.strokeStyle = 'white'; maskCtx.textAlign='center'; maskCtx.textBaseline='middle'; maskCtx.font = ctx.font;
+  // mask: white where stroke is (draw same using maskCtx)
+  maskCtx.clearRect(0,0,cssW, cssH);
+  maskCtx.fillStyle = 'black'; maskCtx.fillRect(0,0,cssW, cssH);
+  maskCtx.lineWidth = strokeW; maskCtx.lineJoin = ctx.lineJoin; maskCtx.lineCap = ctx.lineCap;
+  maskCtx.strokeStyle = 'white'; maskCtx.textAlign = 'center'; maskCtx.textBaseline = 'middle'; maskCtx.font = ctx.font;
   maskCtx.strokeText(current, cx, cy);
 
-  // clear overlays
-  rawCtx.clearRect(0,0,rawCanvas.width, rawCanvas.height);
-  overlayCtx.clearRect(0,0,visibleOverlay.width, visibleOverlay.height);
+  // cache mask pixels (device px)
+  try{
+    maskImageData = maskCtx.getImageData(0,0,maskCanvas.width, maskCanvas.height).data;
+  }catch(e){ maskImageData = null; console.warn('mask caching failed', e); }
 
-  // compute distance map and skeleton in background (slightly heavy but okay per symbol)
-  computeDistanceMap();
-  computeSkeleton();
-  buildPolylinesFromSkeleton();
-  targetSamples = buildTargetSamples();
+  // clear raw overlay
+  rawCtx.clearRect(0,0,cssW, cssH);
+  overlayCtx.clearRect(0,0,cssW, cssH);
+
+  targetSamples = null;
 }
 
-/* clear overlays */
+/* clear overlay & metrics */
 function clearOverlay(){
-  rawCtx.clearRect(0,0,rawCanvas.width, rawCanvas.height);
-  overlayCtx.clearRect(0,0,visibleOverlay.width, visibleOverlay.height);
-  rawCtx.lineWidth = Math.max(16 * dpr, Math.floor(Math.min(cssW, cssH) * 0.03 * dpr));
-  rawCtx.lineCap='round'; rawCtx.lineJoin='round'; rawCtx.strokeStyle='rgba(0,0,0,1)'; rawCtx.fillStyle='rgba(0,0,0,1)';
+  rawCtx.clearRect(0,0,cssW, cssH);
+  overlayCtx.clearRect(0,0,cssW, cssH);
+  rawCtx.lineWidth = Math.max(16, Math.floor(Math.min(cssW, cssH) * 0.03)); // CSS px
+  rawCtx.lineCap = 'round'; rawCtx.lineJoin = 'round'; rawCtx.strokeStyle = 'rgba(0,0,0,1)'; rawCtx.fillStyle = 'rgba(0,0,0,1)';
+
   overlayCtx.lineWidth = rawCtx.lineWidth; overlayCtx.lineCap = rawCtx.lineCap; overlayCtx.lineJoin = rawCtx.lineJoin;
-  progressMet = false; totalDrawDistance = 0; userPoints = []; targetSamples = null;
+
+  progressMet = false; totalDrawDistance = 0; userPoints = []; targetSamples = null; lastCSS = null;
 }
 
-/* Pointer handling */
+/* Pointer handlers */
 window.addEventListener('pointerdown', ()=>{ ensureAudioCtx(); }, { once: true });
-
 mainCanvas.style.touchAction = 'none';
-mainCanvas.addEventListener('pointerdown', (e)=>{
-  if(progressMet) return; e.preventDefault();
-  try{ mainCanvas.setPointerCapture && mainCanvas.setPointerCapture(e.pointerId); }catch(_){ }
-  drawing = true; last = getPos(e);
-  rawCtx.beginPath(); rawCtx.moveTo(last.x, last.y); rawCtx.lineTo(last.x, last.y); rawCtx.stroke();
-  if(pointInMask(last.x, last.y)) recordPoint(last);
+
+mainCanvas.addEventListener('pointerdown', (e) => {
+  if(progressMet) return;
+  e.preventDefault();
+  try{ mainCanvas.setPointerCapture && mainCanvas.setPointerCapture(e.pointerId); }catch(_){}
+  drawing = true;
+  const pCSS = getPos(e); // CSS coords
+  // smoothing: start path
+  lastCSS = pCSS;
+  drawSmoothRaw(null, pCSS);
+  // record device-pixel point if inside mask
+  if(pointInMask(pCSS.x, pCSS.y)) recordPointDev(pCSS);
   refreshVisibleOverlay();
 });
-window.addEventListener('pointerup', (e)=>{ if(!drawing) return; try{ mainCanvas.releasePointerCapture && mainCanvas.releasePointerCapture(e.pointerId);}catch(_){ } drawing=false; last=null; checkProgressDistanceBased(); });
-mainCanvas.addEventListener('pointermove', (e)=>{
-  if(!drawing || progressMet) return; const p = getPos(e);
-  rawCtx.lineTo(p.x, p.y); rawCtx.stroke();
-  if(pointInMask(p.x,p.y)){
-    if(userPoints.length>0){ const lp=userPoints[userPoints.length-1]; const dx=p.x-lp.x, dy=p.y-lp.y; totalDrawDistance += Math.sqrt(dx*dx+dy*dy); }
-    recordPoint(p);
-  }
-  last = p; refreshVisibleOverlay(); if(totalDrawDistance > (minDistanceAbsoluteCss * dpr * 0.5)) checkProgressDistanceBased();
+
+window.addEventListener('pointerup', (e) => {
+  if(!drawing) return;
+  try{ mainCanvas.releasePointerCapture && mainCanvas.releasePointerCapture(e.pointerId); }catch(_){}
+  drawing = false; lastCSS = null; checkProgressDistanceBased();
 });
 
-function getPos(evt){ const r = mainCanvas.getBoundingClientRect(); const cssX = evt.clientX - r.left; const cssY = evt.clientY - r.top; return { x: cssX * dpr, y: cssY * dpr }; }
+window.addEventListener('pointercancel', (e) => { try{ mainCanvas.releasePointerCapture && mainCanvas.releasePointerCapture(e.pointerId); }catch(_){} drawing = false; lastCSS = null; });
 
-function pointInMask(px, py){ const x=Math.floor(Math.max(0,Math.min(maskCanvas.width-1,px))); const y=Math.floor(Math.max(0,Math.min(maskCanvas.height-1,py))); try{ const d = maskCtx.getImageData(x,y,1,1).data; return (d[0]+d[1]+d[2])>600; }catch(e){ return false; } }
-
-function recordPoint(pt){ const minSep = Math.max(2*dpr, 6*dpr); if(userPoints.length===0){ userPoints.push(pt); return; } const lp = userPoints[userPoints.length-1]; const dx=pt.x-lp.x, dy=pt.y-lp.y; if(dx*dx+dy*dy >= minSep*minSep) userPoints.push(pt); }
-
-function refreshVisibleOverlay(){ overlayCtx.clearRect(0,0,visibleOverlay.width,visibleOverlay.height); overlayCtx.globalCompositeOperation='source-over'; overlayCtx.drawImage(rawCanvas,0,0); overlayCtx.globalCompositeOperation='destination-in'; overlayCtx.drawImage(maskCanvas,0,0); overlayCtx.globalCompositeOperation='source-over'; }
-
-/* ------------------ Distance map (Manhattan, multi-source BFS) ------------------ */
-function computeDistanceMap(){
-  const w = maskCanvas.width, h = maskCanvas.height;
-  distanceMap = new Int32Array(w*h);
-  const img = maskCtx.getImageData(0,0,w,h).data;
-  const q = [];
-  // initialize: background (black) -> distance 0; foreground (white) -> INF
-  const INF = 1e9;
-  for(let y=0;y<h;y++){
-    for(let x=0;x<w;x++){
-      const i=(y*w+x)*4; const sum = img[i]+img[i+1]+img[i+2];
-      const idx = y*w+x;
-      if(sum > 600){ distanceMap[idx] = INF; } else { distanceMap[idx] = 0; q.push(idx); }
-    }
+mainCanvas.addEventListener('pointermove', (e) => {
+  if(!drawing || progressMet) return;
+  const pCSS = getPos(e);
+  // draw smooth onto rawCtx using CSS coords (transform applied)
+  drawSmoothRaw(lastCSS, pCSS);
+  // if inside mask, update totalDrawDistance and record in device coords
+  if(pointInMask(pCSS.x, pCSS.y)){
+    if(userPoints.length > 0){ const lp = userPoints[userPoints.length - 1]; const dx = pCSS.x * dpr - lp.x, dy = pCSS.y * dpr - lp.y; totalDrawDistance += Math.sqrt(dx*dx + dy*dy); }
+    recordPointDev(pCSS);
   }
-  // BFS expansion (Manhattan distance)
-  for(let qi=0; qi<q.length; qi++){
-    const idx = q[qi]; const x = idx % w, y = Math.floor(idx / w);
-    const base = distanceMap[idx];
-    // neighbors
-    const nb = [ [x-1,y],[x+1,y],[x,y-1],[x,y+1] ];
-    for(const [nx,ny] of nb){ if(nx>=0 && nx<w && ny>=0 && ny<h){ const nidx = ny*w+nx; if(distanceMap[nidx]===INF){ distanceMap[nidx] = base + 1; q.push(nidx); } }}
-  }
-  // Now distanceMap at foreground pixels holds distance to nearest background in Manhattan pixels
-}
+  lastCSS = pCSS;
+  refreshVisibleOverlay();
+  if(totalDrawDistance > (minDistanceAbsoluteCss * dpr * 0.5)) checkProgressDistanceBased();
+});
 
-/* ------------------ Zhang-Suen thinning for skeleton ------------------ */
-function computeSkeleton(){
-  const w=maskCanvas.width, h=maskCanvas.height;
-  const img = maskCtx.getImageData(0,0,w,h).data;
-  // binary image: 1 for foreground (white stroke), 0 for background
-  const bin = new Uint8Array(w*h);
-  for(let y=0;y<h;y++) for(let x=0;x<w;x++){ const i=(y*w+x)*4; bin[y*w+x] = (img[i]+img[i+1]+img[i+2]>600)?1:0; }
+/* helper: get CSS pixel coords relative to canvas */
+function getPos(evt){ const r = mainCanvas.getBoundingClientRect(); const cssX = evt.clientX - r.left; const cssY = evt.clientY - r.top; return { x: cssX, y: cssY }; }
 
-  // Zhang-Suen thinning
-  let changed = true;
-  const toRemove = [];
-  while(changed){ changed = false;
-    // sub-iteration 1
-    toRemove.length=0;
-    for(let y=1;y<h-1;y++){
-      for(let x=1;x<w-1;x++){
-        const p = y*w+x; if(bin[p]===0) continue;
-        const P = getNeighbors(bin,w,x,y);
-        const bp = P.reduce((s,v)=>s+v,0);
-        const ap = transitions(P);
-        if(bp>=2 && bp<=6 && ap===1 && (P[0]*P[2]*P[4]===0) && (P[2]*P[4]*P[6]===0)) toRemove.push(p);
-      }
-    }
-    if(toRemove.length){ changed=true; for(const p of toRemove) bin[p]=0; }
-    // sub-iteration 2
-    toRemove.length=0;
-    for(let y=1;y<h-1;y++){
-      for(let x=1;x<w-1;x++){
-        const p = y*w+x; if(bin[p]===0) continue;
-        const P = getNeighbors(bin,w,x,y);
-        const bp = P.reduce((s,v)=>s+v,0);
-        const ap = transitions(P);
-        if(bp>=2 && bp<=6 && ap===1 && (P[0]*P[2]*P[6]===0) && (P[0]*P[4]*P[6]===0)) toRemove.push(p);
-      }
-    }
-    if(toRemove.length){ changed=true; for(const p of toRemove) bin[p]=0; }
-  }
+/* test if point is inside mask (uses cached maskImageData) - convert CSS coords to device pixel indices */
+function pointInMask(pxCSS, pyCSS){ const ix = Math.floor(pxCSS * dpr); const iy = Math.floor(pyCSS * dpr); const w = maskCanvas.width; if(ix<0||iy<0||ix>=w||iy>=maskCanvas.height) return false; const idx = (iy * w + ix) * 4; try{ if(maskImageData){ const r = maskImageData[idx], g = maskImageData[idx+1], b = maskImageData[idx+2]; return (r + g + b) > 600; } else { const d = maskCtx.getImageData(ix, iy, 1, 1).data; return (d[0] + d[1] + d[2]) > 600; } } catch(e){ return false; } }
 
-  // skeletonPixels as binary Uint8Array
-  skeletonPixels = bin;
-}
+/* record sparse user points in device pixels (convert from CSS coords) */
+function recordPointDev(ptCSS){ const dxDevice = ptCSS.x * dpr; const dyDevice = ptCSS.y * dpr; const minSep = Math.max(2 * dpr, 6 * dpr); if(userPoints.length === 0){ userPoints.push({x: dxDevice, y: dyDevice}); return; } const lp = userPoints[userPoints.length - 1]; const dx = dxDevice - lp.x, dy = dyDevice - lp.y; if(dx*dx + dy*dy >= minSep * minSep) userPoints.push({x:dxDevice, y:dyDevice}); }
 
-function getNeighbors(bin,w,x,y){
-  // 8 neighbors in order: p2..p9 as Zhang-Suen
-  const p2 = bin[(y-1)*w + x];
-  const p3 = bin[(y-1)*w + (x+1)];
-  const p4 = bin[y*w + (x+1)];
-  const p5 = bin[(y+1)*w + (x+1)];
-  const p6 = bin[(y+1)*w + x];
-  const p7 = bin[(y+1)*w + (x-1)];
-  const p8 = bin[y*w + (x-1)];
-  const p9 = bin[(y-1)*w + (x-1)];
-  return [p2,p3,p4,p5,p6,p7,p8,p9];
-}
-function transitions(P){
-  // number of 0->1 transitions in sequence p2,p3,...p9,p2
-  let count=0; for(let i=0;i<8;i++){ const a=P[i], b=P[(i+1)%8]; if(a===0 && b===1) count++; } return count;
-}
+/* refresh visible overlay: raw strokes clipped by mask via destination-in */
+function refreshVisibleOverlay(){ overlayCtx.clearRect(0,0,cssW, cssH); overlayCtx.globalCompositeOperation = 'source-over'; overlayCtx.drawImage(rawCanvas, 0, 0); overlayCtx.globalCompositeOperation = 'destination-in'; overlayCtx.drawImage(maskCanvas, 0, 0); overlayCtx.globalCompositeOperation = 'source-over'; }
 
-/* ------------------ Build polylines from skeleton pixels ------------------ */
-function buildPolylinesFromSkeleton(){
-  polylines = [];
-  const w = maskCanvas.width, h = maskCanvas.height;
-  if(!skeletonPixels) return;
-  const visited = new Uint8Array(w*h);
-  // neighbors 8-connected
-  const dirs = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
-  for(let y=0;y<h;y++){
-    for(let x=0;x<w;x++){
-      const idx = y*w + x; if(skeletonPixels[idx] && !visited[idx]){
-        // start a walk: find endpoints (degree 1) if any; otherwise start here
-        const comp = [];
-        // BFS to collect component pixels
-        const q=[idx]; visited[idx]=1; let qi=0;
-        while(qi<q.length){ const p=q[qi++]; comp.push(p); const px = p%w, py=Math.floor(p/w);
-          for(const d of dirs){ const nx=px+d[0], ny=py+d[1]; if(nx>=0&&nx<w&&ny>=0&&ny<h){ const ni=ny*w+nx; if(skeletonPixels[ni] && !visited[ni]){ visited[ni]=1; q.push(ni); } }}
-        }
-        // build ordered polyline by walking from an endpoint if exists
-        // compute degrees
-        const deg = new Map(); for(const p of comp){ const px=p%w, py=Math.floor(p/w); let c=0; for(const d of dirs){ const nx=px+d[0], ny=py+d[1]; if(nx>=0&&nx<w&&ny>=0&&ny<h){ if(skeletonPixels[ny*w+nx]) c++; } } deg.set(p,c); }
-        // find endpoints (degree==1) prefer them
-        const endpoints = comp.filter(p=>deg.get(p)===1);
-        let start = comp[0]; if(endpoints.length>0) start = endpoints[0];
-        // walk
-        const ordered = []; const used = new Set(); let cur = start; let prev = -1;
-        while(true){ ordered.push(cur); used.add(cur); const px=cur%w, py=Math.floor(cur/w);
-          // find next neighbor not prev
-          let found = -1;
-          for(const d of dirs){ const nx=px+d[0], ny=py+d[1]; if(nx>=0&&nx<w&&ny>=0&&ny<h){ const ni=ny*w+nx; if(skeletonPixels[ni] && ni!==prev){ if(!used.has(ni)){ found=ni; break; } }} }
-          if(found===-1) break; prev=cur; cur=found;
-        }
-        // convert ordered pixels to device coordinates and store polyline
-        const poly = ordered.map(p=>({ x: (p%w)+0.5, y: Math.floor(p/w)+0.5 }));
-        if(poly.length>1) polylines.push(poly);
-      }
-    }
-  }
-}
+/* smoothing helper: quadratic curves and small circle for taps (accepts CSS coords) */
+function drawSmoothRaw(prevCSS, curCSS){ rawCtx.lineWidth = Math.max(16, Math.floor(Math.min(cssW, cssH) * 0.03)); rawCtx.lineCap='round'; rawCtx.lineJoin='round'; if(!prevCSS){ rawCtx.beginPath(); rawCtx.arc(curCSS.x, curCSS.y, rawCtx.lineWidth * 0.45, 0, Math.PI*2); rawCtx.fill(); return; } const midX = (prevCSS.x + curCSS.x) / 2; const midY = (prevCSS.y + curCSS.y) / 2; rawCtx.beginPath(); rawCtx.moveTo(prevCSS.x, prevCSS.y); rawCtx.quadraticCurveTo(prevCSS.x, prevCSS.y, midX, midY); rawCtx.stroke(); rawCtx.beginPath(); rawCtx.moveTo(midX, midY); rawCtx.quadraticCurveTo(curCSS.x, curCSS.y, curCSS.x, curCSS.y); rawCtx.stroke(); }
 
-/* ------------------ Build target samples by arc-length sampling of polylines ------------------ */
-function buildTargetSamples(){
-  if(targetSamples) return targetSamples;
-  const samples = [];
-  const step = Math.max(1, Math.floor(sampleStepCss * dpr));
-  for(const poly of polylines){
-    // compute cumulative lengths
-    let L=0; const segLen=[]; for(let i=1;i<poly.length;i++){ const dx=poly[i].x-poly[i-1].x, dy=poly[i].y-poly[i-1].y; const l=Math.hypot(dx,dy); segLen.push(l); L+=l; }
-    if(L===0) continue;
-    const count = Math.max(8, Math.floor(L/step));
-    // sample count points evenly
-    for(let k=0;k<=count;k++){
-      const t = k / count; let targetDist = t * L; // traverse segments
-      let acc=0; let i=0;
-      while(i<segLen.length && acc + segLen[i] < targetDist){ acc += segLen[i]; i++; }
-      if(i>=segLen.length){ samples.push({ x: poly[poly.length-1].x, y: poly[poly.length-1].y }); continue; }
-      const remain = targetDist - acc;
-      const ratio = segLen[i] === 0 ? 0 : (remain / segLen[i]);
-      const x = poly[i].x + (poly[i+1].x - poly[i].x) * ratio;
-      const y = poly[i].y + (poly[i+1].y - poly[i].y) * ratio;
-      // local half-width estimate from distanceMap at nearest pixel
-      const ix = Math.max(0, Math.min(maskCanvas.width-1, Math.round(x)));
-      const iy = Math.max(0, Math.min(maskCanvas.height-1, Math.round(y)));
-      const half = distanceMap[iy * maskCanvas.width + ix] || 1; // Manhattan pixels
-      samples.push({ x, y, half });
-    }
-  }
-  // deduplicate close samples
+/* build targetSamples from mask (device pixels) — dense sampling + clustering */
+function buildTargetSamples(){ if(targetSamples) return targetSamples; const w = maskCanvas.width, h = maskCanvas.height; const data = maskImageData || maskCtx.getImageData(0,0,w,h).data; const cssStep = Math.max(2, sampleStepCss); const step = Math.max(1, Math.floor(cssStep * dpr)); const raw = []; for(let y=0;y<h;y+=step){ for(let x=0;x<w;x+=step){ const i = (y*w + x) * 4; if(data[i] + data[i+1] + data[i+2] > 600) raw.push({x,y}); }} // cluster/thin
+  const cluster = Math.max(6 * dpr, 8);
+  const grid = new Map();
   const out = [];
-  const mind = Math.max(1, Math.floor(4 * dpr));
-  for(const s of samples){ if(out.length===0){ out.push(s); continue; } const lp=out[out.length-1]; const dx=s.x-lp.x, dy=s.y-lp.y; if(dx*dx+dy*dy >= mind*mind) out.push(s); }
-  targetSamples = out;
-  return targetSamples;
-}
+  for(const s of raw){ const gx = Math.floor(s.x / cluster), gy = Math.floor(s.y / cluster); const key = gx + ',' + gy; if(!grid.has(key)){ grid.set(key, true); out.push(s); }}
+  if(out.length === 0) out.push(...raw);
+  targetSamples = out; return targetSamples; }
 
-/* ------------------ Spatial grid for user points (for fast nearest checks) ------------------ */
-function buildGrid(cellSize){
-  const w = visibleOverlay.width, h = visibleOverlay.height;
-  const cols = Math.max(1, Math.ceil(w / cellSize));
-  const rows = Math.max(1, Math.ceil(h / cellSize));
-  const grid = new Array(cols * rows);
-  for(let i=0;i<grid.length;i++) grid[i]=[];
-  for(let i=0;i<userPoints.length;i++){ const p = userPoints[i]; const cx = Math.min(cols-1, Math.floor(p.x / cellSize)); const cy = Math.min(rows-1, Math.floor(p.y / cellSize)); grid[cy*cols + cx].push(p); }
-  return {grid,cols,rows,cellSize};
-}
+/* measure coverage: for each sample check nearest user point <= proximityPx */
+function measureCoverageByDistance(){ const samples = buildTargetSamples(); const total = samples.length; if(total === 0) return { frac:0, traced:0, total:0 };
+  // estimate stroke px (CSS->device)
+  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62);
+  const fontPx = fontCSS * dpr; // device px
+  const strokePx = Math.max(10 * dpr, Math.floor(fontPx * 0.08));
+  const proximityPx = Math.max(8 * dpr, strokePx * proximityFactor);
+  const prox2 = proximityPx * proximityPx;
+  if(userPoints.length === 0) return { frac:0, traced:0, total };
+  let covered = 0; const up = userPoints; for(let i=0;i<samples.length;i++){ const s = samples[i]; let hit = false; // iterate backward over user points (recent are more likely)
+    for(let j = up.length - 1; j >= 0; j--){ const p = up[j]; const dx = p.x - s.x, dy = p.y - s.y; if(dx*dx + dy*dy <= prox2){ hit = true; break; } } if(hit) covered++; }
+  return { frac: covered / total, traced: covered, total }; }
 
-function nearestInGrid(g, x, y, maxDist2){ const {grid,cols,rows,cellSize} = g; const cx = Math.floor(x / cellSize), cy = Math.floor(y / cellSize); const radius = Math.ceil(Math.sqrt(maxDist2) / cellSize);
-  for(let r=0;r<=radius;r++){
-    for(let dy=-r; dy<=r; dy++){
-      for(let dx=-r; dx<=r; dx++){
-        const nx = cx + dx, ny = cy + dy; if(nx<0||ny<0||nx>=cols||ny>=rows) continue; const cell = grid[ny*cols + nx]; for(const p of cell){ const dx2=p.x-x, dy2=p.y-y; if(dx2*dx2+dy2*dy2 <= maxDist2) return true; }
-      }
-    }
-  }
-  return false;
-}
-
-/* ------------------ Coverage check using distance/proximity */
-function measureCoverageByDistance(){
-  const samples = buildTargetSamples(); const total = samples.length; if(total===0) return { frac:0, traced:0, total:0 };
-  // stroke half width in device pixels derived from sample.half (Manhattan) - convert to device px
-  // proximityPx = max(minProx, sample.half * proximityFactor)
-  const up = userPoints; if(up.length===0) return { frac:0, traced:0, total };
-  // build grid with cellSize = approx median proximity
-  let avgHalf = 0; for(const s of samples) avgHalf += s.half; avgHalf = Math.max(1, avgHalf / samples.length);
-  const approxProx = Math.max(8 * dpr, avgHalf * proximityFactor);
-  const grid = buildGrid(Math.max(8, Math.floor(approxProx)));
-  let covered = 0;
-  for(const s of samples){ const prox = Math.max(6*dpr, Math.min(approxProx*2, s.half * proximityFactor)); const prox2 = prox*prox; if(nearestInGrid(grid, s.x, s.y, prox2)) covered++; }
-  return { frac: covered / total, traced: covered, total };
-}
-
-/* ------------------ Main progress check */
-function checkProgressDistanceBased(){ if(progressMet) return; try{ const res = measureCoverageByDistance(); const minTraced = Math.max(12, Math.floor(res.total * 0.06)); const strokeLengthEstimate = Math.max(1,res.total) * (sampleStepCss * 0.9) * dpr; const minDistanceReq = Math.max(minDistanceAbsoluteCss * dpr, strokeLengthEstimate * 0.12);
+/* check progress demanding 100% coverage */
+function checkProgressDistanceBased(){ if(progressMet) return; try{ const res = measureCoverageByDistance(); const minTraced = Math.max(12, Math.floor(res.total * 0.06)); const strokeLengthEstimate = Math.max(1, res.total) * (sampleStepCss * 0.9) * dpr; const minDistanceReq = Math.max(minDistanceAbsoluteCss * dpr, strokeLengthEstimate * 0.12);
     console.log('TRACE_FRACTION:', res.frac.toFixed(4), 'traced', res.traced, 'of', res.total, 'dist', Math.round(totalDrawDistance), 'minDist', Math.round(minDistanceReq), 'minTraced', minTraced);
-    if(res.frac + COVERAGE_TOLERANCE >= COVERAGE_REQUIRED && res.traced >= minTraced && totalDrawDistance >= minDistanceReq){ progressMet = true; revealSuccess(); }
-  } catch(e){ console.warn('distance check failed', e); } }
+    if(res.frac + COVERAGE_TOLERANCE >= COVERAGE_REQUIRED && res.traced >= minTraced && totalDrawDistance >= minDistanceReq){ progressMet = true; revealSuccess(); } } catch(e){ console.warn('distance check failed', e); } }
 
-/* ------------------ Happy bell */
-function playHappyBell(){ try{ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume().catch(()=>{}); const now = audioCtx.currentTime; function tone(freq,t0,dur,amp){ const o1=audioCtx.createOscillator(), o2=audioCtx.createOscillator(), g=audioCtx.createGain(), f=audioCtx.createBiquadFilter(); f.type='lowpass'; f.frequency.value=4500; o1.type='sine'; o2.type='sine'; o1.frequency.value=freq; o2.frequency.value=freq*1.997; g.gain.setValueAtTime(0.0001, now + t0); g.gain.exponentialRampToValueAtTime(amp, now + t0 + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + t0 + dur); o1.connect(g); o2.connect(g); g.connect(f); f.connect(audioCtx.destination); o1.start(now + t0); o1.stop(now + t0 + dur + 0.02); o2.start(now + t0); o2.stop(now + t0 + dur + 0.02); }
-    const base = 660; tone(base*1.0,0.00,0.28,0.45); tone(base*1.25,0.10,0.34,0.34); tone(base*1.5,0.20,0.44,0.30); tone(base*0.5,0.00,0.80,0.12);
+/* play custom audio if available, else fallback to WebAudio */
+function playHappyBell(){ try{ const bell = document.getElementById('happyBell'); if(bell){ bell.currentTime = 0; bell.play().catch(err=>{ console.warn('Audio play blocked:', err); }); return; } } catch(e){ console.warn('audio element play failed', e); }
+  try{ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume().catch(()=>{}); const now = audioCtx.currentTime; function tone(freq,t0,dur,amp){ const o1 = audioCtx.createOscillator(), o2 = audioCtx.createOscillator(), g = audioCtx.createGain(), f = audioCtx.createBiquadFilter(); f.type='lowpass'; f.frequency.value = 4500; o1.type='sine'; o2.type='sine'; o1.frequency.value = freq; o2.frequency.value = freq * 1.997; g.gain.setValueAtTime(0.0001, now + t0); g.gain.exponentialRampToValueAtTime(amp, now + t0 + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, now + t0 + dur); o1.connect(g); o2.connect(g); g.connect(f); f.connect(audioCtx.destination); o1.start(now + t0); o1.stop(now + t0 + dur + 0.02); o2.start(now + t0); o2.stop(now + t0 + dur + 0.02); }
+    const base = 660; tone(base*1.0, 0.00, 0.28, 0.45); tone(base*1.25,0.10,0.34,0.34); tone(base*1.5,0.20,0.44,0.30); tone(base*0.5,0.00,0.80,0.12);
   } catch(e){ console.warn('happy bell failed', e); } }
 
-/* reveal success visuals */
-function revealSuccess(){ const color = colors[current] || randomColor();
-  ctx.clearRect(0,0,mainCanvas.width, mainCanvas.height); ctx.fillStyle='#fff'; ctx.fillRect(0,0,mainCanvas.width, mainCanvas.height);
-  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62); const fontPx = Math.floor(fontCSS * dpr);
-  ctx.save(); ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.font = `${fontPx}px "Segoe UI", Roboto, Arial, sans-serif`; ctx.shadowColor = color; ctx.shadowBlur = 40 * dpr; ctx.lineWidth = Math.max(12 * dpr, Math.floor(fontPx * 0.09)); ctx.strokeStyle = color; ctx.strokeText(current, mainCanvas.width/2, mainCanvas.height/2 + Math.floor(fontPx * 0.02)); ctx.restore();
-  visibleOverlay.classList.add('success-glow','pulse'); visibleOverlay.style.boxShadow = `0 0 ${40 * dpr}px ${color}`;
-  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume().catch(()=>{}); playHappyBell();
-  const live = document.createElement('div'); live.setAttribute('aria-live','polite'); live.style.position='absolute'; live.style.left='-9999px'; live.innerText = `Great! You finished tracing ${current}.`; document.body.appendChild(live); setTimeout(()=>{ try{ document.body.removeChild(live);}catch{} }, 2500);
-  setTimeout(()=> visibleOverlay.classList.remove('pulse'), 2600);
+/* reveal success: colored letter, glow, bell, announce */
+function revealSuccess(){ const color = colors[current] || randomColor(); ctx.clearRect(0,0,cssW, cssH); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,cssW, cssH);
+  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62);
+  ctx.save(); ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.font = `${fontCSS}px "Segoe UI", Roboto, Arial, sans-serif`; ctx.shadowColor = color; ctx.shadowBlur = 40; ctx.lineWidth = Math.max(12, Math.floor(fontCSS * 0.09)); ctx.strokeStyle = color; ctx.strokeText(current, cssW/2, cssH/2 + Math.floor(fontCSS * 0.02)); ctx.restore();
+  visibleOverlay.classList.add('success-glow','pulse'); visibleOverlay.style.boxShadow = `0 0 ${40}px ${color}`;
+  try{ playHappyBell(); } catch(e){ console.warn(e); }
+  const live = document.createElement('div'); live.setAttribute('aria-live','polite'); live.style.position='absolute'; live.style.left='-9999px'; live.innerText = `Great! You finished tracing ${current}.`; document.body.appendChild(live); setTimeout(()=>{ try{ document.body.removeChild(live);}catch{} }, 2600); setTimeout(()=> visibleOverlay.classList.remove('pulse'), 2600);
 }
 
-/* ------------------ Utilities ------------------ */
-function changeSymbol(delta){ let idx = symbols.indexOf(current); idx = (idx + delta + symbols.length) % symbols.length; current = symbols[idx]; sel.value = current; totalDrawDistance=0; userPoints=[]; targetSamples=null; progressMet=false; resetAll(); }
-function resetAll(){ clearOverlay(); drawSymbol(); progressMet=false; totalDrawDistance=0; }
+/* navigation helpers */
+function changeSymbol(delta){ let idx = symbols.indexOf(current); idx = (idx + delta + symbols.length) % symbols.length; current = symbols[idx]; sel.value = current; totalDrawDistance = 0; userPoints = []; targetSamples = null; progressMet = false; resetAll(); }
+function resetAll(){ clearOverlay(); drawSymbol(); progressMet = false; totalDrawDistance = 0; }
 function randomColor(){ return '#'+Math.floor(Math.random()*16777215).toString(16); }
 function debounce(fn,t){ let id; return function(...a){ clearTimeout(id); id = setTimeout(()=>fn.apply(this,a), t); }; }
 

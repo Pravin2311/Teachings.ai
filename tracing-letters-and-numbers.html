@@ -46,6 +46,16 @@
     <select id="symbolSelect" aria-label="Choose letter or number"></select>
     <button id="resetTop" class="btn reset" style="padding:8px 10px;font-size:13px;">Reset</button>
   </div>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327"
+     crossorigin="anonymous"></script>
 </header>
 <h1>Tracing: Letters & Numbers</h1>
 <main class="stage" role="main" aria-live="polite">
@@ -61,6 +71,7 @@
 
   <div class="hint">Trace the grey outline only inside the letter. Reach 100% to see a glow & hear a happy bell 🎵</div>
 </main>
+<audio id="happyBellSound" src="/assets/audio/math_feedback/correct.mp3" preload="auto"></audio>
 
 <script>
 /* 100%-coverage distance-based letter-only tracing
@@ -225,6 +236,11 @@ function clearOverlay(){
 
 /* pointer handlers */
 window.addEventListener('pointerdown', ()=>{ ensureAudioCtx(); }, { once: true });
+window.addEventListener("pointerdown", () => {
+    const a = document.getElementById("happyBellSound");
+    a.play().catch(()=>{}); // unlocks audio on mobile
+}, { once: true });
+
 
 mainCanvas.style.touchAction = 'none';
 mainCanvas.addEventListener('pointerdown', (e) => {
@@ -392,29 +408,13 @@ function checkProgressDistanceBased(){
 
 /* friendly bell */
 function playHappyBell(){
-  try{
-    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    if(audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
-    const now = audioCtx.currentTime;
-    function tone(freq,t0,dur,amp){
-      const o1 = audioCtx.createOscillator(), o2 = audioCtx.createOscillator(), g = audioCtx.createGain(), f = audioCtx.createBiquadFilter();
-      f.type = 'lowpass'; f.frequency.value = 4500;
-      o1.type = 'sine'; o2.type = 'sine';
-      o1.frequency.value = freq; o2.frequency.value = freq * 1.997;
-      g.gain.setValueAtTime(0.0001, now + t0);
-      g.gain.exponentialRampToValueAtTime(amp, now + t0 + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, now + t0 + dur);
-      o1.connect(g); o2.connect(g); g.connect(f); f.connect(audioCtx.destination);
-      o1.start(now + t0); o1.stop(now + t0 + dur + 0.02);
-      o2.start(now + t0); o2.stop(now + t0 + dur + 0.02);
-    }
-    const base = 660;
-    tone(base*1.0, 0.00, 0.28, 0.45);
-    tone(base*1.25,0.10,0.34,0.34);
-    tone(base*1.5, 0.20,0.44,0.30);
-    tone(base*0.5, 0.00,0.80,0.12);
-  } catch(e){ console.warn('happy bell failed', e); }
+  const audio = document.getElementById("happyBellSound");
+  if(!audio) return;
+
+  audio.currentTime = 0; // restart from beginning
+  audio.play().catch(e => console.warn("Bell audio blocked:", e));
 }
+
 
 /* reveal success: colored letter, glow, bell, announce */
 function revealSuccess(){

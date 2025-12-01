@@ -1,7 +1,7 @@
 {
-  "id": "2025-09-reels",
+  "id": "2025-12-Tracing Letters",
   "title": "📚 New Module!",
-  "message": "Our Educational reels module is now live 🚀 Try it out today!",
-  "image": "assets/images/reels.png",
-  "link": "/reels.html"
+  "message": "Our Tracing letters and numbers module is now live 🚀 Try it out today!",
+  "image": "/assets/images/tracing-letters.png",
+  "link": "/tracing-letters-and-numbers.html"
 }
