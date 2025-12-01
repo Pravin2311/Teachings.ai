@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Tracing Letters & Numbers for Kids | Learn ABC & 123</title>
+<meta name="description" content="Fun and interactive tracing app for kids to learn ABC letters and numbers with smooth drawing, glowing effects, and a happy bell reward on completion. Perfect for toddlers, preschool, and kindergarten." />
+<meta name="keywords" content="tracing letters, tracing numbers, ABC tracing, kids learning, preschool tracing game, alphabet tracing app, number tracing, kids handwriting practice" />
+<meta name="author" content="teachings.ai" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="apple-touch-icon" href="/assets/images/app_icon_192.png" />
+
+<style>
+  :root{ --bg:#eef6ff; --panel:#fff; --muted:#6b7280; --card-shadow:0 8px 28px rgba(11,35,71,0.06); }
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased;}
+  body{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px;background:linear-gradient(180deg,var(--bg),#fbfdff);color:#0b2540;}
+  header{width:100%;max-width:980px;display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:var(--panel);box-shadow:var(--card-shadow);}
+  h1{font-size:18px;margin:0;font-weight:600}
+  .controls{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  select{padding:10px 12px;border-radius:10px;border:1px solid rgba(10,20,40,0.06);font-size:15px;min-width:82px;font-weight:700}
+  .stage{width:100%;max-width:980px;background:var(--panel);border-radius:14px;padding:14px;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:12px;align-items:stretch;}
+  .canvas-wrap{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#fff,#f7fbff);touch-action:none;height:52vh;min-height:320px;}
+  canvas.main-canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;position:relative;z-index:1;}
+  canvas.overlay-canvas{position:absolute;left:0;top:0;width:100%;height:100%;z-index:3;pointer-events:none;border-radius:12px;}
+  @media (max-width:480px){ .canvas-wrap{height:50vh;min-height:280px;} }
+  .nav-row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .btn{flex:1 1 auto;min-width:0;padding:14px 18px;border-radius:14px;border:0;font-size:18px;font-weight:700;color:white;cursor:pointer;box-shadow:0 6px 18px rgba(11,35,71,0.08);transition:transform .08s ease, box-shadow .12s ease;}
+  .btn:active{ transform:translateY(2px) }
+  .btn.prev{ background:linear-gradient(135deg,#6EE7B7,#10B981); }
+  .btn.next{ background:linear-gradient(135deg,#60A5FA,#7C3AED); }
+  .btn.reset{ background:linear-gradient(135deg,#FF9AA2,#FF6B6B); }
+  .hint{padding:10px 12px;border-radius:10px;background:rgba(10,20,40,0.03);font-size:14px;color:var(--muted);text-align:center;}
+  .success-glow{ box-shadow: 0 0 36px 8px currentColor inset, 0 10px 30px rgba(0,0,0,0.06); border-radius:12px; }
+  @keyframes pulseGlow { 0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)} }
+  .pulse{ animation:pulseGlow 2.5s ease-in-out forwards; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Teachings.ai</h1>
+  <div class="controls" role="group" aria-label="controls">
+    <label for="symbolSelect" class="small">Symbol</label>
+    <select id="symbolSelect" aria-label="Choose letter or number"></select>
+    <button id="resetTop" class="btn reset" style="padding:8px 10px;font-size:13px;">Reset</button>
+  </div>
+</header>
+<h1>Tracing: Letters & Numbers</h1>
+<main class="stage" role="main" aria-live="polite">
+  <div class="canvas-wrap" id="canvasWrap" aria-hidden="false">
+    <canvas id="traceCanvas" class="main-canvas" aria-label="Tracing canvas"></canvas>
+    <canvas id="visibleOverlay" class="overlay-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <div class="nav-row" role="toolbar" aria-label="Navigation controls">
+    <button id="prevBtn" class="btn prev" aria-label="Previous symbol">◀︎ Prev</button>
+    <button id="nextBtn" class="btn next" aria-label="Next symbol">Next ▶︎</button>
+  </div>
+
+  <div class="hint">Trace the grey outline only inside the letter. Reach 100% to see a glow & hear a happy bell 🎵</div>
+</main>
+
+<script>
+/* 100%-coverage distance-based letter-only tracing
+   Tuned to be forgiving: denser samples + larger proximity radius
+   - coverageRequired = 1.00 (with tiny tolerance)
+   - proximityFactor increased to help kids hit every sample
+*/
+
+const COVERAGE_REQUIRED = 1.00; // require full coverage
+const COVERAGE_TOLERANCE = 0.001; // allow min-floating error
+const symbols = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ", ..."0123456789"];
+const colors = {
+  "A":"#FF6B6B","B":"#6BCB77","C":"#4D96FF","D":"#FFD166","E":"#845EC2","F":"#FF9671",
+  "G":"#2EC4B6","H":"#FF6AD5","I":"#B0A8B9","J":"#00C2A8","K":"#9BE7C4","L":"#FFB3C1",
+  "M":"#FDE68A","N":"#A78BFA","O":"#F472B6","P":"#60A5FA","Q":"#F59E0B","R":"#34D399",
+  "S":"#F97316","T":"#7C3AED","U":"#06B6D4","V":"#EF476F","W":"#10B981","X":"#FF8A65",
+  "Y":"#3B82F6","Z":"#C084FC",
+  "0":"#FF9AA2","1":"#FFB7B2","2":"#FFDAC1","3":"#E2F0CB","4":"#B5EAD7","5":"#C7CEEA",
+  "6":"#A0CED9","7":"#FFD1DC","8":"#F3EAC2","9":"#D6EAF8"
+};
+
+const wrap = document.getElementById('canvasWrap');
+const mainCanvas = document.getElementById('traceCanvas');
+const visibleOverlay = document.getElementById('visibleOverlay');
+const ctx = mainCanvas.getContext('2d', { willReadFrequently: true });
+const overlayCtx = visibleOverlay.getContext('2d', { willReadFrequently: true });
+const sel = document.getElementById('symbolSelect');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const resetTop = document.getElementById('resetTop');
+
+/* hidden raw canvas and mask */
+const rawCanvas = document.createElement('canvas');
+const rawCtx = rawCanvas.getContext('2d', { willReadFrequently: true });
+const maskCanvas = document.createElement('canvas');
+const maskCtx = maskCanvas.getContext('2d', { willReadFrequently: true });
+
+let cssW, cssH, dpr;
+let current = 'A';
+let drawing = false;
+let last = null;
+let progressMet = false;
+let totalDrawDistance = 0; // only inside mask
+let userPoints = [];       // stored device-pixel points inside mask
+let targetSamples = null;
+
+// tuning (more forgiving for 100% requirement)
+const proximityFactor = 1.4; // generous radius
+const sampleStepCss = 3;     // dense sampling
+const minDistanceAbsoluteCss = 16; // allow shorter required travel
+
+let audioCtx = null;
+function ensureAudioCtx(){ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume().catch(()=>{}); }
+
+/* populate selector */
+symbols.forEach(s => { const o = document.createElement('option'); o.value = s; o.text = s; sel.appendChild(o); });
+sel.value = current;
+sel.addEventListener('change', ()=>{ current = sel.value; resetAll(); });
+
+prevBtn.addEventListener('click', ()=> changeSymbol(-1));
+nextBtn.addEventListener('click', ()=> changeSymbol(1));
+resetTop.addEventListener('click', resetAll);
+
+/* resize */
+function resize(){
+  const rect = wrap.getBoundingClientRect();
+  dpr = window.devicePixelRatio || 1;
+  cssW = Math.max(320, Math.floor(rect.width));
+  cssH = Math.max(280, Math.floor(window.innerHeight * 0.58));
+
+  mainCanvas.style.width = cssW + 'px';
+  mainCanvas.style.height = cssH + 'px';
+  mainCanvas.width = Math.floor(cssW * dpr);
+  mainCanvas.height = Math.floor(cssH * dpr);
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.imageSmoothingEnabled = true;
+
+  visibleOverlay.style.width = cssW + 'px';
+  visibleOverlay.style.height = cssH + 'px';
+  visibleOverlay.width = Math.floor(cssW * dpr);
+  visibleOverlay.height = Math.floor(cssH * dpr);
+  overlayCtx.setTransform(1,0,0,1,0,0);
+
+  rawCanvas.width = Math.floor(cssW * dpr);
+  rawCanvas.height = Math.floor(cssH * dpr);
+  rawCtx.setTransform(1,0,0,1,0,0);
+  rawCtx.imageSmoothingEnabled = true;
+
+  maskCanvas.width = Math.floor(cssW * dpr);
+  maskCanvas.height = Math.floor(cssH * dpr);
+  maskCtx.setTransform(1,0,0,1,0,0);
+  maskCtx.imageSmoothingEnabled = true;
+
+  drawSymbol();
+  clearOverlay();
+  progressMet = false;
+  targetSamples = null;
+}
+window.addEventListener('resize', debounce(resize, 120));
+resize();
+
+/* draw symbol and mask */
+function drawSymbol(){
+  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62);
+  const fontPx = Math.floor(fontCSS * dpr);
+  const strokeW = Math.max(10 * dpr, Math.floor(fontPx * 0.08));
+  const cx = mainCanvas.width / 2;
+  const cy = mainCanvas.height / 2 + Math.floor(fontPx * 0.02);
+
+  ctx.clearRect(0,0,mainCanvas.width, mainCanvas.height);
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0,0,mainCanvas.width, mainCanvas.height);
+
+  ctx.lineWidth = strokeW;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#cfcfcf';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `${fontPx}px "Segoe UI", Roboto, Arial, sans-serif`;
+  ctx.strokeText(current, cx, cy);
+
+  // mask is white where letter stroke is
+  maskCtx.clearRect(0,0,maskCanvas.width, maskCanvas.height);
+  maskCtx.fillStyle = 'black';
+  maskCtx.fillRect(0,0,maskCanvas.width, maskCanvas.height);
+  maskCtx.lineWidth = strokeW;
+  maskCtx.lineJoin = ctx.lineJoin;
+  maskCtx.lineCap = ctx.lineCap;
+  maskCtx.strokeStyle = 'white';
+  maskCtx.textAlign = 'center';
+  maskCtx.textBaseline = 'middle';
+  maskCtx.font = ctx.font;
+  maskCtx.strokeText(current, cx, cy);
+
+  // clear raw overlay
+  rawCtx.clearRect(0,0,rawCanvas.width, rawCanvas.height);
+  overlayCtx.clearRect(0,0,visibleOverlay.width, visibleOverlay.height);
+
+  targetSamples = null;
+}
+
+/* clear overlay & metrics */
+function clearOverlay(){
+  rawCtx.clearRect(0,0,rawCanvas.width, rawCanvas.height);
+  overlayCtx.clearRect(0,0,visibleOverlay.width, visibleOverlay.height);
+  rawCtx.lineWidth = Math.max(16 * dpr, Math.floor(Math.min(cssW, cssH) * 0.03 * dpr));
+  rawCtx.lineCap = 'round';
+  rawCtx.lineJoin = 'round';
+  rawCtx.strokeStyle = 'rgba(0,0,0,1)';
+  rawCtx.fillStyle = 'rgba(0,0,0,1)';
+
+  overlayCtx.lineWidth = rawCtx.lineWidth;
+  overlayCtx.lineCap = rawCtx.lineCap;
+  overlayCtx.lineJoin = rawCtx.lineJoin;
+
+  progressMet = false;
+  totalDrawDistance = 0;
+  userPoints = [];
+  targetSamples = null;
+}
+
+/* pointer handlers */
+window.addEventListener('pointerdown', ()=>{ ensureAudioCtx(); }, { once: true });
+
+mainCanvas.style.touchAction = 'none';
+mainCanvas.addEventListener('pointerdown', (e) => {
+  if(progressMet) return;
+  e.preventDefault();
+  try{ mainCanvas.setPointerCapture && mainCanvas.setPointerCapture(e.pointerId); }catch(_) {}
+  drawing = true;
+  last = getPos(e);
+  rawCtx.beginPath();
+  rawCtx.moveTo(last.x, last.y);
+  // draw raw start
+  rawCtx.lineTo(last.x, last.y);
+  rawCtx.stroke();
+  // if inside mask, record
+  if(pointInMask(last.x, last.y)) recordPoint(last);
+  refreshVisibleOverlay();
+});
+window.addEventListener('pointerup', (e) => {
+  if(!drawing) return;
+  try{ mainCanvas.releasePointerCapture && mainCanvas.releasePointerCapture(e.pointerId); }catch(_) {}
+  drawing = false;
+  last = null;
+  checkProgressDistanceBased();
+});
+window.addEventListener('pointercancel', (e) => {
+  try{ mainCanvas.releasePointerCapture && mainCanvas.releasePointerCapture(e.pointerId); }catch(_) {}
+  drawing = false; last = null;
+});
+mainCanvas.addEventListener('pointermove', (e) => {
+  if(!drawing || progressMet) return;
+  const p = getPos(e);
+  rawCtx.lineTo(p.x, p.y);
+  rawCtx.stroke();
+
+  // if inside mask, update totalDrawDistance and record
+  if(pointInMask(p.x, p.y)){
+    if(userPoints.length > 0){
+      const lp = userPoints[userPoints.length - 1];
+      const dx = p.x - lp.x, dy = p.y - lp.y;
+      totalDrawDistance += Math.sqrt(dx*dx + dy*dy);
+    }
+    recordPoint(p);
+  }
+  last = p;
+  refreshVisibleOverlay();
+  if(totalDrawDistance > (minDistanceAbsoluteCss * dpr * 0.5)) checkProgressDistanceBased();
+});
+
+/* helper: device pixel coords */
+function getPos(evt){
+  const r = mainCanvas.getBoundingClientRect();
+  const cssX = evt.clientX - r.left;
+  const cssY = evt.clientY - r.top;
+  return { x: cssX * dpr, y: cssY * dpr };
+}
+
+/* test if point is inside mask (white): sample mask pixel */
+function pointInMask(px, py){
+  const x = Math.floor(Math.max(0, Math.min(maskCanvas.width - 1, px)));
+  const y = Math.floor(Math.max(0, Math.min(maskCanvas.height - 1, py)));
+  try{
+    const d = maskCtx.getImageData(x, y, 1, 1).data;
+    return (d[0] + d[1] + d[2]) > 600;
+  } catch(e){
+    return false;
+  }
+}
+
+/* record sparse user points (only inside mask) */
+function recordPoint(pt){
+  const minSep = Math.max(2 * dpr, 6 * dpr);
+  if(userPoints.length === 0){ userPoints.push(pt); return; }
+  const lp = userPoints[userPoints.length - 1];
+  const dx = pt.x - lp.x, dy = pt.y - lp.y;
+  if(dx*dx + dy*dy >= minSep * minSep) userPoints.push(pt);
+}
+
+/* refresh visible overlay: raw strokes clipped by mask via destination-in */
+function refreshVisibleOverlay(){
+  overlayCtx.clearRect(0,0,visibleOverlay.width, visibleOverlay.height);
+  overlayCtx.globalCompositeOperation = 'source-over';
+  overlayCtx.drawImage(rawCanvas, 0, 0);
+  overlayCtx.globalCompositeOperation = 'destination-in';
+  overlayCtx.drawImage(maskCanvas, 0, 0);
+  overlayCtx.globalCompositeOperation = 'source-over';
+}
+
+/* build targetSamples from mask (device pixels) — dense sampling + thinning */
+function buildTargetSamples(){
+  if(targetSamples) return targetSamples;
+  const w = maskCanvas.width, h = maskCanvas.height;
+  const data = maskCtx.getImageData(0,0,w,h).data;
+  const cssStep = Math.max(2, sampleStepCss);
+  const step = Math.max(1, Math.floor(cssStep * dpr));
+  const raw = [];
+  for(let y=0;y<h;y+=step){
+    for(let x=0;x<w;x+=step){
+      const i = (y*w + x) * 4;
+      if(data[i] + data[i+1] + data[i+2] > 600) raw.push({x,y});
+    }
+  }
+  // cluster/thin
+  const cluster = Math.max(6 * dpr, 8);
+  const grid = new Map();
+  const out = [];
+  for(const s of raw){
+    const gx = Math.floor(s.x / cluster), gy = Math.floor(s.y / cluster);
+    const key = gx + ',' + gy;
+    if(!grid.has(key)){ grid.set(key, true); out.push(s); }
+  }
+  if(out.length === 0) out.push(...raw);
+  targetSamples = out;
+  return targetSamples;
+}
+
+/* measure coverage: for each sample check nearest user point <= proximityPx */
+function measureCoverageByDistance(){
+  const samples = buildTargetSamples();
+  const total = samples.length;
+  if(total === 0) return { frac:0, traced:0, total:0 };
+
+  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62);
+  const fontPx = Math.floor(fontCSS * dpr);
+  const strokePx = Math.max(10 * dpr, Math.floor(fontPx * 0.08));
+  const proximityPx = Math.max(8 * dpr, strokePx * proximityFactor);
+  const prox2 = proximityPx * proximityPx;
+
+  if(userPoints.length === 0) return { frac:0, traced:0, total };
+
+  let covered = 0;
+  const up = userPoints;
+  for(let i=0;i<samples.length;i++){
+    const s = samples[i];
+    let hit = false;
+    for(let j = up.length - 1; j >= 0; j--){
+      const p = up[j];
+      const dx = p.x - s.x, dy = p.y - s.y;
+      if(dx*dx + dy*dy <= prox2){ hit = true; break; }
+    }
+    if(hit) covered++;
+  }
+  return { frac: covered / total, traced: covered, total };
+}
+
+/* check progress demanding 100% coverage */
+function checkProgressDistanceBased(){
+  if(progressMet) return;
+  try{
+    const res = measureCoverageByDistance();
+    // min traced samples and minimal travel requirement scaled by stroke length
+    const minTraced = Math.max(12, Math.floor(res.total * 0.06));
+    const strokeLengthEstimate = Math.max(1, res.total) * (sampleStepCss * 0.9) * dpr;
+    const minDistanceReq = Math.max(minDistanceAbsoluteCss * dpr, strokeLengthEstimate * 0.12);
+
+    console.log('TRACE_FRACTION:', res.frac.toFixed(4), 'traced', res.traced, 'of', res.total, 'dist', Math.round(totalDrawDistance), 'minDist', Math.round(minDistanceReq), 'minTraced', minTraced);
+
+    if(res.frac + COVERAGE_TOLERANCE >= COVERAGE_REQUIRED && res.traced >= minTraced && totalDrawDistance >= minDistanceReq){
+      progressMet = true;
+      revealSuccess();
+    }
+  } catch(e){
+    console.warn('distance check failed', e);
+  }
+}
+
+/* friendly bell */
+function playHappyBell(){
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
+    const now = audioCtx.currentTime;
+    function tone(freq,t0,dur,amp){
+      const o1 = audioCtx.createOscillator(), o2 = audioCtx.createOscillator(), g = audioCtx.createGain(), f = audioCtx.createBiquadFilter();
+      f.type = 'lowpass'; f.frequency.value = 4500;
+      o1.type = 'sine'; o2.type = 'sine';
+      o1.frequency.value = freq; o2.frequency.value = freq * 1.997;
+      g.gain.setValueAtTime(0.0001, now + t0);
+      g.gain.exponentialRampToValueAtTime(amp, now + t0 + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + t0 + dur);
+      o1.connect(g); o2.connect(g); g.connect(f); f.connect(audioCtx.destination);
+      o1.start(now + t0); o1.stop(now + t0 + dur + 0.02);
+      o2.start(now + t0); o2.stop(now + t0 + dur + 0.02);
+    }
+    const base = 660;
+    tone(base*1.0, 0.00, 0.28, 0.45);
+    tone(base*1.25,0.10,0.34,0.34);
+    tone(base*1.5, 0.20,0.44,0.30);
+    tone(base*0.5, 0.00,0.80,0.12);
+  } catch(e){ console.warn('happy bell failed', e); }
+}
+
+/* reveal success: colored letter, glow, bell, announce */
+function revealSuccess(){
+  const color = colors[current] || randomColor();
+
+  ctx.clearRect(0,0,mainCanvas.width, mainCanvas.height);
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0,0,mainCanvas.width, mainCanvas.height);
+
+  const fontCSS = Math.floor(Math.min(cssW, cssH) * 0.62);
+  const fontPx = Math.floor(fontCSS * dpr);
+  ctx.save();
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `${fontPx}px "Segoe UI", Roboto, Arial, sans-serif`;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 40 * dpr;
+  ctx.lineWidth = Math.max(12 * dpr, Math.floor(fontPx * 0.09));
+  ctx.strokeStyle = color;
+  ctx.strokeText(current, mainCanvas.width/2, mainCanvas.height/2 + Math.floor(fontPx * 0.02));
+  ctx.restore();
+
+  visibleOverlay.classList.add('success-glow','pulse');
+  visibleOverlay.style.boxShadow = `0 0 ${40 * dpr}px ${color}`;
+
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if(audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
+  playHappyBell();
+
+  const live = document.createElement('div');
+  live.setAttribute('aria-live','polite');
+  live.style.position = 'absolute'; live.style.left = '-9999px';
+  live.innerText = `Great! You finished tracing ${current}.`;
+  document.body.appendChild(live);
+  setTimeout(()=>{ try{ document.body.removeChild(live);}catch{} }, 2600);
+
+  setTimeout(()=> visibleOverlay.classList.remove('pulse'), 2600);
+}
+
+/* navigation helpers */
+function changeSymbol(delta){
+  let idx = symbols.indexOf(current);
+  idx = (idx + delta + symbols.length) % symbols.length;
+  current = symbols[idx];
+  sel.value = current;
+  totalDrawDistance = 0;
+  userPoints = [];
+  targetSamples = null;
+  progressMet = false;
+  resetAll();
+}
+function resetAll(){ clearOverlay(); drawSymbol(); progressMet = false; totalDrawDistance = 0; }
+function randomColor(){ return '#'+Math.floor(Math.random()*16777215).toString(16); }
+function debounce(fn,t){ let id; return function(...a){ clearTimeout(id); id = setTimeout(()=>fn.apply(this,a), t); }; }
+
+window.addEventListener('keydown', (e)=>{ if(e.key==='ArrowRight') changeSymbol(1); if(e.key==='ArrowLeft') changeSymbol(-1); if(e.key==='r'||e.key==='R') resetAll(); });
+window.addEventListener('load', ()=>{ resize(); });
+
+</script>
+</body>
+</html>
