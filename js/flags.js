@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let isRevealed = false;
 
     // Base paths for assets
-    const imageBasePath = 'assets/images/flags/';
+    const CDN_BASE = (typeof CDN !== 'undefined' && CDN) ? CDN : '';
+    const imageBasePath = CDN + 'assets/images/flags/';
     const audioBasePath = CDN + 'assets/audio/'; 
     const audioFormat = '.mp3'; 
-    const imageFormat = '.png'; 
+    const imageFormat = '.png?v=2'; 
 
     function setupCanvas() {
         canvas.width = vegetableImageContainer.clientWidth;
