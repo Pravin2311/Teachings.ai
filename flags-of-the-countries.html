@@ -3,130 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn Flags of the Countries: Fun Scratch Game for Kids | Teachings.AI</title> <!-- ✅ Better SEO & CTR -->
+  <title>Learn Flags of the Countries: Fun Scratch Game for Kids | Teachings.AI</title>
+
+  <!-- Base CDN (optional) -->
+  <script>
+    const CDN = '';
+  </script>
+
+  <!-- Stable Scratch Card CSS -->
   <style>
+    #vegetable-image-container {
+      position: relative;
+      background: #ffffff; /* stable white base */
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    #vegetable-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    #drawing-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      touch-action: none;
+      background: transparent;
+    }
+
     /* Parenting Tip Section */
-.parenting-tip {
-  margin: 25px auto;
-  padding: 18px 20px;
-  max-width: 600px;
-  background-color: #e8f5e8;
-  border-left: 5px solid #4CAF50;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 1em;
-  color: #333;
-  line-height: 1.5;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.parenting-tip h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.3em;
-  color: #1B2A5B;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.parenting-tip h3::before {
-  content: "💡";
-}
+    .parenting-tip {
+      margin: 25px auto;
+      padding: 18px 20px;
+      max-width: 600px;
+      background-color: #e8f5e8;
+      border-left: 5px solid #4CAF50;
+      border-radius: 10px;
+      text-align: left;
+      font-size: 1em;
+      color: #333;
+      line-height: 1.5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .parenting-tip h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+      color: #1B2A5B;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .parenting-tip h3::before {
+      content: "💡";
+    }
   </style>
 
-    <!-- SEO Meta Tags -->
+  <!-- SEO -->
   <meta name="description" content="Interactive scratch-to-reveal game where kids learn country names. Fun geography learning for preschool and kindergarten by Teachings.AI." />
   <meta name="keywords" content="learn countries, kids geography, preschool world learning, country names, kindergarten games, teachings.ai" />
   <meta name="author" content="Teachings.AI" />
-  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://teachings.ai/countries.html">
-  <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Learn Countries - Teachings.AI" />
   <meta property="og:description" content="Scratch to reveal and hear country names. A fun geography game for preschool and kindergarten learners!" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://teachings.ai/countries.html" />
   <meta property="og:image" content="https://teachings.ai/assets/images/countries-preview.jpg" />
-  <meta property="og:site_name" content="Teachings.AI" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Learn Countries - Teachings.AI" />
-  <meta name="twitter:description" content="Scratch to reveal and hear the names of countries. An interactive way for kids to learn geography!" />
-  <meta name="twitter:image" content="https://teachings.ai/assets/images/countries-preview.jpg" />
-  <meta name="twitter:site" content="@TeachingsAI" />
+  <meta property="og:url" content="https://teachings.ai/countries.html" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/vegetables.css" />
 
-  <!-- Structured Data (Lightweight JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "LearningResource",
-        "@id": "https://teachings.ai/countries.html#resource",
-        "url": "https://teachings.ai/countries.html",
-        "name": "Learn Countries - Interactive Game",
-        "description": "A fun scratch-to-reveal game for kids to learn country names and sounds. Suitable for preschool and kindergarten learners.",
-        "learningResourceType": "Game",
-        "educationalUse": ["Learning", "Exploration"],
-        "teaches": ["Countries", "Geography awareness", "Cultural curiosity"],
-        "audience": {
-          "@type": "EducationalAudience",
-          "educationalRole": "student",
-          "ageRange": "3-7"
-        },
-        "inLanguage": "en",
-        "educationalLevel": ["Preschool", "Kindergarten"],
-        "publisher": {
-          "@id": "https://teachings.ai/#organization"
-        },
-        "image": "https://teachings.ai/assets/images/countries-preview.jpg"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://teachings.ai/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Games",
-            "item": "https://teachings.ai/games.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Learn Countries",
-            "item": "https://teachings.ai/countries.html"
-          }
-        ]
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://teachings.ai/#organization",
-        "name": "Teachings.AI",
-        "url": "https://teachings.ai",
-        "logo": "https://teachings.ai/assets/images/logo.png",
-        "sameAs": [
-          "https://twitter.com/TeachingsAI",
-          "https://www.facebook.com/TeachingsAI",
-          "https://www.linkedin.com/company/teachingsai"
-        ]
-      }
-    ]
-  }
-  </script>
-  
-
-  <!-- Google Analytics 4 (gtag.js) -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -134,76 +93,74 @@
     gtag('js', new Date());
     gtag('config', 'G-XVYMNTZLQJ');
   </script>
-</head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327"
+
+  <!-- Google AdSense (ONLY ONE TIME) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327"
      crossorigin="anonymous"></script>
+</head>
+
 <body>
   <div class="container" role="main">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-fb+5w+4e-db+86"
-     data-ad-client="ca-pub-7495143337429327"
-     data-ad-slot="5805932111"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
+    <!-- Ad Slot -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-format="fluid"
+        data-ad-layout-key="-fb+5w+4e-db+86"
+        data-ad-client="ca-pub-7495143337429327"
+        data-ad-slot="5805932111"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
     <button class="back-button" onclick="window.location.href='index.html'">Back</button>
+
     <h1>Learn Country Flags</h1>
+
     <div class="vegetable-display">
-      <p id="current-vegetable-name" aria-live="polite"></p> <!-- ✅ Live region for screen readers -->
+      <p id="current-vegetable-name" aria-live="polite"></p>
+
       <div id="vegetable-image-container">
-        <canvas id="drawing-canvas" aria-label="Scratch to reveal the vegetable image"></canvas> <!-- ✅ Accessibility -->
-        <!-- JS will dynamically add images -->
+        <canvas id="drawing-canvas" aria-label="Scratch to reveal the country flag"></canvas>
       </div>
     </div>
+
     <div class="navigation-buttons">
-      <button id="prev-vegetable">Previous</button>
-      <button id="next-vegetable">Next</button>
+      <button id="prev-vegetable" aria-label="Previous Country">Previous</button>
+      <button id="next-vegetable" aria-label="Next Country">Next</button>
     </div>
-    <!-- ✅ Parenting Tip -->
+
     <div class="parenting-tip">
       <h3>🌍 Parent Tip: Spark Curiosity About the World</h3>
-      <p>Turn country learning into a global adventure! After playing, show your child where the country is on a map or globe. Ask, “Have you heard of France?” or “What language do they speak in Japan?” This builds geography awareness, cultural curiosity, and early social studies skills in preschool and kindergarten learners.</p>
+      <p>After scratching and revealing a country, open a globe or map and let your child point to it! This builds geography awareness and cultural curiosity.</p>
     </div>
-  </div>
   </div>
 
   <!-- Background Music -->
   <audio id="background-music" loop muted>
     <source src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/background_music.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
   </audio>
 
-  <!-- Music Toggle -->
   <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle Background Music">🔇</button>
 
   <!-- Scripts -->
-   <script src="js/script.js"></script>
-  <script src="js/flags.js"></script>
-  <script src="js/musicControl.js"></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/flags.js" defer></script>
+  <script src="js/musicControl.js" defer></script>
   <script src="assets/js/globalImageLoader.js" defer></script>
-    <!-- Footer -->
-<footer class="site-footer">
-  <p>© 2025 Teachings.AI</p>
 
-  <!-- Footer Navigation -->
-  <nav class="footer-nav" aria-label="Footer navigation">
-    <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
-    <a href="/about.html" class="blog-button">About</a>
-    <a href="/privacy-policy.html" class="blog-button">Privacy</a>
-    <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
-    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
-       class="feedback-button">📩 Contact Us</a>
-  </nav>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Teachings.AI</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
+      <a href="/about.html" class="blog-button">About</a>
+      <a href="/privacy-policy.html" class="blog-button">Privacy</a>
+      <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
+      <a href="mailto:support@teachings.ai?subject=Website%20Feedback" class="feedback-button">📩 Contact Us</a>
+    </nav>
+    <p class="footer-description">
+      Teachings.AI helps kids learn alphabets, numbers, and more with interactive games and worksheets.
+    </p>
+  </footer>
 
-  <p class="footer-description">
-    Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, 
-    and fun activities. Designed for preschool and kindergarten, our resources make learning joyful 
-    and effective.
-  </p>
-</footer>
 </body>
 </html>
