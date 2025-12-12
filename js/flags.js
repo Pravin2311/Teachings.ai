@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Base paths for assets
     const CDN_BASE = (typeof CDN !== 'undefined' && CDN) ? CDN : '';
-    const imageBasePath =  'assets/images/flags/';
+    const imageBasePath =  '/assets/images/flags/';
     const audioBasePath = CDN + 'assets/audio/'; 
     const audioFormat = '.mp3'; 
     const imageFormat = '.png?v=2'; 
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setupCanvas();
         };
         img.onerror = () => {
-            vegetableImageContainer.textContent = 'Image for ' + currentVegetable + ' not found. Please add ' + currentVegetable.toLowerCase() + imageFormat + ' to the assets/images/vegetables/ folder.';
+            vegetableImageContainer.textContent = 'Image for ' + currentVegetable + ' not found. Please add ' + currentVegetable.toLowerCase() + imageFormat + ' to the assets/images/flags/ folder.';
             console.error('Error loading image: ' + img.src);
             vegetableImageContainer.appendChild(canvas);
             setupCanvas();
