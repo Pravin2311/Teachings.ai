@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageBasePath = 'assets/images/flags/';
     const audioBasePath = 'assets/audio/country/'; 
     const audioFormat = '.mp3'; 
-    const imageFormat = '.png?v=2'; 
+    const imageFormat = '.png'; 
 
     function setupCanvas() {
         canvas.width = vegetableImageContainer.clientWidth;
