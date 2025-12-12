@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Base paths for assets
     const CDN_BASE = (typeof CDN !== 'undefined' && CDN) ? CDN : '';
-    const imageBasePath = CDN + 'assets/images/flags/';
+    const imageBasePath =  'assets/images/flags/';
     const audioBasePath = CDN + 'assets/audio/'; 
     const audioFormat = '.mp3'; 
     const imageFormat = '.png?v=2'; 
