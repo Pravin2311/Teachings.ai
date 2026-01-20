@@ -1,0 +1,113 @@
+/* ===== Global ===== */
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f9fbff;
+  color:#333;
+}
+
+a{
+  text-decoration:none;
+  color:#2b5cff;
+  font-weight:bold;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+/* ===== Layout ===== */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:16px;
+}
+
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+/* ===== Buttons ===== */
+.home-btn{
+  background:#2b5cff;
+  color:white;
+  padding:8px 14px;
+  border-radius:6px;
+  font-size:14px;
+}
+
+/* ===== Headings ===== */
+h1{
+  font-size:26px;
+  text-align:center;
+  color:#2b5cff;
+}
+
+h2{
+  font-size:20px;
+  margin-top:24px;
+}
+
+p{
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* ===== Image Box ===== */
+.image-box{
+  text-align:center;
+  margin:20px 0;
+}
+
+.image-box img{
+  max-width:200px;
+}
+
+/* ===== Word Grid ===== */
+.word-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+}
+
+.word{
+  background:#e8f0ff;
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+  font-weight:bold;
+}
+
+/* ===== Navigation Links ===== */
+.nav-links{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+/* ===== Footer ===== */
+.footer{
+  margin-top:30px;
+  text-align:center;
+  font-size:14px;
+  color:#777;
+}
+
+/* ===== Ad Container ===== */
+.ad-box{
+  margin:20px 0;
+  text-align:center;
+}
+
+/* ===== Mobile Optimization ===== */
+@media(max-width:600px){
+  h1{font-size:22px;}
+  h2{font-size:18px;}
+  p{font-size:15px;}
+}
