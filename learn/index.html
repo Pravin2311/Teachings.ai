@@ -1,52 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Kids Learning Hub – Alphabets, Animals, Birds | Teachings.ai</title>
-<meta name="description" content="Kids learning hub with alphabets, animals, birds and more educational topics for children.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="canonical" href="https://teachings.ai/learn/index.html">
-<link rel="stylesheet" href="/css/styles.css">
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XVYMNTZLQJ');
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7495143337429327"
-     crossorigin="anonymous"></script>
+  <!-- 🚀 Rich SEO Meta Tags -->
+  <title>World of Learning – Fun Games, Animals, Alphabets & More | Teachings.ai</title>
+  <meta name="description" content="Explore the ultimate Kids Learning Hub! Play with alphabets, discover wild animals, learn colors, count numbers, explore space planets, and more. Free educational games for preschoolers and kindergarten.">
+  <meta name="keywords" content="kids learning hub, preschool games, kindergarten activities, learn alphabets, animal facts, color games, counting numbers, space for kids, body parts, fruits and vegetables, free education">
+  
+  <!-- Canonical URL (Cleaned) -->
+  <link rel="canonical" href="https://teachings.ai/learn/index.html">
+
+  <!-- 🎨 Open Graph / Social Sharing -->
+  <meta property="og:title" content="World of Learning – Fun Games & Activities for Kids">
+  <meta property="og:description" content="Join the adventure! Learn animals, colors, space, and more with fun pictures and games.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teachings.ai/learn/index.html">
+  <meta property="og:image" content="https://teachings.ai/assets/images/learning-hub-banner.jpg">
+  <meta property="og:site_name" content="Teachings.ai">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="World of Learning – Fun Games & Activities for Kids">
+  <meta name="twitter:description" content="Join the adventure! Learn animals, colors, space, and more.">
+  <meta name="twitter:image" content="https://teachings.ai/assets/images/learning-hub-banner.jpg">
+
+  <!-- 🧠 Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "World of Learning Hub",
+    "description": "A comprehensive collection of educational topics for children including animals, alphabets, space, and science.",
+    "url": "https://teachings.ai/learn/index.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.ai",
+      "url": "https://teachings.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://teachings.ai/logo.png"
+      }
+    },
+    "hasPart": [
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/alphabets/index.html", "name": "Alphabets"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/animals/index.html", "name": "Animals"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/numbers/index.html", "name": "Numbers"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/colors/index.html", "name": "Colors"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/index.html", "name": "Planets & Space"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/fruits/index.html", "name": "Fruits"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/vehicles/index.html", "name": "Vehicles"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/body-parts/index.html", "name": "Body Parts"}
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7495143337429327"
+          crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- ✨ Custom Styles for the New Hub -->
+  <style>
+    :root {
+      --primary-color: #4facfe;
+      --secondary-color: #00f2fe;
+      --card-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      --hover-transform: translateY(-8px);
+    }
+
+    body {
+      font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Fun font for kids */
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      color: #333;
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+    }
+
+    .hero-section h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+
+    /* Grid Layout */
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 25px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Card Design */
+    .learning-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px 15px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s ease;
+      box-shadow: var(--card-shadow);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 180px;
+    }
+
+    .learning-card:hover {
+      transform: var(--hover-transform);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      border-color: var(--primary-color);
+      background: #fafafa;
+    }
+
+    .card-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      display: block;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.1));
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .learning-card:hover .card-icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .card-title {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.3;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4757;
+      color: white;
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Specific Colors for Cards (Optional Fun) */
+    .card-animals:hover { border-color: #ff9f43; }
+    .card-space:hover { border-color: #5f27cd; }
+    .card-nature:hover { border-color: #1dd1a1; }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 50px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      .hero-section h1 { font-size: 2rem; }
+      .learning-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      .learning-card { height: 140px; padding: 15px 10px; }
+      .card-icon { font-size: 2.5rem; margin-bottom: 10px; }
+      .card-title { font-size: 0.95rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <!-- 🎈 Hero Section -->
+  <div class="hero-section">
+    <p><small><a href="/index.html" style="color:#d30909;">Back to Home</a></small></p>
+    <h1>🚀 World of Learning</h1>
+    <p>Welcome to your adventure! Choose a topic below to start playing, learning, and exploring.</p>
+  </div>
+  
+  <div class="container">
+    
+    <!-- 🔡 Learning Grid -->
+    <div class="learning-grid">
+      
+      <!-- Alphabets -->
+      <a class="learning-card" href="alphabets/index.html">
+        <span class="card-icon">🔤</span>
+        <span class="card-title">Alphabets<br><small>A to Z Fun</small></span>
+      </a>
 
-<div class="top-bar"><a class="home-btn" href="/index.html">Back</a></div>
+      
 
-<h1>Kids Learning Hub</h1>
+      <!-- Animals -->
+      <a class="learning-card card-animals" href="animals/index.html">
+        <span class="card-icon">🦁</span>
+        <span class="card-title">Animals<br><small>Wild & Farm</small></span>
+      </a>
 
-<p>
-Welcome to Teachings.ai learning section. Here children can learn alphabets, animals, birds, fruits, vegetables and many more topics with pictures and simple explanations.
-</p>
+      <!-- Birds -->
+      <a class="learning-card" href="birds/index.html">
+        <span class="card-icon">🦜</span>
+        <span class="card-title">Birds<br><small>Flying Friends</small></span>
+      </a>
 
-<div class="word-list">
-  <a class="word" href="alphabets/index.html">Alphabets Learning</a>
-  <a class="word" href="animals/index.html">Animals Learning</a>
-  <a class="word" href="birds/index.html">Birds Learning</a>
-  <a class="word" href="colors/index.html">Colors Learning</a>
-  <a class="word" href="fruits/index.html">Fruits Learning</a>
-  <a class="word" href="vegetables/index.html">Vegetables Learning</a>
-  <a class="word" href="vehicles/index.html">Vehicles Learning</a>
-  <a class="word" href="body-parts/index.html">BodyParts Learning</a>
-</div>
+      <!-- Colors -->
+      <a class="learning-card" href="colors/index.html">
+        <span class="card-icon">🎨</span>
+        <span class="card-title">Colors<br><small>Rainbow Mix</small></span>
+      </a>
 
-<div class="footer">
-<p>Teachings.ai – Free Kids Learning Platform</p>
-</div>
+      <!-- Fruits -->
+      <a class="learning-card" href="fruits/index.html">
+        <span class="card-icon">🍎</span>
+        <span class="card-title">Fruits<br><small>Tasty Treats</small></span>
+      </a>
 
-</div>
+      <!-- Vegetables -->
+      <a class="learning-card" href="vegetables/index.html">
+        <span class="card-icon">🥕</span>
+        <span class="card-title">Vegetables<br><small>Healthy Greens</small></span>
+      </a>
+
+      <!-- Body Parts -->
+      <a class="learning-card" href="body-parts/index.html">
+        <span class="card-icon">👂</span>
+        <span class="card-title">Body Parts<br><small>All About Me</small></span>
+      </a>
+
+      <!-- Vehicles -->
+      <a class="learning-card" href="vehicles/index.html">
+        <span class="card-icon">🚀</span>
+        <span class="card-title">Vehicles<br><small>Cars & Planes</small></span>
+      </a>
+
+      <!-- Planets / Space -->
+      <a class="learning-card card-space" href="planets/index.html">
+        <span class="card-badge">New</span>
+        <span class="card-icon">🪐</span>
+        <span class="card-title">Planets<br><small>Space Adventure</small></span>
+      </a>
+
+      <!-- Countries & Flags -->
+      <a class="learning-card" href="country/index.html">
+        <span class="card-icon">🌍</span>
+        <span class="card-title">Countries<br><small>World Flags</small></span>
+      </a>
+
+      <!-- Electronics -->
+      <a class="learning-card" href="electronics/index.html">
+        <span class="card-icon">💻</span>
+        <span class="card-title">Electronics<br><small>Tech Gadgets</small></span>
+      </a>
+
+      <!-- Plants -->
+      <a class="learning-card card-nature" href="plants/index.html">
+        <span class="card-icon">🌱</span>
+        <span class="card-title">Plants<br><small>Nature Grow</small></span>
+      </a>
+
+      <!-- Shapes -->
+      <a class="learning-card" href="shapes/index.html">
+        <span class="card-icon">🔺</span>
+        <span class="card-title">Shapes<br><small>Circle & Square</small></span>
+      </a>
+
+      
+
+      <!-- Scientists -->
+      <a class="learning-card" href="scientists/index.html">
+        <span class="card-badge">New</span>
+        <span class="card-icon">👩‍🔬</span>
+        <span class="card-title">Scientists<br><small>Great Minds</small></span>
+      </a>
+
+    </div>
+
+    <!-- 📢 Ad Slot (Optional) -->
+    <div style="margin: 40px 0; text-align: center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7495143337429327"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="footer">
+      <p>© 2026 Teachings.ai – Making Learning Fun for Every Child! 🌟</p>
+      <p><small><a href="/index.html" style="color:#777;">Back to Home</a></small></p>
+    </div>
+
+  </div>
 
 </body>
 </html>
