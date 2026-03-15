@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Planets for Kids – Learn About Earth, Mars, Jupiter & More</title>
+  <meta name="description" content="Explore the Solar System! Learn about Earth, Mars, Jupiter, Saturn, and more with pictures, fun facts, and space secrets. Perfect for preschool and kindergarten STEM learning.">
+  <meta name="keywords" content="planets for kids, solar system for kids, learn about planets, earth mars jupiter saturn, space facts, astronomy for children, preschool STEM, kindergarten science, planet names, moon facts">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://teachings.ai/learn/planets/index.html">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Planets for Kids – Solar System Learning Guide">
+  <meta property="og:description" content="Click to explore Earth, Mars, Jupiter, and more! Fun facts and pictures for children.">
+  <meta property="og:image" content="https://teachings.ai/assets/images/planets/solar-system-collage.jpg">
+  <meta property="og:url" content="https://teachings.ai/learn/planets/index.html">
+  <meta property="og:type" content="website">
+
+  <!-- Schema.org: CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Planets Learning Hub",
+    "description": "A collection of educational pages about planets and the solar system for children.",
+    "url": "https://teachings.ai/learn/planets/index.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teachings.ai",
+      "url": "https://teachings.ai"
+    },
+    "hasPart": [
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/mercury.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/venus.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/earth.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/mars.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/jupiter.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/saturn.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/uranus.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/neptune.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/pluto.html"},
+      {"@type": "WebPage", "url": "https://teachings.ai/learn/planets/moon.html"}
+    ]
+  }
+  </script>
+
+  <!-- Analytics & Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XVYMNTZLQJ');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7495143337429327" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* Planet Grid Styles */
+    .planet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 25px; margin: 30px 0; }
+    .planet-card { text-align: center; padding: 20px; border-radius: 15px; text-decoration: none; color: #333; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid #eee; background: #fff; position: relative; overflow: hidden; }
+    .planet-card:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3); border-color: #4facfe; }
+    .planet-card img { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #4facfe, #00f2fe); padding: 10px; box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2); }
+    .planet-card h3 { margin: 5px 0; font-size: 1.2rem; color: #333; }
+    .planet-card span { font-size: 0.9rem; color: #666; display: block; margin-top: 5px; }
+    
+    /* Starry Background for Hub */
+    body { background-color: #0b0d17; color: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .top-bar { margin-bottom: 20px; }
+    .home-btn { background: #4facfe; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; }
+    h1 { color: #4facfe; text-align: center; font-size: 2.5rem; margin-bottom: 10px; text-shadow: 0 0 10px #4facfe; }
+    .intro-text { text-align: center; color: #ccc; font-size: 1.1rem; margin-bottom: 30px; }
+    .seo-content { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; margin-top: 40px; color: #ddd; }
+    .seo-content h2 { color: #4facfe; border-bottom: 2px solid #4facfe; padding-bottom: 10px; }
+    .seo-content ul { list-style-type: none; padding: 0; }
+    .seo-content li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+    .seo-content li::before { content: '🌟'; position: absolute; left: 0; }
+    .footer { text-align: center; margin-top: 50px; color: #666; padding: 20px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <a class="home-btn" href="/learn/index.html">⬅ Learning Home</a>
+  </div>
+
+  <h1>Planets for Kids</h1>
+  <p class="intro-text">
+    Blast off into space! Click on a planet below to learn its name, size, distance from the Sun, and cool facts. Let's explore our Solar System together!
+  </p>
+
+  <!-- Planet Grid -->
+  <div class="planet-grid">
+    <a href="mercury.html" class="planet-card">
+      <img src="/assets/images/planets/mercury.png" alt="Mercury" loading="lazy">
+      <h3>Mercury</h3>
+      <span>Closest to Sun</span>
+    </a>
+    <a href="venus.html" class="planet-card">
+      <img src="/assets/images/planets/venus.png" alt="Venus" loading="lazy">
+      <h3>Venus</h3>
+      <span>Hottest Planet</span>
+    </a>
+    <a href="earth.html" class="planet-card">
+      <img src="/assets/images/planets/earth.png" alt="Earth" loading="lazy">
+      <h3>Earth</h3>
+      <span>Our Home</span>
+    </a>
+    <a href="mars.html" class="planet-card">
+      <img src="/assets/images/planets/mars.png" alt="Mars" loading="lazy">
+      <h3>Mars</h3>
+      <span>Red Planet</span>
+    </a>
+    <a href="jupiter.html" class="planet-card">
+      <img src="/assets/images/planets/jupiter.png" alt="Jupiter" loading="lazy">
+      <h3>Jupiter</h3>
+      <span>King of Planets</span>
+    </a>
+    <a href="saturn.html" class="planet-card">
+      <img src="/assets/images/planets/saturn.png" alt="Saturn" loading="lazy">
+      <h3>Saturn</h3>
+      <span>Ringed Beauty</span>
+    </a>
+    <a href="uranus.html" class="planet-card">
+      <img src="/assets/images/planets/uranus.png" alt="Uranus" loading="lazy">
+      <h3>Uranus</h3>
+      <span>Ice Giant</span>
+    </a>
+    <a href="neptune.html" class="planet-card">
+      <img src="/assets/images/planets/neptune.png" alt="Neptune" loading="lazy">
+      <h3>Neptune</h3>
+      <span>Windiest Planet</span>
+    </a>
+    <a href="pluto.html" class="planet-card">
+      <img src="/assets/images/planets/pluto.png" alt="Pluto" loading="lazy">
+      <h3>Pluto</h3>
+      <span>Dwarf Planet</span>
+    </a>
+    <a href="moon.html" class="planet-card">
+      <img src="/assets/images/planets/moon.png" alt="Moon" loading="lazy">
+      <h3>The Moon</h3>
+      <span>Earth's Friend</span>
+    </a>
+  </div>
+
+  <!-- SEO Content Section -->
+  <article class="seo-content">
+    <h2>What is the Solar System?</h2>
+    <p>The <strong>Solar System</strong> is our cosmic neighborhood! It consists of the <strong>Sun</strong> (a giant star) in the center, and eight planets that orbit around it. There are also dwarf planets like Pluto, moons, asteroids, and comets.</p>
+    
+    <h3>Two Types of Planets</h3>
+    <ul>
+      <li>🪨 <strong>Rocky Planets:</strong> Mercury, Venus, Earth, and Mars. They have solid surfaces you could stand on.</li>
+      <li>💨 <strong>Gas Giants:</strong> Jupiter, Saturn, Uranus, and Neptune. They are huge balls of gas and ice with no solid surface.</li>
+    </ul>
+    <p>Click on any planet above to start your space adventure!</p>
+  </article>
+
+  <div class="footer">
+    <p><small><a href="https://www.teachings.ai/games.html" style="color:#4facfe; font-weight:bold;">Learn more Activity</a></small></p>
+    <p>Teachings.ai – Free Kids Learning Platform</p>
+  </div>
+</div>
+
+</body>
+</html>
