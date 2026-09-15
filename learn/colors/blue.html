@@ -116,6 +116,18 @@
     h2 { color: #1565c0; border-bottom: 3px solid #90caf9; padding-bottom: 10px; margin-top: 40px; }
     h3 { color: #0277bd; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "World of Learning", "item": "https://www.teachings.ai/learn/index.html"},
+      {"@type": "ListItem", "position": 2, "name": "Colors", "item": "https://www.teachings.ai/learn/colors/index.html"},
+      {"@type": "ListItem", "position": 3, "name": "Blue", "item": "https://www.teachings.ai/learn/colors/blue.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -123,6 +135,9 @@
   <div class="top-bar">
     <a class="home-btn" href="index.html">⬅ All Colors</a>
   </div>
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="/learn/index.html">World of Learning</a><span class="sep">›</span><a href="index.html">Colors</a><span class="sep">›</span><span class="current">Blue</span>
+    </nav>
 
   <!-- H1 Target Keyword -->
   <h1>Blue for Kids: The Color of the Sky and Sea</h1>

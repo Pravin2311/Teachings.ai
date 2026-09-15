@@ -91,6 +91,28 @@ p{
   flex-wrap:wrap;
 }
 
+/* ===== Breadcrumb ===== */
+.breadcrumb{
+  font-size:13px;
+  color:#777;
+  margin:0 0 12px;
+  flex-wrap:wrap;
+}
+.breadcrumb a{
+  color:#2b5cff;
+  font-weight:normal;
+}
+.breadcrumb a:hover{
+  text-decoration:underline;
+}
+.breadcrumb .sep{
+  margin:0 6px;
+  color:#aaa;
+}
+.breadcrumb .current{
+  color:#555;
+}
+
 /* ===== Footer ===== */
 .footer{
   margin-top:30px;

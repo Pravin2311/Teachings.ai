@@ -103,6 +103,18 @@
     h2 { color: #f57f17; border-bottom: 3px solid #ffe082; padding-bottom: 10px; margin-top: 40px; }
     h3 { color: #fbc02d; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "World of Learning", "item": "https://www.teachings.ai/learn/index.html"},
+      {"@type": "ListItem", "position": 2, "name": "Vehicles", "item": "https://www.teachings.ai/learn/vehicles/index.html"},
+      {"@type": "ListItem", "position": 3, "name": "Bus", "item": "https://www.teachings.ai/learn/vehicles/bus.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -110,6 +122,9 @@
   <div class="top-bar">
     <a class="home-btn" href="index.html">⬅ All Vehicles</a>
   </div>
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="/learn/index.html">World of Learning</a><span class="sep">›</span><a href="index.html">Vehicles</a><span class="sep">›</span><span class="current">Bus</span>
+    </nav>
 
   <!-- H1 Target Keyword -->
   <h1>Bus for Kids: The Community Carrier</h1>

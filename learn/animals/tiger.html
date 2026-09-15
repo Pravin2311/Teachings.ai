@@ -75,6 +75,18 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="/css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "World of Learning", "item": "https://www.teachings.ai/learn/index.html"},
+      {"@type": "ListItem", "position": 2, "name": "Animals", "item": "https://www.teachings.ai/learn/animals/index.html"},
+      {"@type": "ListItem", "position": 3, "name": "Tiger", "item": "https://www.teachings.ai/learn/animals/tiger.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="container">
@@ -82,6 +94,9 @@
     <div class="top-bar">
       <a class="home-btn" href="index.html">⬅ Animals</a>
     </div>
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="/learn/index.html">World of Learning</a><span class="sep">›</span><a href="index.html">Animals</a><span class="sep">›</span><span class="current">Tiger</span>
+    </nav>
 
     <h1>Tiger for Kids</h1>
 
