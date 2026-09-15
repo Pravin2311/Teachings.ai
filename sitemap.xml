@@ -1,5 +1,5 @@
 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
 <url>
 <loc>https://www.teachings.ai/</loc>
@@ -175,26 +175,81 @@
 <loc>https://www.teachings.ai/learn/animals/index.html</loc>
 <lastmod>2026-03-15T14:32:33+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/bear.png</image:loc><image:title>Bear</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/cat.png</image:loc><image:title>Cat</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/cow.png</image:loc><image:title>Cow</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/dog.png</image:loc><image:title>Dog</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/dolphin.png</image:loc><image:title>Dolphin</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/donkey.png</image:loc><image:title>Donkey</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/elephant.png</image:loc><image:title>Elephant</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/giraffe.png</image:loc><image:title>Giraffe</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/horse.png</image:loc><image:title>Horse</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/kangaroo.png</image:loc><image:title>Kangaroo</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/lion.png</image:loc><image:title>Lion</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/monkey.png</image:loc><image:title>Monkey</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/penguin.png</image:loc><image:title>Penguin</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/tiger.png</image:loc><image:title>Tiger</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/zebra.png</image:loc><image:title>Zebra</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/index.html</loc>
 <lastmod>2026-03-15T14:32:33+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/duck.png</image:loc><image:title>Duck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/eagle.png</image:loc><image:title>Eagle</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/flamingo.png</image:loc><image:title>Flamingo</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/hen.png</image:loc><image:title>Hen</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/hummingbird.png</image:loc><image:title>Hummingbird</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/owl.png</image:loc><image:title>Owl</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/parrot.png</image:loc><image:title>Parrot</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/peacock.png</image:loc><image:title>Peacock</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/pigeon.png</image:loc><image:title>Pigeon</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/sparrow.png</image:loc><image:title>Sparrow</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/index.html</loc>
 <lastmod>2026-03-15T14:32:33+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/red.png</image:loc><image:title>Red color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/blue.png</image:loc><image:title>Blue color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/green.png</image:loc><image:title>Green color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/yellow.png</image:loc><image:title>Yellow color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/orange.png</image:loc><image:title>Orange color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/purple.png</image:loc><image:title>Purple color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/pink.png</image:loc><image:title>Pink color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/black.png</image:loc><image:title>Black color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/white.png</image:loc><image:title>White color swatch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/brown.png</image:loc><image:title>Brown color swatch</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/index.html</loc>
 <lastmod>2026-03-15T14:32:33+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/apple.png</image:loc><image:title>Red Apple</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/banana.png</image:loc><image:title>Yellow Banana</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/orange.png</image:loc><image:title>Orange Fruit</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/strawberry.png</image:loc><image:title>Strawberry</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/grape.png</image:loc><image:title>Grapes</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/mango.png</image:loc><image:title>Mango</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/watermelon.png</image:loc><image:title>Watermelon</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/pineapple.png</image:loc><image:title>Pineapple</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/kiwi.png</image:loc><image:title>Kiwi</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/cherry.png</image:loc><image:title>Cherries</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/index.html</loc>
 <lastmod>2026-03-15T14:32:33+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/carrot.png</image:loc><image:title>Orange Carrot</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/broccoli.png</image:loc><image:title>Green Broccoli</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/tomato.png</image:loc><image:title>Red Tomato</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/potato.png</image:loc><image:title>Brown Potato</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/corn.png</image:loc><image:title>Yellow Corn</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/spinach.png</image:loc><image:title>Green Spinach</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/onion.png</image:loc><image:title>Onion</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/cucumber.png</image:loc><image:title>Cucumber</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/bell pepper.png</image:loc><image:title>Bell Pepper</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/mushroom.png</image:loc><image:title>Mushroom</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/index.html</loc>
@@ -205,21 +260,111 @@
 <loc>https://www.teachings.ai/learn/vehicles/index.html</loc>
 <lastmod>2026-03-15T14:32:34+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/car.png</image:loc><image:title>Car</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/truck.png</image:loc><image:title>Truck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/bus.png</image:loc><image:title>Bus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/train.png</image:loc><image:title>Train</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/airplane.png</image:loc><image:title>Airplane</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/helicopter.png</image:loc><image:title>Helicopter</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/boat.png</image:loc><image:title>Boat</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/submarine.png</image:loc><image:title>Submarine</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/bicycle.png</image:loc><image:title>Bicycle</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/motorcycle.png</image:loc><image:title>Motorcycle</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/fire-truck.png</image:loc><image:title>Fire Truck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/dump-truck.png</image:loc><image:title>Dump Truck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/garbage-truck.png</image:loc><image:title>Garbage Truck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/tow-truck.png</image:loc><image:title>Tow Truck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/concrete-mixer.png</image:loc><image:title>Concrete Mixer Truck</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/double-decker.png</image:loc><image:title>Double-Decker Bus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/articulated-bus.png</image:loc><image:title>Articulated Bus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/electric-bus.png</image:loc><image:title>Electric Bus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/scooter.png</image:loc><image:title>Scooter</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/dirt-bike.png</image:loc><image:title>Dirt Bike</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cruise-bike.png</image:loc><image:title>Cruiser Bike</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/electric-moto.png</image:loc><image:title>Electric Motorbike</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/bullet-train.png</image:loc><image:title>Bullet Train</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/steam-train.png</image:loc><image:title>Steam Train</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/diesel-train.png</image:loc><image:title>Diesel Train</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/electric-train.png</image:loc><image:title>Electric Train</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cargo-plane.png</image:loc><image:title>Cargo Plane</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/fighter-jet.png</image:loc><image:title>Fighter Jet</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/private-jet.png</image:loc><image:title>Private Jet</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/glider.png</image:loc><image:title>Glider</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/seaplane.png</image:loc><image:title>Seaplane</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/medical-heli.png</image:loc><image:title>Medical Helicopter</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/military-heli.png</image:loc><image:title>Military Helicopter</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/police-heli.png</image:loc><image:title>Police Helicopter</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/motorboat.png</image:loc><image:title>Motorboat</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cargo-ship.png</image:loc><image:title>Cargo Ship</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cruise-ship.png</image:loc><image:title>Cruise Ship</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/index.html</loc>
 <lastmod>2026-03-15T14:32:34+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/mercury.png</image:loc><image:title>Mercury</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/venus.png</image:loc><image:title>Venus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/earth.png</image:loc><image:title>Earth</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/mars.png</image:loc><image:title>Mars</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/jupiter.png</image:loc><image:title>Jupiter</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/saturn.png</image:loc><image:title>Saturn</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/uranus.png</image:loc><image:title>Uranus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/neptune.png</image:loc><image:title>Neptune</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/pluto.png</image:loc><image:title>Pluto</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/moon.png</image:loc><image:title>Moon</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/index.html</loc>
 <lastmod>2026-03-15T14:32:34+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/africa.png</image:loc><image:title>Africa Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/america.png</image:loc><image:title>USA Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/australia.png</image:loc><image:title>Australia Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/brazil.png</image:loc><image:title>Brazil Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/canada.png</image:loc><image:title>Canada Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/china.png</image:loc><image:title>China Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/egypt.png</image:loc><image:title>Egypt Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/france.png</image:loc><image:title>France Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/india.png</image:loc><image:title>India Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/japan.png</image:loc><image:title>Japan Map</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Germany.png</image:loc><image:title>Germany</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Italy.png</image:loc><image:title>Italy</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Russia.png</image:loc><image:title>Russia</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Mexico.png</image:loc><image:title>Mexico</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/United Kingdom.png</image:loc><image:title>United Kingdom</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Switzerland.png</image:loc><image:title>Switzerland</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Portugal.png</image:loc><image:title>Portugal</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/United Arab Emirates.png</image:loc><image:title>United Arab Emirates</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/index.html</loc>
 <lastmod>2026-03-15T14:32:34+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/laptop.png</image:loc><image:title>Laptop</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/mobile.png</image:loc><image:title>Mobile Phone</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/robot.png</image:loc><image:title>Robot</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/smart-watch.png</image:loc><image:title>Smart Watch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/ai.png</image:loc><image:title>Artificial Intelligence</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/camera.png</image:loc><image:title>Camera</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/headphone.png</image:loc><image:title>Headphones</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/computer-mouse.png</image:loc><image:title>Computer Mouse</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/keyboard.png</image:loc><image:title>Keyboard</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/monitor.png</image:loc><image:title>Monitor</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/speaker.png</image:loc><image:title>Speaker</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/calculator.png</image:loc><image:title>Calculator</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/cctv.png</image:loc><image:title>Security Camera</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/game-controller.png</image:loc><image:title>Game Controller</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/satellite-antenna.png</image:loc><image:title>Satellite Dish</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/self-driving-car.png</image:loc><image:title>Self-Driving Car</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/solar-pannel.png</image:loc><image:title>Solar Panel</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/voice-assistant.png</image:loc><image:title>Voice Assistant</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/earpod.png</image:loc><image:title>Wireless Earbuds</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/charger.png</image:loc><image:title>Charger</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/flashlight.png</image:loc><image:title>Flashlight</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/sim-card.png</image:loc><image:title>SIM Card</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/usb-pendrive.png</image:loc><image:title>USB Flash Drive</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/memory-card.png</image:loc><image:title>Memory Card</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/video-camera.png</image:loc><image:title>Video Camera</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/tracing-letters-and-numbers.html</loc>
@@ -335,1481 +480,1875 @@
 <loc>https://www.teachings.ai/learn/alphabets/letter-a.html</loc>
 <lastmod>2026-03-15T14:32:38+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/A.png</image:loc><image:title>Letter A for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-b.html</loc>
 <lastmod>2026-03-15T14:32:38+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/B.png</image:loc><image:title>Letter B for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-c.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/C.png</image:loc><image:title>Letter C for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-d.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/D.png</image:loc><image:title>Letter D for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-e.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/E.png</image:loc><image:title>Letter E for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-f.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/F.png</image:loc><image:title>Letter F for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-g.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/G.png</image:loc><image:title>Letter G for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-h.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/H.png</image:loc><image:title>Letter H for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-i.html</loc>
 <lastmod>2026-03-15T14:32:39+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/I.png</image:loc><image:title>Letter I for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-j.html</loc>
 <lastmod>2026-03-15T14:32:40+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/J.png</image:loc><image:title>Letter J for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-k.html</loc>
 <lastmod>2026-03-15T14:32:40+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/K.png</image:loc><image:title>Letter K for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-l.html</loc>
 <lastmod>2026-03-15T14:32:40+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/L.png</image:loc><image:title>Letter L for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-m.html</loc>
 <lastmod>2026-03-15T14:32:40+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/M.png</image:loc><image:title>Letter M for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-n.html</loc>
 <lastmod>2026-03-15T14:32:40+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/N.png</image:loc><image:title>Letter N for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-o.html</loc>
 <lastmod>2026-03-15T14:32:41+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/O.png</image:loc><image:title>Letter O for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-p.html</loc>
 <lastmod>2026-03-15T14:32:41+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/P.png</image:loc><image:title>Letter P for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-q.html</loc>
 <lastmod>2026-03-15T14:32:41+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/Q.png</image:loc><image:title>Letter Q for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-r.html</loc>
 <lastmod>2026-03-15T14:32:41+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/R.png</image:loc><image:title>Letter R for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-s.html</loc>
 <lastmod>2026-03-15T14:32:41+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/S.png</image:loc><image:title>Letter S for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-t.html</loc>
 <lastmod>2026-03-15T14:32:41+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/T.png</image:loc><image:title>Letter T for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-u.html</loc>
 <lastmod>2026-03-15T14:32:42+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/U.png</image:loc><image:title>Letter U for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-v.html</loc>
 <lastmod>2026-03-15T14:32:42+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/V.png</image:loc><image:title>Letter V for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-w.html</loc>
 <lastmod>2026-03-15T14:32:42+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/W.png</image:loc><image:title>Letter W for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-x.html</loc>
 <lastmod>2026-03-15T14:32:42+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/X.png</image:loc><image:title>Letter X for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-y.html</loc>
 <lastmod>2026-03-15T14:32:42+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/Y.png</image:loc><image:title>Letter Y for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/alphabets/letter-z.html</loc>
 <lastmod>2026-03-15T14:32:42+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/alphabets/Z.png</image:loc><image:title>Letter Z for kids</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/bear.html</loc>
 <lastmod>2026-03-15T14:32:43+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/bear.png</image:loc><image:title>Cute bear for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/cat.html</loc>
 <lastmod>2026-03-15T14:32:43+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/cat.png</image:loc><image:title>Fluffy cat for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/cow.html</loc>
 <lastmod>2026-03-15T14:32:43+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/cow.png</image:loc><image:title>Friendly cow in field for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/dog.html</loc>
 <lastmod>2026-03-15T14:32:43+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/dog.png</image:loc><image:title>Happy dog playing ball for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/dolphin.html</loc>
 <lastmod>2026-03-15T14:32:43+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/dolphin.png</image:loc><image:title>Jumping dolphin in ocean for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/donkey.html</loc>
 <lastmod>2026-03-15T14:32:43+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/donkey.png</image:loc><image:title>Friendly donkey carrying basket for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/elephant.html</loc>
 <lastmod>2026-03-15T14:32:44+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/elephant.png</image:loc><image:title>Big elephant with trunk for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/giraffe.html</loc>
 <lastmod>2026-03-15T14:32:44+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/giraffe.png</image:loc><image:title>Tall giraffe eating leaves for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/horse.html</loc>
 <lastmod>2026-03-15T14:32:44+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/horse.png</image:loc><image:title>Running horse in field for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/kangaroo.html</loc>
 <lastmod>2026-03-15T14:32:44+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/kangaroo.png</image:loc><image:title>Hopping kangaroo with joey for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/lion.html</loc>
 <lastmod>2026-03-15T14:32:44+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/lion.png</image:loc><image:title>Majestic lion roaring for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/monkey.html</loc>
 <lastmod>2026-03-15T14:32:44+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/monkey.png</image:loc><image:title>Swinging monkey in tree for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/penguin.html</loc>
 <lastmod>2026-03-15T14:32:45+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/penguin.png</image:loc><image:title>Waddling penguin in snow for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/tiger.html</loc>
 <lastmod>2026-03-15T14:32:45+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/tiger.png</image:loc><image:title>Striped tiger in jungle for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/animals/zebra.html</loc>
 <lastmod>2026-03-15T14:32:45+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/animals/zebra.png</image:loc><image:title>Striped zebra running for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/duck.html</loc>
 <lastmod>2026-03-15T14:32:45+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/duck.png</image:loc><image:title>Cute duck swimming in pond for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/eagle.html</loc>
 <lastmod>2026-03-15T14:32:45+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/eagle.png</image:loc><image:title>Majestic eagle flying in sky for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/flamingo.html</loc>
 <lastmod>2026-03-15T14:32:45+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/flamingo.png</image:loc><image:title>Pink flamingo standing on one leg for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/hen.html</loc>
 <lastmod>2026-03-15T14:32:46+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/hen.png</image:loc><image:title>Friendly hen on farm for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/hummingbird.html</loc>
 <lastmod>2026-03-15T14:32:46+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/hummingbird.png</image:loc><image:title>Tiny hummingbird hovering near flower for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/owl.html</loc>
 <lastmod>2026-03-15T14:32:46+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/owl.png</image:loc><image:title>Wise owl sitting on branch at night for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/parrot.html</loc>
 <lastmod>2026-03-15T14:32:46+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/parrot.png</image:loc><image:title>Colorful parrot perched on branch for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/peacock.html</loc>
 <lastmod>2026-03-15T14:32:46+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/peacock.png</image:loc><image:title>Colorful peacock spreading its tail for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/pigeon.html</loc>
 <lastmod>2026-03-15T14:32:46+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/pigeon.png</image:loc><image:title>Gray pigeon eating bread crumbs for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/birds/sparrow.html</loc>
 <lastmod>2026-03-15T14:32:47+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/birds/sparrow.png</image:loc><image:title>Small sparrow hopping on grass for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/red.html</loc>
 <lastmod>2026-03-15T14:32:47+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/red.png</image:loc><image:title>Bright red color swatch and objects</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/blue.html</loc>
 <lastmod>2026-03-15T14:32:47+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/blue.png</image:loc><image:title>Bright blue color swatch with sky and ocean elements</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/green.html</loc>
 <lastmod>2026-03-15T14:32:47+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/green.png</image:loc><image:title>Bright green color swatch with leaves and grass</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/yellow.html</loc>
 <lastmod>2026-03-15T14:32:47+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/yellow.png</image:loc><image:title>Bright yellow color swatch with sun and stars</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/orange.html</loc>
 <lastmod>2026-03-15T14:32:47+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/orange.png</image:loc><image:title>Bright orange color swatch with pumpkins and leaves</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/purple.html</loc>
 <lastmod>2026-03-15T14:32:48+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/purple.png</image:loc><image:title>Bright purple color swatch with grapes and flowers</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/pink.html</loc>
 <lastmod>2026-03-15T14:32:48+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/pink.png</image:loc><image:title>Bright pink color swatch with flamingos and flowers</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/black.html</loc>
 <lastmod>2026-03-15T14:32:48+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/black.png</image:loc><image:title>Black color swatch with stars and moon</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/white.html</loc>
 <lastmod>2026-03-15T14:32:48+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/white.png</image:loc><image:title>White color swatch with snowflakes and clouds</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/colors/brown.html</loc>
 <lastmod>2026-03-15T14:32:48+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/colors/brown.png</image:loc><image:title>Brown color swatch with soil, trees, and chocolate</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/apple.html</loc>
 <lastmod>2026-03-15T14:32:48+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/apple.png</image:loc><image:title>Red and Green Apples for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/banana.html</loc>
 <lastmod>2026-03-15T14:32:49+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/banana.png</image:loc><image:title>Bunch of yellow bananas for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/orange.html</loc>
 <lastmod>2026-03-15T14:32:49+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/orange.png</image:loc><image:title>Whole and sliced orange fruit for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/strawberry.html</loc>
 <lastmod>2026-03-15T14:32:49+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/strawberry.png</image:loc><image:title>Fresh red strawberries for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/mango.html</loc>
 <lastmod>2026-03-15T14:32:49+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/mango.png</image:loc><image:title>Ripe yellow mango for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/watermelon.html</loc>
 <lastmod>2026-03-15T14:32:49+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/watermelon.png</image:loc><image:title>Whole and sliced watermelon for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/pineapple.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/pineapple.png</image:loc><image:title>Whole and sliced pineapple for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/kiwi.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/kiwi.png</image:loc><image:title>Whole and sliced kiwi fruit for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fruits/cherry.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/cherry.png</image:loc><image:title>Fresh red cherries with stems for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/carrot.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/carrot.png</image:loc><image:title>Orange Carrots for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/broccoli.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/broccoli.png</image:loc><image:title>Fresh green broccoli for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/tomato.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/tomato.png</image:loc><image:title>Fresh red tomatoes for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/potato.html</loc>
 <lastmod>2026-03-15T14:32:50+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/potato.png</image:loc><image:title>Fresh brown potatoes for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/corn.html</loc>
 <lastmod>2026-03-15T14:32:51+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/corn.png</image:loc><image:title>Fresh yellow corn on the cob for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/spinach.html</loc>
 <lastmod>2026-03-15T14:32:51+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/spinach.png</image:loc><image:title>Fresh green spinach leaves for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/onion.html</loc>
 <lastmod>2026-03-15T14:32:51+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/onion.png</image:loc><image:title>Red and yellow onions for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/cucumber.html</loc>
 <lastmod>2026-03-15T14:32:51+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/cucumber.png</image:loc><image:title>Fresh green cucumber for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/bell-pepper.html</loc>
 <lastmod>2026-03-15T14:32:51+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/bell pepper.png</image:loc><image:title>Colorful red, yellow, and green bell peppers for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vegetables/mushroom.html</loc>
 <lastmod>2026-03-15T14:32:51+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vegetables/mushroom.png</image:loc><image:title>Fresh brown and white mushrooms for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/head.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/head.png</image:loc><image:title>Child's head with smiling face for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/eyes.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/eyes.png</image:loc><image:title>Child's eyes with big smile for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/ears.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/ears.png</image:loc><image:title>Child's ears with happy face for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/nose.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/nose.png</image:loc><image:title>Child's nose with smiling face for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/mouth.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/mouth.png</image:loc><image:title>Child's smiling mouth for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/hands.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/hands.png</image:loc><image:title>Child's hands waving for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/arms.html</loc>
 <lastmod>2026-03-15T14:32:52+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/arms.png</image:loc><image:title>Child's arms waving for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/legs.html</loc>
 <lastmod>2026-03-15T14:32:53+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/legs.png</image:loc><image:title>Child's legs running for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/feet.html</loc>
 <lastmod>2026-03-15T14:32:53+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/feet.png</image:loc><image:title>Child's feet running for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/body-parts/stomach.html</loc>
 <lastmod>2026-03-15T14:32:53+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/bodyparts/stomach.png</image:loc><image:title>Child's tummy with happy face for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/car.html</loc>
 <lastmod>2026-03-15T14:32:53+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/car.png</image:loc><image:title>Red car for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/truck.html</loc>
 <lastmod>2026-03-15T14:32:53+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/truck.png</image:loc><image:title>Big orange dump truck for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/bus.html</loc>
 <lastmod>2026-03-15T14:32:53+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/bus.png</image:loc><image:title>Yellow school bus and city bus for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/train.html</loc>
 <lastmod>2026-03-15T14:32:54+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/train.png</image:loc><image:title>Blue and red train engine for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/airplane.html</loc>
 <lastmod>2026-03-15T14:32:54+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/airplane.png</image:loc><image:title>White commercial airplane flying in blue sky</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/helicopter.html</loc>
 <lastmod>2026-03-15T14:32:54+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/helicopter.png</image:loc><image:title>Red rescue helicopter flying</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/ships.html</loc>
 <lastmod>2026-03-15T14:32:54+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/boat.png</image:loc><image:title>White speedboat and sailboat on blue water</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/submarine.html</loc>
 <lastmod>2026-03-15T14:32:54+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/submarine.png</image:loc><image:title>Blue submarine diving underwater with fish</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/bicycle.html</loc>
 <lastmod>2026-03-15T14:32:54+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/bicycle.png</image:loc><image:title>Red bicycle with training wheels for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/motorcycle.html</loc>
 <lastmod>2026-03-15T14:32:55+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/motorcycle.png</image:loc><image:title>Red sport motorcycle for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/mercury.html</loc>
 <lastmod>2026-03-15T14:32:55+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/mercury.png</image:loc><image:title>Gray cratered Mercury planet for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/venus.html</loc>
 <lastmod>2026-03-15T14:32:55+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/venus.png</image:loc><image:title>Bright yellowish-white Venus planet for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/earth.html</loc>
 <lastmod>2026-03-15T14:32:55+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/earth.png</image:loc><image:title>Blue and green Earth planet for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/mars.html</loc>
 <lastmod>2026-03-15T14:32:55+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/mars.png</image:loc><image:title>Red dusty Mars planet for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/jupiter.html</loc>
 <lastmod>2026-03-15T14:32:55+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/jupiter.png</image:loc><image:title>Striped Jupiter planet with Great Red Spot for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/saturn.html</loc>
 <lastmod>2026-03-15T14:32:56+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/saturn.png</image:loc><image:title>Saturn with beautiful rings for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/uranus.html</loc>
 <lastmod>2026-03-15T14:32:56+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/uranus.png</image:loc><image:title>Pale blue Uranus planet for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/neptune.html</loc>
 <lastmod>2026-03-15T14:32:56+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/neptune.png</image:loc><image:title>Deep blue Neptune planet with dark spots for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/pluto.html</loc>
 <lastmod>2026-03-15T14:32:56+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/pluto.png</image:loc><image:title>Pluto dwarf planet with heart shape for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/planets/moon.html</loc>
 <lastmod>2026-03-15T14:32:56+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/planets/moon.png</image:loc><image:title>Gray cratered Moon for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/africa.html</loc>
 <lastmod>2026-03-15T14:32:57+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/africa.png</image:loc><image:title>Map of Africa</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/america.html</loc>
 <lastmod>2026-03-15T14:32:57+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/america.png</image:loc><image:title>Map of the USA</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/australia.html</loc>
 <lastmod>2026-03-15T14:32:57+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/australia.png</image:loc><image:title>Map of Australia</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/brazil.html</loc>
 <lastmod>2026-03-15T14:32:57+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/brazil.png</image:loc><image:title>Map of Brazil</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/canada.html</loc>
 <lastmod>2026-03-15T14:32:57+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/canada.png</image:loc><image:title>Map of Canada</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/china.html</loc>
 <lastmod>2026-03-15T14:32:57+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/china.png</image:loc><image:title>Map of China</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/egypt.html</loc>
 <lastmod>2026-03-15T14:32:58+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/egypt.png</image:loc><image:title>Map of Egypt</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/france.html</loc>
 <lastmod>2026-03-15T14:32:58+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/france.png</image:loc><image:title>Map of France</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/india.html</loc>
 <lastmod>2026-03-15T14:32:58+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/india.png</image:loc><image:title>Map of India</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/japan.html</loc>
 <lastmod>2026-03-15T14:32:58+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/country/japan.png</image:loc><image:title>Map of Japan</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/laptop.html</loc>
 <lastmod>2026-03-15T14:32:58+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/laptop.png</image:loc><image:title>Open laptop computer for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/mobile.html</loc>
 <lastmod>2026-03-15T14:32:58+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/mobile.png</image:loc><image:title>Smartphone mobile phone for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/robot.html</loc>
 <lastmod>2026-03-15T14:32:59+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/robot.png</image:loc><image:title>Friendly robot for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/ai.html</loc>
 <lastmod>2026-03-15T14:32:59+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/ai.png</image:loc><image:title>Artificial Intelligence brain icon for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/circle.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/circle.png</image:loc><image:title>Circle</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/crescent.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/crescent.png</image:loc><image:title>Crescent</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/diamond.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/diamond.png</image:loc><image:title>Diamond</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/heart.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/heart.png</image:loc><image:title>Heart</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/hexagon.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/hexagon.png</image:loc><image:title>Hexagon</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/circle.png</image:loc><image:title>Circle</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/crescent.png</image:loc><image:title>Crescent</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/diamond.png</image:loc><image:title>Diamond</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/heart.png</image:loc><image:title>Heart</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/hexagon.png</image:loc><image:title>Hexagon</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/octagon.png</image:loc><image:title>Octagon</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/oval.png</image:loc><image:title>Oval</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/pentagon.png</image:loc><image:title>Pentagon</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/rectangle.png</image:loc><image:title>Rectangle</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/square.png</image:loc><image:title>Square</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/star.png</image:loc><image:title>Star</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/triangle.png</image:loc><image:title>Triangle</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/octagon.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/octagon.png</image:loc><image:title>Octagon</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/oval.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/oval.png</image:loc><image:title>Oval</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/pentagon.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/pentagon.png</image:loc><image:title>Pentagon</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/rectangle.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/rectangle.png</image:loc><image:title>Rectangle</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/square.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/square.png</image:loc><image:title>Square</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/star.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/star.png</image:loc><image:title>Star</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/shapes/triangle.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/shapes/triangle.png</image:loc><image:title>Triangle</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/aloe-vera.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/aloe_vera.png</image:loc><image:title>Aloe Vera</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/bamboo.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/bamboo.png</image:loc><image:title>Bamboo</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/banana-plant.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/banana_plant.png</image:loc><image:title>Banana Plant</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/cactus.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/cactus.png</image:loc><image:title>Cactus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/fern.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/fern.png</image:loc><image:title>Fern</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/aloe_vera.png</image:loc><image:title>Aloe Vera</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/bamboo.png</image:loc><image:title>Bamboo</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/banana_plant.png</image:loc><image:title>Banana Plant</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/cactus.png</image:loc><image:title>Cactus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/fern.png</image:loc><image:title>Fern</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/lotus.png</image:loc><image:title>Lotus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/mango_tree.png</image:loc><image:title>Mango Tree</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/rose.png</image:loc><image:title>Rose</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/sunflower.png</image:loc><image:title>Sunflower</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/tulip.png</image:loc><image:title>Tulip</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/lotus.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/lotus.png</image:loc><image:title>Lotus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/mango-tree.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/mango_tree.png</image:loc><image:title>Mango Tree</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/rose.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/rose.png</image:loc><image:title>Rose</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/sunflower.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/sunflower.png</image:loc><image:title>Sunflower</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/plants/tulip.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/plants/tulip.png</image:loc><image:title>Tulip</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/0.png</image:loc><image:title>0 (Zero)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/1.png</image:loc><image:title>1 (One)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/2.png</image:loc><image:title>2 (Two)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/3.png</image:loc><image:title>3 (Three)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/4.png</image:loc><image:title>4 (Four)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/5.png</image:loc><image:title>5 (Five)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/6.png</image:loc><image:title>6 (Six)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/7.png</image:loc><image:title>7 (Seven)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/8.png</image:loc><image:title>8 (Eight)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/9.png</image:loc><image:title>9 (Nine)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/10.png</image:loc><image:title>10 (Ten)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-0.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/0.png</image:loc><image:title>0 (Zero)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-1.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/1.png</image:loc><image:title>1 (One)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-10.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/10.png</image:loc><image:title>10 (Ten)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-2.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/2.png</image:loc><image:title>2 (Two)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-3.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/3.png</image:loc><image:title>3 (Three)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-4.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/4.png</image:loc><image:title>4 (Four)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-5.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/5.png</image:loc><image:title>5 (Five)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-6.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/6.png</image:loc><image:title>6 (Six)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-7.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/7.png</image:loc><image:title>7 (Seven)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-8.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/8.png</image:loc><image:title>8 (Eight)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/numbers/number-9.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/numbers/9.png</image:loc><image:title>9 (Nine)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/alexander-graham-bell.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/alexander%20graham%20bell.png</image:loc><image:title>Alexander Graham Bell</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/antoine-lavoisier.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/antoine%20lavoisier.png</image:loc><image:title>Antoine Lavoisier</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/charles-darwin.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/charles%20darwin.png</image:loc><image:title>Charles Darwin</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/gustave-eiffel.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/gustave%20eiffel.png</image:loc><image:title>Gustave Eiffel</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/isaac%20newton.png</image:loc><image:title>Isaac Newton</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/charles%20darwin.png</image:loc><image:title>Charles Darwin</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/thomas%20edison.png</image:loc><image:title>Thomas Edison</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/nikola%20tesla.png</image:loc><image:title>Nikola Tesla</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/leonardo%20da%20vinci.png</image:loc><image:title>Leonardo da Vinci</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/alexander%20graham%20bell.png</image:loc><image:title>Alexander Graham Bell</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/gustave%20eiffel.png</image:loc><image:title>Gustave Eiffel</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/antoine%20lavoisier.png</image:loc><image:title>Antoine Lavoisier</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/srinivas%20ramanujam.png</image:loc><image:title>Srinivasa Ramanujan</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/robert%20oppenheimer.png</image:loc><image:title>J. Robert Oppenheimer</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/isaac-newton.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/isaac%20newton.png</image:loc><image:title>Isaac Newton</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/leonardo-da-vinci.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/leonardo%20da%20vinci.png</image:loc><image:title>Leonardo da Vinci</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/nikola-tesla.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/nikola%20tesla.png</image:loc><image:title>Nikola Tesla</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/robert-oppenheimer.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/robert%20oppenheimer.png</image:loc><image:title>J. Robert Oppenheimer</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/srinivasa-ramanujan.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/srinivas%20ramanujam.png</image:loc><image:title>Srinivasa Ramanujan</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/scientists/thomas-edison.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/scientists/thomas%20edison.png</image:loc><image:title>Thomas Edison</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/brain.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/brain.png</image:loc><image:title>Brain</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/eye.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/eye.png</image:loc><image:title>Eyes</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/heart.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/heart.png</image:loc><image:title>Heart</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/brain.png</image:loc><image:title>Brain</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/eye.png</image:loc><image:title>Eyes</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/heart.png</image:loc><image:title>Heart</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/lungs.png</image:loc><image:title>Lungs</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/stomach.png</image:loc><image:title>Stomach</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/liver.png</image:loc><image:title>Liver</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/kidney.png</image:loc><image:title>Kidneys</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/intestine.png</image:loc><image:title>Intestines</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/muscle.png</image:loc><image:title>Muscles</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/teeth.png</image:loc><image:title>Teeth</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/lymph-node.png</image:loc><image:title>Lymph Nodes</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/intestine.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/intestine.png</image:loc><image:title>Intestines</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/kidney.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/kidney.png</image:loc><image:title>Kidneys</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/liver.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/liver.png</image:loc><image:title>Liver</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/lungs.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/lungs.png</image:loc><image:title>Lungs</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/lymph-node.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/lymph-node.png</image:loc><image:title>Lymph Nodes</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/muscle.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/muscle.png</image:loc><image:title>Muscles</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/stomach.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/stomach.png</image:loc><image:title>Stomach</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/organs/teeth.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/organs/teeth.png</image:loc><image:title>Teeth</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/anthill.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/anthill.png</image:loc><image:title>Anthill</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/aurora.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/aurora.png</image:loc><image:title>Aurora (Northern Lights)</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/beach.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/beach.png</image:loc><image:title>Beach</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/camp.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/camp.png</image:loc><image:title>Camp Site</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/cave.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/cave.png</image:loc><image:title>Cave</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/desert.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/desert.png</image:loc><image:title>Desert</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/eaglenest.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/eaglenest.png</image:loc><image:title>Eagle Nest</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/forest.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/forest.png</image:loc><image:title>Forest</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/mountain.png</image:loc><image:title>Mountain</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/ocean.png</image:loc><image:title>Ocean</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/river.png</image:loc><image:title>River</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/lake.png</image:loc><image:title>Lake</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/forest.png</image:loc><image:title>Forest</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/desert.png</image:loc><image:title>Desert</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/volcano.png</image:loc><image:title>Volcano</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/waterfall.png</image:loc><image:title>Waterfall</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/cave.png</image:loc><image:title>Cave</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/beach.png</image:loc><image:title>Beach</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/anthill.png</image:loc><image:title>Anthill</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/eaglenest.png</image:loc><image:title>Eagle Nest</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/aurora.png</image:loc><image:title>Aurora (Northern Lights)</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/sunset.png</image:loc><image:title>Sunset</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/camp.png</image:loc><image:title>Camp Site</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/lake.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/lake.png</image:loc><image:title>Lake</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/mountain.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/mountain.png</image:loc><image:title>Mountain</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/ocean.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/ocean.png</image:loc><image:title>Ocean</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/river.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/river.png</image:loc><image:title>River</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/sunset.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/sunset.png</image:loc><image:title>Sunset</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/volcano.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/volcano.png</image:loc><image:title>Volcano</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/nature/waterfall.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/nature/waterfall.png</image:loc><image:title>Waterfall</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/airport.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/airport.png</image:loc><image:title>Airport</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/cityhall.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/cityhall.png</image:loc><image:title>City Hall</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/firestation.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/firestation.png</image:loc><image:title>Fire Station</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/hospital.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/hospital.png</image:loc><image:title>Hospital</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/hospital.png</image:loc><image:title>Hospital</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/firestation.png</image:loc><image:title>Fire Station</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/policestation.png</image:loc><image:title>Police Station</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/school.png</image:loc><image:title>School</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/library.png</image:loc><image:title>Library</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/postoffice.png</image:loc><image:title>Post Office</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/airport.png</image:loc><image:title>Airport</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/museum.png</image:loc><image:title>Museum</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/park.png</image:loc><image:title>Park</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/cityhall.png</image:loc><image:title>City Hall</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/library.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/library.png</image:loc><image:title>Library</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/museum.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/museum.png</image:loc><image:title>Museum</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/park.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/park.png</image:loc><image:title>Park</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/policestation.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/policestation.png</image:loc><image:title>Police Station</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/postoffice.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/postoffice.png</image:loc><image:title>Post Office</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/publicservice/school.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/publicservice/school.png</image:loc><image:title>School</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/fire-truck.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/fire-truck.png</image:loc><image:title>Fire Truck</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/dump-truck.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/dump-truck.png</image:loc><image:title>Dump Truck</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/garbage-truck.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/garbage-truck.png</image:loc><image:title>Garbage Truck</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/tow-truck.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/tow-truck.png</image:loc><image:title>Tow Truck</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/concrete-mixer.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/concrete-mixer.png</image:loc><image:title>Concrete Mixer Truck</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/double-decker.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/double-decker.png</image:loc><image:title>Double-Decker Bus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/articulated-bus.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/articulated-bus.png</image:loc><image:title>Articulated Bus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/electric-bus.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/electric-bus.png</image:loc><image:title>Electric Bus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/scooter.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/scooter.png</image:loc><image:title>Scooter</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/dirt-bike.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/dirt-bike.png</image:loc><image:title>Dirt Bike</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/cruise-bike.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cruise-bike.png</image:loc><image:title>Cruiser Bike</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/electric-moto.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/electric-moto.png</image:loc><image:title>Electric Motorbike</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/bullet-train.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/bullet-train.png</image:loc><image:title>Bullet Train</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/steam-train.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/steam-train.png</image:loc><image:title>Steam Train</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/diesel-train.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/diesel-train.png</image:loc><image:title>Diesel Train</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/electric-train.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/electric-train.png</image:loc><image:title>Electric Train</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/cargo-plane.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cargo-plane.png</image:loc><image:title>Cargo Plane</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/fighter-jet.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/fighter-jet.png</image:loc><image:title>Fighter Jet</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/private-jet.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/private-jet.png</image:loc><image:title>Private Jet</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/glider.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/glider.png</image:loc><image:title>Glider</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/seaplane.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/seaplane.png</image:loc><image:title>Seaplane</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/medical-heli.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/medical-heli.png</image:loc><image:title>Medical Helicopter</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/military-heli.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/military-heli.png</image:loc><image:title>Military Helicopter</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/police-heli.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/police-heli.png</image:loc><image:title>Police Helicopter</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/motorboat.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/motorboat.png</image:loc><image:title>Motorboat</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/cargo-ship.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cargo-ship.png</image:loc><image:title>Cargo Ship</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/vehicles/cruise-ship.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/vehicles/cruise-ship.png</image:loc><image:title>Cruise Ship</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/smart-watch.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/smart-watch.png</image:loc><image:title>Smart Watch</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/camera.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/camera.png</image:loc><image:title>Camera</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/headphone.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/headphone.png</image:loc><image:title>Headphones</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/computer-mouse.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/computer-mouse.png</image:loc><image:title>Computer Mouse</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/keyboard.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/keyboard.png</image:loc><image:title>Keyboard</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/monitor.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/monitor.png</image:loc><image:title>Monitor</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/speaker.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/speaker.png</image:loc><image:title>Speaker</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/calculator.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/calculator.png</image:loc><image:title>Calculator</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/cctv.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/cctv.png</image:loc><image:title>Security Camera</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/game-controller.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/game-controller.png</image:loc><image:title>Game Controller</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/satellite-antenna.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/satellite-antenna.png</image:loc><image:title>Satellite Dish</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/self-driving-car.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/self-driving-car.png</image:loc><image:title>Self-Driving Car</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/solar-pannel.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/solar-pannel.png</image:loc><image:title>Solar Panel</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/voice-assistant.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/voice-assistant.png</image:loc><image:title>Voice Assistant</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/earpod.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/earpod.png</image:loc><image:title>Wireless Earbuds</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/charger.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/charger.png</image:loc><image:title>Charger</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/flashlight.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/flashlight.png</image:loc><image:title>Flashlight</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/sim-card.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/sim-card.png</image:loc><image:title>SIM Card</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/usb-pendrive.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/usb-pendrive.png</image:loc><image:title>USB Flash Drive</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/memory-card.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/memory-card.png</image:loc><image:title>Memory Card</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/electronics/video-camera.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/electronics/video-camera.png</image:loc><image:title>Video Camera</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/germany.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Germany.png</image:loc><image:title>Germany</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/italy.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Italy.png</image:loc><image:title>Italy</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/russia.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Russia.png</image:loc><image:title>Russia</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/mexico.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Mexico.png</image:loc><image:title>Mexico</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/united-kingdom.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/United%20Kingdom.png</image:loc><image:title>United Kingdom</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/switzerland.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Switzerland.png</image:loc><image:title>Switzerland</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/portugal.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/Portugal.png</image:loc><image:title>Portugal</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/country/uae.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/flags/United%20Arab%20Emirates.png</image:loc><image:title>United Arab Emirates</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/ball.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/ball.png</image:loc><image:title>Ball</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/egg.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/egg.png</image:loc><image:title>Egg</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/fish.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/fish.png</image:loc><image:title>Fish</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/goat.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/goat.png</image:loc><image:title>Goat</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/hat.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/hat.png</image:loc><image:title>Hat</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/ice.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/ice.png</image:loc><image:title>Ice</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/ball.png</image:loc><image:title>Ball</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/egg.png</image:loc><image:title>Egg</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/fish.png</image:loc><image:title>Fish</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/goat.png</image:loc><image:title>Goat</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/hat.png</image:loc><image:title>Hat</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/ice.png</image:loc><image:title>Ice</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/jug.png</image:loc><image:title>Jug</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/kite.png</image:loc><image:title>Kite</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/mug.png</image:loc><image:title>Mug</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/notebook.png</image:loc><image:title>Notebook</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/octopus.png</image:loc><image:title>Octopus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/pen.png</image:loc><image:title>Pen</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/queen.png</image:loc><image:title>Queen</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/rat.png</image:loc><image:title>Rat</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/sun.png</image:loc><image:title>Sun</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/tap.png</image:loc><image:title>Tap</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/umbrella.png</image:loc><image:title>Umbrella</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/van.png</image:loc><image:title>Van</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/wolf.png</image:loc><image:title>Wolf</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/xylophone.png</image:loc><image:title>Xylophone</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/yak.png</image:loc><image:title>Yak</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/jug.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/jug.png</image:loc><image:title>Jug</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/kite.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/kite.png</image:loc><image:title>Kite</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/mug.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/mug.png</image:loc><image:title>Mug</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/notebook.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/notebook.png</image:loc><image:title>Notebook</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/octopus.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/octopus.png</image:loc><image:title>Octopus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/pen.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/pen.png</image:loc><image:title>Pen</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/queen.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/queen.png</image:loc><image:title>Queen</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/rat.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/rat.png</image:loc><image:title>Rat</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/sun.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/sun.png</image:loc><image:title>Sun</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/tap.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/tap.png</image:loc><image:title>Tap</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/umbrella.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/umbrella.png</image:loc><image:title>Umbrella</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/van.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/van.png</image:loc><image:title>Van</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/wolf.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/wolf.png</image:loc><image:title>Wolf</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/xylophone.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/xylophone.png</image:loc><image:title>Xylophone</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/phonics/yak.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/phonics/yak.png</image:loc><image:title>Yak</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/alien.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/alien.png</image:loc><image:title>Alien</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/angel.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/angel.png</image:loc><image:title>Angel</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/elf.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/elf.png</image:loc><image:title>Elf</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/fairy.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/fairy.png</image:loc><image:title>Fairy</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/index.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.64</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/alien.png</image:loc><image:title>Alien</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/angel.png</image:loc><image:title>Angel</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/elf.png</image:loc><image:title>Elf</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/fairy.png</image:loc><image:title>Fairy</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/santa.png</image:loc><image:title>Santa Claus</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/witch.png</image:loc><image:title>Witch</image:title></image:image>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/pandora%20box.png</image:loc><image:title>Pandora's Box</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/pandora-box.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/pandora%20box.png</image:loc><image:title>Pandora's Box</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/santa.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/santa.png</image:loc><image:title>Santa Claus</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/learn/fantasy/witch.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fiction/witch.png</image:loc><image:title>Witch</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/Blog/educational-games-and-worksheets-launch.html</loc>
@@ -1870,6 +2409,7 @@
 <loc>https://www.teachings.ai/learn/fruits/grapes.html</loc>
 <lastmod>2026-09-15T00:00:00+00:00</lastmod>
 <priority>0.51</priority>
+<image:image><image:loc>https://www.teachings.ai/assets/images/fruits/grape.png</image:loc><image:title>Bunch of red and green grapes for kids learning</image:title></image:image>
 </url>
 <url>
 <loc>https://www.teachings.ai/phonic-rhyming.html</loc>
