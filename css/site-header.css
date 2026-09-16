@@ -1,0 +1,164 @@
+/* ===== Shared Site Header & Navigation ===== */
+/* Included on every page via <link rel="stylesheet" href="/css/site-header.css">.
+   Classes are prefixed with "site-" to avoid collisions with per-page/per-cluster styles. */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid #e7ebf3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.site-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #2b5cff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-logo .site-logo-dot {
+  color: #ffb300;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #5b6472;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 9px 13px;
+  border-radius: 10px;
+  transition: background-color .15s, color .15s;
+  white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav a.site-nav-active {
+  background: #eef2ff;
+  color: #2b5cff;
+}
+
+.site-header-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.86rem;
+  text-decoration: none;
+  border: 1.5px solid #dbe3ff;
+  background: #fff;
+  color: #2b5cff;
+  white-space: nowrap;
+  transition: background-color .15s, transform .15s, box-shadow .15s;
+}
+
+.site-btn:hover {
+  background: #eef2ff;
+}
+
+.site-btn-primary {
+  background: linear-gradient(135deg, #ff9800 0%, #ff6b6b 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.35);
+}
+
+.site-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.45);
+  background: linear-gradient(135deg, #fb8c00 0%, #f4511e 100%);
+}
+
+.site-mobile-nav .site-mobile-primary {
+  background: linear-gradient(135deg, #ff9800 0%, #ff6b6b 100%);
+  color: #fff;
+  border-radius: 12px;
+  text-align: center;
+  margin: 6px 0 10px;
+  font-weight: 800;
+}
+
+.site-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.site-hamburger span {
+  width: 22px;
+  height: 2px;
+  background: #1f2937;
+  border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+
+.site-hamburger.site-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.site-hamburger.site-open span:nth-child(2) { opacity: 0; }
+.site-hamburger.site-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.site-mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 20px 16px;
+  border-top: 1px solid #e7ebf3;
+  background: #fff;
+}
+
+.site-mobile-nav.site-open {
+  display: flex;
+}
+
+.site-mobile-nav a {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 600;
+  padding: 12px 8px;
+  border-bottom: 1px solid #f1f3f9;
+  font-size: 0.96rem;
+}
+
+.site-mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 860px) {
+  .site-nav { display: none; }
+  .site-hamburger { display: flex; }
+  .site-header-cta .site-btn-desktop-only { display: none; }
+}

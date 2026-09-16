@@ -37,13 +37,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Preconnect to jsDelivr -->
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-
-<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+<link rel="stylesheet" href="/css/site-header.css">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -77,218 +76,419 @@
 
 <!-- Critical CSS -->
 <style>
-html,body{margin:0;padding:0;font-family:'Poppins',sans-serif;background:#f7f9fb;color:#333d51;overflow-x:hidden;}
-.container{text-align:center;background:#fff;padding:10px;border-radius:20px;box-shadow:0 10px 20px rgba(0,0,0,0.2);width:90%;max-width:100%;margin:20px auto 0;flex:1 0 auto;overflow-y:auto;}
-h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
-.download-button-container{position:absolute;top:15px;left:15px;z-index:1000;}
-#download-button{padding:8px 16px;background-color:#1B2A5B;color:#fff;border:none;border-radius:5px;font-weight:bold;cursor:pointer;box-shadow:2px 2px 6px rgba(0,0,0,0.3);}
-.follow-me-icons{text-align:center;margin:15px 0 25px;font-size:15px;}
-.follow-me-icons a img{width:24px;height:24px;vertical-align:middle;transition:transform 0.3s;}
-.follow-me-icons a:hover{transform:scale(1.2);}
-.scroll-instruction{overflow:hidden;width:100%;margin:10px 0 20px;background:#eaf209;border-radius:6px;padding:6px 0;box-shadow:0 0 4px rgba(0,0,0,0.1);}
-.scroll-text{display:inline-block;white-space:nowrap;padding-left:100%;animation:scroll-left 15s linear infinite;font-size:20px;font-weight:bold;color:black;}
-@keyframes scroll-left{from{transform:translateX(0%);}to{transform:translateX(-100%);}}
-.modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:20px;}
-.module-button{background-color:#7fd1b9;color:#fff;padding:25px 15px;border:none;border-radius:15px;font-size:1.4em;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;position:relative;transition:background-color 0.3s ease,transform 0.2s ease,box-shadow 0.3s ease;text-decoration:none;}
-.module-button:hover{background-color:#6fbfa4;transform:translateY(-7px);box-shadow:0 8px 15px rgba(0,0,0,0.2);}
-.module-button.new{position:relative;}
-.module-button .badge{position:absolute;top:-8px;right:8px;background:#ff6b6b;color:white;padding:4px 8px;border-radius:12px;font-size:12px;font-weight:bold;}
-.music-toggle-absolute{position:absolute;top:25px;right:25px;background-color:#ffb86c;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:1.6em;display:flex;justify-content:center;align-items:center;cursor:pointer;box-shadow:0 3px 6px rgba(0,0,0,0.1);transition:background-color 0.3s ease,transform 0.2s ease,box-shadow 0.3s ease;z-index:100;}
-.music-toggle-absolute:hover{background-color:#e6a760;transform:scale(1.1);}
+  :root{
+    --brand:#2b5cff;
+    --brand-dark:#1a3fcc;
+    --accent:#ffb300;
+    --ink:#1f2937;
+    --ink-soft:#5b6472;
+    --bg:#f6f8fc;
+    --border:#e7ebf3;
+    --shadow:0 8px 24px rgba(31,41,55,0.07);
+    --shadow-hover:0 14px 30px rgba(31,41,55,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;overflow-x:hidden;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);}
+  h1,h2,h3{font-family:'Poppins',sans-serif;}
+  img{max-width:100%;}
 
-@media(max-width:600px){
-  html, body {height:100%;}
-  .container {min-height:100vh; display:flex; flex-direction:column; padding:30px 20px; border-radius:15px;}
-  h1{font-size:2.2em;margin-bottom:20px;}
-  .modules-grid{gap:15px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
-  .module-button{padding:15px;font-size:1.1em;}
-  .scroll-text{font-size:16px;}
-  .music-toggle-absolute{width:40px;height:40px;font-size:1.4em;top:15px;right:15px;}
-}
+  /* Hero */
+  .hero{max-width:1100px;margin:0 auto;padding:46px 20px 26px;text-align:center;}
+  .hero-eyebrow{display:inline-block;background:#eef2ff;color:var(--brand);font-weight:700;font-size:0.8rem;padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  .hero h1{font-size:2.4rem;line-height:1.18;margin:0 0 12px;color:var(--ink);}
+  .hero h1 span{color:var(--brand);}
+  .hero p.sub{font-size:1.05rem;color:var(--ink-soft);max-width:600px;margin:0 auto 26px;line-height:1.6;}
+  .search-wrap{max-width:540px;margin:0 auto 16px;position:relative;}
+  .search-wrap input{width:100%;padding:15px 20px 15px 48px;font-size:1rem;border-radius:16px;border:1.5px solid var(--border);background:#fff;box-shadow:var(--shadow);font-family:inherit;outline:none;}
+  .search-wrap input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(43,92,255,0.12);}
+  .search-wrap .icon{position:absolute;left:17px;top:50%;transform:translateY(-50%);font-size:1.05rem;opacity:.5;}
+  .search-hint{font-size:0.82rem;color:var(--ink-soft);margin:0 0 22px;}
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:13px 24px;border-radius:999px;font-weight:700;font-size:0.95rem;text-decoration:none;border:none;cursor:pointer;}
+  .btn-play{background:linear-gradient(135deg,#ff9800 0%,#ff6b6b 100%);color:#fff;box-shadow:0 8px 18px rgba(255,107,107,0.35);}
+  .btn-ghost{background:#fff;color:var(--brand);border:1.5px solid #dbe3ff;}
+  .stats-strip{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;max-width:860px;margin:30px auto 0;padding:18px 20px;}
+  .stat{text-align:center;}
+  .stat b{display:block;font-size:1.5rem;color:var(--brand);font-family:'Poppins',sans-serif;}
+  .stat span{font-size:0.8rem;color:var(--ink-soft);}
 
-@media(max-width:400px){
-  h1{font-size:1.8em;}
-  .modules-grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}
-  .module-button{font-size:1em;padding:10px;}
-  .scroll-text{font-size:12px;}
-}
+  .ad-slot{max-width:1100px;margin:8px auto 10px;padding:0 20px;text-align:center;}
+
+  /* Sections */
+  .section{max-width:1200px;margin:0 auto;padding:34px 20px;}
+  .section-head{margin-bottom:20px;}
+  .section-head h2{font-size:1.4rem;margin:0 0 6px;}
+  .section-head p{margin:0;color:var(--ink-soft);font-size:0.92rem;max-width:600px;}
+
+  .games-spotlight{background:linear-gradient(120deg,#fff3e0 0%,#ffe3e3 100%);border-radius:26px;padding:8px 8px 30px;}
+  .games-spotlight .section-head{padding:26px 24px 4px;}
+  .games-spotlight .section-head h2{color:#e65100;}
+  .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;padding:0 24px;}
+  .game-card{background:#fff;border-radius:16px;padding:18px 12px;text-align:center;text-decoration:none;color:var(--ink);box-shadow:0 6px 16px rgba(230,81,0,0.14);transition:transform .18s,box-shadow .18s;border:2px solid transparent;}
+  .game-card:hover{transform:translateY(-5px);box-shadow:0 12px 22px rgba(230,81,0,0.24);border-color:#ff9800;}
+  .game-card .emoji{font-size:2rem;display:block;margin-bottom:8px;}
+  .game-card .label{font-weight:700;font-size:0.95rem;display:block;}
+  .game-card .kind{display:inline-block;margin-top:8px;font-size:0.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:3px 9px;border-radius:999px;background:#fff3e0;color:#e65100;}
+
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;}
+  .card{background:#fff;border-radius:18px;padding:20px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);border:1px solid var(--border);transition:.18s;display:flex;flex-direction:column;gap:8px;}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:transparent;}
+  .card .emoji{font-size:1.6rem;}
+  .card h3{margin:0;font-size:1rem;font-family:'Inter',sans-serif;font-weight:700;}
+  .card p{margin:0;font-size:0.84rem;color:var(--ink-soft);line-height:1.45;flex-grow:1;}
+  .card .tag{align-self:flex-start;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:2px;}
+
+  .chip-grid{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 15px;text-decoration:none;color:var(--ink);font-weight:600;font-size:0.85rem;box-shadow:0 2px 6px rgba(31,41,55,0.04);}
+  .chip:hover{border-color:var(--brand);color:var(--brand);background:#f4f7ff;}
+  .chip.hidden-extra{display:none;}
+  .show-more-btn{margin-top:14px;background:none;border:1.5px dashed #c9d2e3;color:var(--ink-soft);padding:9px 18px;border-radius:999px;cursor:pointer;font-weight:700;font-size:0.84rem;}
+  .show-more-btn:hover{border-color:var(--brand);color:var(--brand);}
+
+  .spotlight{background:linear-gradient(120deg,#eef2ff 0%,#fff7e6 100%);border-radius:24px;padding:32px 28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between;}
+  .spotlight-text{max-width:520px;}
+  .spotlight-text h2{margin:0 0 8px;font-size:1.35rem;}
+  .spotlight-text p{margin:0 0 16px;color:var(--ink-soft);line-height:1.6;font-size:0.92rem;}
+
+  #noResults{display:none;text-align:center;padding:40px 20px;color:var(--ink-soft);}
+
+  /* Footer */
+  footer.site-footer{background:#111827;color:#cbd3e1;margin-top:40px;padding:42px 20px 22px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-cols{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:26px;margin-bottom:28px;}
+  .footer-brand p{font-size:0.83rem;color:#9aa3b5;line-height:1.6;max-width:280px;margin:10px 0 0;}
+  .footer-social{display:flex;gap:10px;margin-top:14px;}
+  .footer-social a{width:32px;height:32px;border-radius:50%;background:#1f2937;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:0.9rem;}
+  .footer-col h4{font-size:0.8rem;text-transform:uppercase;letter-spacing:.05em;color:#8b93a7;margin:0 0 12px;}
+  .footer-col a{display:block;text-decoration:none;color:#cbd3e1;font-size:0.86rem;padding:4px 0;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid #232c3d;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.78rem;color:#8b93a7;}
+  .footer-bottom a{color:#8b93a7;text-decoration:none;margin-left:12px;}
+  footer .site-logo{color:#fff;}
+
+  /* Floating helpers */
+  .fab-music{position:fixed;bottom:20px;left:20px;z-index:150;background:#ffb300;color:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:1.3em;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,0.2);}
+  .fab-whatsapp{position:fixed;bottom:20px;right:20px;z-index:150;background:#1B2A5B;color:#fff;padding:12px 16px;border-radius:24px;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:flex;align-items:center;gap:8px;text-decoration:none;}
+
+  @media(max-width:600px){
+    .hero{padding:34px 16px 16px;}
+    .hero h1{font-size:1.8rem;}
+    .hero p.sub{font-size:0.98rem;}
+    .stats-strip{gap:18px;}
+    .footer-cols{grid-template-columns:1fr 1fr;gap:18px;}
+    .spotlight{padding:24px 18px;}
+    .games-spotlight .section-head{padding:20px 16px 4px;}
+    .game-grid{padding:0 16px;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:10px;}
+    .game-card{padding:12px 8px;}
+    .game-card .emoji{font-size:1.5rem;}
+    .game-card .label{font-size:0.8rem;}
+  }
 </style>
-<script>
-  // Pass public key from Vercel to frontend
-  // window.VAPID_PUBLIC_KEY = "aqWkv49VJgfijRNnOElIRYb0KqICwU-TG8_e8TCpr7s";
-</script>
 </head>
 <body>
 
-<!-- Accessibility: Move music toggle inside container -->
-<div class="container">
-  <div class="download-button-container">
-    <button id="download-button" style="display:none;" aria-label="Add app to home screen">Download</button>
-  </div>
-
-  <h1>Teachings.Ai</h1>
-  <h2>Fun Learning Modules</h2>
-
-  <div class="follow-me-icons">
-    <span>Updates 👉</span>
-    <a href="https://www.instagram.com/teachingsai" target="_blank" aria-label="Instagram"><img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/instagram.png" alt="Instagram"/></a>
-    <a href="https://www.facebook.com/teachingsai" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/facebook.png" alt="Facebook"/></a>
-    <a href="https://twitter.com/teachingsai" target="_blank" aria-label="Twitter"><img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/twitter.png" alt="Twitter"/></a>
-    <a href="https://www.youtube.com/@teachingsai" target="_blank" aria-label="YouTube"><img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/youtube.png" alt="YouTube"/></a>
-  </div>
-  
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-fb+5w+4e-db+86"
-     data-ad-client="ca-pub-7495143337429327"
-     data-ad-slot="5805932111"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-  <main>
-    <div class="scroll-instruction">
-      <div class="scroll-text">This WEBSITE is for SALE : $150000! Contact - Support@teachings.ai</div>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="/index.html" class="site-logo">🎓 Teachings<span class="site-logo-dot">.ai</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/ages/index.html">By Age</a>
+      <a href="/worksheets/index.html">Worksheets</a>
+      <a href="/reading/index.html">Reading</a>
+      <a href="/parents/index.html">Parents</a>
+      <a href="/teachers/index.html">Teachers</a>
+    </nav>
+    <div class="site-header-cta">
+      <a href="/games.html" class="site-btn site-btn-primary">🎮 Play Games</a>
+      <button class="site-hamburger" id="siteHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+  <nav class="site-mobile-nav" id="siteMobileNav" aria-label="Mobile">
+    <a href="/games.html" class="site-mobile-primary">🎮 Play Games</a>
+    <a href="/ages/index.html">By Age</a>
+    <a href="/worksheets/index.html">Worksheets Library</a>
+    <a href="/reading/index.html">Reading Library</a>
+    <a href="/math/index.html">Math Activities</a>
+    <a href="/science/index.html">Science Activities</a>
+    <a href="/coding/index.html">Coding for Kids</a>
+    <a href="/curriculum/index.html">Homeschool Curriculum</a>
+    <a href="/parents/index.html">For Parents</a>
+    <a href="/teachers/index.html">For Teachers</a>
+  </nav>
+</header>
 
-    <div class="modules-grid">
-      <!-- Use <a> tags with href for robust navigation -->
-      <a href="/learn/index.html" class="module-button" id="games">👨‍🎓 Classroom</a>
-      <a href="/parents/index.html" class="module-button new" id="parents">👨‍👩‍👧 For Parents <span class="badge">New</span></a>
-      <a href="/ages/index.html" class="module-button new" id="ages">🎂 Learning by Age <span class="badge">New</span></a>
-      <a href="/worksheets/index.html" class="module-button new" id="worksheets">📄 Worksheets Library <span class="badge">New</span></a>
-      <a href="/teachers/index.html" class="module-button new" id="teachers">🍎 For Teachers <span class="badge">New</span></a>
-      <a href="/curriculum/index.html" class="module-button new" id="curriculum">🎓 Homeschool Curriculum <span class="badge">New</span></a>
-      <a href="/reading/index.html" class="module-button new" id="reading">📚 Reading Library <span class="badge">New</span></a>
-      <a href="/games-library/index.html" class="module-button new" id="games-library">🎮 Learning Games Library <span class="badge">New</span></a>
-      <a href="/subjects/index.html" class="module-button new" id="subjects">📚 Subject Hubs <span class="badge">New</span></a>
-      <a href="/seasonal/index.html" class="module-button new" id="seasonal">📅 Seasonal Calendar <span class="badge">New</span></a>
-      <a href="/interactive/index.html" class="module-button new" id="interactive">🎯 Interactive Learning <span class="badge">New</span></a>
-      <a href="/math/index.html" class="module-button new" id="math-activities">🔢 Math Activities <span class="badge">New</span></a>
-      <a href="/science/index.html" class="module-button new" id="science-activities">🧪 Science Activities <span class="badge">New</span></a>
-      <a href="/coding/index.html" class="module-button new" id="coding">💻 Coding for Kids <span class="badge">New</span></a>
-      <a href="/lesson-plans/index.html" class="module-button new" id="lesson-plans">📋 Free Lesson Plans <span class="badge">New</span></a>
-      <a href="/preschool/index.html" class="module-button new" id="preschool">🧸 Preschool Activities <span class="badge">New</span></a>
-      <a href="/kindergarten/index.html" class="module-button new" id="kindergarten">🎒 Kindergarten Learning <span class="badge">New</span></a>
-      <a href="/games.html" class="module-button" id="games">🎮 Activity</a>
-      <a href="/reels.html" class="module-button" id="reels">🎬 Reels <span class="badge">New</span></a>
-      <a href="/numbers.html" class="module-button" id="numbers">🔢 Numbers</a>
-      <a href="/alphabets.html" class="module-button" id="alphabets">🔠 Alphabets</a>
-      <a href="/animals.html" class="module-button" id="animals">🐶 Animals</a>
-      <a href="/colors.html" class="module-button" id="colors">🌈 Colors</a>
-      <a href="/birds.html" class="module-button" id="birds">🕊️ Birds</a>
-      <a href="/fruits.html" class="module-button" id="fruits">🍎 Fruits</a>
-      <a href="/vegetables.html" class="module-button" id="vegetables">🥕Vegetables</a>
-      <a href="/phonics.html" class="module-button new" id="phonics">🔊 Phonics <span class="badge">New</span></a>
-      <a href="/plants.html" class="module-button" id="plants">🌱 Plants</a>
-      <a href="/vehicles.html" class="module-button" id="vehicles">🚗 Vehicles</a>
-      <a href="/bodyparts.html" class="module-button" id="bodyparts">💪 Body Parts</a>
-      <a href="/organs.html" class="module-button new" id="organs">🫁Organs <span class="badge">New</span></a>
-      <a href="/word-matching.html" class="module-button" id="word-matching">Word Match</a>
-      <a href="/odd-even.html" class="module-button" id="odd-even">🧮 Odd-Even</a>
-      <a href="/shapes.html" class="module-button" id="shapes">🟦 Shapes</a>
-      <a href="/countries.html" class="module-button new" id="countries">🏳️‍🌈 Countries </a>
-      <a href="/flags-of-the-countries.html" class="module-button new" id="countries">🏳️ Flags </a>
-      <a href="/electronic-gadgets.html" class="module-button new" id="electronic-gadgets">💡 Electronics </a>
-      <a href="/fantasy-world.html" class="module-button new" id="fantasy-world">👽 Fantasy </a>
-      <a href="/nature-explorer.html" class="module-button new" id="nature-explorer">🌳 Nature </a>
-      <a href="/planets.html" class="module-button new" id="planets">🌎 Planets </a>
-      <a href="/scientists.html" class="module-button new" id="scientists">🔬 Scientists <span class="badge">New</span></a>
-      <a href="/publicservice.html" class="module-button" id="publicservice">🏛️ Public Ser</a>
-      <a href="/downloads.html" class="module-button" id="downloads">📃Worksheets</a>
-    </div>
-  </main>
-
-  <!-- Music Toggle moved inside .container -->
-  <button id="music-toggle-button" class="music-toggle-absolute" aria-label="Toggle background music">🔈</button>
+<div class="download-button-container" style="position:fixed; top:72px; left:16px; z-index:140;">
+  <button id="download-button" style="display:none; padding:8px 16px; background-color:#1B2A5B; color:#fff; border:none; border-radius:999px; font-weight:bold; cursor:pointer; box-shadow:2px 2px 6px rgba(0,0,0,0.3);" aria-label="Add app to home screen">Download</button>
 </div>
 
-<!-- Footer -->
+<section class="hero">
+  <span class="hero-eyebrow">550+ free guides, worksheets &amp; games</span>
+  <h1>Learning that feels like <span>play, not homework.</span></h1>
+  <p class="sub">Scratch-to-reveal and drag-and-drop games for kids ages 3–10, plus printable worksheets and practical guides for parents and teachers — all free, no sign-up.</p>
+
+  <div class="search-wrap">
+    <span class="icon">🔍</span>
+    <input type="text" id="siteSearch" placeholder="Search games, worksheets, guides… try “animals” or “phonics”">
+  </div>
+  <p class="search-hint">Try: animals · shapes · phonics · multiplication · kindergarten</p>
+
+  <div class="hero-ctas">
+    <a href="/games.html" class="btn btn-play">🎮 Play Games Now</a>
+    <a href="/ages/index.html" class="btn btn-ghost">🎂 Browse by Age</a>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat"><b>40+</b><span>Games to play</span></div>
+    <div class="stat"><b>36</b><span>Printable worksheets</span></div>
+    <div class="stat"><b>16</b><span>Guide &amp; resource hubs</span></div>
+    <div class="stat"><b>$0</b><span>Always free</span></div>
+  </div>
+</section>
+
+<div class="ad-slot">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-format="fluid"
+       data-ad-layout-key="-fb+5w+4e-db+86"
+       data-ad-client="ca-pub-7495143337429327"
+       data-ad-slot="5805932111"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<div id="noResults">
+  <p style="font-size:2rem;margin:0 0 8px;">🔎</p>
+  <p><strong>No matches.</strong> Try a different word, or browse the sections below.</p>
+</div>
+
+<section class="section games-spotlight" id="popular-games">
+  <div class="section-head">
+    <h2>🔥 Popular Games</h2>
+    <p>Scratch to reveal, drag, drop, and match — the interactive games kids come back to. No download needed.</p>
+  </div>
+  <div class="game-grid" data-searchable>
+    <a class="game-card" href="/animals.html" data-search="animals scratch reveal sounds"><span class="emoji">🐶</span><span class="label">Animals</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/alphabets.html" data-search="alphabets letters abc scratch"><span class="emoji">🔠</span><span class="label">Alphabets</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/numbers.html" data-search="numbers counting scratch"><span class="emoji">🔢</span><span class="label">Numbers</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/colors.html" data-search="colors scratch"><span class="emoji">🌈</span><span class="label">Colors</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/match-shapes.html" data-search="shape match drag drop"><span class="emoji">🟦</span><span class="label">Shape Match</span><span class="kind">Drag &amp; Drop</span></a>
+    <a class="game-card" href="/match-animals.html" data-search="animal match drag drop"><span class="emoji">🦁</span><span class="label">Animal Match</span><span class="kind">Drag &amp; Drop</span></a>
+    <a class="game-card" href="/colours-sorting.html" data-search="colour sorting drag drop"><span class="emoji">🎨</span><span class="label">Colour Sorting</span><span class="kind">Drag &amp; Drop</span></a>
+    <a class="game-card" href="/match-words.html" data-search="word match drag drop"><span class="emoji">🧩</span><span class="label">Word Match</span><span class="kind">Drag &amp; Drop</span></a>
+  </div>
+</section>
+
+<section class="section" id="age">
+  <div class="section-head">
+    <h2>🎂 Explore by Age &amp; Stage</h2>
+    <p>Start here if you're not sure where to begin — organized by developmental stage, not just grade level.</p>
+  </div>
+  <div class="card-grid" data-searchable>
+    <a class="card" href="/preschool/index.html" data-search="preschool activities fine motor sensory play">
+      <span class="emoji">🧸</span><h3>Preschool Activities</h3>
+      <p>Fine motor, sensory play, circle time, and readiness — 8 guides.</p>
+      <span class="tag" style="background:#fce4ec;color:#ad1457;">Ages 3–4</span>
+    </a>
+    <a class="card" href="/kindergarten/index.html" data-search="kindergarten learning sight words math writing">
+      <span class="emoji">🎒</span><h3>Kindergarten Learning</h3>
+      <p>Sight words, math skills, handwriting, and the first-day transition — 8 guides.</p>
+      <span class="tag" style="background:#e0f2f1;color:#00695c;">Ages 5–6</span>
+    </a>
+    <a class="card" href="/ages/index.html" data-search="learning by age routines daily schedule">
+      <span class="emoji">📅</span><h3>Learning by Age</h3>
+      <p>Daily routines and milestones for every age from toddler through grade school.</p>
+      <span class="tag" style="background:#e8f0ff;color:#2b5cff;">All ages</span>
+    </a>
+    <a class="card" href="/curriculum/index.html" data-search="homeschool curriculum planning scope sequence">
+      <span class="emoji">🎓</span><h3>Homeschool Curriculum</h3>
+      <p>Choosing an approach, scheduling, record-keeping, and multi-age planning — 10 guides.</p>
+      <span class="tag" style="background:#f3e5f5;color:#4a148c;">Homeschool</span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="guides">
+  <div class="section-head">
+    <h2>📚 Guides for Grown-Ups</h2>
+    <p>In-depth, practical guidance for parents and teachers — not just activity lists.</p>
+  </div>
+  <div class="card-grid" data-searchable>
+    <a class="card" href="/parents/index.html" data-search="parents guides adhd autism screen time">
+      <span class="emoji">👨‍👩‍👧</span><h3>For Parents</h3>
+      <p>Screen time, learning routines, ADHD/autism-friendly activities, and more.</p>
+    </a>
+    <a class="card" href="/teachers/index.html" data-search="teachers lesson plan basics classroom">
+      <span class="emoji">🍎</span><h3>For Teachers</h3>
+      <p>Classroom-ready resources, lesson plan basics, and brain break activities.</p>
+    </a>
+    <a class="card" href="/reading/index.html" data-search="reading library phonics book lists reluctant reader">
+      <span class="emoji">📖</span><h3>Reading Library</h3>
+      <p>Book lists by age, phonics programs, and building a reading habit — 12 guides.</p>
+    </a>
+    <a class="card" href="/games-library/index.html" data-search="learning games library screen time educational games">
+      <span class="emoji">🎮</span><h3>Learning Games Library</h3>
+      <p>How to pick a genuinely educational game, and screen-free alternatives — 8 guides.</p>
+    </a>
+    <a class="card" href="/seasonal/index.html" data-search="seasonal calendar fall winter spring summer holiday">
+      <span class="emoji">🍂</span><h3>Seasonal Calendar</h3>
+      <p>Season-by-season activities, back-to-school prep, and holiday break ideas — 8 guides.</p>
+    </a>
+    <a class="card" href="/lesson-plans/index.html" data-search="lesson plans free printable teacher">
+      <span class="emoji">📋</span><h3>Free Lesson Plans</h3>
+      <p>Ready-to-teach plans across math, science, language arts, and social studies.</p>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="subjects">
+  <div class="section-head">
+    <h2>🧪 Subjects &amp; Skills</h2>
+    <p>Deep dives by subject, plus hands-on tools you can use right in the browser.</p>
+  </div>
+  <div class="card-grid" data-searchable>
+    <a class="card" href="/math/index.html" data-search="math activities fractions place value fact fluency">
+      <span class="emoji">🔢</span><h3>Math Activities</h3>
+      <p>Hands-on number sense, fractions, and fact fluency — 8 guides.</p>
+    </a>
+    <a class="card" href="/science/index.html" data-search="science activities kitchen experiments scientific method">
+      <span class="emoji">🔬</span><h3>Science Activities</h3>
+      <p>Kitchen experiments, nature journaling, and the scientific method — 8 guides.</p>
+    </a>
+    <a class="card" href="/coding/index.html" data-search="coding for kids unplugged algorithms">
+      <span class="emoji">💻</span><h3>Coding for Kids</h3>
+      <p>Unplugged activities and beginner concepts, no screen required — 8 guides.</p>
+    </a>
+    <a class="card" href="/subjects/index.html" data-search="subject hubs math language arts science social studies">
+      <span class="emoji">🗂️</span><h3>Subject Hubs</h3>
+      <p>Every resource on the site, organized by subject and skill progression.</p>
+    </a>
+    <a class="card" href="/interactive/index.html" data-search="interactive learning printable trackers certificates multiplication chart">
+      <span class="emoji">🎯</span><h3>Interactive Learning</h3>
+      <p>Printable trackers, goal charts, and a multiplication reference — print from your browser.</p>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="printables">
+  <div class="spotlight">
+    <div class="spotlight-text">
+      <h2>📄 The Worksheets Library</h2>
+      <p>Our biggest collection — 36 free printable worksheets, each with a real learning objective, difficulty level, and teacher/parent instructions.</p>
+      <a href="/worksheets/index.html" class="btn btn-play" style="background:var(--brand);box-shadow:0 8px 18px rgba(43,92,255,0.3);">Browse All Worksheets →</a>
+    </div>
+    <div style="font-size:4.5rem;line-height:1;">✏️</div>
+  </div>
+</section>
+
+<section class="section" id="play">
+  <div class="section-head">
+    <h2>🕹️ More Games &amp; Activities</h2>
+    <p>The full catalog — scratch-reveal subjects, sorting and matching games, tracing, phonics, and more.</p>
+  </div>
+  <div class="chip-grid" data-searchable id="playChips">
+    <a class="chip" href="/birds.html" data-search="birds scratch">🕊️ Birds</a>
+    <a class="chip" href="/fruits.html" data-search="fruits scratch">🍎 Fruits</a>
+    <a class="chip" href="/vegetables.html" data-search="vegetables scratch">🥕 Vegetables</a>
+    <a class="chip" href="/plants.html" data-search="plants scratch">🌱 Plants</a>
+    <a class="chip" href="/vehicles.html" data-search="vehicles scratch">🚗 Vehicles</a>
+    <a class="chip" href="/bodyparts.html" data-search="body parts scratch">💪 Body Parts</a>
+    <a class="chip" href="/organs.html" data-search="organs scratch">🫁 Organs</a>
+    <a class="chip" href="/countries.html" data-search="countries geography scratch">🏳️ Countries</a>
+    <a class="chip" href="/flags-of-the-countries.html" data-search="flags scratch">🚩 Flags</a>
+    <a class="chip" href="/phonics.html" data-search="phonics sounds">🔊 Phonics</a>
+    <a class="chip" href="/match-numbers.html" data-search="number match drag drop">🔢 Number Match</a>
+    <a class="chip hidden-extra" href="/animals-birds-sorting.html" data-search="animals birds sorting drag drop">🐦 Animals-Birds Sorting</a>
+    <a class="chip hidden-extra" href="/fruits-vegetables-sorting.html" data-search="fruits vegetables sorting drag drop">🥑 Fruits-Veggies Sorting</a>
+    <a class="chip hidden-extra" href="/numbers-alphabets-sorting.html" data-search="numbers alphabets sorting drag drop">🔣 AlphaNum Sorting</a>
+    <a class="chip hidden-extra" href="/odd-even-sorting.html" data-search="odd even sorting drag drop">🧮 Odd-Even Sorting</a>
+    <a class="chip hidden-extra" href="/odd-even.html" data-search="odd even numbers">➗ Odd-Even</a>
+    <a class="chip hidden-extra" href="/shapes.html" data-search="shapes">🟦 Shapes</a>
+    <a class="chip hidden-extra" href="/word-matching.html" data-search="word matching">🔤 Word Matching</a>
+    <a class="chip hidden-extra" href="/tracing-letters-and-numbers.html" data-search="tracing letters numbers">🅰️ Tracing ABC</a>
+    <a class="chip hidden-extra" href="/mirror-words-learning.html" data-search="mirror words reflection">🪩 Reflection Words</a>
+    <a class="chip hidden-extra" href="/math.html" data-search="simple math addition subtraction">➕ Simple Math</a>
+    <a class="chip hidden-extra" href="/rhyming.html" data-search="rhyming words">🧠 Rhyming</a>
+    <a class="chip hidden-extra" href="/sight.html" data-search="sight words">👀 Sight Words</a>
+    <a class="chip hidden-extra" href="/counting.html" data-search="counting objects">🔢 Count Objects</a>
+    <a class="chip hidden-extra" href="/patterns.html" data-search="patterns">🪄 Patterns</a>
+    <a class="chip hidden-extra" href="/Grammar.html" data-search="grammar">📝 Grammar</a>
+    <a class="chip hidden-extra" href="/sentences.html" data-search="sentences">📝 Sentences</a>
+    <a class="chip hidden-extra" href="/electronic-gadgets.html" data-search="electronics gadgets scratch">💡 Electronics</a>
+    <a class="chip hidden-extra" href="/fantasy-world.html" data-search="fantasy scratch">👽 Fantasy World</a>
+    <a class="chip hidden-extra" href="/nature-explorer.html" data-search="nature scratch">🌳 Nature Explorer</a>
+    <a class="chip hidden-extra" href="/planets.html" data-search="planets space scratch">🌎 Planets</a>
+    <a class="chip hidden-extra" href="/scientists.html" data-search="scientists scratch">🔬 Scientists</a>
+    <a class="chip hidden-extra" href="/publicservice.html" data-search="public service community helpers scratch">🏛️ Public Service</a>
+    <a class="chip hidden-extra" href="/learn/index.html" data-search="classroom learn">👨‍🎓 Classroom</a>
+    <a class="chip hidden-extra" href="/games.html" data-search="activity hub all games">🎮 Full Activity Hub</a>
+    <a class="chip hidden-extra" href="/reels.html" data-search="reels videos">🎬 Reels</a>
+    <a class="chip hidden-extra" href="/downloads.html" data-search="downloads pdf worksheets">📃 All PDF Downloads</a>
+  </div>
+  <button class="show-more-btn" id="showMoreBtn">Show 22 more →</button>
+</section>
+
 <footer class="site-footer">
-  <p>© 2025 Teachings.AI</p>
-
-  <!-- Footer Navigation -->
-  <nav class="footer-nav" aria-label="Footer navigation">
-    <a href="/parents/index.html" class="blog-button">👨‍👩‍👧 For Parents</a>
-    <a href="/ages/index.html" class="blog-button">🎂 Learning by Age</a>
-    <a href="/worksheets/index.html" class="blog-button">📄 Worksheets Library</a>
-    <a href="/teachers/index.html" class="blog-button">🍎 For Teachers</a>
-    <a href="/curriculum/index.html" class="blog-button">🎓 Homeschool Curriculum</a>
-    <a href="/reading/index.html" class="blog-button">📚 Reading Library</a>
-    <a href="/games-library/index.html" class="blog-button">🎮 Learning Games Library</a>
-    <a href="/subjects/index.html" class="blog-button">📚 Subject Hubs</a>
-    <a href="/seasonal/index.html" class="blog-button">📅 Seasonal Calendar</a>
-    <a href="/interactive/index.html" class="blog-button">🎯 Interactive Learning</a>
-    <a href="/math/index.html" class="blog-button">🔢 Math Activities</a>
-    <a href="/science/index.html" class="blog-button">🧪 Science Activities</a>
-    <a href="/coding/index.html" class="blog-button">💻 Coding for Kids</a>
-    <a href="/lesson-plans/index.html" class="blog-button">📋 Free Lesson Plans</a>
-    <a href="/preschool/index.html" class="blog-button">🧸 Preschool Activities</a>
-    <a href="/kindergarten/index.html" class="blog-button">🎒 Kindergarten Learning</a>
-    <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
-    <a href="/about.html" class="blog-button">About</a>
-    <a href="/privacy-policy.html" class="blog-button">Privacy</a>
-    <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
-    <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" 
-       class="feedback-button">📩 Contact Us</a>
-  </nav>
-
-  <p class="footer-description">
-    Teachings.AI helps kids learn alphabets, numbers, and more with interactive games, worksheets, 
-    and fun activities. Designed for preschool and kindergarten, our resources make learning joyful 
-    and effective..
-  </p>
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <a href="/index.html" class="site-logo">🎓 Teachings<span class="site-logo-dot" style="color:#ffb300;">.ai</span></a>
+        <p>Interactive learning games, printable worksheets, and practical guidance for kids ages 3–10 — for parents, teachers, and homeschoolers.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/teachingsai" aria-label="Instagram" target="_blank">📷</a>
+          <a href="https://www.facebook.com/teachingsai" aria-label="Facebook" target="_blank">👍</a>
+          <a href="https://twitter.com/teachingsai" aria-label="Twitter" target="_blank">🐦</a>
+          <a href="https://www.youtube.com/@teachingsai" aria-label="YouTube" target="_blank">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Play</h4>
+        <a href="/games.html">Activity Hub</a>
+        <a href="/animals.html">Animals</a>
+        <a href="/alphabets.html">Alphabets</a>
+        <a href="/match-shapes.html">Shape Match</a>
+      </div>
+      <div class="footer-col">
+        <h4>Guides</h4>
+        <a href="/parents/index.html">For Parents</a>
+        <a href="/teachers/index.html">For Teachers</a>
+        <a href="/curriculum/index.html">Homeschool Curriculum</a>
+        <a href="/reading/index.html">Reading Library</a>
+      </div>
+      <div class="footer-col">
+        <h4>Subjects</h4>
+        <a href="/math/index.html">Math Activities</a>
+        <a href="/science/index.html">Science Activities</a>
+        <a href="/coding/index.html">Coding for Kids</a>
+        <a href="/worksheets/index.html">Worksheets Library</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about.html">About</a>
+        <a href="/Blog/index.html">Blog</a>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Teachings.ai</span>
+      <span>
+        <a href="/privacy-policy.html">Privacy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="mailto:support@teachings.ai">Feedback</a>
+      </span>
+    </div>
+  </div>
 </footer>
 
-  <audio id="background-music" loop muted>
-    <source src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/background_music.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Scripts -->
-  <script src="/safeguard.js" defer></script>
-  <script src="js/script.js" defer></script>
-  <script src="js/musicControl.js" defer></script>
-  <script src="js/globalImageLoader.js" defer></script>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(reg => console.log('Service Worker Registered', reg))
-          .catch(err => console.error('Service Worker Failed:', err));
-      });
-    }
-  </script>
-
-  <!-- PWA Install Prompt -->
-  <script>
-    let deferredPrompt;
-    const downloadBtn = document.getElementById('download-button');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      downloadBtn.style.display = 'inline-block';
-    });
-
-    downloadBtn.addEventListener('click', () => {
-      if (!deferredPrompt) return;
-      gtag('event', 'download_button_click', {
-        event_category: 'PWA',
-        event_label: 'Add to Home Screen'
-      });
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
-    });
-  </script>
-</footer>
+<audio id="background-music" loop muted>
+  <source src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/background_music.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+<button id="music-toggle-button" class="fab-music" aria-label="Toggle background music">🔈</button>
+<a href="https://whatsapp.com/channel/0029VbBYG8r3WHTRm73aWm1Q" target="_blank" class="fab-whatsapp" title="Join Teachings.ai WhatsApp Channel">🔔</a>
 
 <!-- NoScript Warning -->
 <noscript>
@@ -296,31 +496,7 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
     <strong>⚠️ JavaScript is required</strong> to use Teachings.AI. Please enable JavaScript in your browser settings.
   </div>
 </noscript>
-<a 
-  href="https://whatsapp.com/channel/0029VbBYG8r3WHTRm73aWm1Q" 
-  target="_blank" 
-  style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    background: #1B2A5B;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 24px;
-    font-size: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-family: sans-serif;
-    transition: all 0.2s ease;
-  "
-  title="Join Teachings.ai WhatsApp Channel"
->
-🔔
-</a>
+
 <!-- Update Popup -->
 <div id="updatePopup" class="popup" style="
   display:none;
@@ -331,9 +507,9 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
   justify-content:center;
   align-items:center;
   z-index:9999;
-  padding:10px; /* prevent edge cutoff on small screens */
+  padding:10px;
   box-sizing:border-box;">
-  
+
   <div class="popup-content" style="
     background:#fff;
     padding:16px;
@@ -343,48 +519,42 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
     text-align:center;
     position:relative;
     box-sizing:border-box;">
-    
-    <!-- Close Button -->
-<button id="closePopup" style="
-  position:absolute;
-  top:6px;
-  right:6px;
-  background:orange;
-  color:#fff;
-  border:none;
-  font-size:14px;
-  width:24px;
-  height:24px;
-  border-radius:50%;
-  cursor:pointer;
-  line-height:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:0;
-  z-index:2000;
-">X</button>
 
+    <button id="closePopup" style="
+      position:absolute;
+      top:6px;
+      right:6px;
+      background:orange;
+      color:#fff;
+      border:none;
+      font-size:14px;
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      cursor:pointer;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      z-index:2000;
+    ">X</button>
 
-    <!-- Title -->
     <h2 id="popupTitle" style="margin:30px 0 10px; font-size:1.2rem;"></h2>
 
-    <!-- Image Centered & Responsive -->
     <div style="display:flex; justify-content:center;">
       <img id="popupImage" style="
         max-width:100%;
-        max-height:40vh; /* responsive: never taller than 40% viewport */
+        max-height:40vh;
         height:auto;
         display:none;
         margin:10px auto;
-        border-radius:8px;" 
+        border-radius:8px;"
         alt="Module Screenshot">
     </div>
 
-    <!-- Message -->
     <p id="popupMessage" style="margin:12px 0; font-size:0.95rem; line-height:1.4;"></p>
 
-    <!-- View Now Button -->
     <button id="popupCTA" style="
       display:none;
       margin-top:12px;
@@ -402,6 +572,118 @@ h1{color:#6a9cff;margin-bottom:20px;font-size:2.8em;font-weight:700;}
   </div>
 </div>
 
+<script>
+  // Pass public key from Vercel to frontend
+  // window.VAPID_PUBLIC_KEY = "aqWkv49VJgfijRNnOElIRYb0KqICwU-TG8_e8TCpr7s";
+</script>
+
+<!-- Scripts -->
+<script src="/safeguard.js" defer></script>
+<script src="/js/site-header.js" defer></script>
+<script src="js/script.js" defer></script>
+<script src="js/musicControl.js" defer></script>
+<script src="js/globalImageLoader.js" defer></script>
+
+<!-- Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log('Service Worker Registered', reg))
+        .catch(err => console.error('Service Worker Failed:', err));
+    });
+  }
+</script>
+
+<!-- PWA Install Prompt -->
+<script>
+  let deferredPrompt;
+  const downloadBtn = document.getElementById('download-button');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (downloadBtn) downloadBtn.style.display = 'inline-block';
+  });
+
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      if (!deferredPrompt) return;
+      if (typeof gtag === 'function') {
+        gtag('event', 'download_button_click', {
+          event_category: 'PWA',
+          event_label: 'Add to Home Screen'
+        });
+      }
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+    });
+  }
+</script>
+
+<!-- Homepage search filter + click tracking -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      var showMoreBtn = document.getElementById('showMoreBtn');
+      if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+          document.querySelectorAll('.chip.hidden-extra').forEach(function (c) { c.style.display = 'inline-flex'; });
+          showMoreBtn.style.display = 'none';
+        });
+      }
+
+      var searchInput = document.getElementById('siteSearch');
+      var searchables = document.querySelectorAll('[data-search]');
+      var sections = document.querySelectorAll('.section');
+      var noResults = document.getElementById('noResults');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          var q = searchInput.value.trim().toLowerCase();
+          if (!q) {
+            searchables.forEach(function (el) { el.style.display = ''; });
+            document.querySelectorAll('.chip.hidden-extra').forEach(function (c) { c.style.display = 'none'; });
+            if (showMoreBtn) showMoreBtn.style.display = 'inline-block';
+            sections.forEach(function (s) { s.style.display = ''; });
+            if (noResults) noResults.style.display = 'none';
+            return;
+          }
+          if (showMoreBtn) showMoreBtn.style.display = 'none';
+          var anyVisible = false;
+          searchables.forEach(function (el) {
+            var hay = (el.getAttribute('data-search') || '') + ' ' + el.textContent;
+            var match = hay.toLowerCase().indexOf(q) !== -1;
+            el.style.display = match ? '' : 'none';
+            if (match) anyVisible = true;
+          });
+          sections.forEach(function (s) {
+            var visibleChildren = s.querySelectorAll('[data-search]');
+            var anyIn = false;
+            visibleChildren.forEach(function (el) { if (el.style.display !== 'none') anyIn = true; });
+            s.style.display = anyIn ? '' : 'none';
+          });
+          if (noResults) noResults.style.display = anyVisible ? 'none' : 'block';
+        });
+      }
+
+      // Preserve module-click analytics for the new card/chip/game-card links
+      var trackable = document.querySelectorAll('.card, .chip, .game-card');
+      trackable.forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (typeof gtag === 'function') {
+            gtag('event', 'module_click', {
+              event_category: 'Navigation',
+              event_label: el.getAttribute('href') || el.textContent.trim()
+            });
+          }
+        });
+      });
+    } catch (err) {
+      console.error('Homepage search/filter script error:', err);
+    }
+  });
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -418,11 +700,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const ctaBtn = document.getElementById("popupCTA");
       const closeBtn = document.getElementById("closePopup");
 
-      // Set content
       titleEl.textContent = data.title || "";
       msgEl.textContent = data.message || "";
 
-      // Show image if exists
       if (data.image) {
         imgEl.src = data.image;
         imgEl.style.display = "block";
@@ -432,24 +712,20 @@ document.addEventListener("DOMContentLoaded", () => {
         };
       }
 
-      // Setup CTA
       if (data.link) {
         ctaBtn.style.display = "inline-block";
         ctaBtn.onclick = () => window.location.href = data.link;
       }
 
-      // Show popup
       popup.style.display = "flex";
-      document.body.style.overflow = "hidden"; // stop background scroll
+      document.body.style.overflow = "hidden";
 
-      // Close popup
       closeBtn.onclick = () => {
         popup.style.display = "none";
         document.body.style.overflow = "";
         localStorage.setItem("lastAnnouncementSeen", data.id);
       };
 
-      // Auto-hide after 10s
       setTimeout(() => {
         popup.style.display = "none";
         document.body.style.overflow = "";
@@ -458,7 +734,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Update check failed:", err));
 });
-
 </script>
 </body>
 </html>
