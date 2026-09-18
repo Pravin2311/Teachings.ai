@@ -198,6 +198,24 @@
   /* ===== No results ===== */
   #noResults{ display:none; text-align:center; padding:50px 20px; color:var(--ink-soft); }
 
+  /* ===== Popular Games spotlight ===== */
+  .games-spotlight{ background:linear-gradient(120deg,#fff3e0 0%,#ffe3e3 100%); border-radius:26px; padding:8px 8px 30px; }
+  .games-spotlight .section-head{ padding:26px 24px 4px; }
+  .games-spotlight .section-head h2{ color:#e65100; }
+  .game-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:14px; padding:0 24px; }
+  .game-card{ background:#fff; border-radius:16px; padding:18px 12px; text-align:center; text-decoration:none; color:var(--ink); box-shadow:0 6px 16px rgba(230,81,0,0.14); transition:transform .18s,box-shadow .18s; border:2px solid transparent; }
+  .game-card:hover{ transform:translateY(-5px); box-shadow:0 12px 22px rgba(230,81,0,0.24); border-color:#ff9800; }
+  .game-card .emoji{ font-size:2rem; display:block; margin-bottom:8px; }
+  .game-card .label{ font-weight:700; font-size:0.95rem; display:block; }
+  .game-card .kind{ display:inline-block; margin-top:8px; font-size:0.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.03em; padding:3px 9px; border-radius:999px; background:#fff3e0; color:#e65100; }
+  @media(max-width:600px){
+    .games-spotlight .section-head{ padding:20px 16px 4px; }
+    .game-grid{ padding:0 16px; grid-template-columns:repeat(auto-fill,minmax(115px,1fr)); gap:10px; }
+    .game-card{ padding:12px 8px; }
+    .game-card .emoji{ font-size:1.5rem; }
+    .game-card .label{ font-size:0.8rem; }
+  }
+
   /* ===== Footer ===== */
   footer.site-footer{
     background:#111827; color:#cbd3e1; margin-top:50px; padding:46px 20px 24px;
@@ -254,27 +272,26 @@
   <div class="header-inner">
     <a href="#" class="logo">🎓 Teachings<span class="dot">.ai</span></a>
     <nav class="main-nav">
-      <a href="#guides">Guides</a>
-      <a href="#subjects">Subjects</a>
-      <a href="#age">By Age</a>
-      <a href="#printables">Worksheets</a>
-      <a href="#play">Play</a>
+      <a href="/ages/index.html">By Age</a>
+      <a href="/worksheets/index.html">Worksheets</a>
+      <a href="/reading/index.html">Reading</a>
       <a href="/parents/index.html">Parents</a>
       <a href="/teachers/index.html">Teachers</a>
     </nav>
     <div class="header-cta">
-      <a href="/worksheets/index.html" class="btn btn-ghost" style="display:none;" id="desktop-cta">Browse Worksheets</a>
+      <a href="/games.html" class="btn btn-primary" style="background:linear-gradient(135deg,#ff9800 0%,#ff6b6b 100%);box-shadow:0 6px 16px rgba(255,107,107,0.35);">🎮 Play Games</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
   <div class="mobile-nav" id="mobileNav">
+    <a href="/games.html" style="background:linear-gradient(135deg,#ff9800 0%,#ff6b6b 100%);color:#fff;border-radius:12px;text-align:center;margin:4px 0 8px;font-weight:800;">🎮 Play Games</a>
     <a href="#guides">Guides</a>
     <a href="#subjects">Subjects</a>
     <a href="#age">By Age</a>
     <a href="#printables">Worksheets</a>
-    <a href="#play">Play &amp; Practice</a>
+    <a href="#play">More Games &amp; Activities</a>
     <a href="/parents/index.html">For Parents</a>
     <a href="/teachers/index.html">For Teachers</a>
   </div>
@@ -282,18 +299,18 @@
 
 <section class="hero">
   <span class="hero-eyebrow">550+ free guides, worksheets &amp; games</span>
-  <h1>Learning that meets your kid <span>right where they are.</span></h1>
-  <p class="sub">Curriculum guidance for parents, ready-to-use lesson plans for teachers, and hundreds of printables and games for kids ages 3–10 — all free, no sign-up.</p>
+  <h1>Learning that feels like <span>play, not homework.</span></h1>
+  <p class="sub">Scratch-to-reveal and drag-and-drop games for kids ages 3–10, plus printable worksheets and practical guides for parents and teachers — all free, no sign-up.</p>
 
   <div class="search-wrap">
     <span class="icon">🔍</span>
-    <input type="text" id="siteSearch" placeholder="Search worksheets, guides, games… try “phonics” or “kindergarten”">
+    <input type="text" id="siteSearch" placeholder="Search games, worksheets, guides… try “animals” or “phonics”">
   </div>
-  <p class="search-hint">Try: phonics · multiplication · preschool · lesson plans · coding</p>
+  <p class="search-hint">Try: animals · shapes · phonics · multiplication · kindergarten</p>
 
   <div class="hero-ctas">
-    <a href="/ages/index.html" class="btn btn-primary">🎂 Browse by Age</a>
-    <a href="/worksheets/index.html" class="btn btn-ghost">📄 Worksheets Library</a>
+    <a href="/games.html" class="btn btn-primary" style="background:linear-gradient(135deg,#ff9800 0%,#ff6b6b 100%);box-shadow:0 8px 18px rgba(255,107,107,0.35);">🎮 Play Games Now</a>
+    <a href="/ages/index.html" class="btn btn-ghost">🎂 Browse by Age</a>
   </div>
 
   <div class="stats-strip">
@@ -313,6 +330,25 @@
   <p style="font-size:2rem;margin:0 0 8px;">🔎</p>
   <p><strong>No matches.</strong> Try a different word, or browse the sections below.</p>
 </div>
+
+<section class="section games-spotlight" id="popular-games">
+  <div class="section-head">
+    <div>
+      <h2>🔥 Popular Games</h2>
+      <p>Scratch to reveal, drag, drop, and match — the interactive games kids come back to. No download needed.</p>
+    </div>
+  </div>
+  <div class="game-grid" data-searchable>
+    <a class="game-card" href="/animals.html" data-search="animals scratch reveal sounds"><span class="emoji">🐶</span><span class="label">Animals</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/alphabets.html" data-search="alphabets letters abc scratch"><span class="emoji">🔠</span><span class="label">Alphabets</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/numbers.html" data-search="numbers counting scratch"><span class="emoji">🔢</span><span class="label">Numbers</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/colors.html" data-search="colors scratch"><span class="emoji">🌈</span><span class="label">Colors</span><span class="kind">Scratch to Reveal</span></a>
+    <a class="game-card" href="/match-shapes.html" data-search="shape match drag drop"><span class="emoji">🟦</span><span class="label">Shape Match</span><span class="kind">Drag &amp; Drop</span></a>
+    <a class="game-card" href="/match-animals.html" data-search="animal match drag drop"><span class="emoji">🦁</span><span class="label">Animal Match</span><span class="kind">Drag &amp; Drop</span></a>
+    <a class="game-card" href="/colours-sorting.html" data-search="colour sorting drag drop"><span class="emoji">🎨</span><span class="label">Colour Sorting</span><span class="kind">Drag &amp; Drop</span></a>
+    <a class="game-card" href="/match-words.html" data-search="word match drag drop"><span class="emoji">🧩</span><span class="label">Word Match</span><span class="kind">Drag &amp; Drop</span></a>
+  </div>
+</section>
 
 <section class="section" id="age">
   <div class="section-head">
@@ -425,40 +461,50 @@
 <section class="section" id="play">
   <div class="section-head">
     <div>
-      <h2>🎮 Play &amp; Practice</h2>
-      <p>Quick, no-download browser games and activity pages for early learners.</p>
+      <h2>🕹️ More Games &amp; Activities</h2>
+      <p>The full catalog — scratch-reveal subjects, sorting and matching games, tracing, phonics, and more.</p>
     </div>
   </div>
   <div class="chip-grid" data-searchable id="playChips">
-    <a class="chip" href="/learn/index.html" data-search="classroom learn">👨‍🎓 Classroom</a>
-    <a class="chip" href="/games.html" data-search="activity games">🎮 Activity Hub</a>
-    <a class="chip" href="/numbers.html" data-search="numbers counting">🔢 Numbers</a>
-    <a class="chip" href="/alphabets.html" data-search="alphabets letters abc">🔠 Alphabets</a>
+    <a class="chip" href="/birds.html" data-search="birds scratch">🕊️ Birds</a>
+    <a class="chip" href="/fruits.html" data-search="fruits scratch">🍎 Fruits</a>
+    <a class="chip" href="/vegetables.html" data-search="vegetables scratch">🥕 Vegetables</a>
+    <a class="chip" href="/plants.html" data-search="plants scratch">🌱 Plants</a>
+    <a class="chip" href="/vehicles.html" data-search="vehicles scratch">🚗 Vehicles</a>
+    <a class="chip" href="/bodyparts.html" data-search="body parts scratch">💪 Body Parts</a>
+    <a class="chip" href="/organs.html" data-search="organs scratch">🫁 Organs</a>
+    <a class="chip" href="/countries.html" data-search="countries geography scratch">🏳️ Countries</a>
+    <a class="chip" href="/flags-of-the-countries.html" data-search="flags scratch">🚩 Flags</a>
     <a class="chip" href="/phonics.html" data-search="phonics sounds">🔊 Phonics</a>
-    <a class="chip" href="/animals.html" data-search="animals">🐶 Animals</a>
-    <a class="chip" href="/colors.html" data-search="colors">🌈 Colors</a>
-    <a class="chip" href="/shapes.html" data-search="shapes">🟦 Shapes</a>
-    <a class="chip" href="/birds.html" data-search="birds">🕊️ Birds</a>
-    <a class="chip" href="/fruits.html" data-search="fruits">🍎 Fruits</a>
-    <a class="chip" href="/vegetables.html" data-search="vegetables">🥕 Vegetables</a>
-    <a class="chip" href="/plants.html" data-search="plants">🌱 Plants</a>
-    <a class="chip hidden-extra" href="/vehicles.html" data-search="vehicles">🚗 Vehicles</a>
-    <a class="chip hidden-extra" href="/bodyparts.html" data-search="body parts">💪 Body Parts</a>
-    <a class="chip hidden-extra" href="/organs.html" data-search="organs">🫁 Organs</a>
-    <a class="chip hidden-extra" href="/word-matching.html" data-search="word matching">🔤 Word Match</a>
-    <a class="chip hidden-extra" href="/odd-even.html" data-search="odd even numbers">🧮 Odd-Even</a>
-    <a class="chip hidden-extra" href="/countries.html" data-search="countries geography">🏳️ Countries</a>
-    <a class="chip hidden-extra" href="/flags-of-the-countries.html" data-search="flags">🚩 Flags</a>
-    <a class="chip hidden-extra" href="/electronic-gadgets.html" data-search="electronics gadgets">💡 Electronics</a>
-    <a class="chip hidden-extra" href="/fantasy-world.html" data-search="fantasy">👽 Fantasy World</a>
-    <a class="chip hidden-extra" href="/nature-explorer.html" data-search="nature">🌳 Nature Explorer</a>
-    <a class="chip hidden-extra" href="/planets.html" data-search="planets space">🌎 Planets</a>
-    <a class="chip hidden-extra" href="/scientists.html" data-search="scientists">🔬 Scientists</a>
-    <a class="chip hidden-extra" href="/publicservice.html" data-search="public service community helpers">🏛️ Public Service</a>
+    <a class="chip" href="/match-numbers.html" data-search="number match drag drop">🔢 Number Match</a>
+    <a class="chip hidden-extra" href="/animals-birds-sorting.html" data-search="animals birds sorting drag drop">🐦 Animals-Birds Sorting</a>
+    <a class="chip hidden-extra" href="/fruits-vegetables-sorting.html" data-search="fruits vegetables sorting drag drop">🥑 Fruits-Veggies Sorting</a>
+    <a class="chip hidden-extra" href="/numbers-alphabets-sorting.html" data-search="numbers alphabets sorting drag drop">🔣 AlphaNum Sorting</a>
+    <a class="chip hidden-extra" href="/odd-even-sorting.html" data-search="odd even sorting drag drop">🧮 Odd-Even Sorting</a>
+    <a class="chip hidden-extra" href="/odd-even.html" data-search="odd even numbers">➗ Odd-Even</a>
+    <a class="chip hidden-extra" href="/shapes.html" data-search="shapes">🟦 Shapes</a>
+    <a class="chip hidden-extra" href="/word-matching.html" data-search="word matching">🔤 Word Matching</a>
+    <a class="chip hidden-extra" href="/tracing-letters-and-numbers.html" data-search="tracing letters numbers">🅰️ Tracing ABC</a>
+    <a class="chip hidden-extra" href="/mirror-words-learning.html" data-search="mirror words reflection">🪩 Reflection Words</a>
+    <a class="chip hidden-extra" href="/math.html" data-search="simple math addition subtraction">➕ Simple Math</a>
+    <a class="chip hidden-extra" href="/rhyming.html" data-search="rhyming words">🧠 Rhyming</a>
+    <a class="chip hidden-extra" href="/sight.html" data-search="sight words">👀 Sight Words</a>
+    <a class="chip hidden-extra" href="/counting.html" data-search="counting objects">🔢 Count Objects</a>
+    <a class="chip hidden-extra" href="/patterns.html" data-search="patterns">🪄 Patterns</a>
+    <a class="chip hidden-extra" href="/Grammar.html" data-search="grammar">📝 Grammar</a>
+    <a class="chip hidden-extra" href="/sentences.html" data-search="sentences">📝 Sentences</a>
+    <a class="chip hidden-extra" href="/electronic-gadgets.html" data-search="electronics gadgets scratch">💡 Electronics</a>
+    <a class="chip hidden-extra" href="/fantasy-world.html" data-search="fantasy scratch">👽 Fantasy World</a>
+    <a class="chip hidden-extra" href="/nature-explorer.html" data-search="nature scratch">🌳 Nature Explorer</a>
+    <a class="chip hidden-extra" href="/planets.html" data-search="planets space scratch">🌎 Planets</a>
+    <a class="chip hidden-extra" href="/scientists.html" data-search="scientists scratch">🔬 Scientists</a>
+    <a class="chip hidden-extra" href="/publicservice.html" data-search="public service community helpers scratch">🏛️ Public Service</a>
+    <a class="chip hidden-extra" href="/learn/index.html" data-search="classroom learn">👨‍🎓 Classroom</a>
+    <a class="chip hidden-extra" href="/games.html" data-search="activity hub all games">🎮 Full Activity Hub</a>
     <a class="chip hidden-extra" href="/reels.html" data-search="reels videos">🎬 Reels</a>
     <a class="chip hidden-extra" href="/downloads.html" data-search="downloads pdf worksheets">📃 All PDF Downloads</a>
   </div>
-  <button class="show-more-btn" id="showMoreBtn">Show 15 more →</button>
+  <button class="show-more-btn" id="showMoreBtn">Show 22 more →</button>
 </section>
 
 <div class="ad-slot">
