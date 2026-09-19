@@ -5,4 +5,8 @@ Allow: /assets/audio/
 Allow: /css/
 Allow: /js/
 
-Sitemap: https://teachings.ai/sitemap.xml
+Disallow: /mockups/
+Disallow: /templates/
+Disallow: /scripts/
+
+Sitemap: https://www.teachings.ai/sitemap.xml

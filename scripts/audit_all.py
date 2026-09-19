@@ -82,6 +82,9 @@ CHECKS = [
     ("audit_broken_content_images.py", [
         (r"Unique broken content-image targets:\s+(\d+)", "broken in-page <img> targets", 0, True),
     ]),
+    ("audit_faq_schema.py", [
+        (r"NO FAQPage schema:\s+(\d+)", "visible FAQ sections missing FAQPage schema", 0, True),
+    ]),
 ]
 
 
