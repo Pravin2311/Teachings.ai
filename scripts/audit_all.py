@@ -85,6 +85,9 @@ CHECKS = [
     ("audit_faq_schema.py", [
         (r"NO FAQPage schema:\s+(\d+)", "visible FAQ sections missing FAQPage schema", 0, True),
     ]),
+    ("audit_jsonld_assets.py", [
+        (r"Broken asset URLs found:\s+(\d+)", "broken asset URLs inside JSON-LD", 0, True),
+    ]),
 ]
 
 
