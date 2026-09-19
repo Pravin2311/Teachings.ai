@@ -51,20 +51,47 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LearningResource",
-  "name": "Teachings.AI",
-  "operatingSystem": "All",
-  "applicationCategory": "Educational",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "Teachings.AI"
-  },
-  "description": "Interactive learning platform for kids aged 3-10 with games for alphabets, numbers, animals, and more."
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://www.teachings.ai/#app",
+      "name": "Teachings.AI",
+      "operatingSystem": "All",
+      "applicationCategory": "Educational",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@id": "https://www.teachings.ai/#organization"
+      },
+      "description": "Interactive learning platform for kids aged 3-10 with games for alphabets, numbers, animals, and more."
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.teachings.ai/#organization",
+      "name": "Teachings.AI",
+      "url": "https://www.teachings.ai",
+      "logo": "https://www.teachings.ai/assets/images/app_logo.png",
+      "sameAs": [
+        "https://twitter.com/TeachingsAI",
+        "https://www.facebook.com/TeachingsAI",
+        "https://www.instagram.com/teachingsai",
+        "https://www.youtube.com/@teachingsai",
+        "https://www.linkedin.com/company/teachingsai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.teachings.ai/#website",
+      "url": "https://www.teachings.ai",
+      "name": "Teachings.AI",
+      "publisher": {
+        "@id": "https://www.teachings.ai/#organization"
+      }
+    }
+  ]
 }
 </script>
 
