@@ -1,0 +1,162 @@
+<!-- ============================================================
+  NEW CONTENT PAGE TEMPLATE
+  Copy this file, fill in every {{PLACEHOLDER}}, delete this comment
+  block, then run: python scripts/audit_all.py
+  before publishing. Every rule below exists because it was a real,
+  sitewide bug found and fixed in the 2026-09-19 SEO audit -- see
+  scripts/audit_*.py for the checks and the git log for the "why".
+============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Never add user-scalable=no or maximum-scale=1 here: it blocks
+     pinch-zoom and fails WCAG 1.4.4 / Lighthouse accessibility. -->
+
+<!-- Preconnect to the two third-party origins every page loads from. -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+
+<title>{{TITLE — 50-60 characters, unique, not truncated by Google}}</title>
+
+<!-- Canonical: must be THIS page's own real, live URL. If this page is
+     ever moved/renamed later, update this immediately -- 53 pages were
+     found this session still pointing at pre-rename URLs that no
+     longer existed, telling Google each was a duplicate of a 404. -->
+<link rel="canonical" href="https://www.teachings.ai/{{PATH}}.html">
+
+<meta name="description" content="{{DESCRIPTION — 140-155 characters, unique}}">
+<!-- max-image-preview:large: Google's real default without this is
+     "standard" (small thumbnail), not large. Every page needs this. -->
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<meta property="og:title" content="{{Same as <title> or a social-friendly variant}}">
+<meta property="og:description" content="{{Same as meta description or similar}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.teachings.ai/{{PATH}}.html">
+<meta property="og:site_name" content="Teachings.ai">
+<meta property="og:image" content="https://www.teachings.ai/assets/images/{{REAL FILE THAT ACTUALLY EXISTS}}.png">
+<!-- ^ VERIFY THIS FILE EXISTS before publishing. 225 pages including the
+     homepage referenced assets/images/app_logo.png as og:image/twitter:image
+     for an unknown amount of time -- that file never existed in this repo,
+     so every one of those pages showed NO preview image in Search results
+     or social shares. If you don't have real topic art yet, point this at
+     the real fallback: https://www.teachings.ai/assets/images/app_icon_512.png
+     -- never leave it pointing at a file you haven't confirmed exists. -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{same as og:title}}">
+<meta name="twitter:description" content="{{same as og:description}}">
+<meta name="twitter:image" content="{{same real file as og:image above}}">
+
+<link rel="stylesheet" href="/css/styles.css">
+
+<!-- Structured data: one @graph block per page. WebPage + LearningResource
+     reference the shared Organization/WebSite entity by @id rather than
+     redefining it -- that shared entity is fully defined once, on the
+     homepage (index.html). Add/remove entries (HowTo, FAQPage, etc.) as
+     the page's actual content warrants; don't add a type the page doesn't
+     really have content for. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.teachings.ai/{{PATH}}.html",
+      "url": "https://www.teachings.ai/{{PATH}}.html",
+      "name": "{{same as <title>}}",
+      "description": "{{same as meta description}}",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://www.teachings.ai/#website" },
+      "publisher": { "@id": "https://www.teachings.ai/#organization" }
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://www.teachings.ai/{{PATH}}.html#resource",
+      "url": "https://www.teachings.ai/{{PATH}}.html",
+      "name": "{{short resource name}}",
+      "description": "{{1-2 sentence description of what the activity teaches}}",
+      "learningResourceType": "Game",
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": ["student", "child"],
+        "ageRange": "3-7"
+      },
+      "inLanguage": "en",
+      "educationalLevel": ["Preschool", "Kindergarten"],
+      "isAccessibleForFree": true,
+      "datePublished": "{{YYYY-MM-DD}}",
+      "publisher": { "@id": "https://www.teachings.ai/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.teachings.ai/{{PATH}}.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.teachings.ai/" },
+        { "@type": "ListItem", "position": 2, "name": "{{parent hub name}}", "item": "https://www.teachings.ai/{{parent-hub-path}}.html" },
+        { "@type": "ListItem", "position": 3, "name": "{{this page's name}}", "item": "https://www.teachings.ai/{{PATH}}.html" }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Google Analytics 4 -- include ONCE. 11 pages this session had this
+     entire block pasted twice, double-counting every real pageview in
+     GA4 reporting. If you're copying this template from another page,
+     copy the whole <head>, don't paste sections from two different
+     pages into one. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XVYMNTZLQJ');
+</script>
+
+<!-- AdSense loader -- also ONCE per page, here in <head>, even if the
+     page has multiple ad slots. 385 pages had this same loader script
+     pasted again in <body> before each individual ad unit; only the
+     <ins class="adsbygoogle"> + its own push() call needs to repeat
+     per ad slot, not the loader. -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7495143337429327"
+   crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ... page content ... -->
+
+  <!-- Example ad slot: loader is NOT repeated here, only <ins> + push(). -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-format="fluid"
+       data-ad-layout-key="-fb+5w+4e-db+86"
+       data-ad-client="ca-pub-7495143337429327"
+       data-ad-slot="{{slot id}}"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <!-- Every content <img> needs alt, real width/height (read the actual
+       file, don't guess), and loading="lazy" -- except the very first
+       image on the page, which should stay eager so it isn't penalized
+       as a slow Largest Contentful Paint. -->
+  <img src="/assets/images/{{topic}}/{{file}}.png" alt="{{descriptive alt text}}" width="{{real px width}}" height="{{real px height}}" loading="lazy">
+
+  <!-- Footer: must include a real link to /feedback.html, not just the
+       mailto: Contact Us button -- feedback.html itself had zero inbound
+       links anywhere on the site until this was added. -->
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2025-2026 Teachings.AI</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/Blog/index.html" class="blog-button">📝 Blog</a>
+      <a href="/about.html" class="blog-button">About</a>
+      <a href="/privacy-policy.html" class="blog-button">Privacy</a>
+      <a href="/disclaimer.html" class="blog-button">Disclaimer</a>
+      <a href="/feedback.html" class="blog-button">Feedback</a>
+      <a href="mailto:support@teachings.ai?subject=Website%20Feedback&body=Hello%20Teachings.AI%20Team" class="feedback-button">📩 Contact Us</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

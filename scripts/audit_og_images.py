@@ -10,7 +10,7 @@ from collections import defaultdict
 from urllib.parse import unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXCLUDE_DIRS = {"mockups", ".git", "node_modules"}
+EXCLUDE_DIRS = {"mockups", "templates", ".git", "node_modules"}
 
 IMG_META_RE = re.compile(
     r'<meta\s+(?:property|name)="(?:og:image|twitter:image)"\s+content="([^"]+)"',

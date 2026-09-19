@@ -11,7 +11,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXCLUDE_DIRS = {"mockups", ".git", "node_modules"}
+EXCLUDE_DIRS = {"mockups", "templates", ".git", "node_modules"}
 DRY_RUN = "--dry-run" in sys.argv
 
 PATTERN = re.compile(

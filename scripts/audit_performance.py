@@ -14,7 +14,7 @@ import re
 from collections import defaultdict, Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXCLUDE_DIRS = {"mockups", ".git", "node_modules"}
+EXCLUDE_DIRS = {"mockups", "templates", ".git", "node_modules"}
 
 SCRIPT_SRC_RE = re.compile(r'<script\b([^>]*?)\bsrc=(["\'])(.*?)\2([^>]*)>', re.IGNORECASE)
 HEAD_RE = re.compile(r'<head\b.*?</head>', re.IGNORECASE | re.DOTALL)

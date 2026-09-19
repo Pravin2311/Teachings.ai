@@ -13,7 +13,7 @@ import re
 EXPECTED_CLIENT = "ca-pub-7495143337429327"
 THIN_CONTENT_WORDS = 150  # pages with ads and fewer visible words than this get flagged
 
-SKIP_DIRS = ("mockups/", ".git/", "node_modules/")
+SKIP_DIRS = ("mockups/", "templates/", ".git/", "node_modules/")
 
 
 def visible_word_count(html):
@@ -32,7 +32,7 @@ def find_ad_blocks(html):
 
 
 def main():
-    files = [f for f in glob.glob("**/*.html", recursive=True) if not f.startswith(SKIP_DIRS)]
+    files = [f for f in glob.glob("**/*.html", recursive=True) if not f.replace("\\", "/").startswith(SKIP_DIRS)]
     files.sort()
 
     total_pages = 0

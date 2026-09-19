@@ -17,7 +17,7 @@ import sys
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXCLUDE_DIRS = {"mockups", ".git", "node_modules"}
+EXCLUDE_DIRS = {"mockups", "templates", ".git", "node_modules"}
 MIN_OUTBOUND = 3
 
 HREF_RE = re.compile(r'href=(["\'])(.*?)\1', re.IGNORECASE)

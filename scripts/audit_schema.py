@@ -9,7 +9,7 @@ import glob
 import json
 import re
 
-SKIP_DIRS = ("mockups/", ".git/", "node_modules/")
+SKIP_DIRS = ("mockups/", "templates/", ".git/", "node_modules/")
 SKIP_FILES = {"furits-vegetables-sorting.html"}
 
 JSONLD_RE = re.compile(
@@ -18,7 +18,7 @@ JSONLD_RE = re.compile(
 
 
 def main():
-    files = [f for f in glob.glob("**/*.html", recursive=True) if not f.startswith(SKIP_DIRS)]
+    files = [f for f in glob.glob("**/*.html", recursive=True) if not f.replace("\\", "/").startswith(SKIP_DIRS)]
     files = [f for f in files if f.replace("\\", "/") not in SKIP_FILES]
     files.sort()
 

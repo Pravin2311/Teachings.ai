@@ -11,7 +11,7 @@ import glob
 import re
 import html
 
-SKIP_DIRS = ("mockups/", ".git/", "node_modules/")
+SKIP_DIRS = ("mockups/", "templates/", ".git/", "node_modules/")
 
 TITLE_MIN, TITLE_MAX = 50, 60
 DESC_MIN, DESC_MAX = 140, 155
@@ -49,7 +49,7 @@ def extract_description(html_src):
 
 
 def main():
-    files = [f for f in glob.glob("**/*.html", recursive=True) if not f.startswith(SKIP_DIRS)]
+    files = [f for f in glob.glob("**/*.html", recursive=True) if not f.replace("\\", "/").startswith(SKIP_DIRS)]
     files.sort()
 
     total = 0
