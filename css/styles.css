@@ -127,9 +127,29 @@ p{
   text-align:center;
 }
 
+/* ===== Tables ===== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:16px 0;
+  table-layout:fixed;
+}
+
+th, td{
+  padding:8px 12px;
+  text-align:left;
+  border:1px solid #ddd;
+  word-wrap:break-word;
+}
+
+th{
+  background:#eef2ff;
+}
+
 /* ===== Mobile Optimization ===== */
 @media(max-width:600px){
   h1{font-size:22px;}
   h2{font-size:18px;}
   p{font-size:15px;}
+  th, td{padding:6px 8px;font-size:14px;}
 }
