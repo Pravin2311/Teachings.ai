@@ -172,16 +172,16 @@
   </div>
 
   <div class="image-draggers" id="imageDraggers">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/0.png" class="draggable-img" id="0" alt="Zero" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/1.png" class="draggable-img" id="1" alt="One" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/2.png" class="draggable-img" id="2" alt="Two" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/3.png" class="draggable-img" id="3" alt="Three" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/4.png" class="draggable-img" id="4" alt="Four" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/5.png" class="draggable-img" id="5" alt="Five" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/6.png" class="draggable-img" id="6" alt="Six" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/7.png" class="draggable-img" id="7" alt="Seven" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/8.png" class="draggable-img" id="8" alt="Eight" draggable="true">
-    <img src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/9.png" class="draggable-img" id="9" alt="Nine" draggable="true">
+    <img height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/0.png" class="draggable-img" id="0" alt="Zero" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/1.png" class="draggable-img" id="1" alt="One" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/2.png" class="draggable-img" id="2" alt="Two" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/3.png" class="draggable-img" id="3" alt="Three" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/4.png" class="draggable-img" id="4" alt="Four" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/5.png" class="draggable-img" id="5" alt="Five" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/6.png" class="draggable-img" id="6" alt="Six" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/7.png" class="draggable-img" id="7" alt="Seven" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/8.png" class="draggable-img" id="8" alt="Eight" draggable="true">
+    <img loading="lazy" height="1024" width="1024" src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/images/numbers/9.png" class="draggable-img" id="9" alt="Nine" draggable="true">
   </div>
   <div id="result"></div>
   <button id="try-again-button" onclick="resetGame()">🔄 Try Again</button>
@@ -308,7 +308,7 @@
       const emojiEl = document.getElementById(draggedId);
 
       if (draggedId === targetWord && !box.classList.contains("matched")) {
-        box.innerHTML = `<img src="${emojiEl.src}" alt="${emojiEl.alt}" class="matched-img">`;
+        box.innerHTML = `<img loading="lazy" src="${emojiEl.src}" alt="${emojiEl.alt}" class="matched-img">`;
         box.classList.add("matched");
         emojiEl.style.display = "none";
         document.getElementById("audio-correct").play();
@@ -349,7 +349,7 @@
           const targetWord = dropTarget.getAttribute("data-word");
           const draggedId = el.id;
           if (draggedId === targetWord && !dropTarget.classList.contains("matched")) {
-            dropTarget.innerHTML = `<img src="${el.src}" alt="${el.alt}" class="matched-img">`;
+            dropTarget.innerHTML = `<img loading="lazy" src="${el.src}" alt="${el.alt}" class="matched-img">`;
             dropTarget.classList.add("matched");
             el.style.display = "none";
             document.getElementById("audio-correct").play();
