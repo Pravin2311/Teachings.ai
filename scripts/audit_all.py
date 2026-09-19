@@ -75,6 +75,13 @@ CHECKS = [
         (r"Live pages missing from sitemap:\s+(\d+)", "live pages missing from sitemap", 0, True),
         (r"Sitemap URLs pointing at nonexistent files:\s+(\d+)", "sitemap URLs pointing nowhere", 0, True),
     ]),
+    ("audit_case_sensitivity.py", [
+        (r"CASE-MISMATCH[^:]*:\s+(\d+)", "case-mismatched asset refs (fine on Windows, 404 on GitHub Pages)", 0, True),
+        (r"Truly missing[^:]*:\s+(\d+)", "truly missing asset refs", 1, False),
+    ]),
+    ("audit_broken_content_images.py", [
+        (r"Unique broken content-image targets:\s+(\d+)", "broken in-page <img> targets", 0, True),
+    ]),
 ]
 
 
