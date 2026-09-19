@@ -67,6 +67,14 @@ CHECKS = [
         (r"Pages with 3\+ ad units \((\d+)\)", "pages with 3+ ad units", 0, True),
         (r"<40 chars of real content between them \((\d+)\)", "stacked ad units", 0, True),
     ]),
+    ("audit_headings.py", [
+        (r"Missing H1:\s+(\d+)", "pages missing H1", 0, True),
+        (r"Multiple H1s:\s+(\d+)", "pages with multiple H1s", 0, True),
+    ]),
+    ("audit_sitemap.py", [
+        (r"Live pages missing from sitemap:\s+(\d+)", "live pages missing from sitemap", 0, True),
+        (r"Sitemap URLs pointing at nonexistent files:\s+(\d+)", "sitemap URLs pointing nowhere", 0, True),
+    ]),
 ]
 
 
