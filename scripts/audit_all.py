@@ -88,6 +88,9 @@ CHECKS = [
     ("audit_jsonld_assets.py", [
         (r"Broken asset URLs found:\s+(\d+)", "broken asset URLs inside JSON-LD", 0, True),
     ]),
+    ("audit_script_src.py", [
+        (r"Broken <script src> refs:\s+(\d+)", "broken script src refs", 0, True),
+    ]),
 ]
 
 
