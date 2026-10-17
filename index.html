@@ -279,8 +279,15 @@
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;overflow-x:hidden;}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);}
-  h1,h2,h3{font-family:'Poppins',sans-serif;}
+  /* Fallback faces sized to match Inter / Poppins (measured), so the late web-font swap doesn't shift layout */
+  @font-face{font-family:'Inter Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:107.05%;ascent-override:90.5%;descent-override:22.53%;line-gap-override:0%;}
+  @font-face{font-family:'Inter Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:500 900;size-adjust:107.05%;ascent-override:90.5%;descent-override:22.53%;line-gap-override:0%;}
+  @font-face{font-family:'Inter Fallback R';src:local('Roboto'),local('Roboto-Regular');font-weight:400;size-adjust:107.84%;ascent-override:89.83%;descent-override:22.37%;line-gap-override:0%;}
+  @font-face{font-family:'Inter Fallback R';src:local('Roboto Bold'),local('Roboto-Bold');font-weight:500 900;size-adjust:107.84%;ascent-override:89.83%;descent-override:22.37%;line-gap-override:0%;}
+  @font-face{font-family:'Poppins Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:400 900;size-adjust:108.3%;ascent-override:96.95%;descent-override:32.32%;line-gap-override:9.23%;}
+  @font-face{font-family:'Poppins Fallback R';src:local('Roboto Bold'),local('Roboto-Bold');font-weight:400 900;size-adjust:114.55%;ascent-override:91.66%;descent-override:30.55%;line-gap-override:8.73%;}
+  body{font-family:'Inter','Inter Fallback','Inter Fallback R',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);}
+  h1,h2,h3{font-family:'Poppins','Poppins Fallback','Poppins Fallback R',sans-serif;}
   img{max-width:100%;}
 
   /* Hero */
@@ -300,7 +307,7 @@
   .btn-ghost{background:#fff;color:var(--brand);border:1.5px solid #dbe3ff;}
   .stats-strip{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;max-width:860px;margin:30px auto 0;padding:18px 20px;}
   .stat{text-align:center;}
-  .stat b{display:block;font-size:1.5rem;color:var(--brand);font-family:'Poppins',sans-serif;}
+  .stat b{display:block;font-size:1.5rem;color:var(--brand);font-family:'Poppins','Poppins Fallback','Poppins Fallback R',sans-serif;}
   .stat span{font-size:0.8rem;color:var(--ink-soft);}
 
   .ad-slot{max-width:1100px;margin:8px auto 10px;padding:0 20px;text-align:center;min-height:250px;}
@@ -326,7 +333,7 @@
   .card{background:#fff;border-radius:18px;padding:20px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);border:1px solid var(--border);transition:.18s;display:flex;flex-direction:column;gap:8px;}
   .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:transparent;}
   .card .emoji{font-size:1.6rem;}
-  .card h3{margin:0;font-size:1rem;font-family:'Inter',sans-serif;font-weight:700;}
+  .card h3{margin:0;font-size:1rem;font-family:'Inter','Inter Fallback','Inter Fallback R',sans-serif;font-weight:700;}
   .card p{margin:0;font-size:0.84rem;color:var(--ink-soft);line-height:1.45;flex-grow:1;}
   .card .tag{align-self:flex-start;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-top:2px;}
 
