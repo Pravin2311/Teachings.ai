@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
 <title>Kids Learning: Alphabets, Numbers &amp; Fun Worksheets</title>
 
 <!-- Canonical URL to prevent / vs /index.html duplication -->
@@ -36,14 +34,10 @@
 <meta name="twitter:image" content="https://www.teachings.ai/assets/images/app_icon_512.png">
 
 <!-- Preload Fonts & CSS -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Preconnect to jsDelivr -->
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
 <link rel="stylesheet" href="/css/site-header.css">
 
@@ -143,7 +137,8 @@
   .stat b{display:block;font-size:1.5rem;color:var(--brand);font-family:'Poppins',sans-serif;}
   .stat span{font-size:0.8rem;color:var(--ink-soft);}
 
-  .ad-slot{max-width:1100px;margin:8px auto 10px;padding:0 20px;text-align:center;}
+  .ad-slot{max-width:1100px;margin:8px auto 10px;padding:0 20px;text-align:center;min-height:250px;}
+  .ad-slot:has(ins[data-ad-status="unfilled"]){min-height:0;}
 
   /* Sections */
   .section{max-width:1200px;margin:0 auto;padding:34px 20px;}
@@ -513,7 +508,7 @@
   </div>
 </footer>
 
-<audio id="background-music" loop muted>
+<audio id="background-music" loop muted preload="none">
   <source src="https://cdn.jsdelivr.net/gh/Pravin2311/Teachings.ai@main/assets/audio/background_music.mp3" type="audio/mpeg" />
   Your browser does not support the audio element.
 </audio>
