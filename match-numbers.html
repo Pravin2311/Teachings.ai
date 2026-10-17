@@ -456,7 +456,10 @@
       }
     }
 
-    window.onload = resetGame;
-  </script>
+    const initGame = resetGame;
+  
+  // Start right away instead of waiting for every image and ad to finish loading.
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initGame); else initGame();
+</script>
 </body>
 </html>

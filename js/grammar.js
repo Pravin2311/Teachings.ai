@@ -160,4 +160,5 @@ submitBtn.addEventListener("click", () => {
 tryAgainBtn.addEventListener("click", generateRound);
 
 // Init game
-window.onload = generateRound;
+// Start right away instead of waiting for every image and ad to finish loading.
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", generateRound); else generateRound();

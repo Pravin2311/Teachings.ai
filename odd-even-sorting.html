@@ -414,7 +414,7 @@
     renderWords();
   }
 
-  window.onload = function () {
+  const initGame = function () {
     document.querySelectorAll(".drop-zone").forEach(zone => {
       zone.addEventListener("dragover", e => e.preventDefault());
       zone.addEventListener("drop", e => {
@@ -432,6 +432,9 @@
 
     renderWords();
   };
+
+  // Start right away instead of waiting for every image and ad to finish loading.
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initGame); else initGame();
 </script>
 
 
