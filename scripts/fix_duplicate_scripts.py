@@ -24,8 +24,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXCLUDE_DIRS = {"mockups", "templates", ".git", "node_modules"}
 DRY_RUN = "--dry-run" in sys.argv
 
+# Match only the official loader URL. An earlier version also matched the
+# invalid ".../pagead/js?client=..." (404) and kept that copy, removing the
+# working loader from ~400 pages.
 ADSENSE_RE = re.compile(
-    r'<script async src="https://pagead2\.googlesyndication\.com/pagead/js/?(?:adsbygoogle\.js)?\?client=ca-pub-7495143337429327"'
+    r'<script async src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=ca-pub-7495143337429327"'
     r'\s*\n?\s*crossorigin="anonymous"\s*>\s*</script>\n?'
 )
 GA_LOADER_RE = re.compile(
