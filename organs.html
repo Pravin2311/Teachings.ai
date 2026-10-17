@@ -62,113 +62,179 @@
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://www.teachings.ai/organs.html",
-        "url": "https://www.teachings.ai/organs.html",
-        "name": "Learn Human Organs | Interactive Anatomy Game for Kids | Teachings.AI",
-        "description": "Interactive organ learning game for kids 6-10. Discover heart, lungs, brain, stomach & more with scratch-to-reveal fun.",
-        "inLanguage": "en",
-        "isPartOf": { "@id": "https://www.teachings.ai/#website" },
-        "publisher": { "@id": "https://www.teachings.ai/#organization" },
-        "image": "https://www.teachings.ai/assets/images/app_icon_512.png",
-        "breadcrumb": { "@id": "https://www.teachings.ai/organs.html#breadcrumb" }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.teachings.ai/organs.html",
+      "url": "https://www.teachings.ai/organs.html",
+      "name": "Learn Human Organs | Interactive Anatomy Game for Kids | Teachings.AI",
+      "description": "Interactive organ learning game for kids 6-10. Discover heart, lungs, brain, stomach & more with scratch-to-reveal fun.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://www.teachings.ai/#website"
       },
-      {
-        "@type": "LearningResource",
-        "@id": "https://www.teachings.ai/organs.html#resource",
-        "url": "https://www.teachings.ai/organs.html",
-        "name": "Learn Organs - Teachings.AI",
-        "description": "Interactive module for kids to explore human organs, names, and functions with scratch-to-reveal fun.",
-        "learningResourceType": "Interactive Educational Game",
-        "educationalUse": ["Play", "Learning", "Exploration", "Science"],
-        "teaches": ["Organ recognition", "Anatomy basics", "Vocabulary building"],
-        "audience": {
-          "@type": "EducationalAudience",
-          "educationalRole": "student",
-          "ageRange": "6-10"
-        },
-        "educationalLevel": ["Elementary School", "Grade 2", "Grade 3"],
-        "isAccessibleForFree": true,
-        "educationalSubject": ["Science", "Biology", "Health"],
-        "publisher": { "@id": "https://www.teachings.ai/#organization" },
-        "image": "https://www.teachings.ai/assets/images/app_icon_512.png",
-        "thumbnailUrl": "https://www.teachings.ai/assets/images/app_icon_512.png",
-        "keywords": ["learn organs","human body","body parts","anatomy for kids","science game"]
+      "publisher": {
+        "@id": "https://www.teachings.ai/#organization"
       },
-      {
-        "@type": "HowTo",
-        "@id": "https://www.teachings.ai/organs.html#howto",
-        "name": "Parent Tip: Teach Body Awareness & Science Skills",
-        "description": "Step-by-step guidance for parents to help kids learn organ names, functions, and locations in the body.",
-        "step": [
-          { "@type": "HowToStep", "position": 1, "name": "Name the organ", "text": "Ask your child to say the organ name aloud (e.g., 'Heart')." },
-          { "@type": "HowToStep", "position": 2, "name": "Explain its job", "text": "Tell them simply what it does (e.g., 'The heart pumps blood through your body.')" },
-          { "@type": "HowToStep", "position": 3, "name": "Point to location", "text": "Have them touch their chest when learning about the heart, or their head for the brain." }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://www.teachings.ai/organs.html#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the Learn Organs game?",
-            "acceptedAnswer": { "@type": "Answer", "text": "It is an interactive game where kids discover human organs by scratching to reveal images, names, and facts." }
-          },
-          {
-            "@type": "Question",
-            "name": "Who is this game for?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The game is designed for elementary school children (ages 6–10), especially those studying the human body." }
-          },
-          {
-            "@type": "Question",
-            "name": "What skills does this game build?",
-            "acceptedAnswer": { "@type": "Answer", "text": "It helps kids build science vocabulary, body awareness, memory, and understanding of organ functions." }
-          },
-          {
-            "@type": "Question",
-            "name": "Is the Learn Organs game free?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, the game is free to play on Teachings.AI." }
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.teachings.ai/organs.html#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.teachings.ai/" },
-          { "@type": "ListItem", "position": 2, "name": "Science", "item": "https://www.teachings.ai/science.html" },
-          { "@type": "ListItem", "position": 3, "name": "Learn Organs" }
-        ]
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://www.teachings.ai/#organization",
-        "name": "Teachings.AI",
-        "url": "https://www.teachings.ai",
-        "logo": "https://www.teachings.ai/assets/images/app_icon_512.png",
-        "sameAs": [
-          "https://twitter.com/TeachingsAI",
-          "https://www.facebook.com/TeachingsAI",
-          "https://www.instagram.com/teachingsai",
-          "https://www.youtube.com/@teachingsai",
-          "https://www.linkedin.com/company/teachingsai"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://www.teachings.ai/#website",
-        "url": "https://www.teachings.ai",
-        "name": "Teachings.AI",
-        "publisher": { "@id": "https://www.teachings.ai/#organization" }
+      "image": "https://www.teachings.ai/assets/images/app_icon_512.png",
+      "breadcrumb": {
+        "@id": "https://www.teachings.ai/organs.html#breadcrumb"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "LearningResource",
+      "@id": "https://www.teachings.ai/organs.html#resource",
+      "url": "https://www.teachings.ai/organs.html",
+      "name": "Learn Organs - Teachings.AI",
+      "description": "Interactive module for kids to explore human organs, names, and functions with scratch-to-reveal fun.",
+      "learningResourceType": "Interactive Educational Game",
+      "educationalUse": [
+        "Play",
+        "Learning",
+        "Exploration",
+        "Science"
+      ],
+      "teaches": [
+        "Organ recognition",
+        "Anatomy basics",
+        "Vocabulary building"
+      ],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "ageRange": "6-10"
+      },
+      "educationalLevel": [
+        "Elementary School",
+        "Grade 2",
+        "Grade 3"
+      ],
+      "isAccessibleForFree": true,
+      "educationalSubject": [
+        "Science",
+        "Biology",
+        "Health"
+      ],
+      "publisher": {
+        "@id": "https://www.teachings.ai/#organization"
+      },
+      "image": "https://www.teachings.ai/assets/images/app_icon_512.png",
+      "thumbnailUrl": "https://www.teachings.ai/assets/images/app_icon_512.png",
+      "keywords": [
+        "learn organs",
+        "human body",
+        "body parts",
+        "anatomy for kids",
+        "science game"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.teachings.ai/organs.html#howto",
+      "name": "Parent Tip: Teach Body Awareness & Science Skills",
+      "description": "Step-by-step guidance for parents to help kids learn organ names, functions, and locations in the body.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Name the organ",
+          "text": "Ask your child to say the organ name aloud (e.g., 'Heart')."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Explain its job",
+          "text": "Tell them simply what it does (e.g., 'The heart pumps blood through your body.')"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Point to location",
+          "text": "Have them touch their chest when learning about the heart, or their head for the brain."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.teachings.ai/organs.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which organs are included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It includes the brain, eyes, heart, intestines, kidneys, liver, lungs, lymph nodes, muscles, stomach and teeth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this too advanced for young children?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simple names like heart, brain and stomach are fine for preschoolers. Older children can learn what each organ does on the organ learning pages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can this support healthy habits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Connecting organs to their jobs makes it easier to explain why we eat vegetables, drink water, brush our teeth and exercise."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.teachings.ai/organs.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.teachings.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Science",
+          "item": "https://www.teachings.ai/science.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Learn Organs"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.teachings.ai/#organization",
+      "name": "Teachings.AI",
+      "url": "https://www.teachings.ai",
+      "logo": "https://www.teachings.ai/assets/images/app_icon_512.png",
+      "sameAs": [
+        "https://twitter.com/TeachingsAI",
+        "https://www.facebook.com/TeachingsAI",
+        "https://www.instagram.com/teachingsai",
+        "https://www.youtube.com/@teachingsai",
+        "https://www.linkedin.com/company/teachingsai"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.teachings.ai/#website",
+      "url": "https://www.teachings.ai",
+      "name": "Teachings.AI",
+      "publisher": {
+        "@id": "https://www.teachings.ai/#organization"
+      }
+    }
+  ]
+}
+</script>
 
   <!-- Google Analytics 4 (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XVYMNTZLQJ"></script>
@@ -239,38 +305,36 @@
   <script src="js/globalImageLoader.js" defer></script>
 
   
-<!-- Quick Facts Info Block (auto-added: thin-content remediation) -->
+<!-- How to play -->
 <section class="quick-facts-box" style="max-width:640px;margin:28px auto;padding:22px 24px;background:#f4f8ff;border-left:5px solid #4a90d9;border-radius:12px;text-align:left;font-size:1em;color:#333;line-height:1.6;box-shadow:0 4px 8px rgba(0,0,0,0.05);">
-  <h2 style="margin:0 0 10px;font-size:1.25em;color:#1B2A5B;">🫁 Quick Facts: Body Organs</h2>
-  <p style="margin:0 0 12px;">Organs are the parts inside your body that keep you alive and healthy, like your heart, lungs, and brain. This activity introduces kids to what's happening inside!</p>
-  <p style="margin:0 0 6px;font-weight:700;color:#1B2A5B;">Fun Facts:</p>
-  <ul style="margin:0 0 14px;padding-left:22px;">
-    <li>Your heart pumps blood all around your body, carrying oxygen to every part.</li>
-    <li>Your lungs bring fresh air in and push used air back out when you breathe.</li>
-    <li>Your brain controls everything you think, feel, and do.</li>
-    <li>Your stomach helps break down food so your body can use its energy.</li>
-    <li>Taking care of your body with healthy food, rest, and exercise keeps your organs strong.</li>
+  <h2 style="margin:0 0 10px;font-size:1.25em;color:#1B2A5B;">🎮 How to Play: Human Organs Scratch Card</h2>
+  <ol style="margin:0 0 14px;padding-left:22px;">
+    <li>Scratch the card to reveal an organ, such as the heart or lungs.</li>
+    <li>Listen to its name.</li>
+    <li>Point to where that organ is in your own body, then tap Next.</li>
+  </ol>
+  <p style="margin:0 0 6px;font-weight:700;color:#1B2A5B;">What your child practices</p>
+  <p style="margin:0 0 14px;">This game gives children their first look inside the body. Naming organs and pointing to where they are builds body awareness, and talking about what each organ does lays the groundwork for science and healthy habits.</p>
+  <p style="margin:0 0 6px;font-weight:700;color:#1B2A5B;">Tips for grown-ups</p>
+  <ul style="margin:0;padding-left:22px;">
+    <li>Ask "What job does this organ do?" and check the answer on its learning page.</li>
+    <li>Feel your heartbeat after jumping, or take a deep breath and feel your lungs fill up.</li>
   </ul>
-  <p style="margin:0;"><strong>New words to learn:</strong> organ, heart, lungs, brain</p>
 </section>
 <!-- FAQ Section (visible, matches existing FAQPage schema) -->
 <section class="faq-box" style="max-width:640px;margin:20px auto;padding:0 24px;">
   <h2 style="font-size:1.25em;color:#1B2A5B;">❓ Frequently Asked Questions</h2>
   <details style="background:#fff;border:1px solid #e0e0f0;border-radius:8px;padding:12px 16px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">What is the Learn Organs game?</summary>
-    <p style="margin:8px 0 0;">It is an interactive game where kids discover human organs by scratching to reveal images, names, and facts.</p>
+    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">Which organs are included?</summary>
+    <p style="margin:8px 0 0;">It includes the brain, eyes, heart, intestines, kidneys, liver, lungs, lymph nodes, muscles, stomach and teeth.</p>
   </details>
   <details style="background:#fff;border:1px solid #e0e0f0;border-radius:8px;padding:12px 16px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">Who is this game for?</summary>
-    <p style="margin:8px 0 0;">The game is designed for elementary school children (ages 6–10), especially those studying the human body.</p>
+    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">Is this too advanced for young children?</summary>
+    <p style="margin:8px 0 0;">Simple names like heart, brain and stomach are fine for preschoolers. Older children can learn what each organ does on the organ learning pages.</p>
   </details>
   <details style="background:#fff;border:1px solid #e0e0f0;border-radius:8px;padding:12px 16px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">What skills does this game build?</summary>
-    <p style="margin:8px 0 0;">It helps kids build science vocabulary, body awareness, memory, and understanding of organ functions.</p>
-  </details>
-  <details style="background:#fff;border:1px solid #e0e0f0;border-radius:8px;padding:12px 16px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">Is the Learn Organs game free?</summary>
-    <p style="margin:8px 0 0;">Yes, the game is free to play on Teachings.AI.</p>
+    <summary style="font-weight:bold;cursor:pointer;color:#1B2A5B;">How can this support healthy habits?</summary>
+    <p style="margin:8px 0 0;">Connecting organs to their jobs makes it easier to explain why we eat vegetables, drink water, brush our teeth and exercise.</p>
   </details>
 </section>
 
