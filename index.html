@@ -568,7 +568,8 @@
     <h2 id="popupTitle" style="margin:30px 0 10px; font-size:1.2rem;"></h2>
 
     <div style="display:flex; justify-content:center;">
-      <img fetchpriority="high" id="popupImage" style="
+      <img id="popupImage" width="258" height="466" loading="lazy" decoding="async" style="
+        width:auto;
         max-width:100%;
         max-height:40vh;
         height:auto;
@@ -711,7 +712,9 @@
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+// Show the announcement only after the visitor first interacts, so it doesn't
+// delay the initial render or count as the page's main content (LCP/CLS).
+function showUpdatePopup() {
   fetch("/updates.json")
     .then(res => res.json())
     .then(data => {
@@ -758,7 +761,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 10000);
     })
     .catch(err => console.error("Update check failed:", err));
-});
+}
+
+(function () {
+  const events = ["scroll", "pointerdown", "keydown", "touchstart"];
+  const trigger = () => {
+    events.forEach(e => window.removeEventListener(e, trigger));
+    setTimeout(showUpdatePopup, 1500);
+  };
+  events.forEach(e => window.addEventListener(e, trigger, { passive: true }));
+})();
 </script>
 </body>
 </html>
