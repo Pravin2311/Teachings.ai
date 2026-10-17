@@ -90,5 +90,5 @@ const images = [
     return arr.sort(() => Math.random() - 0.5);
   }
   
-  window.onload = loadGame;
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadGame); else loadGame();
   

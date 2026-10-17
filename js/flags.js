@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isRevealed = false;
 
   // use CDN if provided, otherwise site-relative path
-  const CDN_BASE = (typeof CDN !== 'undefined' && CDN) ? CDN : '';
+  const CDN_BASE = ''; // site-relative paths
   const imageBasePath = CDN_BASE + 'assets/images/flags/';
   const audioBasePath = CDN_BASE + 'assets/audio/country/';
   const imageExt = '.png';

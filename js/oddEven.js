@@ -30,6 +30,4 @@ function checkAnswer(userAnswer) {
 }
 
 // Initialize game on load
-window.onload = () => {
-  nextQuestion();
-};
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", nextQuestion); else nextQuestion();

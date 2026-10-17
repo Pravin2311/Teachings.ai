@@ -75,4 +75,4 @@ document.getElementById('next-plant').addEventListener('click', () => {
   showPlant(currentIndex);
 });
 
-window.onload = () => showPlant(currentIndex);
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => showPlant(currentIndex)); else showPlant(currentIndex);

@@ -62,5 +62,5 @@ const shapes = [
     setTimeout(loadGame, 1500);
   }
   
-  window.onload = loadGame;
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadGame); else loadGame();
   

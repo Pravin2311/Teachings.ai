@@ -86,6 +86,4 @@ document.getElementById("next-pattern-btn").onclick = () => {
   };
   
 
-window.onload = () => {
-  loadQuestion();
-};
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadQuestion); else loadQuestion();

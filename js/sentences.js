@@ -151,4 +151,4 @@ document.getElementById('prev-btn').onclick = prevSentence;
 document.getElementById('submit-btn').style.display = 'none'; // Hide submit
 
 // Start game
-window.onload = loadSentence;
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", loadSentence); else loadSentence();

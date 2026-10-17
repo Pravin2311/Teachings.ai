@@ -130,4 +130,4 @@
     }
 
     // Initialize
-    window.onload = updateWord;
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", updateWord); else updateWord();
