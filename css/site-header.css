@@ -35,7 +35,7 @@
 }
 
 .site-logo .site-logo-dot {
-  color: #ffb300;
+  color: #b45309;
 }
 
 .site-nav {
@@ -88,7 +88,7 @@
 }
 
 .site-btn-primary {
-  background: linear-gradient(135deg, #ff9800 0%, #ff6b6b 100%);
+  background: linear-gradient(135deg, #c2410c 0%, #c62828 100%);
   color: #fff;
   border: none;
   box-shadow: 0 6px 16px rgba(255, 107, 107, 0.35);
@@ -97,11 +97,11 @@
 .site-btn-primary:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(255, 107, 107, 0.45);
-  background: linear-gradient(135deg, #fb8c00 0%, #f4511e 100%);
+  background: linear-gradient(135deg, #9a3412 0%, #b71c1c 100%);
 }
 
 .site-mobile-nav .site-mobile-primary {
-  background: linear-gradient(135deg, #ff9800 0%, #ff6b6b 100%);
+  background: linear-gradient(135deg, #c2410c 0%, #c62828 100%);
   color: #fff;
   border-radius: 12px;
   text-align: center;
