@@ -1,6 +1,6 @@
 const API_KEY = "08432b78661d4e0c800e50116836496f";
-const HOST = "teachings.ai";
-const SITEMAP_URL = "https://teachings.ai/sitemap.xml";
+const HOST = "www.teachings.ai"; // must match the host of the URLs in the sitemap
+const SITEMAP_URL = "https://www.teachings.ai/sitemap.xml";
 
 async function run() {
   console.log(`Fetching sitemap from ${SITEMAP_URL}...`);
