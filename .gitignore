@@ -3,3 +3,4 @@ __pycache__/
 
 # Search Console / analytics exports (never commit)
 *.xlsx
+teachings.ai-*
