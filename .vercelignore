@@ -1,0 +1,11 @@
+# Keep internal files out of the public deployment
+gs data
+scripts
+mockups
+templates
+*.xlsx
+*.csv
+test.txt
+update_sw.py
+indexnow.js
+__pycache__
