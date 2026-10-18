@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/learn/shapes/star", "destination": "/learn/shapes/star.html", "permanent": true },
+    { "source": "/learn/vehicles/concrete-mixer", "destination": "/learn/vehicles/concrete-mixer.html", "permanent": true },
+    { "source": "/learn/circle.html", "destination": "/learn/shapes/circle.html", "permanent": true },
+    { "source": "/furits-vegetables-sorting.html", "destination": "/fruits-vegetables-sorting.html", "permanent": true },
+    { "source": "/learn/electronics/smat-watch.html", "destination": "/learn/electronics/smart-watch.html", "permanent": true },
+    { "source": "/Blog/scratch-games-to-learn-alphabets-numbers-aminals-shapes.html", "destination": "/Blog/scratch-games-to-learn-alphabets-numbers-animals-shapes.html", "permanent": true }
+  ]
+}
