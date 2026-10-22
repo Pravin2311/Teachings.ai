@@ -263,6 +263,7 @@ def analyze(snap, cfg, sitemap, experiments=()):
         r["sitemaps"] = g.get("sitemaps")
     r["ga4"] = analyze_ga4(snap, cfg) if snap.get("ga4") else None
     r["adsense"] = analyze_adsense(snap) if snap.get("adsense") else None
+    r["bing"] = analyze_bing(snap) if snap.get("bing") else None
     running = [(e["id"], re.compile(e["pages_regex"])) for e in experiments if e.get("status") == "running"]
     r["opportunities"], r["held_back"] = rank_opportunities(r, cfg, running)
     return r
@@ -369,6 +370,40 @@ def analyze_adsense(snap):
                              "daily": [x["ESTIMATED_EARNINGS"] for x in w]}
     res["signal28"] = signal(welch_t(res["windows"]["cur28"]["daily"], res["windows"]["prev28"]["daily"]))
     res["countries"] = sorted(a.get("countries", []), key=lambda x: -x["ESTIMATED_EARNINGS"])[:10]
+    return res
+
+
+def analyze_bing(snap):
+    b = snap["bing"]
+    win = snap["windows"]
+    res = {"site": b["site"], "windows": {}}
+    traffic = [x for x in b["traffic"] if x["date"]]
+    for k in ("cur7", "prev7", "cur28", "prev28"):
+        w = in_window(traffic, win[k])
+        res["windows"][k] = dict(clicks=sum(x["clicks"] for x in w), impressions=sum(x["impressions"] for x in w),
+                                 days=len(w), daily=[x["clicks"] for x in w])
+    res["signal28"] = signal(welch_t(res["windows"]["cur28"]["daily"], res["windows"]["prev28"]["daily"]))
+
+    # query/page stats are weekly buckets: take the buckets dated inside the last 28 days (+6 so the
+    # bucket containing the window start counts)
+    s = (d(win["cur28"][0]) - dt.timedelta(days=6)).isoformat()
+    e = win["cur28"][1]
+
+    def top(rows, key):
+        acc = defaultdict(lambda: {"clicks": 0, "impressions": 0, "_pos": 0.0})
+        for x in rows:
+            if not x["date"] or not (s <= x["date"] <= e):
+                continue
+            a = acc[x[key]]
+            a["clicks"] += x["clicks"]
+            a["impressions"] += x["impressions"]
+            a["_pos"] += (x["avg_impression_position"] or 0) * x["impressions"]
+        out = [{key: k, "clicks": v["clicks"], "impressions": v["impressions"],
+                "position": v["_pos"] / v["impressions"] if v["impressions"] else None} for k, v in acc.items()]
+        return sorted(out, key=lambda x: (-x["clicks"], -x["impressions"]))
+    res["queries"] = top(b["queries"], "query")
+    res["pages"] = top(b["pages"], "page")
+    res["crawl_latest"] = max(b.get("crawl") or [{}], key=lambda x: x.get("Date") or "")
     return res
 
 
@@ -598,6 +633,14 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
                 ". Search Console only covers Google.")
     else:
         L.append(f"- **Organic users (GA4):** not available — {snap['errors'].get('ga4', 'not fetched')}")
+    bg = r.get("bing")
+    if bg:
+        b28, b0 = bg["windows"]["cur28"], bg["windows"]["prev28"]
+        L.append(f"- **Bing clicks (Bing Webmaster Tools):** {fmt_n(b28['clicks'])} in 28 days "
+                 f"(≈{b28['clicks'] / 28:.1f}/day; previous 28d {fmt_n(b0['clicks'])}, {bg['signal28']}), "
+                 f"{fmt_n(b28['impressions'])} impressions. Covers Bing and Yahoo.")
+    elif "bing" in snap["errors"]:
+        L.append(f"- **Bing:** not available — {snap['errors']['bing']}")
     ad = r.get("adsense")
     if ad:
         a28 = ad["windows"]["cur28"]
@@ -792,6 +835,24 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         L.append("")
         L.append(" · ".join(f"{x['device']}: {fmt_n(x['clicks'])} clicks / {fmt_n(x['impressions'])} impr"
                             for x in r["devices"]) + "\n")
+    if bg:
+        L.append(f"## Appendix — Bing (`{bg['site']}`, ≈ last 4 weekly buckets)\n")
+        L.append("*Bing reports query/page stats in weekly buckets; positions are Bing's average impression "
+                 "position as reported.*\n")
+        for title, rows, key in (("Top queries", bg["queries"], "query"), ("Top pages", bg["pages"], "page")):
+            if not rows:
+                L.append(f"{title}: no data.\n")
+                continue
+            L.append(f"**{title}:**\n")
+            L.append(f"| {key.title()} | Clicks | Impr. | Pos. |")
+            L.append("|---|---|---|---|")
+            for x in rows[:15]:
+                label = f"`{path_of(x[key])}`" if key == "page" else x[key]
+                L.append(f"| {label} | {fmt_n(x['clicks'])} | {fmt_n(x['impressions'])} | {fmt_n(x['position'], 1)} |")
+            L.append("")
+        cl = {k: v for k, v in bg["crawl_latest"].items() if isinstance(v, (int, float)) or k == "Date"}
+        if cl:
+            L.append("**Latest Bing crawl stats:** " + ", ".join(f"{k} {v}" for k, v in cl.items()) + "\n")
     if ga and ga.get("ad_pages"):
         cur = (ad or {}).get("currency", "")
         L.append(f"## Appendix — ad revenue by page (GA4, AdSense-linked; site RPM {cur} {ga['site_rpm_ga4']:.2f})\n")

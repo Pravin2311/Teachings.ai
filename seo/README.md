@@ -66,6 +66,17 @@ All three scopes are read-only:
    per page. The report says so and still shows account-level earnings and RPM from the AdSense API.
    This changes account settings, so it's your call.
 
+7. **Bing Webmaster Tools** (Bing and Yahoo send most of the site's organic users, and Search Console
+   doesn't see them). See <https://learn.microsoft.com/en-us/bingwebmaster/getting-access>.
+   - Sign in at <https://www.bing.com/webmasters>. If `teachings.ai` isn't there yet, add it. The quickest way is
+     **Import from Google Search Console**, which verifies it using your existing Google verification.
+   - Click **Settings** (top right), then **API Access**. Accept the terms, then click **API Key** and **Generate API Key**.
+   - Save only the key, on one line, in `%APPDATA%\teachings-seo\bing_api_key.txt`
+     (that is `C:\Users\whynew\AppData\Roaming\teachings-seo\bing_api_key.txt`). Don't paste it into chat or the repo.
+   - Run `--check` again. You should see a `[ ok ] Bing ...` line.
+   The key belongs to your Bing user, not a site, so it also reaches any other sites in that account. The script
+   only calls read-only `Get*` methods. If the key leaks, delete it and generate a new one on the same page.
+
 If the venv is missing (new machine):
 ```
 python -m venv seo\.venv

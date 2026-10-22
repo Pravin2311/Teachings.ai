@@ -162,6 +162,20 @@ def fetch_adsense(gapi, creds, cfg, win):
     return out
 
 
+def fetch_bing(cfg):
+    import bing
+    b = bing.Bing()
+    sites = [s.get("Url", "") for s in b.sites() or []]
+    host = cfg["site_origin"].split("//")[1]
+    site = next((s for s in sites if host in s), None) or next((s for s in sites if "teachings.ai" in s), None)
+    if not site:
+        raise RuntimeError(f"teachings.ai is not a verified site in this Bing Webmaster Tools account "
+                           f"(sites: {sites or 'none'})")
+    # query/page stats come back in weekly buckets covering ~6 months; traffic is daily
+    return {"site": site, "traffic": b.traffic(site), "queries": b.queries(site),
+            "pages": b.pages(site), "crawl": b.crawl(site)}
+
+
 def fetch_all(cfg, end, inspect_n, only=None):
     import gapi
     creds = gapi.get_credentials(interactive=False)
@@ -172,7 +186,8 @@ def fetch_all(cfg, end, inspect_n, only=None):
             "errors": {}}
     jobs = {"gsc": lambda: fetch_gsc(gapi, creds, cfg, win, inspect_n),
             "ga4": lambda: fetch_ga4(gapi, creds, cfg, win),
-            "adsense": lambda: fetch_adsense(gapi, creds, cfg, win)}
+            "adsense": lambda: fetch_adsense(gapi, creds, cfg, win),
+            "bing": lambda: fetch_bing(cfg)}
     for name, job in jobs.items():
         if only and name not in only:
             continue
@@ -241,6 +256,11 @@ def check(cfg):
     if a:
         u = sum(r["totalUsers"] for r in a["totals"]["cur28"])
         print(f"[ ok ] GA4 property {a['property']}: {u:.0f} users in last 28d")
+    b = snap.get("bing")
+    if b:
+        c = sum(r["clicks"] for r in b["traffic"])
+        print(f"[ ok ] Bing {b['site']}: {len(b['traffic'])} traffic days ({c} clicks), "
+              f"{len(b['queries'])} query rows, {len(b['pages'])} page rows")
     s = snap.get("adsense")
     if s:
         rev = sum(r["ESTIMATED_EARNINGS"] for r in s["daily"])
