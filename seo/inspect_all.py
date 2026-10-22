@@ -5,15 +5,20 @@ and saves the coverage state, last crawl and canonicals per URL.
 Usage:
   seo\\.venv\\Scripts\\python seo\\inspect_all.py [--limit N]
 
-Writes seo/data/<today>/inspections-all.json. Quota: 2,000 inspections per
+Writes seo/data/<today>/inspections-all.json and resumes from it if a
+previous run today stopped part-way. Quota: 2,000 inspections per
 day per property (600/minute); the weekly run uses ~40, so don't run this
 more than once a day.
 """
 import datetime as dt
 import json
 import os
+import socket
 import sys
 import time
+
+# the Google client has no request timeout by default; one stalled connection hung a full run
+socket.setdefaulttimeout(60)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -32,10 +37,22 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "inspections-all.json")
     results = []
-    for i, u in enumerate(urls, 1):
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            results = [r for r in json.load(f) if "error" not in r]
+    done = {r["url"] for r in results}
+    todo = [u for u in urls if u not in done]
+    print(f"{len(done)} already inspected today, {len(todo)} to go", flush=True)
+    for i, u in enumerate(todo, 1):
         for attempt in range(3):
             try:
                 results.append(gsc.inspect(site, u))
+                break
+            except (socket.timeout, TimeoutError, ConnectionError) as e:
+                if attempt < 2:
+                    time.sleep(10)
+                    continue
+                results.append({"url": u, "error": f"network: {e}"})
                 break
             except gapi.HttpError as e:
                 if getattr(e.resp, "status", None) == 429 and attempt < 2:
@@ -45,7 +62,7 @@ def main():
                 break
         time.sleep(0.15)
         if i % 50 == 0:
-            print(f"{i}/{len(urls)}", flush=True)
+            print(f"{i}/{len(todo)}", flush=True)
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(results, f, indent=1)
     with open(path, "w", encoding="utf-8") as f:

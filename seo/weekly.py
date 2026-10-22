@@ -20,8 +20,12 @@ import glob
 import json
 import os
 import re
+import socket
 import sys
 import time
+
+# the Google client has no request timeout by default; don't let one stalled call hang the run
+socket.setdefaulttimeout(60)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
