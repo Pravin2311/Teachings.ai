@@ -215,5 +215,23 @@
       "ctr": 0.0,
       "position": 36.007462686567166
     }
+  },
+  {
+    "id": "game-next-steps",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/(colors|bodyparts|organs|patterns|animals|counting|fruits-vegetables-sorting|match-numbers|rhyming)\\.html$",
+    "change": "Added a 'Keep Learning' block of 3-6 links to related lessons, games and worksheets before the footer on 9 root game pages that were dead ends (only a JS Back button and footer links). scripts/add_game_next_steps.py.",
+    "hypothesis": "Visitors who finish a game get a next step, so more organic sessions view a second page; crawlers get a path from these pages into the /learn/ lessons. Search clicks on the 9 pages themselves are not expected to change.",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "position"
+    ],
+    "primary_measure_outside_gsc": "GA4, organic sessions landing on the 9 pages: views per session and share of sessions with 2+ page views, 28 days before vs after, compared with organic sessions landing on the other root game pages (control: shapes, fruits, vegetables, numbers, birds, vehicles, planets, plants, phonics, match-animals, match-shapes, odd-even, colours-sorting and the other root games without the block). Watch Bing clicks on colors/bodyparts/organs for regressions.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "proposed",
+    "confounders": "Adds internal links to hubs in 2026-10-18-unindexed-hubs (learn/animals, learn/numbers, learn/body-parts, learn/phonics), which can speed their crawling and blur that experiment. Low traffic: about 100 organic sessions/28 days on these pages, so only a large change is detectable.",
+    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after (date + 28 days), status running."
   }
 ]
