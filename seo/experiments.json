@@ -108,8 +108,10 @@
   },
   {
     "id": "hero-not-lazy",
-    "date": null,
-    "commits": [],
+    "date": "2026-10-22",
+    "commits": [
+      "63ba1f8"
+    ],
     "pages_regex": "/(learn/(animals|birds|body-parts|colors|country|electronics|fantasy|fruits|nature|numbers|organs|phonics|planets|plants|publicservice|scientists|shapes|vegetables|vehicles)|worksheets)/",
     "change": "Removed loading=\"lazy\" from the fetchpriority=\"high\" hero image on 316 pages (all lazy heroes except the 26 letter pages, held until their experiment is evaluated).",
     "hypothesis": "The hero is requested without waiting for layout, so LCP improves. Any search effect is expected to be small and slow; impressions are tracked only as a guard against regressions.",
@@ -119,15 +121,17 @@
     ],
     "primary_measure_outside_gsc": "LCP from PageSpeed Insights / CrUX on a sample (lion, count-and-match, kiwi) before and after deploy",
     "window_days": 28,
-    "evaluate_after": null,
-    "status": "pending-deploy",
+    "evaluate_after": "2026-11-19",
+    "status": "running",
     "confounders": "Overlaps the running number, shape, kiwi and hub experiments.",
-    "next_action": "On deploy: set date to the deploy day, evaluate_after to date + 28 days, status to running. Then apply to the letter pages after 2026-11-18."
+    "next_action": "Interim check weekly; evaluate after 2026-11-19. Apply to the letter pages after 2026-11-18."
   },
   {
     "id": "hero-webp-worksheets",
-    "date": null,
-    "commits": [],
+    "date": "2026-10-22",
+    "commits": [
+      "2c12ae6"
+    ],
     "pages_regex": "/(worksheets/|downloads\\.html|word-matching\\.html)",
     "change": "Wrapped the CDN-hosted PNG hero on 36 pages (34 worksheets, downloads, word-matching) in <picture> with the existing same-origin WebP (e.g. count-and-match 529 KB PNG -> 76 KB WebP).",
     "hypothesis": "Smaller hero images load faster on mobile, improving LCP; search impact expected to be small.",
@@ -137,9 +141,9 @@
     ],
     "primary_measure_outside_gsc": "Hero transfer bytes and LCP (PSI) on count-and-match and downloads before/after deploy",
     "window_days": 28,
-    "evaluate_after": null,
-    "status": "pending-deploy",
+    "evaluate_after": "2026-11-19",
+    "status": "running",
     "confounders": "Same pages also got hero-not-lazy in the same deploy; the two can't be separated.",
-    "next_action": "On deploy: set date, evaluate_after (+28 days), status running. Check a worksheet page in a browser right after deploy."
+    "next_action": "Interim check weekly; evaluate after 2026-11-19."
   }
 ]
