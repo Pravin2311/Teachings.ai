@@ -1,6 +1,7 @@
-"""Checks that every real, live HTML page is listed in sitemap.xml, and
-that every sitemap URL resolves to a real file -- both directions matter
-for the "get every page indexed" goal."""
+"""Checks that every real, live, indexable HTML page is listed in
+sitemap.xml, that every sitemap URL resolves to a real file, and that no
+noindex page is listed (a sitemap should only contain pages we want
+indexed)."""
 import os
 import re
 
@@ -24,6 +25,12 @@ def is_redirect_stub(path):
     return "http-equiv=\"refresh\"" in head
 
 
+def is_noindex(path):
+    with open(os.path.join(ROOT, path), encoding="utf-8", errors="ignore") as fh:
+        content = fh.read()
+    return re.search(r'<meta\s+name="robots"\s+content="[^"]*noindex', content, re.I) is not None
+
+
 def main():
     files = all_html_files()
     with open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8") as fh:
@@ -35,8 +42,9 @@ def main():
             u += "index.html"
         sm_paths.add(u)
 
-    missing = sorted(f for f in files if f not in sm_paths and not is_redirect_stub(f))
+    missing = sorted(f for f in files if f not in sm_paths and not is_redirect_stub(f) and not is_noindex(f))
     extra = sorted(u for u in sm_paths if u not in files)
+    noindex_listed = sorted(u for u in sm_paths if u in files and is_noindex(u))
 
     print(f"Real HTML files: {len(files)}")
     print(f"Sitemap URLs: {len(sm_paths)}")
@@ -46,6 +54,9 @@ def main():
     print(f"Sitemap URLs pointing at nonexistent files: {len(extra)}")
     for e in extra:
         print(f"  {e}")
+    print(f"Noindex pages listed in sitemap: {len(noindex_listed)}")
+    for n in noindex_listed:
+        print(f"  {n}")
 
 
 if __name__ == "__main__":

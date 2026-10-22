@@ -3,8 +3,9 @@
 hygiene:
 - missing or empty alt text
 - missing width/height (causes layout shift / hurts CLS)
-- missing loading="lazy" (except images likely above the fold, which we
-  don't try to detect -- just report the raw count, judgment call is manual)
+- missing loading="lazy" -- the hero (fetchpriority="high") is exempt:
+  it is the LCP image and must load eagerly
+- hero images that ARE lazy-loaded (delays LCP)
 Read-only report, no modifications.
 """
 import glob
@@ -36,6 +37,7 @@ def main():
     empty_alt = []
     missing_dims = []
     missing_lazy = []
+    lazy_hero = []
     pages_with_imgs = 0
 
     for f in files:
@@ -64,7 +66,10 @@ def main():
                 missing_dims.append((f, tag[:100]))
 
             loading = get_attr(tag, "loading")
-            if loading != "lazy":
+            if get_attr(tag, "fetchpriority") == "high":
+                if loading == "lazy":
+                    lazy_hero.append((f, tag[:100]))
+            elif loading != "lazy":
                 missing_lazy.append((f, tag[:100]))
 
     print("=" * 70)
@@ -75,6 +80,7 @@ def main():
     print(f"Empty alt=\"\" (decorative, may be OK): {len(empty_alt)}")
     print(f"Missing width or height: {len(missing_dims)}")
     print(f"Missing loading=\"lazy\": {len(missing_lazy)}")
+    print(f"Hero images lazy-loaded: {len(lazy_hero)}")
     print("=" * 70)
 
     def dump(label, rows, limit=400):

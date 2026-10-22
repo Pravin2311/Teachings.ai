@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Audits every HTML page's <title> and meta description for CTR-relevant SEO issues:
 - missing title / meta description
-- title length outside 50-60 chars (Google's typical SERP display window)
-- description length outside 140-155 chars
+- title length outside 50-65 chars
+- description length outside 110-170 chars
+  (Google truncates by pixel width, not characters, and often rewrites
+  snippets; these ranges flag real outliers without failing on
+  well-written 62-char titles or 125-char descriptions)
 - duplicate titles / descriptions across pages (dilutes ranking + confuses CTR data)
 - generic/boilerplate titles or descriptions
 Read-only report, no modifications.
@@ -13,8 +16,8 @@ import html
 
 SKIP_DIRS = ("mockups/", "templates/", ".git/", "node_modules/")
 
-TITLE_MIN, TITLE_MAX = 50, 60
-DESC_MIN, DESC_MAX = 140, 155
+TITLE_MIN, TITLE_MAX = 50, 65
+DESC_MIN, DESC_MAX = 110, 170
 
 GENERIC_TITLE_PATTERNS = [
     re.compile(r"^teachings\.ai$", re.I),

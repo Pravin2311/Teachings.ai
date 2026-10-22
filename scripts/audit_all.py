@@ -35,7 +35,9 @@ CHECKS = [
         (r"\[DESCRIPTION TOO LONG\] \((\d+)\)", "descriptions too long", 0, True),
     ]),
     ("audit_technical_seo.py", [
-        (r"noindex found:\s+(\d+)", "unexpected noindex", 0, True),
+        # baseline 7 = reels.html + 6 site-update announcement posts, noindexed on
+        # purpose in 8856864. Any additional noindex is a real regression.
+        (r"noindex found:\s+(\d+)", "unexpected noindex", 7, True),
         (r"Missing canonical:\s+(\d+)", "missing canonical", 2, False),
         (r"Bad/off-domain canonical:\s+(\d+)", "bad canonical", 0, True),
         (r"Missing viewport meta:\s+(\d+)", "missing viewport", 3, False),
@@ -50,6 +52,9 @@ CHECKS = [
         (r"Missing alt attribute entirely:\s+(\d+)", "images missing alt", 0, True),
         (r"Missing width or height:\s+(\d+)", "images missing dims", 10, False),
         (r'Missing loading="lazy":\s+(\d+)', "images missing lazy-load", 24, False),
+        # baseline 26 = the letter pages, held back until their SEO experiment is
+        # evaluated (seo/experiments.json, after 2026-11-18); then drop to 0.
+        (r"Hero images lazy-loaded:\s+(\d+)", "hero (LCP) images lazy-loaded", 26, True),
     ]),
     ("audit_internal_links.py", [
         (r"Broken internal links[^:]*:\s+(\d+)", "broken internal links", 0, True),
@@ -57,7 +62,9 @@ CHECKS = [
     ]),
     ("audit_performance.py", [
         (r"duplicate <script src>[^:]*:\s+(\d+)", "pages with duplicate scripts", 0, True),
-        (r"missing[^:]*preconnect[^:]*:\s+(\d+)", "pages missing preconnect", 0, True),
+        # baseline 1 = index.html, whose preconnects were trimmed to Google Fonts
+        # on purpose in fe820a5 (ads/analytics load after first paint there).
+        (r"missing[^:]*preconnect[^:]*:\s+(\d+)", "pages missing preconnect", 1, True),
         (r"render-blocking[^:]*:\s+(\d+)", "render-blocking head scripts", 0, True),
     ]),
     ("audit_og_images.py", [
@@ -74,6 +81,7 @@ CHECKS = [
     ("audit_sitemap.py", [
         (r"Live pages missing from sitemap:\s+(\d+)", "live pages missing from sitemap", 0, True),
         (r"Sitemap URLs pointing at nonexistent files:\s+(\d+)", "sitemap URLs pointing nowhere", 0, True),
+        (r"Noindex pages listed in sitemap:\s+(\d+)", "noindex pages listed in sitemap", 0, True),
     ]),
     ("audit_case_sensitivity.py", [
         (r"CASE-MISMATCH[^:]*:\s+(\d+)", "case-mismatched asset refs (fine on Windows, 404 on GitHub Pages)", 0, True),
@@ -83,7 +91,10 @@ CHECKS = [
         (r"Unique broken content-image targets:\s+(\d+)", "broken in-page <img> targets", 0, True),
     ]),
     ("audit_faq_schema.py", [
-        (r"NO FAQPage schema:\s+(\d+)", "visible FAQ sections missing FAQPage schema", 0, True),
+        # soft: Google shows FAQ rich results only for authoritative government and
+        # health sites (since Aug 2023), so a missing FAQPage block costs nothing
+        # in search here. Baseline 1 = games.html.
+        (r"NO FAQPage schema:\s+(\d+)", "visible FAQ sections missing FAQPage schema", 1, False),
     ]),
     ("audit_jsonld_assets.py", [
         (r"Broken asset URLs found:\s+(\d+)", "broken asset URLs inside JSON-LD", 0, True),
