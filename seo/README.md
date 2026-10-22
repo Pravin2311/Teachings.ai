@@ -41,9 +41,8 @@ All three scopes are read-only:
      You don't need Google verification for your own use. On first sign-in you'll see
      "Google hasn't verified this app". Click **Advanced**, then **Go to teachings-seo**.
    - Under **Clients**, click **Create client**, choose **Desktop app**, then **Create**, and **Download JSON**.
-   - Save the downloaded file as
-     `%APPDATA%\teachings-seo\client_secret.json`
-     (that is `C:\Users\whynew\AppData\Roaming\teachings-seo\client_secret.json`).
+   - Move the downloaded `client_secret_….json` file into `%APPDATA%\teachings-seo\`
+     (that is `C:\Users\whynew\AppData\Roaming\teachings-seo\`). You don't need to rename it.
      Don't put it in the repo or paste it into chat.
 
 4. **Sign in once** (opens a browser; use the Google account that owns Search Console, GA4 and AdSense):

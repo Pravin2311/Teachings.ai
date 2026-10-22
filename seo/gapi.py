@@ -4,11 +4,13 @@ Management API for the weekly SEO workflow. One OAuth desktop client, one
 consent screen, read-only scopes only.
 
 Secrets never live in the repo. Both files sit in a per-user folder:
-  %APPDATA%\\teachings-seo\\client_secret.json   (downloaded once from Cloud Console)
+  %APPDATA%\\teachings-seo\\client_secret*.json  (downloaded once from Cloud Console;
+                                                  Google's long file name is fine)
   %APPDATA%\\teachings-seo\\token.json           (written after the first consent)
 Override the folder with the TEACHINGS_SEO_CREDS environment variable.
 """
 import datetime as dt
+import glob
 import os
 import sys
 
@@ -27,7 +29,6 @@ SCOPES = [
 
 CREDS_DIR = os.environ.get("TEACHINGS_SEO_CREDS") or os.path.join(
     os.environ.get("APPDATA") or os.path.expanduser("~/.config"), "teachings-seo")
-CLIENT_SECRET = os.path.join(CREDS_DIR, "client_secret.json")
 TOKEN = os.path.join(CREDS_DIR, "token.json")
 
 
@@ -52,10 +53,14 @@ def get_credentials(interactive=False):
                                  "Re-run: python seo/weekly.py --auth")
     if not interactive:
         raise SetupError("No saved Google token. Run once: python seo/weekly.py --auth")
-    if not os.path.exists(CLIENT_SECRET):
-        raise SetupError(f"OAuth client file not found at {CLIENT_SECRET}. "
+    # Google's download is named client_secret_<id>.apps.googleusercontent.com.json
+    found = sorted(glob.glob(os.path.join(CREDS_DIR, "client_secret*.json")))
+    if not found:
+        raise SetupError(f"No OAuth client file (client_secret*.json) in {CREDS_DIR}. "
                          "See seo/README.md, step 3.")
-    flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRET, SCOPES)
+    if len(found) > 1:
+        raise SetupError(f"Several client_secret*.json files in {CREDS_DIR}; keep only one.")
+    flow = InstalledAppFlow.from_client_secrets_file(found[0], SCOPES)
     creds = flow.run_local_server(port=0, prompt="consent", access_type="offline")
     _save(creds)
     return creds

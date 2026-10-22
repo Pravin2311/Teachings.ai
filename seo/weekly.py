@@ -259,7 +259,11 @@ def main():
 
     if args.auth:
         import gapi
-        gapi.get_credentials(interactive=True)
+        try:
+            gapi.get_credentials(interactive=True)
+        except gapi.SetupError as e:
+            print(f"Setup needed: {e}", file=sys.stderr)
+            return 2
         print(f"Token saved under {gapi.CREDS_DIR}. Now run: seo\\.venv\\Scripts\\python seo\\weekly.py --check")
         return 0
     if args.check:
