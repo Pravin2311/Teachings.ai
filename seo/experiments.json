@@ -21,7 +21,17 @@
     "evaluate_after": "2026-11-18",
     "status": "running",
     "confounders": "Four changes shipped within two days on the same pages, alongside site-wide fact-checks and template-filler removal (34a0329, 10-17); their effects cannot be separated.",
-    "next_action": "Interim check each week; decide keep/revise after 2026-11-18."
+    "next_action": "Interim check each week; decide keep/revise after 2026-11-18.",
+    "baseline": {
+      "window": [
+        "2026-09-19",
+        "2026-10-16"
+      ],
+      "clicks": 26,
+      "impressions": 14795,
+      "ctr": 0.0017573504562352145,
+      "position": 9.371071307874281
+    }
   },
   {
     "id": "2026-10-17-number-pages",
@@ -42,7 +52,17 @@
     "evaluate_after": "2026-11-18",
     "status": "running",
     "confounders": "Same-week site-wide edits. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
-    "next_action": "Interim check weekly; evaluate after 2026-11-18."
+    "next_action": "Interim check weekly; evaluate after 2026-11-18.",
+    "baseline": {
+      "window": [
+        "2026-09-19",
+        "2026-10-16"
+      ],
+      "clicks": 5,
+      "impressions": 2894,
+      "ctr": 0.0017277125086385626,
+      "position": 16.60884588804423
+    }
   },
   {
     "id": "2026-10-17-shape-pages",
@@ -63,7 +83,17 @@
     "evaluate_after": "2026-11-18",
     "status": "running",
     "confounders": "Same-week site-wide edits. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
-    "next_action": "Interim check weekly; evaluate after 2026-11-18."
+    "next_action": "Interim check weekly; evaluate after 2026-11-18.",
+    "baseline": {
+      "window": [
+        "2026-09-19",
+        "2026-10-16"
+      ],
+      "clicks": 6,
+      "impressions": 1863,
+      "ctr": 0.00322061191626409,
+      "position": 18.882984433709073
+    }
   },
   {
     "id": "2026-10-17-kiwi",
@@ -84,7 +114,17 @@
     "evaluate_after": "2026-11-18",
     "status": "running",
     "confounders": "Same-week site-wide edits. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
-    "next_action": "Interim check weekly; evaluate after 2026-11-18."
+    "next_action": "Interim check weekly; evaluate after 2026-11-18.",
+    "baseline": {
+      "window": [
+        "2026-09-19",
+        "2026-10-16"
+      ],
+      "clicks": 3,
+      "impressions": 528,
+      "ctr": 0.005681818181818182,
+      "position": 19.625
+    }
   },
   {
     "id": "2026-10-18-unindexed-hubs",
@@ -104,7 +144,17 @@
     "evaluate_after": "2026-11-29",
     "status": "running",
     "confounders": "Indexing timing depends on recrawl; URL inspection in the weekly run tracks coverage state directly. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
-    "next_action": "Watch URL-inspection coverage state for these hubs each week."
+    "next_action": "Watch URL-inspection coverage state for these hubs each week.",
+    "baseline": {
+      "window": [
+        "2026-09-20",
+        "2026-10-17"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0.0,
+      "position": 6.0
+    }
   },
   {
     "id": "hero-not-lazy",
@@ -124,7 +174,17 @@
     "evaluate_after": "2026-11-19",
     "status": "running",
     "confounders": "Overlaps the running number, shape, kiwi and hub experiments.",
-    "next_action": "Interim check weekly; evaluate after 2026-11-19. Apply to the letter pages after 2026-11-18."
+    "next_action": "Interim check weekly; evaluate after 2026-11-19. Apply to the letter pages after 2026-11-18.",
+    "baseline": {
+      "window": [
+        "2026-09-24",
+        "2026-10-21"
+      ],
+      "clicks": 21,
+      "impressions": 6529,
+      "ctr": 0.0032164190534538215,
+      "position": 17.008730280287946
+    }
   },
   {
     "id": "hero-webp-worksheets",
@@ -144,6 +204,16 @@
     "evaluate_after": "2026-11-19",
     "status": "running",
     "confounders": "Same pages also got hero-not-lazy in the same deploy; the two can't be separated.",
-    "next_action": "Interim check weekly; evaluate after 2026-11-19."
+    "next_action": "Interim check weekly; evaluate after 2026-11-19.",
+    "baseline": {
+      "window": [
+        "2026-09-24",
+        "2026-10-21"
+      ],
+      "clicks": 0,
+      "impressions": 134,
+      "ctr": 0.0,
+      "position": 36.007462686567166
+    }
   }
 ]

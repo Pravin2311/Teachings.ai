@@ -126,6 +126,12 @@ def fetch_ga4(gapi, creds, cfg, win):
     out["countries_organic"] = ga.report(prop, s, e, ["country"], m_core, organic_only=True, limit=50,
                                          order_by="totalUsers")
     out["devices_organic"] = ga.report(prop, s, e, ["deviceCategory"], m_core, organic_only=True)
+    # Bing/Yahoo/DuckDuckGo show up here but not in Search Console
+    out["organic_sources"] = ga.report(prop, s, e, ["sessionSource"], m_core, organic_only=True,
+                                       order_by="sessions", limit=20)
+    # all channels by city, to spot automated traffic (0% engagement from data-centre cities)
+    out["city_channel"] = ga.report(prop, s, e, ["city", "sessionDefaultChannelGroup"],
+                                    m_core + ["engagementRate"], order_by="sessions", limit=50)
     # page-level ad revenue only works if AdSense is linked to this GA4 property
     try:
         out["ad_pages"] = ga.report(prop, s, e, ["pagePath"],
@@ -299,7 +305,9 @@ def main():
             json.dump(experiments, f, indent=2)
             f.write("\n")
 
-    previous = sorted(glob.glob(os.path.join(REPORT_DIR, "*-plan.json")))
+    run_day = dt.date.today().isoformat()
+    previous = sorted(p for p in glob.glob(os.path.join(REPORT_DIR, "*-plan.json"))
+                      if not os.path.basename(p).startswith(run_day))  # a re-run today isn't "last week"
     prev_plan = None
     if previous:
         with open(previous[-1], encoding="utf-8") as f:

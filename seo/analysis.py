@@ -147,6 +147,10 @@ def gsc_periods(snap):
         if b["days"] < 0.7 * (7 if cur == "cur7" else 28):
             cmps.append({"label": label, "unavailable": f"only {b['days']} days of data in comparison period"})
             continue
+        if b["impressions"] < 0.1 * a["impressions"]:
+            cmps.append({"label": label, "unavailable": f"site had almost no search presence then "
+                                                        f"({fmt_n(b['impressions'])} impressions) — not comparable"})
+            continue
         cmps.append({
             "label": label,
             "clicks": (a["clicks"], b["clicks"], pct(a["clicks"], b["clicks"]),
@@ -313,9 +317,15 @@ def analyze_ga4(snap, cfg):
     avg_er = sum(x["engagedSessions"] for x in lp) / tot_s if tot_s else 0
     res["landing_top"] = lp[:10]
     res["landing_avg_er"] = avg_er
-    res["low_engagement"] = [x for x in lp if x["sessions"] >= 20 and x["engagementRate"] < avg_er - 0.15][:10]
+    # "(not set)" = sessions GA4 couldn't tie to a page_view, not a real landing page
+    res["low_engagement"] = [x for x in lp if x["sessions"] >= 20 and x["engagementRate"] < avg_er - 0.15
+                             and x["landingPage"] != "(not set)"][:10]
     res["countries"] = a.get("countries_organic", [])[:10]
     res["devices"] = a.get("devices_organic", [])
+    res["organic_sources"] = a.get("organic_sources", [])
+    # cities sending many sessions with ~0% engagement are almost always bots / data centres
+    res["likely_bots"] = [x for x in a.get("city_channel", [])
+                          if x["sessions"] >= 30 and x["engagementRate"] < 0.03]
     pages = a.get("ad_pages") or []
     rev = sum(x["totalAdRevenue"] for x in pages)
     if rev > 0:
@@ -336,14 +346,20 @@ def analyze_ga4(snap, cfg):
 def analyze_adsense(snap):
     a = snap["adsense"]
     rows = a["daily"]
+    others = defaultdict(lambda: [0.0, 0.0])
     if rows and "DOMAIN_NAME" in rows[0]:
-        others = {x["DOMAIN_NAME"] for x in rows if "teachings.ai" not in (x["DOMAIN_NAME"] or "")}
+        for x in rows:
+            dom = x["DOMAIN_NAME"] or ""
+            if "teachings.ai" in dom:
+                continue
+            # one Vercel preview URL per deployment -- group them
+            key = "Vercel preview deployments (*.vercel.app)" if dom.endswith(".vercel.app") else dom
+            others[key][0] += x["ESTIMATED_EARNINGS"]
+            others[key][1] += x["PAGE_VIEWS"]
         rows = [x for x in rows if "teachings.ai" in (x["DOMAIN_NAME"] or "")]
-    else:
-        others = set()
     win = snap["windows"]
-    res = {"account": a["account"], "other_domains": sorted(o for o in others if o), "windows": {},
-           "currency": next((x["currency"] for x in rows if x.get("currency")), "")}
+    res = {"account": a["account"], "other_domains": sorted(others.items(), key=lambda kv: -kv[1][1]),
+           "windows": {}, "currency": next((x["currency"] for x in rows if x.get("currency")), "")}
     for k in ("cur7", "prev7", "cur28", "prev28"):
         w = in_window(rows, win[k], key="DATE")
         e = sum(x["ESTIMATED_EARNINGS"] for x in w)
@@ -409,13 +425,29 @@ def rank_opportunities(r, cfg, running=()):
                     "evidence": f"{n} of {tot} sitemap URLs in {k} had zero Search impressions in the period",
                     "action": "URL-inspect a sample; if 'Discovered/Crawled - not indexed', improve "
                               "uniqueness and internal links rather than requesting indexing in bulk."})
+    # not indexed, and Google's last crawl predates our last edit: it hasn't seen the new page
+    seen = set()
+    for x in r.get("inspections") or []:
+        if x["url"] in seen or not x.get("coverageState") or "not indexed" not in x["coverageState"]:
+            continue
+        seen.add(x["url"])
+        f = url_to_file(x["url"])
+        edited = subprocess.run(["git", "log", "-1", "--format=%ad", "--date=short", "--", f], cwd=ROOT,
+                                capture_output=True, text=True).stdout.strip() if f else ""
+        crawled = (x.get("lastCrawlTime") or "")[:10]
+        if edited and (not crawled or crawled < edited):
+            ops.append({"type": "Request recrawl", "page": x["url"], "effort": "S", "upside": 2,
+                        "evidence": f"{x['coverageState']}; last crawled {crawled or 'never'}, "
+                                    f"page last changed {edited}",
+                        "action": "Search Console > URL Inspection > Request indexing (manual; a few pages "
+                                  "only), and link to it from a page Google crawls often."})
     for o in ops:
         o["score"] = o["upside"] / EFFORT_WEIGHT[o["effort"]]
     ops.sort(key=lambda o: -o["score"])
     out, held, per_type, seen_pages = [], [], defaultdict(int), set()
     for o in ops:
         exp = next((eid for eid, rx in running if rx.search(o["page"])), None)
-        if exp:
+        if exp and o["type"] != "Request recrawl":  # a recrawl request doesn't change the page
             if o["page"] not in seen_pages:
                 held.append(dict(o, experiment=exp))
                 seen_pages.add(o["page"])
@@ -558,6 +590,12 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         L.append(f"- **Organic users (GA4):** ≈{u['cur28']:.1f}/day over 28 days, ≈{u['cur7']:.1f}/day last 7 days "
                  f"— goal {ga['goal']:,}/day ({u['cur28'] / ga['goal']:.2%} of goal). "
                  f"All-channel users 28d: {fmt_n(ga['windows']['cur28']['users_all'])}.")
+        src = ga.get("organic_sources") or []
+        tot = sum(x["totalUsers"] for x in src)
+        if tot:
+            L.append("  - Organic users by search engine (28d): " + ", ".join(
+                f"{x['sessionSource']} {x['totalUsers']:.0f} ({x['totalUsers'] / tot:.0%})" for x in src[:6]) +
+                ". Search Console only covers Google.")
     else:
         L.append(f"- **Organic users (GA4):** not available — {snap['errors'].get('ga4', 'not fetched')}")
     ad = r.get("adsense")
@@ -708,8 +746,16 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         L.append(f"- **{name}:** {err}")
     if ga and ga.get("ad_pages_note"):
         L.append(f"- {ga['ad_pages_note']}")
+    if ga and ga.get("likely_bots"):
+        b = ga["likely_bots"]
+        L.append(f"- **Likely automated traffic:** {sum(x['sessions'] for x in b):,.0f} sessions (28d) from cities with "
+                 "~0% engagement — " + ", ".join(f"{x['city']} / {x['sessionDefaultChannelGroup']} {x['sessions']:.0f}"
+                                                  for x in b[:5]) +
+                 ". It inflates all-channel users; the goal metric (organic users) is barely affected.")
     if ad and ad["other_domains"]:
-        L.append(f"- AdSense account also earns on: {', '.join(ad['other_domains'])} (excluded above).")
+        L.append("- The AdSense account also served ads on (56 days, excluded above): " +
+                 "; ".join(f"{k} — {v[1]:,.0f} page views, {ad['currency']} {v[0]:.2f}"
+                           for k, v in ad["other_domains"]))
     if p and p["cur28"]["clicks"] < 300:
         L.append(f"- Small numbers: {fmt_n(p['cur28']['clicks'])} clicks in 28 days means most page-level "
                  "changes cannot be distinguished from noise yet; expect to judge experiments on impressions "
@@ -746,6 +792,30 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         L.append("")
         L.append(" · ".join(f"{x['device']}: {fmt_n(x['clicks'])} clicks / {fmt_n(x['impressions'])} impr"
                             for x in r["devices"]) + "\n")
+    if ga and ga.get("ad_pages"):
+        cur = (ad or {}).get("currency", "")
+        L.append(f"## Appendix — ad revenue by page (GA4, AdSense-linked; site RPM {cur} {ga['site_rpm_ga4']:.2f})\n")
+        L.append("| Page | Views | Ad impressions | Revenue | RPM |")
+        L.append("|---|---|---|---|---|")
+        for x in ga["ad_pages"]:
+            L.append(f"| `{x['pagePath']}` | {fmt_n(x['screenPageViews'])} | {fmt_n(x['publisherAdImpressions'])} | "
+                     f"{x['totalAdRevenue']:.2f} | {x['rpm']:.2f} |")
+        L.append("")
+    if insp:
+        bad, seen = [], set()
+        for x in insp:
+            if x["url"] not in seen and x.get("coverageState") != "Submitted and indexed":
+                seen.add(x["url"])
+                bad.append(x)
+        if bad:
+            L.append("## Appendix — inspected URLs that are not indexed\n")
+            L.append("| URL | Coverage | Last crawled | Google canonical |")
+            L.append("|---|---|---|---|")
+            for x in bad:
+                gc = x.get("googleCanonical") or ""
+                L.append(f"| `{path_of(x['url'])}` | {x.get('coverageState') or x.get('error')} | "
+                         f"{(x.get('lastCrawlTime') or 'never')[:10]} | {'' if gc in ('', x['url']) else gc} |")
+            L.append("")
     if un and un["by_section"]:
         L.append("**Sitemap URLs with zero impressions, by section:** " +
                  ", ".join(f"{k} {n}/{t}" for k, n, t in un["by_section"][:12]) + "\n")
