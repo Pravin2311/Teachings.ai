@@ -2,12 +2,21 @@
   {
     "id": "2026-10-17-letter-pages",
     "date": "2026-10-17",
-    "commits": ["4ef0e97", "a4d811b", "f675363", "e20fb83"],
+    "commits": [
+      "4ef0e97",
+      "a4d811b",
+      "f675363",
+      "e20fb83"
+    ],
     "pages_regex": "/learn/alphabets/letter-[a-z]\\.html",
     "change": "Rewrote the 26 letter pages to answer 'letter X' searches (10-17); added 'for Kids' to titles (10-18); stroke-order diagrams, writing-first layout and a printable tracing sheet (10-18).",
     "hypothesis": "Pages that answer 'letter X' / 'what letter of the alphabet is X' directly, with a clearer kids-focused title, earn a higher CTR at their current ~position 9-10 and gradually better positions. (Reconstructed from the commit messages; written down after the change shipped.)",
     "metric": "clicks",
-    "secondary_metrics": ["ctr", "position", "impressions"],
+    "secondary_metrics": [
+      "ctr",
+      "position",
+      "impressions"
+    ],
     "window_days": 28,
     "evaluate_after": "2026-11-18",
     "status": "running",
@@ -17,61 +26,102 @@
   {
     "id": "2026-10-17-number-pages",
     "date": "2026-10-17",
-    "commits": ["873a205", "cc8787a"],
+    "commits": [
+      "873a205",
+      "cc8787a"
+    ],
     "pages_regex": "/learn/numbers/(number-([0-9]|10)|index)\\.html",
     "change": "Rewrote number pages 0-10 with complete lessons; strengthened the numbers hub.",
     "hypothesis": "Fuller number lessons gain impressions and position for bare-number and 'number N for kids' queries (currently position ~13-19).",
     "metric": "impressions",
-    "secondary_metrics": ["position", "clicks"],
+    "secondary_metrics": [
+      "position",
+      "clicks"
+    ],
     "window_days": 28,
     "evaluate_after": "2026-11-18",
     "status": "running",
-    "confounders": "Same-week site-wide edits.",
+    "confounders": "Same-week site-wide edits. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
     "next_action": "Interim check weekly; evaluate after 2026-11-18."
   },
   {
     "id": "2026-10-17-shape-pages",
     "date": "2026-10-17",
-    "commits": ["c83ff50", "cc8787a"],
+    "commits": [
+      "c83ff50",
+      "cc8787a"
+    ],
     "pages_regex": "/learn/shapes/",
     "change": "Rewrote the 12 shape pages around sides, corners and drawing; strengthened the shapes hub.",
     "hypothesis": "Shape pages that answer 'how many sides/corners' queries directly gain impressions and position.",
     "metric": "impressions",
-    "secondary_metrics": ["position", "clicks"],
+    "secondary_metrics": [
+      "position",
+      "clicks"
+    ],
     "window_days": 28,
     "evaluate_after": "2026-11-18",
     "status": "running",
-    "confounders": "Same-week site-wide edits.",
+    "confounders": "Same-week site-wide edits. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
     "next_action": "Interim check weekly; evaluate after 2026-11-18."
   },
   {
     "id": "2026-10-17-kiwi",
     "date": "2026-10-17",
-    "commits": ["a9cd50b", "026d9cb"],
+    "commits": [
+      "a9cd50b",
+      "026d9cb"
+    ],
     "pages_regex": "/learn/fruits/kiwi\\.html",
     "change": "Kiwi page now answers 'is kiwi a fruit' up front; corrected nutrition claims; new title.",
     "hypothesis": "Answering the dominant question in the title/first paragraph lifts position from ~34 toward page 1-2 for kiwi queries.",
     "metric": "impressions",
-    "secondary_metrics": ["position", "clicks"],
+    "secondary_metrics": [
+      "position",
+      "clicks"
+    ],
     "window_days": 28,
     "evaluate_after": "2026-11-18",
     "status": "running",
-    "confounders": "Same-week site-wide edits.",
+    "confounders": "Same-week site-wide edits. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
     "next_action": "Interim check weekly; evaluate after 2026-11-18."
   },
   {
     "id": "2026-10-18-unindexed-hubs",
     "date": "2026-10-18",
-    "commits": ["9777569", "cc8787a"],
+    "commits": [
+      "9777569",
+      "cc8787a"
+    ],
     "pages_regex": "/learn/(animals|body-parts|electronics|numbers)/index\\.html",
     "change": "Expanded hub pages that Search Console listed as 'Crawled - currently not indexed' (animals, body parts, electronics) plus the numbers hub.",
     "hypothesis": "More substantial, unique hub content gets these hubs indexed and showing impressions within ~4-6 weeks.",
     "metric": "impressions",
-    "secondary_metrics": ["position"],
+    "secondary_metrics": [
+      "position"
+    ],
     "window_days": 28,
     "evaluate_after": "2026-11-29",
     "status": "running",
-    "confounders": "Indexing timing depends on recrawl; URL inspection in the weekly run tracks coverage state directly.",
+    "confounders": "Indexing timing depends on recrawl; URL inspection in the weekly run tracks coverage state directly. Hero image stopped lazy-loading on these pages too (hero-not-lazy, load-time only).",
     "next_action": "Watch URL-inspection coverage state for these hubs each week."
+  },
+  {
+    "id": "hero-not-lazy",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/(learn/(animals|birds|body-parts|colors|country|electronics|fantasy|fruits|nature|numbers|organs|phonics|planets|plants|publicservice|scientists|shapes|vegetables|vehicles)|worksheets)/",
+    "change": "Removed loading=\"lazy\" from the fetchpriority=\"high\" hero image on 316 pages (all lazy heroes except the 26 letter pages, held until their experiment is evaluated).",
+    "hypothesis": "The hero is requested without waiting for layout, so LCP improves. Any search effect is expected to be small and slow; impressions are tracked only as a guard against regressions.",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "position"
+    ],
+    "primary_measure_outside_gsc": "LCP from PageSpeed Insights / CrUX on a sample (lion, count-and-match, kiwi) before and after deploy",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "pending-deploy",
+    "confounders": "Overlaps the running number, shape, kiwi and hub experiments.",
+    "next_action": "On deploy: set date to the deploy day, evaluate_after to date + 28 days, status to running. Then apply to the letter pages after 2026-11-18."
   }
 ]
