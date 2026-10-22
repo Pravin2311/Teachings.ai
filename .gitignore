@@ -4,3 +4,9 @@ __pycache__/
 # Search Console / analytics exports (never commit)
 *.xlsx
 teachings.ai-*
+
+# Weekly SEO workflow: local venv, raw API snapshots and reports (contain revenue)
+seo/.venv/
+seo/data/
+seo/reports/
+seo/logs/

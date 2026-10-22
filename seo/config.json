@@ -1,0 +1,17 @@
+{
+  "site_origin": "https://www.teachings.ai",
+  "gsc_site": null,
+  "ga4_measurement_id": "G-XVYMNTZLQJ",
+  "ga4_property_id": null,
+  "adsense_account": "accounts/pub-7495143337429327",
+  "goal_organic_users_per_day": 3000,
+  "gsc_lag_days": 3,
+  "url_inspections_per_run": 30,
+  "watch_paths": ["/learn/animals/index.html", "/learn/body-parts/index.html", "/learn/electronics/index.html",
+                  "/learn/numbers/index.html", "/learn/alphabets/index.html", "/learn/planets/index.html",
+                  "/learn/fruits/kiwi.html"],
+  "_ctr_assumption_note": "Rough planning assumption for 'what if this ranked at position N'. NOT a measured benchmark; replace with the site's own CTR-by-position once it has enough clicks.",
+  "ctr_assumption_by_position": {"1": 0.25, "2": 0.15, "3": 0.10, "4": 0.07, "5": 0.05,
+                                  "6": 0.04, "7": 0.03, "8": 0.025, "9": 0.02, "10": 0.018,
+                                  "20": 0.01, "100": 0.002}
+}
