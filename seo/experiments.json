@@ -360,5 +360,24 @@
       "ctr": 0,
       "position": null
     }
+  },
+  {
+    "id": "ctr-batch-1",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/(word-matching\\.html|learn/fruits/banana\\.html|learn/planets/saturn\\.html)$",
+    "change": "Search snippets rewritten to match what searchers ask: word-matching.html title/description/og (was 'Animals & Birds'-specific); banana.html title/description lead with 'Do bananas grow on trees?'; saturn.html adds a 'What is Saturn made of?' FAQ (page + FAQPage JSON-LD) and mentions it in the description.",
+    "hypothesis": "Bing (last ~90 days): word-matching.html 495 impressions / 1 click at position ~2 for 'word matching game(s) for kids'; banana.html 354 / 4 ('facts about bananas for kids', 'what type of plant do bananas grow on'); saturn.html 188 / 0 ('what is saturn made of for kids'). A snippet that answers the query should raise click-through at similar positions.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "impressions",
+      "position"
+    ],
+    "primary_measure_outside_gsc": "Bing Webmaster page stats (weekly buckets, see the report's Bing appendix): clicks and impressions per page, 8 weeks before vs after. Most of these pages' search traffic is Bing, which the automated evaluation does not cover yet. Banana and Saturn also need Google to recrawl them first.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "proposed",
+    "confounders": "word-matching.html is in hero-webp-worksheets and banana/saturn in hero-not-lazy (performance changes, 2026-10-22). Bing may rewrite titles. Click counts are small, so only a large change is readable.",
+    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after (date + 28 days), status running."
   }
 ]
