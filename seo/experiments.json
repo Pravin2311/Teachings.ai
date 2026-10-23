@@ -234,8 +234,12 @@
     "window_days": 28,
     "evaluate_after": "2026-11-20",
     "status": "running",
-    "confounders": "Adds internal links to hubs in 2026-10-18-unindexed-hubs (learn/animals, learn/numbers, learn/body-parts, learn/phonics), which can speed their crawling and blur that experiment. Low traffic: about 100 organic sessions/28 days on these pages, so only a large change is detectable. Batch 2 pages were part of the control until moved into the treatment on 2026-10-23; batch 2 deployed the same day as batch 1.",
-    "next_action": "Interim check weekly; evaluate after 2026-11-20."
+    "confounders": "Adds internal links to hubs in 2026-10-18-unindexed-hubs (learn/animals, learn/numbers, learn/body-parts, learn/phonics), which can speed their crawling and blur that experiment. Low traffic: about 100 organic sessions/28 days on these pages, so only a large change is detectable. Batch 2 pages were part of the control until moved into the treatment on 2026-10-23; batch 2 deployed the same day as batch 1. Baseline (GA4, 2026-09-25..10-22): 76 organic sessions landed on the treatment pages with 2.93 views/session; many visitors already went on via the Back button to the homepage and /games.html, so the pages were not complete dead ends.",
+    "next_action": "Interim check weekly; evaluate after 2026-11-20.",
+    "ga4_engagement": {
+      "control_regex": "^/",
+      "note": "Control = organic sessions landing on any other page (treatment pages are matched first; '(not set)' is excluded). The 32 untreated root game pages had only 26 organic sessions in the 28 days before, too few to compare."
+    }
   },
   {
     "id": "image-cache-week",

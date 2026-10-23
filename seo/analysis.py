@@ -507,9 +507,52 @@ def window_daily(gsc, site, regex, start, end):
     return rows
 
 
-def evaluate_experiments(experiments, snap, gsc_client):
+GA4_MIN_SESSIONS = 50  # per group and window before the GA4 comparison says anything
+
+
+def ga4_landing_groups(ga_client, start, end, treat_regex, control_regex):
+    """Organic sessions landing on the treatment pages vs the control pages.
+    screenPageViews per landingPage counts every view in those sessions, so
+    views/session is how far visitors go after landing."""
+    ga, prop = ga_client
+    rows = ga.report(prop, start, end, ["landingPage"], ["sessions", "screenPageViews", "engagedSessions"],
+                     organic_only=True)
+    t, c = re.compile(treat_regex), re.compile(control_regex)
+    groups = {g: {"sessions": 0, "screenPageViews": 0, "engagedSessions": 0} for g in ("treatment", "control")}
+    for r in rows:
+        page = r["landingPage"].split("?")[0]
+        g = "treatment" if t.search(page) else "control" if c.search(page) else None
+        if g:
+            for m in groups[g]:
+                groups[g][m] += r[m]
+    for g in groups.values():
+        n = g["sessions"]
+        g["views_per_session"] = round(g["screenPageViews"] / n, 3) if n else None
+        g["engaged_rate"] = round(g["engagedSessions"] / n, 4) if n else None
+    return groups
+
+
+def ga4_compare(pre, post):
+    """Difference-in-differences of treatment vs control, pre vs post.
+    The engaged-rate change gets a two-proportion z; views/session has no
+    per-session variance in aggregate GA4 data, so it is descriptive only."""
+    cells = [pre["treatment"], post["treatment"], pre["control"], post["control"]]
+    if min(c["sessions"] for c in cells) < GA4_MIN_SESSIONS:
+        return {"note": f"fewer than {GA4_MIN_SESSIONS} organic sessions in a group/window; not compared"}
+    dd_vps = ((post["treatment"]["views_per_session"] - pre["treatment"]["views_per_session"])
+              - (post["control"]["views_per_session"] - pre["control"]["views_per_session"]))
+    dd_er = ((post["treatment"]["engaged_rate"] - pre["treatment"]["engaged_rate"])
+             - (post["control"]["engaged_rate"] - pre["control"]["engaged_rate"]))
+    se = math.sqrt(sum(c["engaged_rate"] * (1 - c["engaged_rate"]) / c["sessions"] for c in cells))
+    return {"dd_views_per_session": round(dd_vps, 3), "dd_engaged_rate": round(dd_er, 4),
+            "z_engaged_rate": round(dd_er / se, 2) if se else 0}
+
+
+def evaluate_experiments(experiments, snap, gsc_client, ga_client=None):
     """Compare each running experiment's pages before vs after the change,
-    against the rest of the site over the same days as a control."""
+    against the rest of the site over the same days as a control. Experiments
+    with a "ga4_engagement" control_regex also get a GA4 comparison of organic
+    sessions landing on their pages vs those control pages."""
     results = []
     end = d(snap["meta"]["end"])
     today = dt.date.today().isoformat()
@@ -531,11 +574,19 @@ def evaluate_experiments(experiments, snap, gsc_client):
         t_pre = agg(window_daily(gsc, site, ex["pages_regex"], *pre))
         site_pre = agg(gsc.query(site, pre[0], pre[1], ["date"]))
         ex.setdefault("baseline", {"window": [pre[0].isoformat(), pre[1].isoformat()], **t_pre})
+        g_pre = None
+        if ga_client and ex.get("ga4_engagement"):
+            ctrl = ex["ga4_engagement"]["control_regex"]
+            g_pre = ga4_landing_groups(ga_client, *pre, ex["pages_regex"], ctrl)
+            ex.setdefault("ga4_baseline", {"window": [pre[0].isoformat(), pre[1].isoformat()], **g_pre})
         if post_days < 7:
             results.append({"id": ex["id"], "status": "too early",
                             "summary": f"Only {max(post_days, 0)} days of post-change data; baseline recorded "
                                        f"({fmt_n(t_pre['clicks'])} clicks, {fmt_n(t_pre['impressions'])} impressions "
-                                       f"in {n} days before)."})
+                                       f"in {n} days before)."
+                                       + (f" GA4 baseline: {fmt_n(g_pre['treatment']['sessions'])} organic sessions "
+                                          f"landing on these pages, {fmt_n(g_pre['treatment']['views_per_session'], 2)} "
+                                          f"views/session." if g_pre else "")})
             continue
         t_post = agg(window_daily(gsc, site, ex["pages_regex"], post_start, post_end))
         site_post = agg(gsc.query(site, post_start, post_end, ["date"]))
@@ -551,6 +602,13 @@ def evaluate_experiments(experiments, snap, gsc_client):
                      "z": round(z, 2)}
         ev["ctr"] = {"pre": t_pre["ctr"], "post": t_post["ctr"]}
         ev["position"] = {"pre": t_pre["position"], "post": t_post["position"]}
+        if g_pre:
+            # no recrawl lag for on-page behaviour: start the day after deploy
+            g_post = ga4_landing_groups(ga_client, start + dt.timedelta(days=1), post_end,
+                                        ex["pages_regex"], ex["ga4_engagement"]["control_regex"])
+            ev["ga4"] = {"pre": g_pre, "post": g_post,
+                         "post_window": [(start + dt.timedelta(days=1)).isoformat(), post_end.isoformat()],
+                         **ga4_compare(g_pre, g_post)}
         conclusive = today >= ex["evaluate_after"] and t_post["clicks"] + t_pre["clicks"] >= 30
         mz = ev[ex["metric"]]["z"] if ex["metric"] in ("clicks", "impressions") else ev["clicks"]["z"]
         if not conclusive:
@@ -769,6 +827,24 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         L.append("\n*Each experiment is compared with the rest of the site over the same days (a control for "
                  "site-wide and seasonal swings). Changes shipped together on the same days cannot be "
                  "separated from each other.*\n")
+        ga4_rows = [e for e in exp_results if e.get("eval", {}).get("ga4")]
+        for e in ga4_rows:
+            g = e["eval"]["ga4"]
+            L.append(f"**{e['id']} — GA4, organic sessions by landing page** "
+                     f"(after: {g['post_window'][0]}..{g['post_window'][1]})\n")
+            L.append("| Group | Window | Sessions | Views/session | Engaged rate |")
+            L.append("|---|---|---|---|---|")
+            for grp in ("treatment", "control"):
+                for win in ("pre", "post"):
+                    c = g[win][grp]
+                    L.append(f"| {grp} | {'before' if win == 'pre' else 'after'} | {fmt_n(c['sessions'])} | "
+                             f"{fmt_n(c['views_per_session'], 2)} | {fmt_pct(c['engaged_rate'], False)} |")
+            if "note" in g:
+                L.append(f"\n{g['note']}.\n")
+            else:
+                L.append(f"\nChange beyond the control: views/session {g['dd_views_per_session']:+.2f} "
+                         f"(descriptive), engaged rate {g['dd_engaged_rate'] * 100:+.1f} points (z = {g['z_engaged_rate']}). "
+                         "|z| < 2 is within normal fluctuation.\n")
     if prev_plan:
         L.append(f"**Last plan ({prev_plan['run_date']}) — implementation check from git:**\n")
         for t, status in review_previous(prev_plan):

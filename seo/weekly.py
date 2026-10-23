@@ -323,7 +323,10 @@ def main():
     if snap["meta"]["source"] == "api" and snap.get("gsc"):
         import gapi
         gsc_client = (gapi.SearchConsole(gapi.get_credentials()), snap["gsc"]["site"])
-    exp_results = analysis.evaluate_experiments(experiments, snap, gsc_client)
+    ga_client = None
+    if gsc_client and snap.get("ga4"):
+        ga_client = (gapi.Analytics(gapi.get_credentials()), snap["ga4"]["property"])
+    exp_results = analysis.evaluate_experiments(experiments, snap, gsc_client, ga_client)
     if not args.no_write_experiments and gsc_client:
         with open(EXPERIMENTS, "w", encoding="utf-8") as f:
             json.dump(experiments, f, indent=2)

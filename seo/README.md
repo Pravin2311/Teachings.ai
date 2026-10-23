@@ -119,6 +119,11 @@ Check `seo\logs\weekly.log` (or the newest file in `seo\reports\`) before relyin
 2. Each weekly run records the pre-change baseline, then compares the experiment pages after the change
    with the **rest of the site over the same days** (a control for site-wide and seasonal swings).
    Verdicts stay "interim" until `evaluate_after` has passed and there are at least 30 clicks.
+   For changes aimed at what visitors do after landing (not at search), add
+   `"ga4_engagement": {"control_regex": "..."}`. The report then also compares GA4 organic sessions landing on
+   the experiment pages with sessions landing on the control pages: views per session (descriptive) and engaged
+   rate (with a z-score). It needs at least 50 sessions per group and window. GA4 has no "sessions with 2+ pages"
+   metric, so views per session stands in for it.
 3. Pages inside a running experiment are held back from new recommendations, so the experiment
    stays readable.
 4. When an experiment is evaluated, set `status` to `kept`, `revised` or `reverted` and write the
