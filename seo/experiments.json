@@ -220,7 +220,8 @@
     "id": "game-next-steps",
     "date": "2026-10-23",
     "commits": [
-      "f7a0dd8"
+      "f7a0dd8",
+      "310a20d"
     ],
     "pages_regex": "/(colors|bodyparts|organs|patterns|animals|counting|fruits-vegetables-sorting|match-numbers|rhyming|mirror-words-learning|phonic-numbers|phonic-rhyming|phonic-segmenting|tracing-letters-and-numbers)\\.html$",
     "change": "Added a 'Keep Learning' block of 3-6 links to related lessons, games and worksheets before the footer on 9 root game pages that were dead ends (only a JS Back button and footer links). scripts/add_game_next_steps.py. Batch 2 (same day, before </body>): mirror-words-learning, phonic-numbers, phonic-rhyming, phonic-segmenting, tracing-letters-and-numbers, which had no header, footer or links at all.",
@@ -233,7 +234,7 @@
     "window_days": 28,
     "evaluate_after": "2026-11-20",
     "status": "running",
-    "confounders": "Adds internal links to hubs in 2026-10-18-unindexed-hubs (learn/animals, learn/numbers, learn/body-parts, learn/phonics), which can speed their crawling and blur that experiment. Low traffic: about 100 organic sessions/28 days on these pages, so only a large change is detectable. Batch 2 pages were part of the control until moved into the treatment on 2026-10-23; if batch 2 deploys after 2026-10-23, evaluate it separately.",
+    "confounders": "Adds internal links to hubs in 2026-10-18-unindexed-hubs (learn/animals, learn/numbers, learn/body-parts, learn/phonics), which can speed their crawling and blur that experiment. Low traffic: about 100 organic sessions/28 days on these pages, so only a large change is detectable. Batch 2 pages were part of the control until moved into the treatment on 2026-10-23; batch 2 deployed the same day as batch 1.",
     "next_action": "Interim check weekly; evaluate after 2026-11-20."
   },
   {
