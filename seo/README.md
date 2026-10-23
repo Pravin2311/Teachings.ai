@@ -124,6 +124,9 @@ Check `seo\logs\weekly.log` (or the newest file in `seo\reports\`) before relyin
    the experiment pages with sessions landing on the control pages: views per session (descriptive) and engaged
    rate (with a z-score). It needs at least 50 sessions per group and window. GA4 has no "sessions with 2+ pages"
    metric, so views per session stands in for it.
+   Every experiment also gets the same before/after comparison on **Bing page stats**. These are weekly buckets,
+   and buckets dated within 7 days of the change are skipped. Set `"primary_source": "bing"` when most of the
+   pages' search traffic comes from Bing; the verdict then uses Bing clicks (needs 30+) instead of Search Console.
 3. Pages inside a running experiment are held back from new recommendations, so the experiment
    stays readable.
 4. When an experiment is evaluated, set `status` to `kept`, `revised` or `reverted` and write the

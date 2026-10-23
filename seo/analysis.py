@@ -548,11 +548,48 @@ def ga4_compare(pre, post):
             "z_engaged_rate": round(dd_er / se, 2) if se else 0}
 
 
+def bing_compare(snap, regex, start, n):
+    """Bing page stats for the experiment pages vs the rest of the site.
+    Bing reports weekly buckets and it isn't clear whether a bucket's date
+    starts or ends its week, so buckets dated within 7 days either side of
+    the change are skipped; neither window then contains a mixed week."""
+    rows = (snap.get("bing") or {}).get("pages") or []
+    if not rows:
+        return None
+    rx = re.compile(regex)
+    lo, gap = (start - dt.timedelta(days=n + 7)).isoformat(), (start - dt.timedelta(days=7)).isoformat()
+    post_from = (start + dt.timedelta(days=7)).isoformat()
+    cells = {w: {g: {"clicks": 0, "impressions": 0} for g in ("treatment", "control")} for w in ("pre", "post")}
+    weeks = {"pre": set(), "post": set()}
+    for r in rows:
+        w = "pre" if lo <= r["date"] < gap else "post" if r["date"] >= post_from else None
+        if not w:
+            continue
+        path = "/" + r["page"].split("teachings.ai/", 1)[-1]
+        g = "treatment" if rx.search(path) else "control"
+        cells[w][g]["clicks"] += r["clicks"]
+        cells[w][g]["impressions"] += r["impressions"]
+        weeks[w].add(r["date"])
+    out = {"pre_weeks": len(weeks["pre"]), "post_weeks": len(weeks["post"]), **cells}
+    if not weeks["pre"] or not weeks["post"]:
+        return out
+    scale = len(weeks["post"]) / len(weeks["pre"])
+    for m in ("clicks", "impressions"):
+        c_pre, c_post = cells["pre"]["control"][m], cells["post"]["control"][m]
+        trend = (c_post / scale) / c_pre if c_pre else 1
+        expected = cells["pre"]["treatment"][m] * scale * trend
+        out[m] = {"expected_from_site_trend": round(expected, 1),
+                  "z": round((cells["post"]["treatment"][m] - expected) / math.sqrt(expected), 2) if expected > 0 else 0}
+    return out
+
+
 def evaluate_experiments(experiments, snap, gsc_client, ga_client=None):
     """Compare each running experiment's pages before vs after the change,
     against the rest of the site over the same days as a control. Experiments
     with a "ga4_engagement" control_regex also get a GA4 comparison of organic
-    sessions landing on their pages vs those control pages."""
+    sessions landing on their pages vs those control pages. Every experiment
+    gets the same comparison on Bing page stats; "primary_source": "bing" makes
+    the verdict use Bing instead of Search Console."""
     results = []
     end = d(snap["meta"]["end"])
     today = dt.date.today().isoformat()
@@ -579,6 +616,9 @@ def evaluate_experiments(experiments, snap, gsc_client, ga_client=None):
             ctrl = ex["ga4_engagement"]["control_regex"]
             g_pre = ga4_landing_groups(ga_client, *pre, ex["pages_regex"], ctrl)
             ex.setdefault("ga4_baseline", {"window": [pre[0].isoformat(), pre[1].isoformat()], **g_pre})
+        bing = bing_compare(snap, ex["pages_regex"], start, n)
+        if bing and bing["pre_weeks"]:
+            ex.setdefault("bing_baseline", {"weeks": bing["pre_weeks"], **bing["pre"]})
         if post_days < 7:
             results.append({"id": ex["id"], "status": "too early",
                             "summary": f"Only {max(post_days, 0)} days of post-change data; baseline recorded "
@@ -586,7 +626,11 @@ def evaluate_experiments(experiments, snap, gsc_client, ga_client=None):
                                        f"in {n} days before)."
                                        + (f" GA4 baseline: {fmt_n(g_pre['treatment']['sessions'])} organic sessions "
                                           f"landing on these pages, {fmt_n(g_pre['treatment']['views_per_session'], 2)} "
-                                          f"views/session." if g_pre else "")})
+                                          f"views/session." if g_pre else "")
+                                       + (f" Bing baseline: {fmt_n(bing['pre']['treatment']['clicks'])} clicks, "
+                                          f"{fmt_n(bing['pre']['treatment']['impressions'])} impressions in "
+                                          f"{bing['pre_weeks']} weeks." if bing and bing["pre_weeks"] else ""),
+                            "bing": bing})
             continue
         t_post = agg(window_daily(gsc, site, ex["pages_regex"], post_start, post_end))
         site_post = agg(gsc.query(site, post_start, post_end, ["date"]))
@@ -609,8 +653,17 @@ def evaluate_experiments(experiments, snap, gsc_client, ga_client=None):
             ev["ga4"] = {"pre": g_pre, "post": g_post,
                          "post_window": [(start + dt.timedelta(days=1)).isoformat(), post_end.isoformat()],
                          **ga4_compare(g_pre, g_post)}
-        conclusive = today >= ex["evaluate_after"] and t_post["clicks"] + t_pre["clicks"] >= 30
-        mz = ev[ex["metric"]]["z"] if ex["metric"] in ("clicks", "impressions") else ev["clicks"]["z"]
+        if bing:
+            ev["bing"] = bing
+        metric = ex["metric"] if ex["metric"] in ("clicks", "impressions") else "clicks"
+        if ex.get("primary_source") == "bing":
+            # Bing sends most of these pages' search visitors, so judge on Bing
+            b_clicks = (bing["pre"]["treatment"]["clicks"] + bing["post"]["treatment"]["clicks"]) if bing else 0
+            conclusive = today >= ex["evaluate_after"] and bing and metric in bing and b_clicks >= 30
+            mz = bing[metric]["z"] if conclusive else 0
+        else:
+            conclusive = today >= ex["evaluate_after"] and t_post["clicks"] + t_pre["clicks"] >= 30
+            mz = ev[metric]["z"]
         if not conclusive:
             ev["verdict"] = "interim -- not conclusive yet"
         elif mz >= 2:
@@ -827,6 +880,23 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         L.append("\n*Each experiment is compared with the rest of the site over the same days (a control for "
                  "site-wide and seasonal swings). Changes shipped together on the same days cannot be "
                  "separated from each other.*\n")
+        bing_rows = [(e["id"], e.get("eval", {}).get("bing") or e.get("bing")) for e in exp_results]
+        bing_rows = [(i, b) for i, b in bing_rows if b and b["pre_weeks"] and b["post_weeks"]]
+        if bing_rows:
+            L.append("**Bing page stats (weekly buckets; the weeks next to the change are skipped)**\n")
+            L.append("| Experiment | Weeks before / after | Clicks before → after | Expected from site trend | z | "
+                     "Impressions before → after | Expected | z |")
+            L.append("|---|---|---|---|---|---|---|---|")
+            for i, b in bing_rows:
+                t0, t1 = b["pre"]["treatment"], b["post"]["treatment"]
+                L.append(f"| {i} | {b['pre_weeks']} / {b['post_weeks']} | {fmt_n(t0['clicks'])} → {fmt_n(t1['clicks'])} | "
+                         f"{fmt_n(b['clicks']['expected_from_site_trend'], 1)} | {b['clicks']['z']} | "
+                         f"{fmt_n(t0['impressions'])} → {fmt_n(t1['impressions'])} | "
+                         f"{fmt_n(b['impressions']['expected_from_site_trend'], 1)} | {b['impressions']['z']} |")
+            L.append("\n*Bing covers Bing and Yahoo, about 60% of this site's organic visitors. Compared with the rest "
+                     "of the site's Bing page stats over the same weeks; |z| < 2 is within normal fluctuation. "
+                     "Impression z-scores overstate certainty (impressions are not independent events), so "
+                     "verdicts use clicks.*\n")
         ga4_rows = [e for e in exp_results if e.get("eval", {}).get("ga4")]
         for e in ga4_rows:
             g = e["eval"]["ga4"]

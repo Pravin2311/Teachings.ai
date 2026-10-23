@@ -380,6 +380,7 @@
     "evaluate_after": "2026-11-20",
     "status": "running",
     "confounders": "word-matching.html is in hero-webp-worksheets and banana/saturn in hero-not-lazy (performance changes, 2026-10-22). Bing may rewrite titles. Click counts are small, so only a large change is readable.",
-    "next_action": "Request indexing for banana and saturn; evaluate after 2026-11-20 on Bing clicks."
+    "next_action": "Request indexing for banana and saturn; evaluate after 2026-11-20 on Bing clicks.",
+    "primary_source": "bing"
   }
 ]
