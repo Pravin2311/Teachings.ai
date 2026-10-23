@@ -7,6 +7,8 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXCLUDE_DIRS = {"mockups", "templates", ".git", "node_modules"}
+# indexable pages deliberately left out of the sitemap (not search landing pages)
+NOT_IN_SITEMAP = {"feedback.html"}
 
 
 def all_html_files():
@@ -42,7 +44,7 @@ def main():
             u += "index.html"
         sm_paths.add(u)
 
-    missing = sorted(f for f in files if f not in sm_paths and not is_redirect_stub(f) and not is_noindex(f))
+    missing = sorted(f for f in files if f not in sm_paths and f not in NOT_IN_SITEMAP and not is_redirect_stub(f) and not is_noindex(f))
     extra = sorted(u for u in sm_paths if u not in files)
     noindex_listed = sorted(u for u in sm_paths if u in files and is_noindex(u))
 
