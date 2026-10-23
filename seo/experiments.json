@@ -278,8 +278,10 @@
   },
   {
     "id": "numbers-blog-links",
-    "date": null,
-    "commits": [],
+    "date": "2026-10-23",
+    "commits": [
+      "0f12607"
+    ],
     "pages_regex": "/Blog/numbers-(interactive-games-for-counting-matching-sorting|worksheets-for-tracing-colouring-matching)\\.html$",
     "change": "Linked the two numbers blog posts from three indexed, related pages outside other experiments: math/hands-on-activities-for-number-sense.html (Keep Exploring, both posts), ages/age-4.html (math box, worksheets post), ages/age-5.html (math box, games post). Before: only Blog/index.html linked to them.",
     "hypothesis": "With links from indexed, topically related pages, Google discovers and crawls the posts (games post: 'URL is unknown to Google'; worksheets post: 'Discovered - currently not indexed').",
@@ -289,9 +291,9 @@
     ],
     "primary_measure_outside_gsc": "URL Inspection coverage state and last crawl of the two posts, re-checked weekly. Two pages: a case observation, not a statistical test.",
     "window_days": 28,
-    "evaluate_after": null,
-    "status": "proposed",
+    "evaluate_after": "2026-11-20",
+    "status": "running",
     "confounders": "Request indexing, if done manually, would have the same effect and can't be separated.",
-    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after, status running."
+    "next_action": "Re-inspect the two posts weekly; evaluate after 2026-11-20."
   }
 ]
