@@ -407,5 +407,24 @@
     "status": "running",
     "confounders": "Both pages are in hero-not-lazy (performance, 2026-10-22). Low CTR at positions 6-9 may be mostly position and SERP features, not the snippet. Apple's seasonal decline means its result may be unreadable.",
     "next_action": "Evaluate after 2026-11-20 on Bing clicks (airplane mainly; apple likely unreadable)."
+  },
+  {
+    "id": "worksheet-links-1",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/worksheets/(letter-sounds-coloring-trace-workbook|color-word-matching-worksheet|color-matching-with-real-photos|fruit-themed-coloring-book|fruits-vocabulary-matching|word-detective|alphabet-bubble-letter-workbook)\\.html$",
+    "change": "One contextual link to a poorly linked worksheet from 25 indexed, crawled pages outside content experiments: 21 learn/phonics letter pages -> letter-sounds-coloring-trace-workbook (Related Learning list); learn/colors/index -> color-word-matching-worksheet and color-matching-with-real-photos; learn/fruits/index -> fruit-themed-coloring-book and fruits-vocabulary-matching; reading/best-phonics-readers-and-decodable-books -> word-detective; preschool/fine-motor-activities-for-preschoolers -> alphabet-bubble-letter-workbook.",
+    "hypothesis": "From the 2026-10-23 competitor study: free PDFs with no sign-up are our clearest difference from Kids Academy (account wall, 2 PDFs/day), but /worksheets/ had 101 Google impressions in 28 days and 9 Bing impressions since July. Of the 7 targets, 6 were 'Discovered - currently not indexed' or 'URL is unknown to Google' with only 1-3 internal links, mostly from other worksheet pages and the uncrawled worksheets hub. Links from pages Google already crawls and indexes should get them crawled and indexed. fruits-vocabulary-matching (already indexed) is included as the only indexed target.",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "coverage_state",
+      "clicks"
+    ],
+    "primary_measure_outside_gsc": "URL Inspection coverage state of the 6 unindexed targets (baseline 2026-10-23: 0 of 6 indexed).",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "planned",
+    "confounders": "All targets are also in hero-webp-worksheets and hero-not-lazy (performance changes, 2026-10-22, impressions metric); read those on worksheets outside this batch. Manual indexing requests for these URLs would confound this test, so leave them out of the request list. 21 of 25 links come from phonics pages that all point at one workbook.",
+    "next_action": "On deploy, set date, commits, evaluate_after (date + 28 days) and status running."
   }
 ]
