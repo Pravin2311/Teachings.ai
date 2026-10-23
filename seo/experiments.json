@@ -388,8 +388,10 @@
   },
   {
     "id": "ctr-batch-2",
-    "date": null,
-    "commits": [],
+    "date": "2026-10-23",
+    "commits": [
+      "f66d59c"
+    ],
     "pages_regex": "/learn/(vehicles/airplane|fruits/apple)\\.html$",
     "primary_source": "bing",
     "change": "Question-led titles and answer-first descriptions: airplane.html 'How Do Airplanes Fly? Airplanes for Kids: Lift, Parts & Facts'; apple.html 'Apple Facts for Kids: Health Benefits, Types & How Apples Grow', description leading with fiber, vitamin C and floating (25% air). Title, description, og and twitter tags only.",
@@ -401,9 +403,9 @@
     ],
     "primary_measure_outside_gsc": "Bing page clicks vs the rest of the site (weekly report, Bing table). Airplane demand is steady (30-96 Bing impressions/week since July); apple fell from 30-55/week in September to 3/week in October.",
     "window_days": 28,
-    "evaluate_after": null,
-    "status": "proposed",
+    "evaluate_after": "2026-11-20",
+    "status": "running",
     "confounders": "Both pages are in hero-not-lazy (performance, 2026-10-22). Low CTR at positions 6-9 may be mostly position and SERP features, not the snippet. Apple's seasonal decline means its result may be unreadable.",
-    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after, status running."
+    "next_action": "Evaluate after 2026-11-20 on Bing clicks (airplane mainly; apple likely unreadable)."
   }
 ]
