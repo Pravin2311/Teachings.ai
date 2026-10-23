@@ -275,5 +275,23 @@
     "status": "running",
     "confounders": "Google may crawl the hubs anyway over time; image-cache-week deployed the same day.",
     "next_action": "Request indexing for both hubs; re-inspect weekly; evaluate after 2026-11-20."
+  },
+  {
+    "id": "numbers-blog-links",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/Blog/numbers-(interactive-games-for-counting-matching-sorting|worksheets-for-tracing-colouring-matching)\\.html$",
+    "change": "Linked the two numbers blog posts from three indexed, related pages outside other experiments: math/hands-on-activities-for-number-sense.html (Keep Exploring, both posts), ages/age-4.html (math box, worksheets post), ages/age-5.html (math box, games post). Before: only Blog/index.html linked to them.",
+    "hypothesis": "With links from indexed, topically related pages, Google discovers and crawls the posts (games post: 'URL is unknown to Google'; worksheets post: 'Discovered - currently not indexed').",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "position"
+    ],
+    "primary_measure_outside_gsc": "URL Inspection coverage state and last crawl of the two posts, re-checked weekly. Two pages: a case observation, not a statistical test.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "proposed",
+    "confounders": "Request indexing, if done manually, would have the same effect and can't be separated.",
+    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after, status running."
   }
 ]
