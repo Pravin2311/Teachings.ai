@@ -14,6 +14,7 @@ import subprocess
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE = "https://www.teachings.ai"
 
 
 # ---------------------------------------------------------------- helpers
@@ -264,7 +265,10 @@ def analyze(snap, cfg, sitemap, experiments=()):
     r["ga4"] = analyze_ga4(snap, cfg) if snap.get("ga4") else None
     r["adsense"] = analyze_adsense(snap) if snap.get("adsense") else None
     r["bing"] = analyze_bing(snap) if snap.get("bing") else None
-    running = [(e["id"], re.compile(e["pages_regex"])) for e in experiments if e.get("status") == "running"]
+    # "holds_back": false = a performance-only change (e.g. image caching) whose pages may still get
+    # content or snippet work; otherwise a site-wide experiment would freeze every page for a month
+    running = [(e["id"], re.compile(e["pages_regex"])) for e in experiments
+               if e.get("status") == "running" and e.get("holds_back", True)]
     r["opportunities"], r["held_back"] = rank_opportunities(r, cfg, running)
     return r
 
@@ -389,10 +393,10 @@ def analyze_bing(snap):
     s = (d(win["cur28"][0]) - dt.timedelta(days=6)).isoformat()
     e = win["cur28"][1]
 
-    def top(rows, key):
+    def top(rows, key, start=s):
         acc = defaultdict(lambda: {"clicks": 0, "impressions": 0, "_pos": 0.0})
         for x in rows:
-            if not x["date"] or not (s <= x["date"] <= e):
+            if not x["date"] or not (start <= x["date"] <= e):
                 continue
             a = acc[x[key]]
             a["clicks"] += x["clicks"]
@@ -404,7 +408,61 @@ def analyze_bing(snap):
     res["queries"] = top(b["queries"], "query")
     res["pages"] = top(b["pages"], "page")
     res["crawl_latest"] = max(b.get("crawl") or [{}], key=lambda x: x.get("Date") or "")
+    # per-page stats are thin, so the CTR check uses ~13 weeks of buckets
+    # Bing lists some pages under both teachings.ai and www.teachings.ai: merge them by path
+    pages = [dict(x, page=SITE + "/" + x["page"].split("teachings.ai/", 1)[-1]) for x in b["pages"]]
+    last_seen = defaultdict(str)
+    for x in pages:
+        if x["date"] and x["impressions"]:
+            last_seen[x["page"]] = max(last_seen[x["page"]], x["date"])
+    recent = {x["page"]: x["impressions"] for x in top(pages, "page")}
+    low = bing_low_ctr(top(pages, "page", (d(e) - dt.timedelta(days=BING_CTR_DAYS)).isoformat()))
+    # a 13-week total can be one old burst (e.g. back-to-school): only flag pages Bing still shows
+    res["low_ctr_pages"] = [dict(x, recent_impressions=recent[x["page"]], last_seen=last_seen[x["page"]])
+                            for x in low if recent.get(x["page"])]
     return res
+
+
+BING_CTR_DAYS = 91
+# impression-weighted Bing position buckets used to find a page's peers
+BING_POS_BUCKETS = [(0, 3), (3, 5), (5, 8), (8, 12), (12, 1000)]
+
+
+def poisson_cdf(k, lam):
+    """P(X <= k) for X ~ Poisson(lam)."""
+    term = total = math.exp(-lam)
+    for i in range(1, int(k) + 1):
+        term *= lam / i
+        total += term
+    return total
+
+
+def bing_low_ctr(pages):
+    """Pages whose Bing clicks are well below what the site's OTHER pages at a
+    similar position get (leave-one-out peer CTR), and unlikely to be chance
+    (Poisson P(X <= clicks) < 0.05). A site-relative check, not a universal
+    CTR threshold."""
+    pages = [p for p in pages if p["position"]]
+    bucket = lambda pos: next(i for i, (lo, hi) in enumerate(BING_POS_BUCKETS) if lo <= pos < hi)
+    tot = defaultdict(lambda: [0, 0])
+    for p in pages:
+        t = tot[bucket(p["position"])]
+        t[0] += p["clicks"]
+        t[1] += p["impressions"]
+    out = []
+    for p in pages:
+        c, i = tot[bucket(p["position"])]
+        peer_imp = i - p["impressions"]
+        if peer_imp < 500:
+            continue
+        peer_ctr = (c - p["clicks"]) / peer_imp
+        expected = peer_ctr * p["impressions"]
+        if expected < 3:
+            continue
+        pval = poisson_cdf(p["clicks"], expected)
+        if pval < 0.05:
+            out.append(dict(p, peer_ctr=peer_ctr, expected=expected, p=pval))
+    return sorted(out, key=lambda x: -(x["expected"] - x["clicks"]))
 
 
 EFFORT_WEIGHT = {"S": 1, "M": 2, "L": 4}
@@ -423,8 +481,18 @@ def rank_opportunities(r, cfg, running=()):
                                 f"position: {fmt_pct(expected_ctr(p['position'], cfg), False)})",
                     "action": "Rewrite title/description to match the top queries' wording and intent; "
                               "check what the SERP shows for those queries first."})
+    for p in (r.get("bing") or {}).get("low_ctr_pages", []):
+        ops.append({"type": "Bing: title/description test", "page": p["page"], "effort": "S",
+                    "upside": (p["expected"] - p["clicks"]) * 28 / BING_CTR_DAYS,
+                    "evidence": f"Bing, last ~13 weeks: {fmt_n(p['impressions'])} impressions at avg position "
+                                f"{p['position']:.1f}, {fmt_n(p['clicks'])} clicks; the site's other pages at that "
+                                f"position average {fmt_pct(p['peer_ctr'], False)} CTR (≈{p['expected']:.0f} clicks "
+                                f"expected, p = {p['p']:.3f}). Still shown: {fmt_n(p['recent_impressions'])} "
+                                f"impressions in the last 4 weeks.",
+                    "action": "Check the Bing queries this page appears for and what Bing shows for them, then "
+                              "rewrite the title/description to answer that query directly."})
     for p in r.get("striking_pages", []):
-        qs = ", ".join(f"'{q['query']}' (#{q['position']:.0f})" for q in
+        qs =", ".join(f"'{q['query']}' (#{q['position']:.0f})" for q in
                        sorted(p["queries"], key=lambda q: -q["impressions"])[:3])
         ops.append({"type": "Near first page: strengthen content", "page": p["page"], "effort": "M",
                     "upside": p["upside"],
@@ -817,7 +885,8 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
         for o in ops:
             L.append(f"| {o['id']} | {o['type']} | `{path_of(o['page']) if o['page'].startswith('http') else o['page']}` | "
                      f"{o['evidence']} | {o['effort']} | {o['upside']:.0f} |")
-        L.append("\n*\\*Scenario estimate from the CTR planning assumptions in `seo/config.json`, not a forecast. "
+        L.append("\n*\\*Scenario estimate from the CTR planning assumptions in `seo/config.json` (Bing rows: the "
+                 "gap to the site's own Bing CTR at that position), not a forecast. "
                  "Use it to rank work, not to predict traffic.*\n")
     if r.get("held_back"):
         L.append("**Held back — page is inside a running experiment (revisit after it is evaluated):**\n")

@@ -173,7 +173,7 @@
     "window_days": 28,
     "evaluate_after": "2026-11-19",
     "status": "running",
-    "confounders": "Overlaps the running number, shape, kiwi and hub experiments.",
+    "confounders": "Overlaps the running number, shape, kiwi and hub experiments. Performance-only: pages are not held back from other recommendations (holds_back false), so later snippet/content edits on these pages overlap this experiment's search metrics.",
     "next_action": "Interim check weekly; evaluate after 2026-11-19. Apply to the letter pages after 2026-11-18.",
     "baseline": {
       "window": [
@@ -184,7 +184,8 @@
       "impressions": 6529,
       "ctr": 0.0032164190534538215,
       "position": 17.008730280287946
-    }
+    },
+    "holds_back": false
   },
   {
     "id": "hero-webp-worksheets",
@@ -203,7 +204,7 @@
     "window_days": 28,
     "evaluate_after": "2026-11-19",
     "status": "running",
-    "confounders": "Same pages also got hero-not-lazy in the same deploy; the two can't be separated.",
+    "confounders": "Same pages also got hero-not-lazy in the same deploy; the two can't be separated. Performance-only: pages are not held back from other recommendations (holds_back false), so later snippet/content edits on these pages overlap this experiment's search metrics.",
     "next_action": "Interim check weekly; evaluate after 2026-11-19.",
     "baseline": {
       "window": [
@@ -214,7 +215,8 @@
       "impressions": 134,
       "ctr": 0.0,
       "position": 36.007462686567166
-    }
+    },
+    "holds_back": false
   },
   {
     "id": "game-next-steps",
@@ -288,7 +290,7 @@
     "window_days": 28,
     "evaluate_after": "2026-11-20",
     "status": "running",
-    "confounders": "Site-wide, so there is no control group; deployed during hero-not-lazy and hero-webp-worksheets (PSI lab LCP uses a cold cache, so those lab measurements are unaffected).",
+    "confounders": "Site-wide, so there is no control group; deployed during hero-not-lazy and hero-webp-worksheets (PSI lab LCP uses a cold cache, so those lab measurements are unaffected). Performance-only: pages are not held back from other recommendations (holds_back false), so later snippet/content edits on these pages overlap this experiment's search metrics.",
     "next_action": "Check live headers after deploy; evaluate after 2026-11-20.",
     "baseline": {
       "window": [
@@ -299,7 +301,8 @@
       "impressions": 19316,
       "ctr": 0.0025885276454752537,
       "position": 13.541105819010147
-    }
+    },
+    "holds_back": false
   },
   {
     "id": "hub-intros",
@@ -379,7 +382,7 @@
     "window_days": 28,
     "evaluate_after": "2026-11-20",
     "status": "running",
-    "confounders": "word-matching.html is in hero-webp-worksheets and banana/saturn in hero-not-lazy (performance changes, 2026-10-22). Bing may rewrite titles. Click counts are small, so only a large change is readable.",
+    "confounders": "word-matching.html is in hero-webp-worksheets and banana/saturn in hero-not-lazy (performance changes, 2026-10-22). Bing may rewrite titles. Click counts are small, so only a large change is readable. Found after deploy: most of the Bing demand behind word-matching and saturn was an August burst (word-matching: no Bing impressions since 2026-08-28; saturn since 2026-09-18). Banana still has ~15-35 Bing impressions a week. Expect little measurable effect until that demand returns.",
     "next_action": "Request indexing for banana and saturn; evaluate after 2026-11-20 on Bing clicks.",
     "primary_source": "bing"
   }

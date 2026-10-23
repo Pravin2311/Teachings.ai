@@ -128,7 +128,8 @@ Check `seo\logs\weekly.log` (or the newest file in `seo\reports\`) before relyin
    and buckets dated within 7 days of the change are skipped. Set `"primary_source": "bing"` when most of the
    pages' search traffic comes from Bing; the verdict then uses Bing clicks (needs 30+) instead of Search Console.
 3. Pages inside a running experiment are held back from new recommendations, so the experiment
-   stays readable.
+   stays readable. For performance-only changes (caching, image loading), set `"holds_back": false`.
+   Otherwise a site-wide experiment would freeze every page for a month.
 4. When an experiment is evaluated, set `status` to `kept`, `revised` or `reverted` and write the
    `next_action`. A good result is evidence, not proof that the change caused it.
 
