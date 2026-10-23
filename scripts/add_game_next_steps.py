@@ -11,7 +11,8 @@ a next step and gives crawlers a path from these pages into the lessons.
 Only the pages in NEXT_STEPS are changed; the other root game pages are
 left as they are so they can serve as a comparison group (see
 seo/experiments.json, game-next-steps). The block is inserted just before
-the "<!-- Footer -->" comment; the game itself is untouched. Re-running is
+the "<!-- Footer -->" comment (or before </body> on pages that have
+no footer); the game itself is untouched. Re-running is
 safe: pages that already have the block are skipped.
 
 Usage:
@@ -87,7 +88,42 @@ NEXT_STEPS = {
         ("/learn/phonics/index.html", "Phonics: A to Z letter sounds"),
         ("/word-matching.html", "Word Matching game"),
     ],
+    # second batch (2026-10-23): full-screen games with no header or footer,
+    # so the block goes just before </body>
+    "mirror-words-learning.html": [
+        ("/phonic-words.html", "Sound & Blend phonics game"),
+        ("/sight.html", "Sight Words game"),
+        ("/word-matching.html", "Word Matching game"),
+        ("/learn/phonics/index.html", "Phonics: A to Z letter sounds"),
+    ],
+    "phonic-numbers.html": [
+        ("/learn/numbers/index.html", "Numbers 0 to 10: lessons"),
+        ("/numbers.html", "Numbers scratch game"),
+        ("/match-numbers.html", "Number Match game"),
+        ("/counting.html", "Counting game"),
+    ],
+    "phonic-rhyming.html": [
+        ("/rhyming.html", "Rhyming words game"),
+        ("/phonic-letter-sound.html", "Letter Sounds A to Z game"),
+        ("/learn/phonics/index.html", "Phonics: A to Z letter sounds"),
+        ("/word-matching.html", "Word Matching game"),
+    ],
+    "phonic-segmenting.html": [
+        ("/phonic-words.html", "Sound & Blend phonics game"),
+        ("/phonic-letter-sound.html", "Letter Sounds A to Z game"),
+        ("/sight.html", "Sight Words game"),
+        ("/learn/phonics/index.html", "Phonics: A to Z letter sounds"),
+    ],
+    "tracing-letters-and-numbers.html": [
+        ("/learn/alphabets/index.html", "Alphabet A to Z: lessons"),
+        ("/learn/numbers/index.html", "Numbers 0 to 10: lessons"),
+        ("/worksheets/alphabet-tracing.html", "Printable alphabet tracing worksheet"),
+        ("/worksheets/number-writing-practice.html", "Printable number writing worksheet"),
+    ],
 }
+# pages without a "<!-- Footer -->" comment: insert before </body> instead
+BODY_END = {"mirror-words-learning.html", "phonic-numbers.html", "phonic-rhyming.html",
+            "phonic-segmenting.html", "tracing-letters-and-numbers.html"}
 
 LINK_STYLE = ("display:inline-block;padding:12px 16px;background:#fff;border:1px solid #e0e0f0;"
               "border-radius:8px;color:#1B2A5B;text-decoration:none;font-weight:bold;"
@@ -98,7 +134,7 @@ def block(links):
     items = "\n".join(f'    <li><a href="{href}" style="{LINK_STYLE}">{html.escape(text)}</a></li>'
                       for href, text in links)
     return (f"{MARKER}\n"
-            f'<section class="next-steps-box" style="max-width:640px;margin:20px auto;padding:0 24px;">\n'
+            f'<section class="next-steps-box" style="width:100%;box-sizing:border-box;max-width:640px;margin:20px auto;padding:0 24px;">\n'
             f'  <h2 style="font-size:1.25em;color:#1B2A5B;">📚 Keep Learning</h2>\n'
             f'  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px;">\n'
             f"{items}\n"
@@ -118,10 +154,11 @@ def main():
             src = fh.read()
         if MARKER in src:
             continue
-        if src.count(ANCHOR) != 1:
-            print(f"SKIP {page}: expected exactly one {ANCHOR}")
+        anchor = "</body>" if page in BODY_END else ANCHOR
+        if src.count(anchor) != 1:
+            print(f"SKIP {page}: expected exactly one {anchor}")
             continue
-        new = src.replace(ANCHOR, block(links) + ANCHOR, 1)
+        new = src.replace(anchor, block(links) + anchor, 1)
         changed.append(page)
         if not DRY_RUN:
             with open(fp, "w", encoding="utf-8", newline="") as fh:

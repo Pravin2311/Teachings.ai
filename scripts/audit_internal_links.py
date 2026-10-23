@@ -119,7 +119,7 @@ def main():
     # aren't orphans even though nothing links to them
     orphans = sorted(f for f in files if len(inbound[f]) == 0 and f not in redirected)
     thin = sorted(files, key=lambda f: len(outbound[f]))
-    thin = [f for f in thin if len(outbound[f]) < MIN_OUTBOUND]
+    thin = [f for f in thin if len(outbound[f]) < MIN_OUTBOUND and f not in redirected]
 
     print(f"Total HTML pages: {len(files)}")
     print(f"Pages with 0 inbound internal links (orphans): {len(orphans)}")
