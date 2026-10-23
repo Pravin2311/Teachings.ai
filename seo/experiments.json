@@ -385,5 +385,25 @@
     "confounders": "word-matching.html is in hero-webp-worksheets and banana/saturn in hero-not-lazy (performance changes, 2026-10-22). Bing may rewrite titles. Click counts are small, so only a large change is readable. Found after deploy: most of the Bing demand behind word-matching and saturn was an August burst (word-matching: no Bing impressions since 2026-08-28; saturn since 2026-09-18). Banana still has ~15-35 Bing impressions a week. Expect little measurable effect until that demand returns.",
     "next_action": "Request indexing for banana and saturn; evaluate after 2026-11-20 on Bing clicks.",
     "primary_source": "bing"
+  },
+  {
+    "id": "ctr-batch-2",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/learn/(vehicles/airplane|fruits/apple)\\.html$",
+    "primary_source": "bing",
+    "change": "Question-led titles and answer-first descriptions: airplane.html 'How Do Airplanes Fly? Airplanes for Kids: Lift, Parts & Facts'; apple.html 'Apple Facts for Kids: Health Benefits, Types & How Apples Grow', description leading with fiber, vitamin C and floating (25% air). Title, description, og and twitter tags only.",
+    "hypothesis": "Flagged by the weekly report's Bing check: over ~13 weeks airplane.html had 622 impressions / 12 clicks at avg position 6.0 (site peers at that position: ~28 clicks expected), apple.html 289 / 3 (~13 expected). The old titles already contained the query words, so this tests whether leading with the question and a direct answer lifts CTR at the same positions. Weaker hypothesis than ctr-batch-1.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "impressions",
+      "position"
+    ],
+    "primary_measure_outside_gsc": "Bing page clicks vs the rest of the site (weekly report, Bing table). Airplane demand is steady (30-96 Bing impressions/week since July); apple fell from 30-55/week in September to 3/week in October.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "proposed",
+    "confounders": "Both pages are in hero-not-lazy (performance, 2026-10-22). Low CTR at positions 6-9 may be mostly position and SERP features, not the snippet. Apple's seasonal decline means its result may be unreadable.",
+    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after, status running."
   }
 ]
