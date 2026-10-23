@@ -239,6 +239,36 @@
     "ga4_engagement": {
       "control_regex": "^/",
       "note": "Control = organic sessions landing on any other page (treatment pages are matched first; '(not set)' is excluded). The 32 untreated root game pages had only 26 organic sessions in the 28 days before, too few to compare."
+    },
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 0,
+      "impressions": 50,
+      "ctr": 0.0,
+      "position": 15.7
+    },
+    "ga4_baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "treatment": {
+        "sessions": 76.0,
+        "screenPageViews": 223.0,
+        "engagedSessions": 50.0,
+        "views_per_session": 2.934,
+        "engaged_rate": 0.6579
+      },
+      "control": {
+        "sessions": 199.0,
+        "screenPageViews": 336.0,
+        "engagedSessions": 129.0,
+        "views_per_session": 1.688,
+        "engaged_rate": 0.6482
+      }
     }
   },
   {
@@ -259,7 +289,17 @@
     "evaluate_after": "2026-11-20",
     "status": "running",
     "confounders": "Site-wide, so there is no control group; deployed during hero-not-lazy and hero-webp-worksheets (PSI lab LCP uses a cold cache, so those lab measurements are unaffected).",
-    "next_action": "Check live headers after deploy; evaluate after 2026-11-20."
+    "next_action": "Check live headers after deploy; evaluate after 2026-11-20.",
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 50,
+      "impressions": 19316,
+      "ctr": 0.0025885276454752537,
+      "position": 13.541105819010147
+    }
   },
   {
     "id": "hub-intros",
@@ -279,7 +319,17 @@
     "evaluate_after": "2026-11-20",
     "status": "running",
     "confounders": "Google may crawl the hubs anyway over time; image-cache-week deployed the same day.",
-    "next_action": "Request indexing for both hubs; re-inspect weekly; evaluate after 2026-11-20."
+    "next_action": "Request indexing for both hubs; re-inspect weekly; evaluate after 2026-11-20.",
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    }
   },
   {
     "id": "numbers-blog-links",
@@ -299,6 +349,16 @@
     "evaluate_after": "2026-11-20",
     "status": "running",
     "confounders": "Request indexing, if done manually, would have the same effect and can't be separated.",
-    "next_action": "Re-inspect the two posts weekly; evaluate after 2026-11-20."
+    "next_action": "Re-inspect the two posts weekly; evaluate after 2026-11-20.",
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    }
   }
 ]
