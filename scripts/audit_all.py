@@ -58,7 +58,7 @@ CHECKS = [
     ]),
     ("audit_internal_links.py", [
         (r"Broken internal links[^:]*:\s+(\d+)", "broken internal links", 0, True),
-        (r"orphans\):\s+(\d+)", "orphan pages", 3, False),
+        (r"orphans\):\s+(\d+)", "orphan pages", 0, False),
     ]),
     ("audit_performance.py", [
         (r"duplicate <script src>[^:]*:\s+(\d+)", "pages with duplicate scripts", 0, True),

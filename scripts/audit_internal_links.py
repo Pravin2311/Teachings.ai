@@ -115,7 +115,9 @@ def main():
             outbound[f].add(target)
             inbound[target].add(f)
 
-    orphans = sorted(f for f in files if len(inbound[f]) == 0)
+    # files whose URL vercel.json redirects can never be visited, so they
+    # aren't orphans even though nothing links to them
+    orphans = sorted(f for f in files if len(inbound[f]) == 0 and f not in redirected)
     thin = sorted(files, key=lambda f: len(outbound[f]))
     thin = [f for f in thin if len(outbound[f]) < MIN_OUTBOUND]
 
