@@ -255,5 +255,23 @@
     "status": "running",
     "confounders": "Site-wide, so there is no control group; deployed during hero-not-lazy and hero-webp-worksheets (PSI lab LCP uses a cold cache, so those lab measurements are unaffected).",
     "next_action": "Check live headers after deploy; evaluate after 2026-11-20."
+  },
+  {
+    "id": "hub-intros",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/(interactive|science)/index\\.html$",
+    "change": "Added a short intro section (what the hub contains, how to choose, where to start, with links to each child page) to interactive/index.html (169 -> 321 words) and science/index.html (211 -> 383 words).",
+    "hypothesis": "Both hubs are 'Discovered - currently not indexed' and were the thinnest hubs on the site. A clearer description of the section may help them get crawled and indexed; their child pages may follow.",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "position"
+    ],
+    "primary_measure_outside_gsc": "URL Inspection coverage state and last crawl for the two hubs and their 14 child pages, re-checked weekly. Only 2 pages, so this is a case observation, not a statistical test.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "proposed",
+    "confounders": "Google may crawl the hubs anyway over time; image-cache-week deployed the same day.",
+    "next_action": "Not deployed. On deploy: set date, commits, evaluate_after, status running; then Request indexing for both hubs."
   }
 ]
