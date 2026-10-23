@@ -235,5 +235,23 @@
     "status": "running",
     "confounders": "Adds internal links to hubs in 2026-10-18-unindexed-hubs (learn/animals, learn/numbers, learn/body-parts, learn/phonics), which can speed their crawling and blur that experiment. Low traffic: about 100 organic sessions/28 days on these pages, so only a large change is detectable.",
     "next_action": "Interim check weekly; evaluate after 2026-11-20."
+  },
+  {
+    "id": "image-cache-week",
+    "date": null,
+    "commits": [],
+    "pages_regex": ".*",
+    "change": "vercel.json: images (png/jpg/jpeg/webp/gif/svg/ico/avif) served with Cache-Control 'public, max-age=604800, stale-while-revalidate=86400' instead of Vercel's default max-age=0, must-revalidate.",
+    "hypothesis": "Repeat page views and return visits stop revalidating every image, so they load faster and use less bandwidth. Search metrics are not expected to move.",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "position"
+    ],
+    "primary_measure_outside_gsc": "Live response headers on sample images; Vercel bandwidth and CrUX/PSI field LCP over 28 days. Trade-off: an image replaced under the same file name can take up to a week to update for returning visitors.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "proposed",
+    "confounders": "Site-wide, so there is no control group; deployed during hero-not-lazy and hero-webp-worksheets (PSI lab LCP uses a cold cache, so those lab measurements are unaffected).",
+    "next_action": "On deploy: set date, commits, evaluate_after, status running."
   }
 ]

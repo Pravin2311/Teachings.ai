@@ -6,5 +6,11 @@
     { "source": "/furits-vegetables-sorting.html", "destination": "/fruits-vegetables-sorting.html", "permanent": true },
     { "source": "/learn/electronics/smat-watch.html", "destination": "/learn/electronics/smart-watch.html", "permanent": true },
     { "source": "/Blog/scratch-games-to-learn-alphabets-numbers-aminals-shapes.html", "destination": "/Blog/scratch-games-to-learn-alphabets-numbers-animals-shapes.html", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|avif)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    }
   ]
 }
