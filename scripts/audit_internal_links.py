@@ -9,8 +9,11 @@ Builds a full internal link graph (every <a href> that resolves to a local
 
 Resolution handles: relative paths, root-relative "/..." paths, links with
 trailing "/index.html" vs directory form, "#fragment" and "?query" stripping,
-and absolute teachings.ai URLs.
+and absolute teachings.ai URLs. Extensionless page links (e.g. /body-parts)
+count as broken unless they name a directory or a vercel.json redirect
+source, matching how Vercel serves the site.
 """
+import json
 import os
 import re
 import sys
@@ -22,6 +25,7 @@ MIN_OUTBOUND = 3
 
 HREF_RE = re.compile(r'href=(["\'])(.*?)\1', re.IGNORECASE)
 DOMAIN_RE = re.compile(r'^https?://(www\.)?teachings\.ai', re.IGNORECASE)
+COMMENT_RE = re.compile(r'<!--.*?-->', re.DOTALL)
 
 
 def all_html_files():
@@ -66,13 +70,25 @@ def resolve_href(href, source_file):
     if target == "" or target.endswith("/"):
         target = target + "index.html"
     if not target.endswith(".html"):
-        return None
+        if os.path.splitext(target)[1]:
+            return None  # an asset (.css, .pdf, .xml ...), not a page
+        if os.path.isdir(os.path.join(ROOT, target)):
+            return normalize(target + "/index.html")
+        # extensionless page URL: Vercel has no clean URLs here, so it 404s
+        # unless vercel.json redirects it
     return normalize(target)
+
+
+def redirect_sources():
+    with open(os.path.join(ROOT, "vercel.json"), encoding="utf-8") as fh:
+        config = json.load(fh)
+    return {normalize(r["source"]) for r in config.get("redirects", [])}
 
 
 def main():
     files = all_html_files()
     file_set = set(files)
+    redirected = redirect_sources()
     outbound = defaultdict(set)
     inbound = defaultdict(set)
     broken_links = defaultdict(list)
@@ -84,12 +100,14 @@ def main():
         except Exception as e:
             print(f"ERROR reading {f}: {e}")
             continue
-        for m in HREF_RE.finditer(content):
+        for m in HREF_RE.finditer(COMMENT_RE.sub("", content)):
             href = m.group(2)
             target = resolve_href(href, f)
             if target is None:
                 continue
             if target == f:
+                continue
+            if target in redirected:
                 continue
             if target not in file_set:
                 broken_links[f].append(target)
@@ -127,7 +145,6 @@ def main():
               f"pages with exactly 1 inbound: {sum(1 for c in counts if c == 1)}")
 
     if "--save" in sys.argv:
-        import json
         out = {
             "orphans": orphans,
             "thin": {f: len(outbound[f]) for f in thin},
