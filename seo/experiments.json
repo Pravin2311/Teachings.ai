@@ -658,6 +658,28 @@
     "status": "running",
     "confounders": "Strong seasonality (January classroom penguin units), so year-over-year only. Tiny baseline (1 click). Also in hero-not-lazy and image-cache-week, which touch images only.",
     "next_action": "Check coverage state after 2026-11-25. Full verdict in early March 2027: Bing Jan-Feb 2027 vs Jan-Feb 2026.",
-    "holds_back": false
+    "holds_back": true
+  },
+  {
+    "id": "ctr-ai-page",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/learn/electronics/ai\\.html$",
+    "primary_source": "bing",
+    "change": "Title 'AI for Kids: What Is Artificial Intelligence? Facts' -> 'Artificial Intelligence Facts for Kids: What Is AI?'. Description now opens with a direct answer taken from the page (computers that learn from examples, not just fixed rules) and names what the page covers. og/twitter tags aligned. No body change.",
+    "hypothesis": "From the 2026-10-28 audit: on Bing the page had 115 impressions and 1 click at average position 7.0 over the 12 weekly buckets to 2026-10-16, below the site's other pages at that position (leave-one-out peer test, about 5 expected). Its main Bing query, 'artificial intelligence facts for kids', had 75 impressions, 0 clicks, position 7.0. A title that matches that query word for word should earn more clicks at the same position.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "ctr",
+      "impressions",
+      "position"
+    ],
+    "primary_measure_outside_gsc": "Bing clicks and CTR for the page, 6-8 weekly buckets after deploy vs the 12 buckets before. Small numbers: a verdict needs a clear jump (several clicks), not 1-2.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "planned",
+    "confounders": "Very low volume, so likely inconclusive at 28 days; extend to 8 weeks. Bing may rewrite titles. Also in hero-not-lazy and image-cache-week (images only).",
+    "next_action": "On deploy, set date, commits, evaluate_after (date + 28 days) and status running.",
+    "holds_back": true
   }
 ]
