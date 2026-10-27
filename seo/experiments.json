@@ -635,5 +635,27 @@
     "confounders": "New URL with no baseline. Indexing of new pages has been slow (March batch 37% indexed). Low expected volume, so the result may be descriptive only for months.",
     "next_action": "Request indexing; evaluate after 2026-11-24 on GA4 landing sessions and views per session. Use this page as the main link target in outreach (ISTE listing, teacher communities).",
     "holds_back": false
+  },
+  {
+    "id": "penguin-refresh",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/learn/animals/penguin\\.html$",
+    "primary_source": "bing",
+    "change": "Rewrote /learn/animals/penguin.html (388 -> ~1,270 words) to answer the queries it got last winter: facts at a glance, how many kinds (18, noting the 17/18 disagreement) with a 9-row types table, habitat (ocean vs land/ice, burrows), what they eat (no teeth, salt gland), a food chain and interdependence section, how they stay warm, four graded classroom activities and a 6-question FAQ with matching FAQPage schema. New title 'Penguins for Kids: Facts, Types, Habitat and Food Chain'. Hero image, ad slots and URL unchanged. Also fixed the birds hub hasPart URL (/learn/birds/penguin.html, a 404) to point at this page.",
+    "hypothesis": "Bing showed the page 229 times in January 2026 and 61 in February (1 click), for queries like 'penguin facts for kids' (pos 9.2), 'penguins for kids' (6.2), 'penguin habitat for kids', 'penguin interdependence for kids' and 'what do penguins eat for kids'. The old page barely covered habitat, types or food chains. Answering those directly should raise Bing CTR and clicks in the January 2027 peak; Google may move it out of Crawled - currently not indexed.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "impressions",
+      "ctr",
+      "coverage_state"
+    ],
+    "primary_measure_outside_gsc": "Bing Webmaster query data for January-February 2027 against January-February 2026 (229 + 61 impressions, 1 click). Seasonal, so the 28-day window only checks indexing; the real verdict is after February 2027.",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "planned",
+    "confounders": "Strong seasonality (January classroom penguin units), so year-over-year only. Tiny baseline (1 click). Also in hero-not-lazy and image-cache-week, which touch images only.",
+    "next_action": "On deploy, set date, commits, evaluate_after and status running; request indexing in GSC and submit the URL to Bing. Re-evaluate in early March 2027.",
+    "holds_back": false
   }
 ]
