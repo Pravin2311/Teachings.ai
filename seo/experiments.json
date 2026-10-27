@@ -612,5 +612,26 @@
         "impressions": 3493
       }
     }
+  },
+  {
+    "id": "classroom-games-page",
+    "date": null,
+    "commits": [],
+    "pages_regex": "/teachers/free-classroom-games\\.html$",
+    "change": "New page /teachers/free-classroom-games.html: all 45 games grouped by skill (letters and phonics, reading, math, shapes/colors/patterns, sorting, science and world) with what students do, stated age, and suggested setting (whole class, turns at the board, centers, early finishers), plus a projector setup checklist and an honest ads note. Linked from the teachers hub (card + CollectionPage hasPart) and the Keep Exploring list of games-library/learning-games-by-age-and-skill; added to the sitemap.",
+    "hypothesis": "From the 2026-10-27 strategy: the organic audience looks like teachers on classroom desktops (86% desktop, ~77% via Bing-powered engines, ~11 organic sessions/day on weekdays vs ~7 at weekends). Direct search demand for classroom-game queries is small (a few Bing queries such as 'simple interactive classroom game for grade 1 about colors', 4 impressions), so this is not a traffic play. It is a page teachers can bookmark and other sites can link to. Expected: sessions landing on it go on to a game (high views per session), plus any earned links or referrals.",
+    "metric": "engagement",
+    "secondary_metrics": [
+      "coverage_state",
+      "impressions",
+      "referral_links"
+    ],
+    "primary_measure_outside_gsc": "GA4 sessions landing on the page and their views per session; outbound clicks to games. Search Console and Bing impressions are secondary. Any new external links to the page (manual check).",
+    "window_days": 28,
+    "evaluate_after": null,
+    "status": "planned",
+    "confounders": "New URL with no baseline. Indexing of new pages has been slow (March batch 37% indexed). Low expected volume, so the result may be descriptive only for months.",
+    "next_action": "On deploy, set date, commits, evaluate_after (date + 28 days) and status running. Use this page as the main link target in outreach (ISTE listing, teacher communities).",
+    "holds_back": false
   }
 ]
