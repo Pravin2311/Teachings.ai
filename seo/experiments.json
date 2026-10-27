@@ -31,6 +31,17 @@
       "impressions": 14795,
       "ctr": 0.0017573504562352145,
       "position": 9.371071307874281
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 1,
+        "impressions": 239
+      },
+      "control": {
+        "clicks": 163,
+        "impressions": 3263
+      }
     }
   },
   {
@@ -62,6 +73,17 @@
       "impressions": 2894,
       "ctr": 0.0017277125086385626,
       "position": 16.60884588804423
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 164,
+        "impressions": 3502
+      }
     }
   },
   {
@@ -93,6 +115,17 @@
       "impressions": 1863,
       "ctr": 0.00322061191626409,
       "position": 18.882984433709073
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 4,
+        "impressions": 181
+      },
+      "control": {
+        "clicks": 160,
+        "impressions": 3321
+      }
     }
   },
   {
@@ -124,6 +157,17 @@
       "impressions": 528,
       "ctr": 0.005681818181818182,
       "position": 19.625
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 164,
+        "impressions": 3502
+      }
     }
   },
   {
@@ -154,6 +198,17 @@
       "impressions": 2,
       "ctr": 0.0,
       "position": 6.0
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 3
+      },
+      "control": {
+        "clicks": 164,
+        "impressions": 3499
+      }
     }
   },
   {
@@ -185,7 +240,18 @@
       "ctr": 0.0032164190534538215,
       "position": 17.008730280287946
     },
-    "holds_back": false
+    "holds_back": false,
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 43,
+        "impressions": 1746
+      },
+      "control": {
+        "clicks": 121,
+        "impressions": 1756
+      }
+    }
   },
   {
     "id": "hero-webp-worksheets",
@@ -216,7 +282,18 @@
       "ctr": 0.0,
       "position": 36.007462686567166
     },
-    "holds_back": false
+    "holds_back": false,
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 1,
+        "impressions": 9
+      },
+      "control": {
+        "clicks": 163,
+        "impressions": 3493
+      }
+    }
   },
   {
     "id": "game-next-steps",
@@ -271,6 +348,17 @@
         "views_per_session": 1.688,
         "engaged_rate": 0.6482
       }
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 100,
+        "impressions": 1141
+      },
+      "control": {
+        "clicks": 64,
+        "impressions": 2361
+      }
     }
   },
   {
@@ -302,7 +390,18 @@
       "ctr": 0.0025885276454752537,
       "position": 13.541105819010147
     },
-    "holds_back": false
+    "holds_back": false,
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 164,
+        "impressions": 3502
+      },
+      "control": {
+        "clicks": 0,
+        "impressions": 0
+      }
+    }
   },
   {
     "id": "hub-intros",
@@ -332,6 +431,17 @@
       "impressions": 0,
       "ctr": 0,
       "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 164,
+        "impressions": 3502
+      }
     }
   },
   {
@@ -362,6 +472,17 @@
       "impressions": 0,
       "ctr": 0,
       "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 4,
+        "impressions": 119
+      },
+      "control": {
+        "clicks": 160,
+        "impressions": 3383
+      }
     }
   },
   {
@@ -384,7 +505,28 @@
     "status": "running",
     "confounders": "word-matching.html is in hero-webp-worksheets and banana/saturn in hero-not-lazy (performance changes, 2026-10-22). Bing may rewrite titles. Click counts are small, so only a large change is readable. Found after deploy: most of the Bing demand behind word-matching and saturn was an August burst (word-matching: no Bing impressions since 2026-08-28; saturn since 2026-09-18). Banana still has ~15-35 Bing impressions a week. Expect little measurable effect until that demand returns.",
     "next_action": "Request indexing for banana and saturn; evaluate after 2026-11-20 on Bing clicks.",
-    "primary_source": "bing"
+    "primary_source": "bing",
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 0,
+      "impressions": 62,
+      "ctr": 0.0,
+      "position": 39.516129032258064
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 1,
+        "impressions": 82
+      },
+      "control": {
+        "clicks": 163,
+        "impressions": 3420
+      }
+    }
   },
   {
     "id": "ctr-batch-2",
@@ -406,7 +548,28 @@
     "evaluate_after": "2026-11-20",
     "status": "running",
     "confounders": "Both pages are in hero-not-lazy (performance, 2026-10-22). Low CTR at positions 6-9 may be mostly position and SERP features, not the snippet. Apple's seasonal decline means its result may be unreadable.",
-    "next_action": "Evaluate after 2026-11-20 on Bing clicks (airplane mainly; apple likely unreadable)."
+    "next_action": "Evaluate after 2026-11-20 on Bing clicks (airplane mainly; apple likely unreadable).",
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0.0,
+      "position": 32.666666666666664
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 4,
+        "impressions": 343
+      },
+      "control": {
+        "clicks": 160,
+        "impressions": 3159
+      }
+    }
   },
   {
     "id": "worksheet-links-1",
@@ -427,6 +590,27 @@
     "evaluate_after": "2026-11-20",
     "status": "running",
     "confounders": "All targets are also in hero-webp-worksheets and hero-not-lazy (performance changes, 2026-10-22, impressions metric); read those on worksheets outside this batch. Manual indexing requests for these URLs would confound this test, so leave them out of the request list. 21 of 25 links come from phonics pages that all point at one workbook.",
-    "next_action": "Re-inspect the 6 unindexed targets in the weekly run; evaluate after 2026-11-20. Leave these URLs out of manual indexing requests."
+    "next_action": "Re-inspect the 6 unindexed targets in the weekly run; evaluate after 2026-11-20. Leave these URLs out of manual indexing requests.",
+    "baseline": {
+      "window": [
+        "2026-09-25",
+        "2026-10-22"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 1,
+        "impressions": 9
+      },
+      "control": {
+        "clicks": 163,
+        "impressions": 3493
+      }
+    }
   }
 ]
