@@ -638,8 +638,10 @@
   },
   {
     "id": "penguin-refresh",
-    "date": null,
-    "commits": [],
+    "date": "2026-10-28",
+    "commits": [
+      "059ee47"
+    ],
     "pages_regex": "/learn/animals/penguin\\.html$",
     "primary_source": "bing",
     "change": "Rewrote /learn/animals/penguin.html (388 -> ~1,270 words) to answer the queries it got last winter: facts at a glance, how many kinds (18, noting the 17/18 disagreement) with a 9-row types table, habitat (ocean vs land/ice, burrows), what they eat (no teeth, salt gland), a food chain and interdependence section, how they stay warm, four graded classroom activities and a 6-question FAQ with matching FAQPage schema. New title 'Penguins for Kids: Facts, Types, Habitat and Food Chain'. Hero image, ad slots and URL unchanged. Also fixed the birds hub hasPart URL (/learn/birds/penguin.html, a 404) to point at this page.",
@@ -652,10 +654,10 @@
     ],
     "primary_measure_outside_gsc": "Bing Webmaster query data for January-February 2027 against January-February 2026 (229 + 61 impressions, 1 click). Seasonal, so the 28-day window only checks indexing; the real verdict is after February 2027.",
     "window_days": 28,
-    "evaluate_after": null,
-    "status": "planned",
+    "evaluate_after": "2026-11-25",
+    "status": "running",
     "confounders": "Strong seasonality (January classroom penguin units), so year-over-year only. Tiny baseline (1 click). Also in hero-not-lazy and image-cache-week, which touch images only.",
-    "next_action": "On deploy, set date, commits, evaluate_after and status running; request indexing in GSC and submit the URL to Bing. Re-evaluate in early March 2027.",
+    "next_action": "Check coverage state after 2026-11-25. Full verdict in early March 2027: Bing Jan-Feb 2027 vs Jan-Feb 2026.",
     "holds_back": false
   }
 ]
