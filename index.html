@@ -16,21 +16,21 @@
 <meta name="google-adsense-account" content="ca-pub-7495143337429327">
 
 <!-- SEO & Social -->
-<meta name="description" content="Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities to learn numbers, alphabets, animals, and colors.">
+<meta name="description" content="Free learning games and printable worksheets for kids ages 3-10: alphabet, numbers, phonics, shapes and science. No sign-up. Made for parents and teachers.">
   <meta property="og:site_name" content="Teachings.ai">
 <meta name="keywords" content="kids learning app, educational games, children's app, preschool learning, kindergarten learning, interactive education, fun learning, primary school, early learning">
 <meta name="author" content="Teachings AI">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
-<meta property="og:title" content="Teachings.AI - Fun & Interactive Learning for Kids">
-<meta property="og:description" content="Interactive learning web app for kids aged 3-10. Engaging games for alphabets, numbers, and more.">
+<meta property="og:title" content="Kids Learning: Alphabets, Numbers &amp; Fun Worksheets">
+<meta property="og:description" content="Free learning games and printable worksheets for kids ages 3-10: alphabet, numbers, phonics, shapes and science. No sign-up. Made for parents and teachers.">
 <meta property="og:image" content="https://www.teachings.ai/assets/images/app_icon_512.png">
 <meta property="og:url" content="https://www.teachings.ai/">
 <meta property="og:type" content="website">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Teachings.AI - Fun & Interactive Learning for Kids">
-<meta name="twitter:description" content="Interactive learning web app for kids aged 3-10.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kids Learning: Alphabets, Numbers &amp; Fun Worksheets">
+<meta name="twitter:description" content="Free learning games and printable worksheets for kids ages 3-10: alphabet, numbers, phonics, shapes and science. No sign-up. Made for parents and teachers.">
 <meta name="twitter:image" content="https://www.teachings.ai/assets/images/app_icon_512.png">
 
 <!-- Preload Fonts & CSS -->
@@ -213,11 +213,20 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "LearningResource",
+      "@type": "WebApplication",
       "@id": "https://www.teachings.ai/#app",
       "name": "Teachings.AI",
+      "url": "https://www.teachings.ai/",
+      "applicationCategory": "EducationalApplication",
       "operatingSystem": "All",
-      "applicationCategory": "Educational",
+      "browserRequirements": "Requires a modern web browser",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "suggestedMinAge": 3,
+        "suggestedMaxAge": 10
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -226,13 +235,13 @@
       "publisher": {
         "@id": "https://www.teachings.ai/#organization"
       },
-      "description": "Interactive learning platform for kids aged 3-10 with games for alphabets, numbers, animals, and more."
+      "description": "Free learning games and printable worksheets for kids aged 3-10: alphabet, numbers, phonics, shapes and science."
     },
     {
       "@type": "Organization",
       "@id": "https://www.teachings.ai/#organization",
       "name": "Teachings.AI",
-      "url": "https://www.teachings.ai",
+      "url": "https://www.teachings.ai/",
       "logo": "https://www.teachings.ai/assets/images/app_icon_512.png",
       "sameAs": [
         "https://twitter.com/TeachingsAI",
@@ -245,7 +254,7 @@
     {
       "@type": "WebSite",
       "@id": "https://www.teachings.ai/#website",
-      "url": "https://www.teachings.ai",
+      "url": "https://www.teachings.ai/",
       "name": "Teachings.AI",
       "publisher": {
         "@id": "https://www.teachings.ai/#organization"
