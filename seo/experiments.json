@@ -683,5 +683,29 @@
     "confounders": "Very low volume, so likely inconclusive at 28 days; extend to 8 weeks. Bing may rewrite titles. Also in hero-not-lazy and image-cache-week (images only).",
     "next_action": "Evaluate after 2026-11-25 on Bing page stats; if inconclusive, extend to 8 weekly buckets (about 2026-12-23).",
     "holds_back": true
+  },
+  {
+    "id": "tiger-refresh",
+    "date": "2026-10-28",
+    "commits": [
+      "7759093"
+    ],
+    "pages_regex": "/learn/animals/tiger\\.html$",
+    "primary_source": "bing",
+    "change": "Rewrote /learn/animals/tiger.html (~350 -> ~1,370 words): facts at a glance, what tigers eat, how they hunt, a food chain section, habitat, a kinds-of-tigers table (incl. white tigers), cubs, amazing facts, four graded classroom activities and a 6-question FAQ with matching FAQPage schema. New title 'Tiger Facts for Kids: What Tigers Eat and Where They Live'. Removed the unsourced 30-foot leap claim. Hero image, ad slots and URL unchanged.",
+    "hypothesis": "Bing showed the page for 'what do tigers eat for kids' in 8 separate months (30 impressions, about position 8.4, 0 clicks), and the old page answered it in one sentence. Page impressions were 140 since 2025-09, 81 of them in January 2026. A fuller diet/hunting answer should improve Bing position and clicks, mainly in the January 2027 peak; Google may move it out of Discovered - currently not indexed.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "impressions",
+      "ctr",
+      "coverage_state"
+    ],
+    "primary_measure_outside_gsc": "Bing Webmaster page and query data for January-February 2027 against January-February 2026 (page: 81 + 11 impressions, 0 clicks). The 28-day window only checks indexing; the real verdict is after February 2027.",
+    "window_days": 28,
+    "evaluate_after": "2026-11-25",
+    "status": "running",
+    "confounders": "Seasonality (January peak), so year-over-year only. Tiny baseline (0 Bing clicks Jan-Feb 2026, 1 click all year). No Google data (not indexed as of 2026-10-23). Also in hero-not-lazy and image-cache-week, which touch images only.",
+    "next_action": "Check coverage state after 2026-11-25. Full verdict in early March 2027: Bing Jan-Feb 2027 vs Jan-Feb 2026.",
+    "holds_back": true
   }
 ]
