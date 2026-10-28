@@ -731,5 +731,29 @@
     "confounders": "Description and schema changed together; schema should not affect CTR without a rich result. Bing and Google may rewrite the snippet. Also in image-cache-week (images only). Homepage brand-name queries may dominate, so read non-brand queries separately.",
     "next_action": "Evaluate after 2026-11-25 on Bing page stats; if inconclusive, extend to 8 weekly buckets.",
     "holds_back": true
+  },
+  {
+    "id": "breadcrumbs-sweep",
+    "date": "2026-10-28",
+    "commits": [
+      "792f4a9"
+    ],
+    "pages_regex": "^/(Blog/human-body-organs-learning\\.html|Blog/index\\.html|Blog/scratch-games-to-learn-alphabets-numbers-animals-shapes\\.html|Grammar\\.html|about\\.html|ages/index\\.html|animals-birds-sorting\\.html|birds\\.html|coding/index\\.html|colours-sorting\\.html|curriculum/index\\.html|disclaimer\\.html|flags-of-the-countries\\.html|games-library/index\\.html|kindergarten/index\\.html|learn/alphabets/index\\.html|learn/birds/index\\.html|learn/colors/index\\.html|learn/country/index\\.html|learn/fantasy/index\\.html|learn/fruits/index\\.html|learn/index\\.html|learn/nature/index\\.html|learn/organs/index\\.html|learn/phonics/index\\.html|learn/planets/index\\.html|learn/plants/index\\.html|learn/publicservice/index\\.html|learn/scientists/index\\.html|learn/vegetables/index\\.html|learn/vehicles/index\\.html|lesson-plans/index\\.html|match-animals\\.html|match-shapes\\.html|match-words\\.html|math\\.html|math/index\\.html|nature-explorer\\.html|numbers-alphabets-sorting\\.html|numbers\\.html|odd-even-sorting\\.html|odd-even\\.html|parents/index\\.html|phonic-letter-sound\\.html|phonic-words\\.html|phonics\\.html|planets\\.html|plants\\.html|preschool/index\\.html|privacy-policy\\.html|publicservice\\.html|reading/index\\.html|scientists\\.html|seasonal/index\\.html|sentences\\.html|shapes\\.html|sight\\.html|subjects/index\\.html|teachers/index\\.html|vegetables\\.html|vehicles\\.html|worksheets/index\\.html)$",
+    "primary_source": "gsc",
+    "change": "BreadcrumbList JSON-LD added to the 62 unheld sitemap pages without one: 26 root games (Home > Games > game), 16 learn category hubs and learn/index (World of Learning > category), 15 section hubs (Home > hub), Blog index and 2 posts, about, privacy, disclaimer. Names match the trails child pages already use. learn/planets/index.html meta/og/twitter description 170 -> 142 chars. No visible change.",
+    "hypothesis": "Every unheld page now has a breadcrumb trail, so Google can show the site path instead of the raw URL in results. Expect no ranking change; a small CTR lift at most.",
+    "metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "impressions",
+      "position"
+    ],
+    "baseline": "GSC 2026-09-30..2026-10-27 for these 62 pages: 6 clicks, 545 impressions, CTR 1.10%, position 22.1, 38 pages with impressions.",
+    "window_days": 28,
+    "evaluate_after": "2026-11-25",
+    "status": "running",
+    "confounders": "Small sample (6 clicks/28d), so this is a tracking entry rather than a test. Also in image-cache-week. IndexNow resubmission on deploy may prompt recrawls.",
+    "next_action": "On 2026-11-25 check GSC enhancements for breadcrumb errors and compare CTR; no rollback expected.",
+    "holds_back": false
   }
 ]
