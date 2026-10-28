@@ -707,5 +707,29 @@
     "confounders": "Seasonality (January peak), so year-over-year only. Tiny baseline (0 Bing clicks Jan-Feb 2026, 1 click all year). No Google data (not indexed as of 2026-10-23). Also in hero-not-lazy and image-cache-week, which touch images only.",
     "next_action": "Check coverage state after 2026-11-25. Full verdict in early March 2027: Bing Jan-Feb 2027 vs Jan-Feb 2026.",
     "holds_back": true
+  },
+  {
+    "id": "ctr-homepage",
+    "date": "2026-10-28",
+    "commits": [
+      "5b3db0f"
+    ],
+    "pages_regex": "^/(index\\.html)?$",
+    "primary_source": "bing",
+    "change": "Homepage meta description 'Teachings.AI: Interactive learning web app for kids aged 3-10. Engaging games and activities...' -> 'Free learning games and printable worksheets for kids ages 3-10: alphabet, numbers, phonics, shapes and science. No sign-up. Made for parents and teachers.' og/twitter titles and descriptions aligned with the page; twitter:card summary_large_image -> summary (square icon). #app JSON-LD LearningResource -> WebApplication (EducationalApplication, free, ages 3-10); site URLs in JSON-LD end in a slash. Title, H1 and body unchanged.",
+    "hypothesis": "From the 2026-10-28 /seo page audit: the old description sold a generic 'web app' and left out what the site's searchers come for (free printable worksheets, no sign-up, teacher use). Bing, ~62% of organic, usually shows the meta description as the snippet, so naming those should lift homepage CTR at the same position.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "ctr",
+      "impressions",
+      "position"
+    ],
+    "primary_measure_outside_gsc": "Bing clicks and CTR for the homepage, 6-8 weekly buckets after deploy vs the 12 buckets before.",
+    "window_days": 28,
+    "evaluate_after": "2026-11-25",
+    "status": "running",
+    "confounders": "Description and schema changed together; schema should not affect CTR without a rich result. Bing and Google may rewrite the snippet. Also in image-cache-week (images only). Homepage brand-name queries may dominate, so read non-brand queries separately.",
+    "next_action": "Evaluate after 2026-11-25 on Bing page stats; if inconclusive, extend to 8 weekly buckets.",
+    "holds_back": true
   }
 ]
