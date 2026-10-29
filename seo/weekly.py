@@ -136,6 +136,9 @@ def fetch_ga4(gapi, creds, cfg, win):
     # all channels by city, to spot automated traffic (0% engagement from data-centre cities)
     out["city_channel"] = ga.report(prop, s, e, ["city", "sessionDefaultChannelGroup"],
                                     m_core + ["engagementRate"], order_by="sessions", limit=50)
+    # all channels by host, to spot previews/localhost loading the production tag
+    out["host_channel"] = ga.report(prop, s, e, ["hostName", "sessionDefaultChannelGroup"],
+                                    m_core + ["engagementRate"], order_by="sessions", limit=50)
     # page-level ad revenue only works if AdSense is linked to this GA4 property
     try:
         out["ad_pages"] = ga.report(prop, s, e, ["pagePath"],

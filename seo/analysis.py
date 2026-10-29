@@ -331,6 +331,9 @@ def analyze_ga4(snap, cfg):
     # cities sending many sessions with ~0% engagement are almost always bots / data centres
     res["likely_bots"] = [x for x in a.get("city_channel", [])
                           if x["sessions"] >= 30 and x["engagementRate"] < 0.03]
+    # sessions recorded on any host other than the production one (localhost, previews, copies)
+    prod = cfg.get("site_host", "www.teachings.ai")
+    res["other_hosts"] = [x for x in a.get("host_channel", []) if x["hostName"] != prod]
     pages = a.get("ad_pages") or []
     rev = sum(x["totalAdRevenue"] for x in pages)
     if rev > 0:
@@ -1010,6 +1013,11 @@ def render_report(snap, cfg, r, exp_results, prev_plan, run_date):
                  "~0% engagement — " + ", ".join(f"{x['city']} / {x['sessionDefaultChannelGroup']} {x['sessions']:.0f}"
                                                   for x in b[:5]) +
                  ". It inflates all-channel users; the goal metric (organic users) is barely affected.")
+    if ga and ga.get("other_hosts"):
+        h = ga["other_hosts"]
+        L.append(f"- **Sessions on non-production hosts:** {sum(x['sessions'] for x in h):,.0f} sessions (28d) — " +
+                 ", ".join(f"{x['hostName'] or '(empty)'} / {x['sessionDefaultChannelGroup']} {x['sessions']:.0f}"
+                           for x in h[:5]) + ". The GA4 tag runs off the live site; exclude these from engagement KPIs.")
     if ad and ad["other_domains"]:
         L.append("- The AdSense account also served ads on (56 days, excluded above): " +
                  "; ".join(f"{k} — {v[1]:,.0f} page views, {ad['currency']} {v[0]:.2f}"
