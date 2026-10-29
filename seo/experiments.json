@@ -755,5 +755,51 @@
     "confounders": "Small sample (6 clicks/28d), so this is a tracking entry rather than a test. Also in image-cache-week. IndexNow resubmission on deploy may prompt recrawls.",
     "next_action": "On 2026-11-25 check GSC enhancements for breadcrumb errors and compare CTR; no rollback expected.",
     "holds_back": false
+  },
+  {
+    "id": "eye-pair-and-word-match-split",
+    "date": "2026-10-29",
+    "commits": [
+      "506dc99"
+    ],
+    "pages_regex": "/(learn/body-parts/eyes\\.html|learn/organs/eye\\.html|match-words\\.html)$",
+    "primary_source": "gsc",
+    "change": "body-parts/eyes.html title/description/og/twitter now lead with eye colors and blinking; organs/eye.html with how the eye works (pupil, iris, lens, retina), schema description aligned, 'Eyes helps' grammar fix. One contextual link each way between the two eye pages. match-words.html title 'Drag & Drop Word Match Game for Preschoolers (Ages 3-6)' and a link to word-matching.html in its visible FAQ answer.",
+    "hypothesis": "From F2 of the 2026-10-28 delta audit: both eye pages ranked (#33 and #40) for 'facts about the eye for kids' with near-identical titles and no cross-links, splitting signals. Distinct angles plus cross-links should let each page rank for its own queries (eye colors/blinking vs how the eye works) and raise combined impressions and position.",
+    "metric": "impressions",
+    "secondary_metrics": [
+      "position",
+      "clicks",
+      "ctr"
+    ],
+    "window_days": 28,
+    "evaluate_after": "2026-11-26",
+    "status": "running",
+    "confounders": "Very low volume (single-digit impressions per query), so likely inconclusive at 28 days; read the query split between the two eye pages rather than totals. word-matching.html is in ctr-batch-1 and was not edited. Also in hero-not-lazy and image-cache-week (images only).",
+    "next_action": "Evaluate after 2026-11-26: check whether the eye queries separate by page. After ctr-batch-1 ends (2026-11-20), add the reverse link from word-matching.html to match-words.html.",
+    "holds_back": true
+  },
+  {
+    "id": "ctr-yak-page",
+    "date": "2026-10-29",
+    "commits": [
+      "0357e33"
+    ],
+    "pages_regex": "/learn/phonics/yak\\.html$",
+    "primary_source": "gsc",
+    "change": "Title 'Y is for Yak – Fun Phonics for Kids | Teachings.ai' -> 'Y for Yak: Letter Y Sound, Yak Picture & Facts for Kids'. Description names what the page has (yak picture, the 'yuh' sound, where yaks live, how they stay warm, quiz). og/twitter aligned; hero alt 'Yak' -> 'A shaggy yak for Y is for yak'. No body change.",
+    "hypothesis": "From F3 of the 2026-10-28 delta audit: 153 Google impressions, 0 clicks at position 8.6 in 28 days; 'y for yak' 75 impressions at #8.3. A title that starts with the searcher's exact phrase and says there is a picture should earn clicks at the same position.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "ctr",
+      "impressions",
+      "position"
+    ],
+    "window_days": 28,
+    "evaluate_after": "2026-11-26",
+    "status": "running",
+    "confounders": "Low volume: a verdict needs several clicks, not 1-2. Google may rewrite the title. Also in hero-not-lazy and image-cache-week (images only).",
+    "next_action": "Evaluate after 2026-11-26 on Search Console clicks and CTR; if inconclusive, extend to 8 weeks.",
+    "holds_back": true
   }
 ]
