@@ -3568,7 +3568,7 @@
     ],
     "pages_regex": "/learn/phonics/yak\\.html$",
     "primary_source": "gsc",
-    "change": "Title 'Y is for Yak \u2013 Fun Phonics for Kids | Teachings.ai' -> 'Y for Yak: Letter Y Sound, Yak Picture & Facts for Kids'. Description names what the page has (yak picture, the 'yuh' sound, where yaks live, how they stay warm, quiz). og/twitter aligned; hero alt 'Yak' -> 'A shaggy yak for Y is for yak'. No body change.",
+    "change": "Title 'Y is for Yak – Fun Phonics for Kids | Teachings.ai' -> 'Y for Yak: Letter Y Sound, Yak Picture & Facts for Kids'. Description names what the page has (yak picture, the 'yuh' sound, where yaks live, how they stay warm, quiz). og/twitter aligned; hero alt 'Yak' -> 'A shaggy yak for Y is for yak'. No body change.",
     "hypothesis": "From F3 of the 2026-10-28 delta audit: 153 Google impressions, 0 clicks at position 8.6 in 28 days; 'y for yak' 75 impressions at #8.3. A title that starts with the searcher's exact phrase and says there is a picture should earn clicks at the same position.",
     "metric": "clicks",
     "secondary_metrics": [
@@ -3725,5 +3725,38 @@
         "verdict": "interim -- not conclusive yet"
       }
     ]
+  },
+  {
+    "id": "witch-associations",
+    "date": "2026-11-19",
+    "commits": [
+      "fea961a"
+    ],
+    "pages_regex": "/learn/fantasy/witch\\.html$",
+    "primary_source": "gsc",
+    "change": "Title 'Witch for Kids – Fun Facts & Storybook Fantasy Characters' -> 'Things Associated With a Storybook Witch – Witch Facts for Kids'. Description lists the items (broomstick, pointy hat, cauldron, black cat, spell book, wand). og/twitter/LearningResource aligned. Body: new 'Things Associated With a Storybook Witch' list section after the intro.",
+    "hypothesis": "From T2 of the 2026-11-19 weekly report: 'things associated with (a) storybook witch(es)' variants drive nearly all Google impressions at position 5-8 with 0 clicks. A title and list that answer that exact question should earn clicks at the same position.",
+    "metric": "clicks",
+    "secondary_metrics": [
+      "ctr",
+      "impressions",
+      "position"
+    ],
+    "window_days": 28,
+    "evaluate_after": "2026-12-17",
+    "status": "running",
+    "confounders": "Low volume (~370 impressions/28d); query looks seasonal (Halloween quiz), so impressions may fall regardless. Google may rewrite the title. Also in hero-not-lazy and image-cache-week (images only).",
+    "next_action": "Evaluate after 2026-12-17 on Search Console clicks and CTR; if inconclusive, extend to 8 weeks.",
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-10-20",
+        "2026-11-16"
+      ],
+      "clicks": 1,
+      "impressions": 427,
+      "ctr": 0.0023,
+      "position": 5.445
+    }
   }
 ]
