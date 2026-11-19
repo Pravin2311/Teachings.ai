@@ -42,7 +42,129 @@
         "clicks": 163,
         "impressions": 3263
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 26,
+          "post": 22,
+          "expected_from_site_trend": 35.1,
+          "z": -2.21
+        },
+        "impressions": {
+          "pre": 14795,
+          "post": 12723,
+          "expected_from_site_trend": 20147.0,
+          "z": -52.3
+        },
+        "ctr": {
+          "pre": 0.0017573504562352145,
+          "post": 0.0017291519295763577
+        },
+        "position": {
+          "pre": 9.371071307874281,
+          "post": 9.485027116246169
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 239
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3263
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 2,
+              "impressions": 481
+            },
+            "control": {
+              "clicks": 92,
+              "impressions": 3899
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.6,
+            "z": 1.91
+          },
+          "impressions": {
+            "expected_from_site_trend": 285.6,
+            "z": 11.56
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 26,
+          "post": 29,
+          "expected_from_site_trend": 39.0,
+          "z": -1.6
+        },
+        "impressions": {
+          "pre": 14795,
+          "post": 15278,
+          "expected_from_site_trend": 24627.4,
+          "z": -59.58
+        },
+        "ctr": {
+          "pre": 0.0017573504562352145,
+          "post": 0.0018981542086660558
+        },
+        "position": {
+          "pre": 9.371071307874281,
+          "post": 9.583060610027491
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 239
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3263
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 2,
+              "impressions": 786
+            },
+            "control": {
+              "clicks": 148,
+              "impressions": 6710
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.9,
+            "z": 1.15
+          },
+          "impressions": {
+            "expected_from_site_trend": 491.5,
+            "z": 13.29
+          }
+        },
+        "verdict": "no clear effect beyond normal fluctuation"
+      }
+    ]
   },
   {
     "id": "2026-10-17-number-pages",
@@ -84,7 +206,129 @@
         "clicks": 164,
         "impressions": 3502
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 5,
+          "post": 3,
+          "expected_from_site_trend": 6.0,
+          "z": -1.22
+        },
+        "impressions": {
+          "pre": 2894,
+          "post": 2566,
+          "expected_from_site_trend": 3142.7,
+          "z": -10.29
+        },
+        "ctr": {
+          "pre": 0.0017277125086385626,
+          "post": 0.0011691348402182386
+        },
+        "position": {
+          "pre": 16.60884588804423,
+          "post": 13.652377240841776
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3502
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 94,
+              "impressions": 4380
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 5,
+          "post": 3,
+          "expected_from_site_trend": 7.0,
+          "z": -1.53
+        },
+        "impressions": {
+          "pre": 2894,
+          "post": 3210,
+          "expected_from_site_trend": 3795.7,
+          "z": -9.51
+        },
+        "ctr": {
+          "pre": 0.0017277125086385626,
+          "post": 0.0009345794392523365
+        },
+        "position": {
+          "pre": 16.60884588804423,
+          "post": 13.154205607476635
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3502
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 14
+            },
+            "control": {
+              "clicks": 150,
+              "impressions": 7482
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "2026-10-17-shape-pages",
@@ -126,7 +370,129 @@
         "clicks": 160,
         "impressions": 3321
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 6,
+          "post": 3,
+          "expected_from_site_trend": 7.3,
+          "z": -1.59
+        },
+        "impressions": {
+          "pre": 1863,
+          "post": 1552,
+          "expected_from_site_trend": 2014.5,
+          "z": -10.31
+        },
+        "ctr": {
+          "pre": 0.00322061191626409,
+          "post": 0.0019329896907216496
+        },
+        "position": {
+          "pre": 18.882984433709073,
+          "post": 13.786082474226804
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 181
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3321
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 9,
+              "impressions": 1746
+            },
+            "control": {
+              "clicks": 85,
+              "impressions": 2634
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 2.1,
+            "z": 4.72
+          },
+          "impressions": {
+            "expected_from_site_trend": 143.6,
+            "z": 133.74
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 6,
+          "post": 3,
+          "expected_from_site_trend": 8.6,
+          "z": -1.91
+        },
+        "impressions": {
+          "pre": 1863,
+          "post": 1890,
+          "expected_from_site_trend": 2440.9,
+          "z": -11.15
+        },
+        "ctr": {
+          "pre": 0.00322061191626409,
+          "post": 0.0015873015873015873
+        },
+        "position": {
+          "pre": 18.882984433709073,
+          "post": 13.378306878306878
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 181
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3321
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 10,
+              "impressions": 3150
+            },
+            "control": {
+              "clicks": 140,
+              "impressions": 4346
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 3.5,
+            "z": 3.47
+          },
+          "impressions": {
+            "expected_from_site_trend": 236.9,
+            "z": 189.28
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "2026-10-17-kiwi",
@@ -168,7 +534,129 @@
         "clicks": 164,
         "impressions": 3502
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 3,
+          "post": 1,
+          "expected_from_site_trend": 3.6,
+          "z": -1.36
+        },
+        "impressions": {
+          "pre": 528,
+          "post": 639,
+          "expected_from_site_trend": 559.4,
+          "z": 3.36
+        },
+        "ctr": {
+          "pre": 0.005681818181818182,
+          "post": 0.001564945226917058
+        },
+        "position": {
+          "pre": 19.625,
+          "post": 25.433489827856025
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3502
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 94,
+              "impressions": 4380
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-20",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 3,
+          "post": 1,
+          "expected_from_site_trend": 4.2,
+          "z": -1.56
+        },
+        "impressions": {
+          "pre": 528,
+          "post": 756,
+          "expected_from_site_trend": 678.4,
+          "z": 2.98
+        },
+        "ctr": {
+          "pre": 0.005681818181818182,
+          "post": 0.0013227513227513227
+        },
+        "position": {
+          "pre": 19.625,
+          "post": 25.33862433862434
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3502
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 150,
+              "impressions": 7496
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "2026-10-18-unindexed-hubs",
@@ -209,7 +697,129 @@
         "clicks": 164,
         "impressions": 3499
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-21",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 2,
+          "post": 238,
+          "expected_from_site_trend": 2.1,
+          "z": 162.72
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 6.0,
+          "post": 25.823529411764707
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 3
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3499
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 4
+            },
+            "control": {
+              "clicks": 94,
+              "impressions": 4376
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 3.8,
+            "z": 0.13
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-21",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 2,
+          "post": 295,
+          "expected_from_site_trend": 2.6,
+          "z": 182.88
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 6.0,
+          "post": 25.406779661016948
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 3
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3499
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 7
+            },
+            "control": {
+              "clicks": 150,
+              "impressions": 7489
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 6.4,
+            "z": 0.23
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "hero-not-lazy",
@@ -251,7 +861,129 @@
         "clicks": 121,
         "impressions": 1756
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-25",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 22,
+          "post": 24,
+          "expected_from_site_trend": 27.2,
+          "z": -0.61
+        },
+        "impressions": {
+          "pre": 6751,
+          "post": 9532,
+          "expected_from_site_trend": 6541.3,
+          "z": 36.98
+        },
+        "ctr": {
+          "pre": 0.00325877647755888,
+          "post": 0.002517834662190516
+        },
+        "position": {
+          "pre": 16.950229595615465,
+          "post": 18.977444397817877
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 43,
+              "impressions": 1746
+            },
+            "control": {
+              "clicks": 121,
+              "impressions": 1756
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 51,
+              "impressions": 2848
+            },
+            "control": {
+              "clicks": 43,
+              "impressions": 1532
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 15.3,
+            "z": 9.14
+          },
+          "impressions": {
+            "expected_from_site_trend": 1523.3,
+            "z": 33.94
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-25",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 22,
+          "post": 29,
+          "expected_from_site_trend": 32.4,
+          "z": -0.59
+        },
+        "impressions": {
+          "pre": 6751,
+          "post": 11980,
+          "expected_from_site_trend": 8029.7,
+          "z": 44.08
+        },
+        "ctr": {
+          "pre": 0.00325877647755888,
+          "post": 0.002420701168614357
+        },
+        "position": {
+          "pre": 16.950229595615465,
+          "post": 19.080634390651085
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 43,
+              "impressions": 1746
+            },
+            "control": {
+              "clicks": 121,
+              "impressions": 1756
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 90,
+              "impressions": 5018
+            },
+            "control": {
+              "clicks": 60,
+              "impressions": 2478
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 21.3,
+            "z": 14.87
+          },
+          "impressions": {
+            "expected_from_site_trend": 2463.9,
+            "z": 51.46
+          }
+        },
+        "verdict": "better than the site trend predicts (not proof of cause)"
+      }
+    ]
   },
   {
     "id": "hero-webp-worksheets",
@@ -293,7 +1025,129 @@
         "clicks": 163,
         "impressions": 3493
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-25",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 1,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 138,
+          "post": 62,
+          "expected_from_site_trend": 154.0,
+          "z": -7.41
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.016129032258064516
+        },
+        "position": {
+          "pre": 35.86231884057971,
+          "post": 27.70967741935484
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 9
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3493
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 2,
+              "impressions": 10
+            },
+            "control": {
+              "clicks": 92,
+              "impressions": 4370
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.6,
+            "z": 1.91
+          },
+          "impressions": {
+            "expected_from_site_trend": 11.3,
+            "z": -0.38
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-25",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 1,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 138,
+          "post": 72,
+          "expected_from_site_trend": 190.9,
+          "z": -8.6
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.013888888888888888
+        },
+        "position": {
+          "pre": 35.86231884057971,
+          "post": 28.25
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 9
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3493
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 5,
+              "impressions": 24
+            },
+            "control": {
+              "clicks": 145,
+              "impressions": 7472
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.9,
+            "z": 4.36
+          },
+          "impressions": {
+            "expected_from_site_trend": 19.3,
+            "z": 1.08
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "game-next-steps",
@@ -359,7 +1213,211 @@
         "clicks": 64,
         "impressions": 2361
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 6,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 54,
+          "post": 106,
+          "expected_from_site_trend": 59.3,
+          "z": 6.06
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.05660377358490566
+        },
+        "position": {
+          "pre": 16.796296296296298,
+          "post": 16.87735849056604
+        },
+        "ga4": {
+          "pre": {
+            "treatment": {
+              "sessions": 78.0,
+              "screenPageViews": 244.0,
+              "engagedSessions": 55.0,
+              "views_per_session": 3.128,
+              "engaged_rate": 0.7051
+            },
+            "control": {
+              "sessions": 202.0,
+              "screenPageViews": 341.0,
+              "engagedSessions": 137.0,
+              "views_per_session": 1.688,
+              "engaged_rate": 0.6782
+            }
+          },
+          "post": {
+            "treatment": {
+              "sessions": 51.0,
+              "screenPageViews": 67.0,
+              "engagedSessions": 34.0,
+              "views_per_session": 1.314,
+              "engaged_rate": 0.6667
+            },
+            "control": {
+              "sessions": 240.0,
+              "screenPageViews": 300.0,
+              "engagedSessions": 151.0,
+              "views_per_session": 1.25,
+              "engaged_rate": 0.6292
+            }
+          },
+          "post_window": [
+            "2026-10-24",
+            "2026-11-13"
+          ],
+          "dd_views_per_session": -1.376,
+          "dd_engaged_rate": 0.0106,
+          "z_engaged_rate": 0.11
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 100,
+              "impressions": 1141
+            },
+            "control": {
+              "clicks": 64,
+              "impressions": 2361
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 29,
+              "impressions": 430
+            },
+            "control": {
+              "clicks": 65,
+              "impressions": 3950
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 101.6,
+            "z": -7.2
+          },
+          "impressions": {
+            "expected_from_site_trend": 1908.9,
+            "z": -33.85
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 7,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 54,
+          "post": 124,
+          "expected_from_site_trend": 74.0,
+          "z": 5.82
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.056451612903225805
+        },
+        "position": {
+          "pre": 16.796296296296298,
+          "post": 15.89516129032258
+        },
+        "ga4": {
+          "pre": {
+            "treatment": {
+              "sessions": 78.0,
+              "screenPageViews": 244.0,
+              "engagedSessions": 55.0,
+              "views_per_session": 3.128,
+              "engaged_rate": 0.7051
+            },
+            "control": {
+              "sessions": 202.0,
+              "screenPageViews": 341.0,
+              "engagedSessions": 137.0,
+              "views_per_session": 1.688,
+              "engaged_rate": 0.6782
+            }
+          },
+          "post": {
+            "treatment": {
+              "sessions": 57.0,
+              "screenPageViews": 74.0,
+              "engagedSessions": 37.0,
+              "views_per_session": 1.298,
+              "engaged_rate": 0.6491
+            },
+            "control": {
+              "sessions": 271.0,
+              "screenPageViews": 337.0,
+              "engagedSessions": 169.0,
+              "views_per_session": 1.244,
+              "engaged_rate": 0.6236
+            }
+          },
+          "post_window": [
+            "2026-10-24",
+            "2026-11-16"
+          ],
+          "dd_views_per_session": -1.386,
+          "dd_engaged_rate": -0.0014,
+          "z_engaged_rate": -0.02
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 100,
+              "impressions": 1141
+            },
+            "control": {
+              "clicks": 64,
+              "impressions": 2361
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 39,
+              "impressions": 635
+            },
+            "control": {
+              "clicks": 111,
+              "impressions": 6861
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 173.4,
+            "z": -10.21
+          },
+          "impressions": {
+            "expected_from_site_trend": 3315.7,
+            "z": -46.55
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "image-cache-week",
@@ -401,7 +1459,129 @@
         "clicks": 0,
         "impressions": 0
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 54,
+          "post": 64,
+          "expected_from_site_trend": 36.6,
+          "z": 4.52
+        },
+        "impressions": {
+          "pre": 20605,
+          "post": 22651,
+          "expected_from_site_trend": 6646.8,
+          "z": 196.3
+        },
+        "ctr": {
+          "pre": 0.002620723125454987,
+          "post": 0.002825482318661428
+        },
+        "position": {
+          "pre": 13.596165979131278,
+          "post": 14.678071608317513
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 164,
+              "impressions": 3502
+            },
+            "control": {
+              "clicks": 0,
+              "impressions": 0
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 94,
+              "impressions": 4380
+            },
+            "control": {
+              "clicks": 0,
+              "impressions": 0
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 82.0,
+            "z": 1.33
+          },
+          "impressions": {
+            "expected_from_site_trend": 1751.0,
+            "z": 62.83
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 54,
+          "post": 77,
+          "expected_from_site_trend": 42.4,
+          "z": 5.31
+        },
+        "impressions": {
+          "pre": 20605,
+          "post": 28265,
+          "expected_from_site_trend": 20605.0,
+          "z": 53.36
+        },
+        "ctr": {
+          "pre": 0.002620723125454987,
+          "post": 0.0027242172297894923
+        },
+        "position": {
+          "pre": 13.596165979131278,
+          "post": 14.85915443127543
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 164,
+              "impressions": 3502
+            },
+            "control": {
+              "clicks": 0,
+              "impressions": 0
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 150,
+              "impressions": 7496
+            },
+            "control": {
+              "clicks": 0,
+              "impressions": 0
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 123.0,
+            "z": 2.43
+          },
+          "impressions": {
+            "expected_from_site_trend": 2626.5,
+            "z": 95.02
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "hub-intros",
@@ -442,7 +1622,129 @@
         "clicks": 164,
         "impressions": 3502
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 3,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": null,
+          "post": 4.666666666666667
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3502
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 94,
+              "impressions": 4380
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 3,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": null,
+          "post": 4.666666666666667
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3502
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 150,
+              "impressions": 7496
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "numbers-blog-links",
@@ -483,7 +1785,129 @@
         "clicks": 160,
         "impressions": 3383
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 119
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3383
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 30
+            },
+            "control": {
+              "clicks": 93,
+              "impressions": 4350
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 2.3,
+            "z": -0.87
+          },
+          "impressions": {
+            "expected_from_site_trend": 153.0,
+            "z": -9.94
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 119
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3383
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 40
+            },
+            "control": {
+              "clicks": 149,
+              "impressions": 7456
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 3.7,
+            "z": -1.41
+          },
+          "impressions": {
+            "expected_from_site_trend": 262.3,
+            "z": -13.72
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "ctr-batch-1",
@@ -526,7 +1950,129 @@
         "clicks": 163,
         "impressions": 3420
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 62,
+          "post": 1301,
+          "expected_from_site_trend": 64.5,
+          "z": 153.96
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 39.516129032258064,
+          "post": 15.254419677171407
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 82
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3420
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 6
+            },
+            "control": {
+              "clicks": 94,
+              "impressions": 4374
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.6,
+            "z": -0.76
+          },
+          "impressions": {
+            "expected_from_site_trend": 104.9,
+            "z": -9.65
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 62,
+          "post": 1404,
+          "expected_from_site_trend": 81.1,
+          "z": 146.9
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 39.516129032258064,
+          "post": 15.954415954415955
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 82
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3420
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 10
+            },
+            "control": {
+              "clicks": 150,
+              "impressions": 7486
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.9,
+            "z": -0.96
+          },
+          "impressions": {
+            "expected_from_site_trend": 179.5,
+            "z": -12.65
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "ctr-batch-2",
@@ -569,7 +2115,129 @@
         "clicks": 160,
         "impressions": 3159
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 3,
+          "post": 74,
+          "expected_from_site_trend": 3.3,
+          "z": 38.98
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 32.666666666666664,
+          "post": 42.4054054054054
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 343
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3159
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 82
+            },
+            "control": {
+              "clicks": 94,
+              "impressions": 4298
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 2.4,
+            "z": -1.53
+          },
+          "impressions": {
+            "expected_from_site_trend": 466.7,
+            "z": -17.81
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 3,
+          "post": 168,
+          "expected_from_site_trend": 4.1,
+          "z": 81.02
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 32.666666666666664,
+          "post": 32.25595238095238
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 343
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3159
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 124
+            },
+            "control": {
+              "clicks": 150,
+              "impressions": 7372
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 3.8,
+            "z": -1.94
+          },
+          "impressions": {
+            "expected_from_site_trend": 800.4,
+            "z": -23.91
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "worksheet-links-1",
@@ -611,7 +2279,129 @@
         "clicks": 163,
         "impressions": 3493
       }
-    }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 9
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3493
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 1
+            },
+            "control": {
+              "clicks": 93,
+              "impressions": 4379
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.6,
+            "z": 0.57
+          },
+          "impressions": {
+            "expected_from_site_trend": 11.3,
+            "z": -3.06
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-26",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 3,
+          "pre": {
+            "treatment": {
+              "clicks": 1,
+              "impressions": 9
+            },
+            "control": {
+              "clicks": 163,
+              "impressions": 3493
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 15
+            },
+            "control": {
+              "clicks": 146,
+              "impressions": 7481
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.9,
+            "z": 3.28
+          },
+          "impressions": {
+            "expected_from_site_trend": 19.3,
+            "z": -0.97
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "classroom-games-page",
@@ -634,7 +2424,150 @@
     "status": "running",
     "confounders": "New URL with no baseline. Indexing of new pages has been slow (March batch 37% indexed). Low expected volume, so the result may be descriptive only for months.",
     "next_action": "Request indexing; evaluate after 2026-11-24 on GA4 landing sessions and views per session. Use this page as the main link target in outreach (ISTE listing, teacher communities).",
-    "holds_back": false
+    "holds_back": false,
+    "baseline": {
+      "window": [
+        "2026-09-29",
+        "2026-10-26"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 166,
+        "impressions": 3731
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-30",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 3,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 122,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0.02459016393442623
+        },
+        "position": {
+          "pre": null,
+          "post": 55.278688524590166
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 11
+            },
+            "control": {
+              "clicks": 49,
+              "impressions": 2658
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-30",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 3,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 123,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0.024390243902439025
+        },
+        "position": {
+          "pre": null,
+          "post": 54.94308943089431
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 11
+            },
+            "control": {
+              "clicks": 105,
+              "impressions": 5774
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "penguin-refresh",
@@ -658,7 +2591,150 @@
     "status": "running",
     "confounders": "Strong seasonality (January classroom penguin units), so year-over-year only. Tiny baseline (1 click). Also in hero-not-lazy and image-cache-week, which touch images only.",
     "next_action": "Check coverage state after 2026-11-25. Full verdict in early March 2027: Bing Jan-Feb 2027 vs Jan-Feb 2026.",
-    "holds_back": true
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-09-30",
+        "2026-10-27"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 3
+      },
+      "control": {
+        "clicks": 166,
+        "impressions": 3728
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 57,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": null,
+          "post": 40.333333333333336
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 3
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3728
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 49,
+              "impressions": 2669
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 2.1,
+            "z": -1.47
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 81,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": null,
+          "post": 39.23456790123457
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 3
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3728
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 105,
+              "impressions": 5785
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 4.7,
+            "z": -2.16
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "ctr-ai-page",
@@ -682,7 +2758,150 @@
     "status": "running",
     "confounders": "Very low volume, so likely inconclusive at 28 days; extend to 8 weeks. Bing may rewrite titles. Also in hero-not-lazy and image-cache-week (images only).",
     "next_action": "Evaluate after 2026-11-25 on Bing page stats; if inconclusive, extend to 8 weekly buckets (about 2026-12-23).",
-    "holds_back": true
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-09-30",
+        "2026-10-27"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 2
+      },
+      "control": {
+        "clicks": 166,
+        "impressions": 3729
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 2
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3729
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 49,
+              "impressions": 2669
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 1.4,
+            "z": -1.2
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 2
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3729
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 105,
+              "impressions": 5785
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 3.1,
+            "z": -1.76
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "tiger-refresh",
@@ -706,7 +2925,150 @@
     "status": "running",
     "confounders": "Seasonality (January peak), so year-over-year only. Tiny baseline (0 Bing clicks Jan-Feb 2026, 1 click all year). No Google data (not indexed as of 2026-10-23). Also in hero-not-lazy and image-cache-week, which touch images only.",
     "next_action": "Check coverage state after 2026-11-25. Full verdict in early March 2027: Bing Jan-Feb 2027 vs Jan-Feb 2026.",
-    "holds_back": true
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-09-30",
+        "2026-10-27"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 166,
+        "impressions": 3731
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 3,
+              "impressions": 28
+            },
+            "control": {
+              "clicks": 46,
+              "impressions": 2641
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 4,
+              "impressions": 63
+            },
+            "control": {
+              "clicks": 101,
+              "impressions": 5722
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "ctr-homepage",
@@ -730,7 +3092,150 @@
     "status": "running",
     "confounders": "Description and schema changed together; schema should not affect CTR without a rich result. Bing and Google may rewrite the snippet. Also in image-cache-week (images only). Homepage brand-name queries may dominate, so read non-brand queries separately.",
     "next_action": "Evaluate after 2026-11-25 on Bing page stats; if inconclusive, extend to 8 weekly buckets.",
-    "holds_back": true
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-09-30",
+        "2026-10-27"
+      ],
+      "clicks": 0,
+      "impressions": 0,
+      "ctr": 0,
+      "position": null
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 2,
+        "impressions": 5
+      },
+      "control": {
+        "clicks": 164,
+        "impressions": 3726
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 2,
+              "impressions": 5
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3726
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 49,
+              "impressions": 2669
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.6,
+            "z": -0.77
+          },
+          "impressions": {
+            "expected_from_site_trend": 3.6,
+            "z": -1.89
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 2,
+              "impressions": 5
+            },
+            "control": {
+              "clicks": 164,
+              "impressions": 3726
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 2
+            },
+            "control": {
+              "clicks": 105,
+              "impressions": 5783
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 1.3,
+            "z": -1.13
+          },
+          "impressions": {
+            "expected_from_site_trend": 7.8,
+            "z": -2.07
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "breadcrumbs-sweep",
@@ -754,7 +3259,140 @@
     "status": "running",
     "confounders": "Small sample (6 clicks/28d), so this is a tracking entry rather than a test. Also in image-cache-week. IndexNow resubmission on deploy may prompt recrawls.",
     "next_action": "On 2026-11-25 check GSC enhancements for breadcrumb errors and compare CTR; no rollback expected.",
-    "holds_back": false
+    "holds_back": false,
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 6,
+        "impressions": 110
+      },
+      "control": {
+        "clicks": 160,
+        "impressions": 3621
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 6,
+              "impressions": 110
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3621
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 3,
+              "impressions": 260
+            },
+            "control": {
+              "clicks": 46,
+              "impressions": 2409
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 1.7,
+            "z": 0.97
+          },
+          "impressions": {
+            "expected_from_site_trend": 73.2,
+            "z": 21.84
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-10-31",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "ctr": {
+          "pre": 0,
+          "post": 0
+        },
+        "position": {
+          "pre": null,
+          "post": null
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 6,
+              "impressions": 110
+            },
+            "control": {
+              "clicks": 160,
+              "impressions": 3621
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 5,
+              "impressions": 581
+            },
+            "control": {
+              "clicks": 100,
+              "impressions": 5204
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 3.8,
+            "z": 0.65
+          },
+          "impressions": {
+            "expected_from_site_trend": 158.1,
+            "z": 33.64
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "eye-pair-and-word-match-split",
@@ -777,7 +3415,150 @@
     "status": "running",
     "confounders": "Very low volume (single-digit impressions per query), so likely inconclusive at 28 days; read the query split between the two eye pages rather than totals. word-matching.html is in ctr-batch-1 and was not edited. Also in hero-not-lazy and image-cache-week (images only).",
     "next_action": "Evaluate after 2026-11-26: check whether the eye queries separate by page. After ctr-batch-1 ends (2026-11-20), add the reverse link from word-matching.html to match-words.html.",
-    "holds_back": true
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-10-01",
+        "2026-10-28"
+      ],
+      "clicks": 1,
+      "impressions": 30,
+      "ctr": 0.03333333333333333,
+      "position": 30.666666666666668
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 166,
+        "impressions": 3731
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-11-01",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 1,
+          "post": 0,
+          "expected_from_site_trend": 0.8,
+          "z": -0.89
+        },
+        "impressions": {
+          "pre": 30,
+          "post": 48,
+          "expected_from_site_trend": 24.8,
+          "z": 4.66
+        },
+        "ctr": {
+          "pre": 0.03333333333333333,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 30.666666666666668,
+          "post": 33.25
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 49,
+              "impressions": 2669
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-11-01",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 1,
+          "post": 0,
+          "expected_from_site_trend": 1.0,
+          "z": -1.0
+        },
+        "impressions": {
+          "pre": 30,
+          "post": 74,
+          "expected_from_site_trend": 33.3,
+          "z": 7.05
+        },
+        "ctr": {
+          "pre": 0.03333333333333333,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 30.666666666666668,
+          "post": 31.31081081081081
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 105,
+              "impressions": 5785
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   },
   {
     "id": "ctr-yak-page",
@@ -787,7 +3568,7 @@
     ],
     "pages_regex": "/learn/phonics/yak\\.html$",
     "primary_source": "gsc",
-    "change": "Title 'Y is for Yak – Fun Phonics for Kids | Teachings.ai' -> 'Y for Yak: Letter Y Sound, Yak Picture & Facts for Kids'. Description names what the page has (yak picture, the 'yuh' sound, where yaks live, how they stay warm, quiz). og/twitter aligned; hero alt 'Yak' -> 'A shaggy yak for Y is for yak'. No body change.",
+    "change": "Title 'Y is for Yak \u2013 Fun Phonics for Kids | Teachings.ai' -> 'Y for Yak: Letter Y Sound, Yak Picture & Facts for Kids'. Description names what the page has (yak picture, the 'yuh' sound, where yaks live, how they stay warm, quiz). og/twitter aligned; hero alt 'Yak' -> 'A shaggy yak for Y is for yak'. No body change.",
     "hypothesis": "From F3 of the 2026-10-28 delta audit: 153 Google impressions, 0 clicks at position 8.6 in 28 days; 'y for yak' 75 impressions at #8.3. A title that starts with the searcher's exact phrase and says there is a picture should earn clicks at the same position.",
     "metric": "clicks",
     "secondary_metrics": [
@@ -800,6 +3581,149 @@
     "status": "running",
     "confounders": "Low volume: a verdict needs several clicks, not 1-2. Google may rewrite the title. Also in hero-not-lazy and image-cache-week (images only).",
     "next_action": "Evaluate after 2026-11-26 on Search Console clicks and CTR; if inconclusive, extend to 8 weeks.",
-    "holds_back": true
+    "holds_back": true,
+    "baseline": {
+      "window": [
+        "2026-10-01",
+        "2026-10-28"
+      ],
+      "clicks": 0,
+      "impressions": 125,
+      "ctr": 0.0,
+      "position": 9.104
+    },
+    "bing_baseline": {
+      "weeks": 4,
+      "treatment": {
+        "clicks": 0,
+        "impressions": 0
+      },
+      "control": {
+        "clicks": 166,
+        "impressions": 3731
+      }
+    },
+    "evaluations": [
+      {
+        "run_date": "2026-11-16",
+        "post_window": [
+          "2026-11-01",
+          "2026-11-13"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 125,
+          "post": 88,
+          "expected_from_site_trend": 103.5,
+          "z": -1.53
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 9.104,
+          "post": 12.840909090909092
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 1,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 49,
+              "impressions": 2669
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      },
+      {
+        "run_date": "2026-11-19",
+        "post_window": [
+          "2026-11-01",
+          "2026-11-16"
+        ],
+        "clicks": {
+          "pre": 0,
+          "post": 0,
+          "expected_from_site_trend": 0.0,
+          "z": 0
+        },
+        "impressions": {
+          "pre": 125,
+          "post": 112,
+          "expected_from_site_trend": 139.2,
+          "z": -2.3
+        },
+        "ctr": {
+          "pre": 0.0,
+          "post": 0.0
+        },
+        "position": {
+          "pre": 9.104,
+          "post": 11.946428571428571
+        },
+        "bing": {
+          "pre_weeks": 4,
+          "post_weeks": 2,
+          "pre": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 166,
+              "impressions": 3731
+            }
+          },
+          "post": {
+            "treatment": {
+              "clicks": 0,
+              "impressions": 0
+            },
+            "control": {
+              "clicks": 105,
+              "impressions": 5785
+            }
+          },
+          "clicks": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          },
+          "impressions": {
+            "expected_from_site_trend": 0.0,
+            "z": 0
+          }
+        },
+        "verdict": "interim -- not conclusive yet"
+      }
+    ]
   }
 ]
