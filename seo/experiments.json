@@ -3758,5 +3758,80 @@
       "ctr": 0.0023,
       "position": 5.445
     }
+  },
+  {
+    "id": "submarine-what-is-and-submersibles",
+    "commits": [
+      "3acfba7"
+    ],
+    "pages_regex": "/learn/vehicles/submarine\\.html$",
+    "primary_source": "gsc",
+    "change": "Title 'Submarine for Kids – How They Dive, Periscopes & Fun Facts' -> 'What Is a Submarine? Submarine Facts for Kids & How They Dive'; description leads with a one-line definition and mentions submersibles; og/twitter aligned. Body: new 'Submarine or Submersible?' section (Alvin, Trieste, Deepsea Challenger); Deepest Dive fact corrected to credit submersibles.",
+    "hypothesis": "From T3 of the 2026-11-19 weekly report: 'what is submarine' 150 Google impressions at #10 with 0 clicks, and 'submersibles' rising (63 impressions, #46) with no page in the top 20. A title that asks the searcher's question plus a section that answers 'submersible' should lift clicks and pull 'submersibles' toward the first pages.",
+    "metric": "clicks",
+    "confounders": "Low volume. Google may rewrite the title. Also in hero-not-lazy and image-cache-week (images only).",
+    "next_action": "Evaluate after 2026-12-17 on clicks, plus position for 'submersibles'; if inconclusive, extend to 8 weeks.",
+    "baseline": {
+      "window": [
+        "2026-10-20",
+        "2026-11-16"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    "date": "2026-11-19",
+    "secondary_metrics": [
+      "ctr",
+      "impressions",
+      "position"
+    ],
+    "window_days": 28,
+    "evaluate_after": "2026-12-17",
+    "status": "running",
+    "holds_back": true
+  },
+  {
+    "id": "bing-waterfall-title",
+    "commits": [
+      "bfa7193"
+    ],
+    "pages_regex": "/learn/nature/waterfall\\.html$",
+    "primary_source": "bing",
+    "change": "Title 'The Waterfall for Kids: Amazing Facts & Nature Learning' -> 'Waterfalls for Kids: How They Form, Types & Famous Falls'; description names the types and famous falls; og/twitter/LearningResource aligned. Body: new 'Types of Waterfalls' section (plunge, horsetail, cascade, block).",
+    "hypothesis": "From T5 of the 2026-11-19 weekly report: on Bing, 361 impressions at avg position 7.2 over ~13 weeks with 0 clicks, against ~3.3% site CTR at that position. Bing queries are 'learning waterfalls', 'waterfalls for kids', 'types of waterfalls for kids'; a plural title that names types should earn clicks.",
+    "metric": "clicks",
+    "confounders": "Bing weekly buckets; low volume. Also in hero-not-lazy and image-cache-week (images only).",
+    "next_action": "Evaluate after 2026-12-17 on Bing page clicks against the site trend; if inconclusive, extend to 8 weeks.",
+    "baseline": {
+      "window": [
+        "2026-10-20",
+        "2026-11-16"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    "bing_baseline": {
+      "window": [
+        "2026-08-18",
+        "2026-11-16"
+      ],
+      "clicks": 0,
+      "impressions": 469,
+      "position": 6.89
+    },
+    "date": "2026-11-19",
+    "secondary_metrics": [
+      "ctr",
+      "impressions",
+      "position"
+    ],
+    "window_days": 28,
+    "evaluate_after": "2026-12-17",
+    "status": "running",
+    "holds_back": true
   }
 ]
